@@ -380,6 +380,9 @@ MonoBehaviour:
   - {fileID: 1718391779}
   - {fileID: 1475722348}
   curDir: 1
+  HoneyItem: {fileID: 0}
+  Obstruction: {fileID: 0}
+  cam: {fileID: 1562137953}
 --- !u!1 &329648597
 GameObject:
   m_ObjectHideFlags: 0

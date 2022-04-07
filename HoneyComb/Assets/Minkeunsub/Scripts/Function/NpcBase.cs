@@ -49,7 +49,7 @@ public abstract class NpcBase : MonoBehaviour
 
     protected void ExclamationPrint()
     {
-        switch (npcState)
+        /*switch (npcState)
         {
             case NpcState.None:
                 Exclamation.SetActive(false);
@@ -60,7 +60,7 @@ public abstract class NpcBase : MonoBehaviour
             case NpcState.QuestClear:
                 Exclamation.SetActive(true);
                 break;
-        }
+        }*/
     }
 
     protected abstract void QuestExistsMessage();
