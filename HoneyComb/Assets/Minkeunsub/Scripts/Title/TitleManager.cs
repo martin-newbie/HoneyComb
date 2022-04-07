@@ -10,6 +10,7 @@ public class TitleManager : Singleton<TitleManager>
 {
 
     bool trigger;
+    bool isSpeeching;
 
     [Header("Status")]
     public bool isQuestAble;
@@ -30,19 +31,24 @@ public class TitleManager : Singleton<TitleManager>
 
     public void SpeechMessage()
     {
-        if (isQuestAble)
+        if (!isSpeeching)
         {
+            isSpeeching = true;
+            if (isQuestAble)
+            {
 
+            }
+            else
+            {
+                SpeechRandomMessage();
+            }
         }
-        else
-        {
-            SpeechRandomMessage();
-        }
+        
     }
 
     void SpeechRandomMessage()
     {
-        string[] messages = new string[4] { "1234", "3455", "5677", "34444" };
+        string[] messages = new string[4] { "나는 꿀벌", "꿈을 꾸는 꿀벌", "꿈속에서는 무엇이든지 될 수 있어", "잠에 드는 순간 여행이 시작되는 거야" };
         SpeechOn(messages);
     }
 
@@ -86,6 +92,7 @@ public class TitleManager : Singleton<TitleManager>
     {
         SpeechTxt.text = "";
         SpeechImg.rectTransform.DOSizeDelta(Vector2.zero, 0.5f).SetEase(Ease.InBack);
+        isSpeeching = false;
     }
 
     public void RoyalSceneMove()
