@@ -16,7 +16,8 @@ public class StatusManager : Singleton<StatusManager>
     public float BeeDelay;
 
     [Header("Status")]
-    public float Honey;
+    public int Honey; //²Ü
+    public int BeeWax; //¹Ð¶ø
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class StatusManager : Singleton<StatusManager>
         MaxBee = dataSave.MaxBee;
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
+        BeeWax = dataSave.BeeWax;
     }
 
     void SetDataToSave()
@@ -52,6 +54,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.MaxBee = MaxBee;
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
+        dataSave.BeeWax = BeeWax;
     }
 
     public void SaveData()
@@ -95,5 +98,6 @@ public class StatusSave
 {
     public int MaxBee;
     public int CurBee;
-    public float Honey;
+    public int Honey;
+    public int BeeWax;
 }
