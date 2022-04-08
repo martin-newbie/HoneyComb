@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InGameUI : MonoBehaviour
+public class InGameUI : Singleton<InGameUI>
 {
-    // Start is called before the first frame update
+    public InputUI Input;
+    public Image HpImg;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void GameOverUIOn()
+    {
+
+    }
+
+    public void SetPlayerHp(float fill)
+    {
+        HpImg.fillAmount = fill;
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class InputUI : MonoBehaviour
 {
 
-    Touch touch;
     [SerializeField] Vector2 firstPressPos;
     [SerializeField] Vector2 secondPressPos;
     [SerializeField] Vector3 currentSwipe;
@@ -15,7 +14,8 @@ public class InputUI : MonoBehaviour
 
     private void Update()
     {
-        TouchCheck();
+        if (!InGameManager.Instance.Player.isGameOver)
+            TouchCheck();
     }
 
     void TouchCheck()

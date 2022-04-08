@@ -5,13 +5,16 @@ using UnityEngine;
 public class InGameManager : Singleton<InGameManager>
 {
     [Header("Objects")]
-    public GameObject Player;
+    public Player Player;
     [SerializeField] Transform[] PlayerPoses = new Transform[3];
     public int curDir;
     [SerializeField] GameObject HoneyItem;
     [SerializeField] GameObject Obstruction;
     [SerializeField] Camera cam;
     Vector3 originPos;
+
+    [Header("Status")]
+    public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
 
     void Start()
     {
@@ -31,6 +34,11 @@ public class InGameManager : Singleton<InGameManager>
     public void SpawnObstruction(int idx)
     {
         Instantiate(Obstruction, PlayerPoses[idx].position + new Vector3(0, 9f), Quaternion.identity);
+    }
+
+    public void GameOver()
+    {
+
     }
 
     /// <summary>
