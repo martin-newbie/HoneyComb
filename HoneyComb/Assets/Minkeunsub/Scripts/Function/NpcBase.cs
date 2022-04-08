@@ -22,11 +22,18 @@ public abstract class NpcBase : MonoBehaviour
     public List<string> Messages = new List<string>();
     public bool QuestAble;
     public NpcState npcState;
+    public string path;
 
     [Header("UI Objects")]
     [SerializeField] Image SpeechImg;
     [SerializeField] GameObject Exclamation;
     [SerializeField] Text SpeechTxt;
+
+    private void Start()
+    {
+        TextAsset text = Resources.Load("Texts/" + path) as TextAsset;
+        Messages = text.text.Split('\n').ToList();
+    }
 
     public void SpeechMessage()
     {
