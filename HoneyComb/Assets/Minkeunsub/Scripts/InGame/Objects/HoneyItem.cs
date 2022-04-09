@@ -17,7 +17,7 @@ public class HoneyItem : MonoBehaviour
 
     public void Init(InGameManager manager)
     {
-
+        this.manager = manager;
     }
 
     /// <summary>
@@ -34,6 +34,7 @@ public class HoneyItem : MonoBehaviour
 
         Flowers.ForEach(item => item.gameObject.SetActive(false));
         Flowers[kind].gameObject.SetActive(true);
+        transform.position = position;
         Honey.SetActive(true);
 
     }
@@ -43,6 +44,10 @@ public class HoneyItem : MonoBehaviour
         if(transform.position.y <= -6f)
         {
             Push();
+        }
+        else
+        {
+            transform.Translate(Vector3.down * Time.deltaTime * 5);
         }
     }
 

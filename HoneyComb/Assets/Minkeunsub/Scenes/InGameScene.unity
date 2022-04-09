@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdad450a3fdb7546b8635c44464a659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 5
+  MaxHp: 100
   Hp: 0
   isGameOver: 0
   invincibleDelay: 0.15
@@ -479,11 +479,13 @@ MonoBehaviour:
   - {fileID: 1475722348}
   curDir: 1
   honeyItem: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
-  Obstruction: {fileID: 0}
+  Obstruction: {fileID: 7732094619369151075, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
   cam: {fileID: 1562137953}
   roundHoney: 0
   distance: 0
   moveSpeed: 20
+  damage: 5
+  FlowerTime: []
 --- !u!1 &329648597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,7 +2333,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.11311853, g: 0.5849056, b: 0.20477593, a: 1}
   m_FlipX: 0
@@ -2794,6 +2796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037e3b2f1ffaf94ca59d5e74b84e30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoneyTxt: {fileID: 2097252581}
+  DistanceTxt: {fileID: 463962791}
   Input: {fileID: 329648602}
   HpImg: {fileID: 992469565}
   gameOver: {fileID: 534713951}

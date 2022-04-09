@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InGameManager : Singleton<InGameManager>
@@ -18,17 +19,36 @@ public class InGameManager : Singleton<InGameManager>
     public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
     public float distance;
     public float moveSpeed;
+    public float damage;
+
+    TextAsset FlowerSpawnTxt;
+    [SerializeField] List<string> FlowerTime = new List<string>();
 
     void Start()
     {
         PoolInit(20);
         originPos = cam.transform.position;
+        FlowerSpawnTxt = Resources.Load("Texts/FlowerSpawn") as TextAsset;
+        FlowerTime = FlowerSpawnTxt.text.Split('\n').ToList();
+        StartCoroutine(SpawnCoroutine(0.5f));
     }
 
     void Update()
     {
         Player.transform.position = Vector3.Lerp(Player.transform.position, PlayerPoses[curDir].position, Time.deltaTime * 15f);
         DistanceLogic();
+        InGameUI.Instance.SetStatusTexts(roundHoney, distance);
+    }
+
+    public void Revive()
+    {
+        Player.isGameOver = false;
+        Player.Hp = Player.MaxHp;
+    }
+
+    public void SaveDataToManager()
+    {
+        StatusManager.Instance.Honey += roundHoney;
     }
 
     void DistanceLogic()
@@ -45,6 +65,24 @@ public class InGameManager : Singleton<InGameManager>
             temp.Init(this);
             temp.gameObject.SetActive(false);
             HoneyItemPool.Push(temp);
+        }
+    }
+    
+    IEnumerator SpawnCoroutine(float time)
+    {
+        float duration = time;
+        int idx = 0;
+        while (true)
+        {
+            Pop(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0));
+
+            idx++;
+
+            if (idx == FlowerTime.Count) idx = 0;
+
+            yield return new WaitForSeconds(duration);
+
+            while (Player.isGameOver) yield return null;
         }
     }
 
@@ -94,8 +132,9 @@ public class InGameManager : Singleton<InGameManager>
         float timer = duration;
         while (timer > 0f)
         {
-            Vector3 randPos = Random.insideUnitCircle * 0.3f;
+            Vector3 randPos = Random.insideUnitCircle * 0.1f;
             cam.transform.position = originPos + randPos;
+            timer -= Time.deltaTime;
             yield return null;
         }
 

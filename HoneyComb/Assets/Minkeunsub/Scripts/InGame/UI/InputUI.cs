@@ -24,11 +24,11 @@ public class InputUI : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && isTouching)
             {
-                firstPressPos = Input.mousePosition;
+                firstPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
             if (Input.GetMouseButtonUp(0) && isTouching)
             {
-                secondPressPos = Input.mousePosition;
+                secondPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 currentSwipe = secondPressPos - firstPressPos;
                 currentSwipe.Normalize();
 

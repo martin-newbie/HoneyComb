@@ -27,6 +27,7 @@ public class GameOver : MonoBehaviour
 
     float distance;
     int honey;
+    bool already;
 
     public void Init(float _distance, int _honey)
     {
@@ -46,7 +47,13 @@ public class GameOver : MonoBehaviour
         switch (state)
         {
             case 0:
-                StateRevive();
+                if (!already)
+                    StateRevive();
+                else
+                {
+                    state = 1;
+                    StartCoroutine(ReviveToReulst(0.5f));
+                }
                 break;
             case 1:
                 StateStandby();
@@ -69,12 +76,14 @@ public class GameOver : MonoBehaviour
         {
             StatusManager.Instance.CurBee--;
             SceneManager.LoadScene("InGameScene");
+            InGameManager.Instance.SaveDataToManager();
         }
     }
 
     public void ResultTitle()
     {
         SceneManager.LoadScene("TitleScene");
+        InGameManager.Instance.SaveDataToManager();
     }
 
     void StateRevive()
@@ -91,7 +100,6 @@ public class GameOver : MonoBehaviour
             state = 1;
             StartCoroutine(ReviveToReulst(0.5f));
         }
-
     }
 
     IEnumerator ReviveToReulst(float delay)
@@ -166,12 +174,17 @@ public class GameOver : MonoBehaviour
 
     public void ReviveUseHoney()
     {
-        StatusManager.Instance.Honey -= 700;
-        Revive();
+        if (StatusManager.Instance.Honey >= 700)
+        {
+            StatusManager.Instance.Honey -= 700;
+            Revive();
+        }
     }
 
     void Revive()
     {
-
+        already = true;
+        InGameManager.Instance.Revive();
+        gameObject.SetActive(false);
     }
 }
