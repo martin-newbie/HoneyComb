@@ -49,13 +49,13 @@ public class StatusManager : Singleton<StatusManager>
         }
         else curDelay = -0.01f;
     }
-
+    #region Debug
     void ClearPlayerPrefs()
     {
         PlayerPrefs.DeleteKey(dataSaveName);
         PlayerPrefs.DeleteKey(timeSaveName);
     }
-
+    #endregion
     public void LoadData()
     {
         string dataStr = PlayerPrefs.GetString(dataSaveName, "none");
