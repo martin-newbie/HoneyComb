@@ -8,37 +8,64 @@ public class InGameManager : Singleton<InGameManager>
     public Player Player;
     [SerializeField] Transform[] PlayerPoses = new Transform[3];
     public int curDir;
-    [SerializeField] GameObject HoneyItem;
+    [SerializeField] HoneyItem honeyItem;
     [SerializeField] GameObject Obstruction;
     [SerializeField] Camera cam;
     Vector3 originPos;
+    Stack<HoneyItem> HoneyItemPool = new Stack<HoneyItem>();
 
     [Header("Status")]
     public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
+    public float distance;
+    public float moveSpeed;
 
     void Start()
     {
+        PoolInit(20);
         originPos = cam.transform.position;
     }
 
     void Update()
     {
         Player.transform.position = Vector3.Lerp(Player.transform.position, PlayerPoses[curDir].position, Time.deltaTime * 15f);
+        DistanceLogic();
     }
 
-    public void SpawnHoney(int idx)
+    void DistanceLogic()
     {
-        Instantiate(HoneyItem, PlayerPoses[idx].position + new Vector3(0, 9f), Quaternion.identity);
+        if (!Player.isGameOver)
+            distance += Time.deltaTime * moveSpeed;
+    }
+    
+    void PoolInit(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            HoneyItem temp = Instantiate(honeyItem, transform);
+            temp.Init(this);
+            temp.gameObject.SetActive(false);
+            HoneyItemPool.Push(temp);
+        }
     }
 
-    public void SpawnObstruction(int idx)
+    public void Push(HoneyItem item)
     {
-        Instantiate(Obstruction, PlayerPoses[idx].position + new Vector3(0, 9f), Quaternion.identity);
+        item.gameObject.SetActive(false);
+        HoneyItemPool.Push(item);
+    }
+
+    public HoneyItem Pop(Vector3 position)
+    {
+        HoneyItem retmp;
+        retmp = HoneyItemPool.Pop();
+        retmp.gameObject.SetActive(true);
+        retmp.PosInit(position);
+        return retmp;
     }
 
     public void GameOver()
     {
-
+        InGameUI.Instance.GameOverUIOn(distance, roundHoney);
     }
 
     /// <summary>

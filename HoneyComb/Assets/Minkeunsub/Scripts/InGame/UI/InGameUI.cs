@@ -7,6 +7,7 @@ public class InGameUI : Singleton<InGameUI>
 {
     public InputUI Input;
     public Image HpImg;
+    public GameOver gameOver;
 
     void Start()
     {
@@ -18,9 +19,10 @@ public class InGameUI : Singleton<InGameUI>
         
     }
 
-    public void GameOverUIOn()
+    public void GameOverUIOn(float distance, int honey)
     {
-
+        gameOver.gameObject.SetActive(true);
+        gameOver.Init(distance, honey);
     }
 
     public void SetPlayerHp(float fill)
