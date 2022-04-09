@@ -13,7 +13,7 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Bee")]
     public int Room = 15;
     public int MaxBee = 15; // ÃÑ ¹ú °¹¼ö (¿©¿Õ ¹æ¿¡¼­ ¾÷±×·¹ÀÌµå)
-    public int CurBee = 15;
+    public int CurBee = 20;
     public float Charging = 1f;
     public float BeeDelay = 300f;
     public float curDelay;

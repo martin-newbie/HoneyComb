@@ -7,6 +7,7 @@ using System.Linq;
 
 public enum NpcState
 {
+    FirstMeet,
     None,
     QuestExists,
     QuestClear
@@ -33,6 +34,10 @@ public abstract class NpcBase : MonoBehaviour
     {
         TextAsset text = Resources.Load("Texts/" + path) as TextAsset;
         Messages = text.text.Split('\n').ToList();
+
+        int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
+        if (temp == 1) npcState = NpcState.None;
+        else if (temp == 0) npcState = NpcState.FirstMeet;
     }
 
     public void SpeechMessage()
@@ -41,6 +46,11 @@ public abstract class NpcBase : MonoBehaviour
         {
             switch (npcState)
             {
+                case NpcState.FirstMeet:
+                    FirstMeetScript();
+                    npcState = NpcState.None;
+                    PlayerPrefs.SetInt("FirstMeet: " + path, 1);
+                    break;
                 case NpcState.None:
                     isSpeeching = true;
                     SpeechRandomMessage();
@@ -53,6 +63,8 @@ public abstract class NpcBase : MonoBehaviour
             ExclamationPrint();
         }
     }
+
+    protected abstract void FirstMeetScript();
 
     protected void ExclamationPrint()
     {
