@@ -20,6 +20,8 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [SerializeField] GameObject RoomUpgradeBG;
     [SerializeField] GameObject BeeUpgradeWindow;
     [SerializeField] GameObject BeeUpgradeBG;
+    [SerializeField] Text CurHoneyValue;
+    [SerializeField] Text CurWaxValue;
 
     [Header("Value")]
     [SerializeField] int RoomCost = 250;
@@ -92,6 +94,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         RoomUpgradeWindow.SetActive(true);
         RoomUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
         RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+        CurWaxValue.text = "현재: " + Format(StatusManager.Instance.BeeWax);
     }
 
     public void RoomClose()
@@ -119,6 +122,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         BeeUpgradeWindow.SetActive(true);
         BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
         BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+        CurHoneyValue.text = "현재: " + Format(StatusManager.Instance.Honey);
     }
 
     public void BeeClose()

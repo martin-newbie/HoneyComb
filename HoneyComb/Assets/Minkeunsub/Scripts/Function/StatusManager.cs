@@ -8,6 +8,7 @@ public class StatusManager : Singleton<StatusManager>
 {
     public StatusSave dataSave = new StatusSave();
     public string dataSaveName = "status data save";
+    public string questSaveName = "quest data save";
     public string timeSaveName = "time save";
 
     [Header("Bee")]
@@ -22,16 +23,52 @@ public class StatusManager : Singleton<StatusManager>
     public int Honey; //²Ü
     public int BeeWax; //¹Ð¶ø
 
+    [Header("Quest")]
+    public int CurQuestIdx;
+    public QuestData CurQuest; // == head
+    public List<QuestData> QuestsList = new List<QuestData>();
+    public QuestDataSave QuestSaveList = new QuestDataSave();
+    public bool isQuestAble;
+
+    void LoadQuest()
+    {
+        PlayerPrefs.DeleteKey(questSaveName);
+
+        string questTmp = PlayerPrefs.GetString(questSaveName, "none");
+        if (questTmp == "none")
+        {
+            QuestSaveList.QuestLists = QuestsList;
+
+            string jsonSave = JsonUtility.ToJson(QuestSaveList, true);
+            Debug.Log(jsonSave);
+            PlayerPrefs.SetString(questSaveName, jsonSave);
+        }
+        else
+        {
+            QuestsList = QuestSaveList.QuestLists;
+        }
+
+        CurQuest = QuestsList[CurQuestIdx];
+    }
+
     private void Awake()
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
         LoadData();
         LoadBeeTime();
+        LoadQuest();
+    }
+
+    private void Start()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
     }
 
     private void Update()
     {
+        isQuestAble = CurQuestIdx < QuestsList.Count;
+
         BeeCharging();
     }
 
@@ -77,6 +114,7 @@ public class StatusManager : Singleton<StatusManager>
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
         BeeWax = dataSave.BeeWax;
+        CurQuestIdx = dataSave.CurQuestIdx;
     }
 
     void SetDataToSave()
@@ -85,6 +123,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
         dataSave.BeeWax = BeeWax;
+        dataSave.CurQuestIdx = CurQuestIdx;
     }
 
     public void SaveData()
@@ -135,4 +174,99 @@ public class StatusSave
     public int CurBee;
     public int Honey;
     public int BeeWax;
+    public int CurQuestIdx;
+}
+
+public enum QuestNpcState
+{
+    Worker,
+    RoyalBee,
+    LabBee,
+    LibraryBee
+}
+
+public enum QuestValueKind
+{
+    Honey,
+    Bee,
+    Wax
+}
+
+[Serializable]
+public class QuestDataSave
+{
+    public List<QuestData> QuestLists = new List<QuestData>();
+}
+
+[Serializable]
+public class QuestData
+{
+    public QuestNpcState thisState;
+    public QuestValueKind thisKind;
+
+    public bool isCleared = false;
+    public bool QuestActive = false;
+
+    public int defaultValue;
+    public int curValue;
+    public int maxValue;
+
+    public string textId;
+
+    public void SetDefaultValue()
+    {
+        switch (thisKind)
+        {
+            case QuestValueKind.Honey:
+                defaultValue = StatusManager.Instance.Honey;
+                break;
+            case QuestValueKind.Bee:
+                defaultValue = StatusManager.Instance.MaxBee;
+                break;
+            case QuestValueKind.Wax:
+                defaultValue = StatusManager.Instance.BeeWax;
+                break;
+        }
+
+        QuestActive = true;
+    }
+
+    public void SetValue()
+    {
+        switch (thisKind)
+        {
+            case QuestValueKind.Honey:
+                curValue = StatusManager.Instance.Honey - defaultValue;
+                break;
+            case QuestValueKind.Bee:
+                curValue = StatusManager.Instance.MaxBee - defaultValue;
+                break;
+            case QuestValueKind.Wax:
+                curValue = StatusManager.Instance.BeeWax - defaultValue;
+                break;
+        }
+    }
+
+    public string[] GetTextScript()
+    {
+        TextAsset asset = Resources.Load("Texts/QuestScripts/" + textId) as TextAsset;
+        string[] ret = asset.text.Split('\n');
+        return ret;
+    }
+
+    public bool CheckIsClear()
+    {
+        bool ret;
+
+        if (curValue >= maxValue) ret = true;
+        else ret = false;
+        isCleared = ret;
+
+        return isCleared;
+    }
+
+    public void GetReward()
+    {
+
+    }
 }

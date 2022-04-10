@@ -11,9 +11,11 @@ public class WorkerNPC : NpcBase
 
     protected override void QuestClearMessage()
     {
+        base.QuestClearMessage();
     }
 
     protected override void QuestExistsMessage()
     {
+        base.QuestExistsMessage();
     }
 }

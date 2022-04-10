@@ -19,7 +19,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     instance = temp.AddComponent<T>();
                 }
             }
-
             return instance;
         }
     }

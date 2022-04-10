@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Minkeunsub/Scenes/IntroScene.unity
+    guid: a1d6964e6d457a04cac9e3d5ad7bda43
+  - enabled: 1
     path: Assets/Minkeunsub/Scenes/TitleScene.unity
     guid: dcdf3f4026f155444975f1c8085e1eb5
   - enabled: 1

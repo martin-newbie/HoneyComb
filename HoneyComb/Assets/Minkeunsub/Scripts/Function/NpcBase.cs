@@ -24,6 +24,8 @@ public abstract class NpcBase : MonoBehaviour
     public bool QuestAble;
     public NpcState npcState;
     public string path;
+    public QuestData thisQuest;
+    public QuestNpcState thisQuestState;
 
     [Header("UI Objects")]
     [SerializeField] Image SpeechImg;
@@ -38,6 +40,17 @@ public abstract class NpcBase : MonoBehaviour
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
+
+        if (StatusManager.Instance.isQuestAble)
+        {
+            QuestData questTmp = StatusManager.Instance.CurQuest;
+            if (questTmp.thisState == thisQuestState)
+            {
+                thisQuest = questTmp;
+                if (thisQuest.QuestActive) thisQuest.SetValue();
+            }
+            else thisQuest = null;
+        }
     }
 
     public void SpeechMessage()
@@ -48,19 +61,45 @@ public abstract class NpcBase : MonoBehaviour
             {
                 case NpcState.FirstMeet:
                     FirstMeetScript();
+
                     npcState = NpcState.None;
                     PlayerPrefs.SetInt("FirstMeet: " + path, 1);
+
                     break;
                 case NpcState.None:
                     isSpeeching = true;
                     SpeechRandomMessage();
                     break;
                 case NpcState.QuestExists:
+                    QuestExistsMessage();
                     break;
                 case NpcState.QuestClear:
+                    QuestClearMessage();
                     break;
             }
-            ExclamationPrint();
+        }
+    }
+
+    void LateUpdate()
+    {
+        ExclamationPrint();
+        CheckQuestExists();
+
+        thisQuest?.CheckIsClear();
+    }
+
+    void CheckQuestExists()
+    {
+        if (thisQuest != null)
+        {
+            if (thisQuest.isCleared)
+            {
+                npcState = NpcState.QuestClear;
+            }
+            else if (!thisQuest.isCleared && !thisQuest.QuestActive)
+            {
+                npcState = NpcState.QuestExists;
+            }
         }
     }
 
@@ -68,22 +107,21 @@ public abstract class NpcBase : MonoBehaviour
 
     protected void ExclamationPrint()
     {
-        /*switch (npcState)
-        {
-            case NpcState.None:
-                Exclamation.SetActive(false);
-                break;
-            case NpcState.QuestExists:
-                Exclamation.SetActive(true);
-                break;
-            case NpcState.QuestClear:
-                Exclamation.SetActive(true);
-                break;
-        }*/
+        Exclamation.SetActive(npcState != NpcState.None);
     }
 
-    protected abstract void QuestExistsMessage();
-    protected abstract void QuestClearMessage();
+    protected virtual void QuestExistsMessage()
+    {
+        thisQuest.SetDefaultValue();
+        string[] scripts = thisQuest.GetTextScript();
+        SpeechOn(scripts);
+        npcState = NpcState.None;
+    }
+    protected virtual void QuestClearMessage()
+    {
+        thisQuest.isCleared = true;
+        thisQuest.GetReward();
+    }
 
     void SpeechRandomMessage()
     {
