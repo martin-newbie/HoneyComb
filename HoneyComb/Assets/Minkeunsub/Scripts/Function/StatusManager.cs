@@ -12,9 +12,9 @@ public class StatusManager : Singleton<StatusManager>
     public string timeSaveName = "time save";
 
     [Header("Bee")]
-    public int Room = 15;
+    public int Room = 20; //ÃÑ ¹æ °¹¼ö (¿©¿Õ ¹æ¿¡¼­ ¾÷±×·¹ÀÌµå)
     public int MaxBee = 15; // ÃÑ ¹ú °¹¼ö (¿©¿Õ ¹æ¿¡¼­ ¾÷±×·¹ÀÌµå)
-    public int CurBee = 20;
+    public int CurBee = 15;
     public float Charging = 1f;
     public float BeeDelay = 300f;
     public float curDelay;
@@ -207,6 +207,7 @@ public class QuestData
 {
     public QuestNpcState thisState;
     public QuestValueKind thisKind;
+    public QuestValueKind rewardKind;
 
     public bool isCleared = false;
     public bool QuestActive = false;
@@ -216,6 +217,8 @@ public class QuestData
     public int maxValue;
 
     public string textId;
+
+    public int Reward;
 
 
     public void SetDefaultValue()
@@ -279,6 +282,17 @@ public class QuestData
 
     public void GetReward(Action action = null)
     {
+
+        switch (rewardKind)
+        {
+            case QuestValueKind.Honey:
+                StatusManager.Instance.Honey += Reward;
+                break;
+            case QuestValueKind.Wax:
+                StatusManager.Instance.BeeWax += Reward;
+                break;
+        }
+
         action?.Invoke();
     }
 }
