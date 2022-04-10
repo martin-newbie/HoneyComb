@@ -12,6 +12,10 @@ public class WorkerNPC : NpcBase
         SpeechOn(message);
     }
 
+    protected override void GetQuestAction()
+    {
+    }
+
     protected override void GetRewardAction()
     {
         StatusManager.Instance.SceneUnlock[0] = true;

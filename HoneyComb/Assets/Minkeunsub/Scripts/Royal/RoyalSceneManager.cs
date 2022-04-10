@@ -120,10 +120,13 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
 
     public void BeeUpgrade()
     {
-        BeeUpgradeWindow.SetActive(true);
-        BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
-        BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
-        CurHoneyValue.text = "현재: " + Format(StatusManager.Instance.Honey);
+        if(StatusManager.Instance.beeUpgradeAble)
+        {
+            BeeUpgradeWindow.SetActive(true);
+            BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
+            BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+            CurHoneyValue.text = "현재: " + Format(StatusManager.Instance.Honey);
+        }
     }
 
     public void BeeClose()

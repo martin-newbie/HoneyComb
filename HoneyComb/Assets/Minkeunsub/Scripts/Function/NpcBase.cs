@@ -142,6 +142,7 @@ public abstract class NpcBase : MonoBehaviour
         SpeechOn(scripts);
         npcState = NpcState.None;
         QuestUIOn();
+        GetQuestAction();
     }
     protected virtual void QuestClearMessage()
     {
@@ -156,6 +157,7 @@ public abstract class NpcBase : MonoBehaviour
     }
 
     protected abstract void GetRewardAction();
+    protected abstract void GetQuestAction();
 
     void SpeechRandomMessage()
     {

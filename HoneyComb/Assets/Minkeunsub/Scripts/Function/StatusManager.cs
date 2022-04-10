@@ -23,6 +23,7 @@ public class StatusManager : Singleton<StatusManager>
     public int Honey; //²Ü
     public int BeeWax; //¹Ð¶ø
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
+    public bool beeUpgradeAble;
 
     [Header("Quest")]
     public int CurQuestIdx;
@@ -127,6 +128,7 @@ public class StatusManager : Singleton<StatusManager>
         BeeWax = dataSave.BeeWax;
         CurQuestIdx = dataSave.CurQuestIdx;
         SceneUnlock = dataSave.SceneUnlock;
+        beeUpgradeAble = dataSave.beeUpgradeAble;
     }
 
     void SetDataToSave()
@@ -137,6 +139,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.BeeWax = BeeWax;
         dataSave.CurQuestIdx = CurQuestIdx;
         dataSave.SceneUnlock = SceneUnlock;
+        dataSave.beeUpgradeAble = beeUpgradeAble;
     }
 
     public void SaveData()
@@ -197,6 +200,7 @@ public class StatusSave
     public int BeeWax;
     public int CurQuestIdx;
     public bool[] SceneUnlock = new bool[3];
+    public bool beeUpgradeAble;
 }
 
 public enum QuestNpcState

@@ -255,6 +255,7 @@ MonoBehaviour:
     Honey: 0
     BeeWax: 0
     CurQuestIdx: 0
+    SceneUnlock: 000000
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
@@ -266,57 +267,76 @@ MonoBehaviour:
   curDelay: 0
   Honey: 0
   BeeWax: 0
+  SceneUnlock: 000000
   CurQuestIdx: 0
   CurQuest:
+    questName: 
     thisState: 0
     thisKind: 0
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 0
     textId: 
+    Reward: 0
   QuestsList:
-  - thisState: 0
+  - questName: 
+    thisState: 0
     thisKind: 0
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 15
     textId: quest_0
-  - thisState: 1
+    Reward: 0
+  - questName: 
+    thisState: 1
     thisKind: 1
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 5
-    textId: quest_0
-  - thisState: 2
+    textId: quest_1
+    Reward: 0
+  - questName: 
+    thisState: 2
     thisKind: 2
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 100
     textId: quest_0
-  - thisState: 3
+    Reward: 0
+  - questName: 
+    thisState: 3
     thisKind: 0
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 1500
     textId: quest_0
-  - thisState: 1
+    Reward: 0
+  - questName: 
+    thisState: 1
     thisKind: 1
+    rewardKind: 0
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
     maxValue: 15
     textId: quest_0
+    Reward: 0
   QuestSaveList:
     QuestLists: []
   isQuestAble: 0

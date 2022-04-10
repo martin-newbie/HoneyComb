@@ -11,6 +11,11 @@ public class QueenNPC : NpcBase
         SpeechOn(messages);
     }
 
+    protected override void GetQuestAction()
+    {
+        StatusManager.Instance.beeUpgradeAble = true;
+    }
+
     protected override void GetRewardAction()
     {
     }
