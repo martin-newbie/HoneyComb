@@ -110,6 +110,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         {
             StatusManager.Instance.BeeWax -= RoomCost;
             StatusManager.Instance.Room++;
+            RoomClose();
         }
         else
         {
@@ -141,6 +142,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
             {
                 StatusManager.Instance.Honey -= BeeCost;
                 StatusManager.Instance.MaxBee++;
+                BeeClose();
             }
             else
             {

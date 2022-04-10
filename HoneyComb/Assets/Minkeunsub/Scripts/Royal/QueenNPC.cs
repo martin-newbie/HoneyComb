@@ -6,7 +6,9 @@ public class QueenNPC : NpcBase
 {
     protected override void FirstMeetScript()
     {
-        SpeechOn("");
+        TextAsset asset = Resources.Load("Texts/FirstMeet/" + path) as TextAsset;
+        string[] messages = asset.text.Split('\n');
+        SpeechOn(messages);
     }
 
     protected override void GetRewardAction()
