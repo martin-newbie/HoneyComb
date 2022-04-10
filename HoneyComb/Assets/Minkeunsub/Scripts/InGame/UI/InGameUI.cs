@@ -52,7 +52,7 @@ public class InGameUI : Singleton<InGameUI>
     {
         ResumeTimeContainer.SetActive(true);
 
-        for (int i = 3; i >= 0; i--)
+        for (int i = 3; i > 0; i--)
         {
             ResumeTimeTxt.text = i.ToString();
             yield return new WaitForSecondsRealtime(1f);
@@ -61,7 +61,6 @@ public class InGameUI : Singleton<InGameUI>
         yield return new WaitForSecondsRealtime(1f);
         ResumeTimeContainer.SetActive(false);
         Time.timeScale = 1f;
-
     }
 
     public void SetStatusTexts(int honey, float distance)
