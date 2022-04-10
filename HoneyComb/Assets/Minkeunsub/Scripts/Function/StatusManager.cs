@@ -31,23 +31,30 @@ public class StatusManager : Singleton<StatusManager>
     public QuestDataSave QuestSaveList = new QuestDataSave();
     public bool isQuestAble;
 
+    void RemoveSaveData()
+    {
+        //just for debug
+        PlayerPrefs.DeleteKey(dataSaveName);
+        PlayerPrefs.DeleteKey(questSaveName);
+        PlayerPrefs.DeleteKey(timeSaveName);
+    }
+
     void LoadQuest()
     {
-        PlayerPrefs.DeleteKey(questSaveName);
-
         string questTmp = PlayerPrefs.GetString(questSaveName, "none");
         if (questTmp == "none")
         {
             QuestSaveList.QuestLists = QuestsList;
 
             string jsonSave = JsonUtility.ToJson(QuestSaveList, true);
-            Debug.Log(jsonSave);
             PlayerPrefs.SetString(questSaveName, jsonSave);
         }
         else
         {
+            QuestSaveList = JsonUtility.FromJson<QuestDataSave>(questTmp);
             QuestsList = QuestSaveList.QuestLists;
         }
+
 
         CurQuest = QuestsList[CurQuestIdx];
     }
@@ -56,6 +63,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
+        RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
@@ -69,6 +77,8 @@ public class StatusManager : Singleton<StatusManager>
     private void Update()
     {
         isQuestAble = CurQuestIdx < QuestsList.Count;
+        if (isQuestAble)
+            CurQuest = QuestsList[CurQuestIdx];
 
         BeeCharging();
     }
@@ -163,9 +173,17 @@ public class StatusManager : Singleton<StatusManager>
         PlayerPrefs.SetString(timeSaveName, endTime.ToString());
     }
 
+    void SaveQuestData()
+    {
+        QuestSaveList.QuestLists = QuestsList;
+        string jsonSave = JsonUtility.ToJson(QuestSaveList, true);
+        PlayerPrefs.SetString(questSaveName, jsonSave);
+    }
+
     private void OnApplicationQuit()
     {
         SaveData();
+        SaveQuestData();
         SaveBeeTime();
     }
 }
@@ -205,6 +223,8 @@ public class QuestDataSave
 [Serializable]
 public class QuestData
 {
+    public string questName;
+
     public QuestNpcState thisState;
     public QuestValueKind thisKind;
     public QuestValueKind rewardKind;
@@ -220,6 +240,13 @@ public class QuestData
 
     public int Reward;
 
+    public string SetQuestName(int idx)
+    {
+        TextAsset asset = Resources.Load("Texts/QuestName") as TextAsset;
+        string[] temp = asset.text.Split('\n');
+        questName = temp[idx];
+        return questName;
+    }
 
     public void SetDefaultValue()
     {

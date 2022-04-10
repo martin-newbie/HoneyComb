@@ -32,6 +32,11 @@ public abstract class NpcBase : MonoBehaviour
     [SerializeField] GameObject Exclamation;
     [SerializeField] Text SpeechTxt;
 
+    [Header("Quest UI Objects")]
+    [SerializeField] Image questBG;
+    [SerializeField] Text questName;
+    [SerializeField] Text questProgress;
+
     private void Start()
     {
         TextAsset text = Resources.Load("Texts/" + path) as TextAsset;
@@ -39,7 +44,7 @@ public abstract class NpcBase : MonoBehaviour
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         //debug
-        temp = 0;
+        //temp = 0;
 
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
@@ -50,10 +55,26 @@ public abstract class NpcBase : MonoBehaviour
             if (questTmp.thisState == thisQuestState)
             {
                 thisQuest = questTmp;
-                if (thisQuest.QuestActive) thisQuest.SetValue();
+                if (thisQuest.QuestActive)
+                {
+                    thisQuest.SetValue();
+                    QuestUIOn();
+                }
             }
             else thisQuest = null;
         }
+    }
+
+    void QuestUIOn()
+    {
+        questName.text = thisQuest.SetQuestName(StatusManager.Instance.CurQuestIdx);
+        questProgress.text = "현재 진행도: " + thisQuest.curValue.ToString() + "/" + thisQuest.maxValue.ToString();
+        questBG.rectTransform.DOAnchorPosX(330f, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    void QuestUIOff()
+    {
+        questBG.rectTransform.DOAnchorPosX(1150f, 0.5f).SetEase(Ease.InBack);
     }
 
     public void SpeechMessage()
@@ -103,7 +124,6 @@ public abstract class NpcBase : MonoBehaviour
             {
                 npcState = NpcState.QuestExists;
             }
-
             StatusManager.Instance.QuestsList[StatusManager.Instance.CurQuestIdx] = thisQuest;
         }
     }
@@ -121,6 +141,7 @@ public abstract class NpcBase : MonoBehaviour
         string[] scripts = thisQuest.GetQuestTextScript();
         SpeechOn(scripts);
         npcState = NpcState.None;
+        QuestUIOn();
     }
     protected virtual void QuestClearMessage()
     {
@@ -128,8 +149,10 @@ public abstract class NpcBase : MonoBehaviour
         string[] scripts = thisQuest.GetQuestClearScript();
         SpeechOn(scripts);
         thisQuest.GetReward(GetRewardAction);
-        StatusManager.Instance.CurQuestIdx++;
         npcState = NpcState.None;
+        QuestUIOff();
+        thisQuest = null;
+        StatusManager.Instance.CurQuestIdx++;
     }
 
     protected abstract void GetRewardAction();
