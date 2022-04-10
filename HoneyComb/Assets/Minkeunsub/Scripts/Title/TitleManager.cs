@@ -83,16 +83,19 @@ public class TitleManager : Singleton<TitleManager>
 
     public void RoyalSceneMove()
     {
-        StartCoroutine(SceneMove("RoyalScene"));
+        if (StatusManager.Instance.SceneUnlock[0])
+            StartCoroutine(SceneMove("RoyalScene"));
     }
 
     public void LabSceneMove()
     {
-        StartCoroutine(SceneMove("LabScene"));
+        if (StatusManager.Instance.SceneUnlock[1])
+            StartCoroutine(SceneMove("LabScene"));
     }
 
     public void LibrarySceneMove()
     {
-        StartCoroutine(SceneMove("LibraryScene"));
+        if (StatusManager.Instance.SceneUnlock[2])
+            StartCoroutine(SceneMove("LibraryScene"));
     }
 }

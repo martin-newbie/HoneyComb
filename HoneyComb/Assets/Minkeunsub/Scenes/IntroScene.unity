@@ -283,23 +283,23 @@ MonoBehaviour:
     QuestActive: 0
     defaultValue: 0
     curValue: 0
-    maxValue: 500
+    maxValue: 15
     textId: quest_0
   - thisState: 1
-    thisKind: 0
+    thisKind: 1
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
-    maxValue: 0
+    maxValue: 5
     textId: quest_0
   - thisState: 2
-    thisKind: 0
+    thisKind: 2
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
-    maxValue: 0
+    maxValue: 100
     textId: quest_0
   - thisState: 3
     thisKind: 0
@@ -307,15 +307,15 @@ MonoBehaviour:
     QuestActive: 0
     defaultValue: 0
     curValue: 0
-    maxValue: 0
+    maxValue: 1500
     textId: quest_0
   - thisState: 1
-    thisKind: 0
+    thisKind: 1
     isCleared: 0
     QuestActive: 0
     defaultValue: 0
     curValue: 0
-    maxValue: 0
+    maxValue: 15
     textId: quest_0
   QuestSaveList:
     QuestLists: []

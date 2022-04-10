@@ -9,11 +9,7 @@ public class QueenNPC : NpcBase
         SpeechOn("");
     }
 
-    protected override void QuestClearMessage()
-    {
-    }
-
-    protected override void QuestExistsMessage()
+    protected override void GetRewardAction()
     {
     }
 }

@@ -22,6 +22,7 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Status")]
     public int Honey; //²Ü
     public int BeeWax; //¹Ð¶ø
+    public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
 
     [Header("Quest")]
     public int CurQuestIdx;
@@ -115,6 +116,7 @@ public class StatusManager : Singleton<StatusManager>
         Honey = dataSave.Honey;
         BeeWax = dataSave.BeeWax;
         CurQuestIdx = dataSave.CurQuestIdx;
+        SceneUnlock = dataSave.SceneUnlock;
     }
 
     void SetDataToSave()
@@ -124,6 +126,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.Honey = Honey;
         dataSave.BeeWax = BeeWax;
         dataSave.CurQuestIdx = CurQuestIdx;
+        dataSave.SceneUnlock = SceneUnlock;
     }
 
     public void SaveData()
@@ -175,6 +178,7 @@ public class StatusSave
     public int Honey;
     public int BeeWax;
     public int CurQuestIdx;
+    public bool[] SceneUnlock = new bool[3];
 }
 
 public enum QuestNpcState
@@ -213,6 +217,7 @@ public class QuestData
 
     public string textId;
 
+
     public void SetDefaultValue()
     {
         switch (thisKind)
@@ -247,9 +252,16 @@ public class QuestData
         }
     }
 
-    public string[] GetTextScript()
+    public string[] GetQuestTextScript()
     {
         TextAsset asset = Resources.Load("Texts/QuestScripts/" + textId) as TextAsset;
+        string[] ret = asset.text.Split('\n');
+        return ret;
+    }
+
+    public string[] GetQuestClearScript()
+    {
+        TextAsset asset = Resources.Load("Texts/QuestClear/" + textId) as TextAsset;
         string[] ret = asset.text.Split('\n');
         return ret;
     }
@@ -265,8 +277,8 @@ public class QuestData
         return isCleared;
     }
 
-    public void GetReward()
+    public void GetReward(Action action = null)
     {
-
+        action?.Invoke();
     }
 }

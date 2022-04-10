@@ -113,15 +113,19 @@ public abstract class NpcBase : MonoBehaviour
     protected virtual void QuestExistsMessage()
     {
         thisQuest.SetDefaultValue();
-        string[] scripts = thisQuest.GetTextScript();
+        string[] scripts = thisQuest.GetQuestTextScript();
         SpeechOn(scripts);
         npcState = NpcState.None;
     }
     protected virtual void QuestClearMessage()
     {
         thisQuest.isCleared = true;
-        thisQuest.GetReward();
+        string[] scripts = thisQuest.GetQuestClearScript();
+        SpeechOn(scripts);
+        thisQuest.GetReward(GetRewardAction);
     }
+
+    protected abstract void GetRewardAction();
 
     void SpeechRandomMessage()
     {
