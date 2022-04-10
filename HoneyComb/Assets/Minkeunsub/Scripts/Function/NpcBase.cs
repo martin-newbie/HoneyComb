@@ -38,6 +38,9 @@ public abstract class NpcBase : MonoBehaviour
         Messages = text.text.Split('\n').ToList();
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
+        //debug
+        temp = 0;
+
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
 
@@ -90,9 +93,9 @@ public abstract class NpcBase : MonoBehaviour
 
     void CheckQuestExists()
     {
-        if (thisQuest != null)
+        if (thisQuest != null && npcState == NpcState.None)
         {
-            if (thisQuest.isCleared)
+            if (thisQuest.isCleared && thisQuest.QuestActive)
             {
                 npcState = NpcState.QuestClear;
             }
@@ -100,6 +103,8 @@ public abstract class NpcBase : MonoBehaviour
             {
                 npcState = NpcState.QuestExists;
             }
+
+            StatusManager.Instance.QuestsList[StatusManager.Instance.CurQuestIdx] = thisQuest;
         }
     }
 
@@ -123,6 +128,8 @@ public abstract class NpcBase : MonoBehaviour
         string[] scripts = thisQuest.GetQuestClearScript();
         SpeechOn(scripts);
         thisQuest.GetReward(GetRewardAction);
+        StatusManager.Instance.CurQuestIdx++;
+        npcState = NpcState.None;
     }
 
     protected abstract void GetRewardAction();

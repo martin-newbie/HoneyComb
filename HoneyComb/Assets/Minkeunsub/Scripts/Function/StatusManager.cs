@@ -282,7 +282,7 @@ public class QuestData
 
     public void GetReward(Action action = null)
     {
-
+        QuestActive = false;
         switch (rewardKind)
         {
             case QuestValueKind.Honey:
