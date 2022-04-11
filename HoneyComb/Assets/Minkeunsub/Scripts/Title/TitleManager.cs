@@ -74,10 +74,21 @@ public class TitleManager : Singleton<TitleManager>
 
     public void GameStart()
     {
-        if (StatusManager.Instance.CurBee > 0)
+        if (StatusManager.Instance.gamePlayAble)
         {
-            StatusManager.Instance.CurBee--;
-            StartCoroutine(SceneMove("InGameScene"));
+            if (StatusManager.Instance.CurBee > 0)
+            {
+                StatusManager.Instance.CurBee--;
+                StartCoroutine(SceneMove("InGameScene"));
+            }
+            else
+            {
+                //bee is not able now
+            }
+        }
+        else
+        {
+            //you must clear the quest first
         }
     }
 
@@ -85,17 +96,29 @@ public class TitleManager : Singleton<TitleManager>
     {
         if (StatusManager.Instance.SceneUnlock[0])
             StartCoroutine(SceneMove("RoyalScene"));
+        else
+        {
+            //you must clear the quest first
+        }
     }
 
     public void LabSceneMove()
     {
         if (StatusManager.Instance.SceneUnlock[1])
             StartCoroutine(SceneMove("LabScene"));
+        else
+        {
+            //you must clear the quest first
+        }
     }
 
     public void LibrarySceneMove()
     {
         if (StatusManager.Instance.SceneUnlock[2])
             StartCoroutine(SceneMove("LibraryScene"));
+        else
+        {
+            //you must clear the quest first
+        }
     }
 }
