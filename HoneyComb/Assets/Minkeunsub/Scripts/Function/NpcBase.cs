@@ -166,8 +166,8 @@ public abstract class NpcBase : MonoBehaviour
 
     public void SpeechOn(params string[] messages)
     {
-        SpeechImg.rectTransform.sizeDelta = Vector2.zero;
-        SpeechImg.rectTransform.DOSizeDelta(new Vector2(1000f, 500f), 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+        SpeechImg.rectTransform.localScale = Vector2.zero;
+        SpeechImg.rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
         {
             StartCoroutine(DoArrayText(SpeechTxt, 0.05f, messages.ToList()));
         });
@@ -203,7 +203,7 @@ public abstract class NpcBase : MonoBehaviour
     public void SpeechOff()
     {
         SpeechTxt.text = "";
-        SpeechImg.rectTransform.DOSizeDelta(Vector2.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        SpeechImg.rectTransform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
             isSpeeching = false;
         });
