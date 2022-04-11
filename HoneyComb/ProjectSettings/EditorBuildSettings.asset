@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minkeunsub/Scenes/RoyalScene.unity
     guid: d5fecc0afaa4f39418e4e93fb3403088
+  - enabled: 1
+    path: Assets/Minkeunsub/Scenes/LabScene.unity
+    guid: 46ad29750e7bf814386e18dc659d3437
   m_configObjects: {}

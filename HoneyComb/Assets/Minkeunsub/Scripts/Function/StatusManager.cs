@@ -17,11 +17,16 @@ public class StatusManager : Singleton<StatusManager>
     public int CurBee = 15;
     public float Charging = 1f;
     public float BeeDelay = 300f;
-    public float curDelay;
+    public float curBeeDelay;
+
+    [Header("Bee Wax")]
+    public int BeeWax; //¹Ð¶ø
+    public int QueueWax;
+    public float WaxDelay = 360f;
+    public float curWaxDelay;
 
     [Header("Status")]
     public int Honey; //²Ü
-    public int BeeWax; //¹Ð¶ø
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
     public bool beeUpgradeAble;
 
@@ -64,7 +69,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        RemoveSaveData();
+        //RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
@@ -82,21 +87,41 @@ public class StatusManager : Singleton<StatusManager>
             CurQuest = QuestsList[CurQuestIdx];
 
         BeeCharging();
+        WaxCharging();
+    }
+
+    void WaxCharging()
+    {
+        if(QueueWax > 0)
+        {
+            curWaxDelay -= Time.deltaTime * Charging;
+
+            if(curWaxDelay <= 0f)
+            {
+                QueueWax--;
+                BeeWax++;
+                curWaxDelay += WaxDelay;
+            }
+        }
+        else
+        {
+            curWaxDelay = WaxDelay;
+        }
     }
 
     void BeeCharging()
     {
         if (CurBee < MaxBee)
         {
-            curDelay += Time.deltaTime * Charging;
+            curBeeDelay += Time.deltaTime * Charging;
 
-            if (curDelay >= BeeDelay)
+            if (curBeeDelay >= BeeDelay)
             {
                 CurBee++;
-                curDelay = 0f;
+                curBeeDelay = 0f;
             }
         }
-        else curDelay = -0.01f;
+        else curBeeDelay = -0.01f;
     }
     #region Debug
     void ClearPlayerPrefs()
@@ -126,6 +151,8 @@ public class StatusManager : Singleton<StatusManager>
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
         BeeWax = dataSave.BeeWax;
+        QueueWax = dataSave.QueueWax;
+        curWaxDelay = dataSave.curWaxDelay;
         CurQuestIdx = dataSave.CurQuestIdx;
         SceneUnlock = dataSave.SceneUnlock;
         beeUpgradeAble = dataSave.beeUpgradeAble;
@@ -137,6 +164,8 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
         dataSave.BeeWax = BeeWax;
+        dataSave.QueueWax = QueueWax;
+        dataSave.curWaxDelay = curWaxDelay;
         dataSave.CurQuestIdx = CurQuestIdx;
         dataSave.SceneUnlock = SceneUnlock;
         dataSave.beeUpgradeAble = beeUpgradeAble;
@@ -161,8 +190,10 @@ public class StatusManager : Singleton<StatusManager>
             TimeSpan timeDif = curTime - endTime;
             float f_timeDif = (float)timeDif.TotalSeconds;
 
+            curWaxDelay -= f_timeDif;
+
             int beeCount = (int)(f_timeDif / BeeDelay);
-            curDelay = f_timeDif % BeeDelay;
+            curBeeDelay = f_timeDif % BeeDelay;
             CurBee += beeCount;
 
             if (CurBee > MaxBee) CurBee = MaxBee;
@@ -198,7 +229,9 @@ public class StatusSave
     public int CurBee;
     public int Honey;
     public int BeeWax;
+    public int QueueWax;
     public int CurQuestIdx;
+    public float curWaxDelay;
     public bool[] SceneUnlock = new bool[3];
     public bool beeUpgradeAble;
 }

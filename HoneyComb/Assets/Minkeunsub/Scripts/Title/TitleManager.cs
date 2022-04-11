@@ -30,7 +30,7 @@ public class TitleManager : Singleton<TitleManager>
         beewaxTxt.text = Format(StatusManager.Instance.BeeWax);
         honeyTxt.text = Format(StatusManager.Instance.Honey);
         beeCntTxt.text = Format(StatusManager.Instance.CurBee) + "/" + Format(StatusManager.Instance.MaxBee);
-        beeChargeTxt.text = StatusManager.Instance.curDelay >= 0f ? Format(StatusManager.Instance.curDelay) + "/" + Format(StatusManager.Instance.BeeDelay) : "";
+        beeChargeTxt.text = StatusManager.Instance.curBeeDelay >= 0f ? Format(StatusManager.Instance.curBeeDelay) + "/" + Format(StatusManager.Instance.BeeDelay) : "";
     }
 
     string Format(float value)
