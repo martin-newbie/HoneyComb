@@ -71,7 +71,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        //RemoveSaveData();
+        RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
@@ -260,7 +260,8 @@ public enum QuestValueKind
 {
     Honey,
     Bee,
-    Wax
+    Wax,
+    Room
 }
 
 [Serializable]
@@ -310,6 +311,9 @@ public class QuestData
             case QuestValueKind.Wax:
                 defaultValue = StatusManager.Instance.BeeWax;
                 break;
+            case QuestValueKind.Room:
+                defaultValue = StatusManager.Instance.Room;
+                break;
         }
 
         QuestActive = true;
@@ -327,6 +331,9 @@ public class QuestData
                 break;
             case QuestValueKind.Wax:
                 curValue = StatusManager.Instance.BeeWax - defaultValue;
+                break;
+            case QuestValueKind.Room:
+                curValue = StatusManager.Instance.Room - defaultValue;
                 break;
         }
     }
