@@ -91,10 +91,17 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
 
     public void RoomUpgrade()
     {
-        RoomUpgradeWindow.SetActive(true);
-        RoomUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
-        RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
-        CurWaxValue.text = "현재: " + Format(StatusManager.Instance.BeeWax);
+        if (StatusManager.Instance.roomUpgradeAble)
+        {
+            RoomUpgradeWindow.SetActive(true);
+            RoomUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
+            RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+            CurWaxValue.text = "현재: " + Format(StatusManager.Instance.BeeWax);
+        }
+        else
+        {
+            //you must clear the quest first
+        }
     }
 
     public void RoomClose()
@@ -126,6 +133,10 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
             BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
             BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
             CurHoneyValue.text = "현재: " + Format(StatusManager.Instance.Honey);
+        }
+        else
+        {
+            //you must clear the quest first
         }
     }
 

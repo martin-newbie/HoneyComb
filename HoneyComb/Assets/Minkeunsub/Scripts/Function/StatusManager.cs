@@ -29,6 +29,7 @@ public class StatusManager : Singleton<StatusManager>
     public int Honey; //²Ü
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
     public bool beeUpgradeAble;
+    public bool roomUpgradeAble;
 
     [Header("Quest")]
     public int CurQuestIdx;
@@ -36,6 +37,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<QuestData> QuestsList = new List<QuestData>();
     public QuestDataSave QuestSaveList = new QuestDataSave();
     public bool isQuestAble;
+    public List<Action> QuestClearActions = new List<Action>();
 
     void RemoveSaveData()
     {
@@ -73,6 +75,16 @@ public class StatusManager : Singleton<StatusManager>
         LoadData();
         LoadBeeTime();
         LoadQuest();
+
+        InitClearActions();
+    }
+
+    void InitClearActions()
+    {
+        QuestClearActions.Add(() => { SceneUnlock[0] = true; });
+        QuestClearActions.Add(() => { SceneUnlock[1] = true; });
+        QuestClearActions.Add(() => { roomUpgradeAble = true; });
+        QuestClearActions.Add(() => { SceneUnlock[2] = true; });
     }
 
     private void Start()

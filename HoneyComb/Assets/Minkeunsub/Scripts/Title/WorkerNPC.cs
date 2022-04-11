@@ -18,6 +18,6 @@ public class WorkerNPC : NpcBase
 
     protected override void GetRewardAction()
     {
-        StatusManager.Instance.SceneUnlock[0] = true;
+        
     }
 }
