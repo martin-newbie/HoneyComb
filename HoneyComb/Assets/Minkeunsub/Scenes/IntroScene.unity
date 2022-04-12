@@ -258,22 +258,25 @@ MonoBehaviour:
     CurQuestIdx: 0
     curWaxDelay: 0
     SceneUnlock: 000000
+    gamePlayAble: 0
     beeUpgradeAble: 0
+    roomUpgradeAble: 0
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
-  Room: 15
+  Room: 20
   MaxBee: 15
-  CurBee: 20
+  CurBee: 15
   Charging: 1
   BeeDelay: 300
   curBeeDelay: 0
   BeeWax: 0
   QueueWax: 0
-  WaxDelay: 360
+  WaxDelay: 60
   curWaxDelay: 0
   Honey: 0
   SceneUnlock: 000000
+  gamePlayAble: 0
   beeUpgradeAble: 0
   roomUpgradeAble: 0
   CurQuestIdx: 0
@@ -332,7 +335,7 @@ MonoBehaviour:
     defaultValue: 0
     curValue: 0
     maxValue: 15
-    textId: quest_0
+    textId: quest_3
     Reward: 1000
   - questName: 
     thisState: 3
@@ -343,7 +346,7 @@ MonoBehaviour:
     defaultValue: 0
     curValue: 0
     maxValue: 5000
-    textId: quest_0
+    textId: quest_4
     Reward: 100
   QuestSaveList:
     QuestLists: []

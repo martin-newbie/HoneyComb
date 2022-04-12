@@ -22,7 +22,7 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Bee Wax")]
     public int BeeWax; //¹Ð¶ø
     public int QueueWax;
-    public float WaxDelay = 360f;
+    public float WaxDelay = 60f;
     public float curWaxDelay;
 
     [Header("Status")]
