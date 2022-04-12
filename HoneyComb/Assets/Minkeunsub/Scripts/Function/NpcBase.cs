@@ -110,6 +110,7 @@ public abstract class NpcBase : MonoBehaviour
         CheckQuestExists();
 
         thisQuest?.CheckIsClear();
+        thisQuest?.SetValue();
     }
 
     void CheckQuestExists()

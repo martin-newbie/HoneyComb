@@ -30,7 +30,13 @@ public class TitleManager : Singleton<TitleManager>
         beewaxTxt.text = Format(StatusManager.Instance.BeeWax);
         honeyTxt.text = Format(StatusManager.Instance.Honey);
         beeCntTxt.text = Format(StatusManager.Instance.CurBee) + "/" + Format(StatusManager.Instance.MaxBee);
-        beeChargeTxt.text = StatusManager.Instance.curBeeDelay >= 0f ? Format(StatusManager.Instance.curBeeDelay) + "/" + Format(StatusManager.Instance.BeeDelay) : "";
+
+        string minute = ((int)StatusManager.Instance.curBeeDelay / 60).ToString();
+        int i_second = (int)StatusManager.Instance.curBeeDelay % 60;
+
+        string second = i_second < 10 ? "0" + i_second.ToString() : i_second.ToString();
+
+        beeChargeTxt.text = StatusManager.Instance.curBeeDelay >= 0f ? minute + ":" + second + "/" + "5:00" : "";
     }
 
     string Format(float value)

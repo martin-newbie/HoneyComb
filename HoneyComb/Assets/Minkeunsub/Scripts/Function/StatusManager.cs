@@ -72,7 +72,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        RemoveSaveData();
+        //RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
@@ -164,6 +164,7 @@ public class StatusManager : Singleton<StatusManager>
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
         BeeWax = dataSave.BeeWax;
+        curBeeDelay = dataSave.curBeeDelay;
         QueueWax = dataSave.QueueWax;
         curWaxDelay = dataSave.curWaxDelay;
         CurQuestIdx = dataSave.CurQuestIdx;
@@ -179,6 +180,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
         dataSave.BeeWax = BeeWax;
+        dataSave.curBeeDelay = curBeeDelay;
         dataSave.QueueWax = QueueWax;
         dataSave.curWaxDelay = curWaxDelay;
         dataSave.CurQuestIdx = CurQuestIdx;
@@ -210,7 +212,7 @@ public class StatusManager : Singleton<StatusManager>
             curWaxDelay -= f_timeDif;
 
             int beeCount = (int)(f_timeDif / BeeDelay);
-            curBeeDelay = f_timeDif % BeeDelay;
+            curBeeDelay += f_timeDif % BeeDelay;
             CurBee += beeCount;
 
             if (CurBee > MaxBee) CurBee = MaxBee;
@@ -246,6 +248,7 @@ public class StatusSave
     public int CurBee;
     public int Honey;
     public int BeeWax;
+    public float curBeeDelay;
     public int QueueWax;
     public int CurQuestIdx;
     public float curWaxDelay;
