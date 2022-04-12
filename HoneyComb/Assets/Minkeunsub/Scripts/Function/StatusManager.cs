@@ -72,7 +72,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        //RemoveSaveData();
+        RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();

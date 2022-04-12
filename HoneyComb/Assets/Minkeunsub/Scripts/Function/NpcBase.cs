@@ -68,7 +68,6 @@ public abstract class NpcBase : MonoBehaviour
     void QuestUIOn()
     {
         questName.text = thisQuest.SetQuestName(StatusManager.Instance.CurQuestIdx);
-        questProgress.text = "현재 진행도: " + thisQuest.curValue.ToString() + "/" + thisQuest.maxValue.ToString();
         questBG.rectTransform.DOAnchorPosX(330f, 0.5f).SetEase(Ease.OutBack);
     }
 
@@ -109,8 +108,12 @@ public abstract class NpcBase : MonoBehaviour
         ExclamationPrint();
         CheckQuestExists();
 
-        thisQuest?.CheckIsClear();
-        thisQuest?.SetValue();
+        if(thisQuest != null)
+        {
+            thisQuest.CheckIsClear();
+            thisQuest.SetValue();
+            questProgress.text = "현재 진행도: " + thisQuest.curValue.ToString() + "/" + thisQuest.maxValue.ToString();
+        }
     }
 
     void CheckQuestExists()
