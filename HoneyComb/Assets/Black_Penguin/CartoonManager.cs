@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Cartoon
 {
     public Image image;
+    public float Duration;
     System.Action<Image> action;
 }
 
@@ -24,21 +25,27 @@ public class CartoonManager : MonoBehaviour
         }
 
     }
-    public IEnumerator CartoonShake(RectTransform rectPostition, float shakeScale, int shakeTime, float shakeRange, float duration)
+    public IEnumerator CartoonShake(Cartoon cartoon, float shakeScale, float shakeRange, float duration)
     {
-
-        if (MaxDuration < shakeTime)
-            MaxDuration = shakeTime;
-        Vector2 pos = rectPostition.localPosition;
+        Vector2 pos = cartoon.image.rectTransform.localPosition;
         while (duration <= 0)
         {
-            rectPostition.position = Random.insideUnitCircle * shakeScale * pos;
+            cartoon.image.rectTransform.position = Random.insideUnitCircle * shakeScale * pos;
 
-            yield return new WaitForSeconds(shakeTime);
-            duration -= shakeTime * Time.deltaTime;
+            yield return new WaitForSeconds(cartoon.Duration);
+            duration -= cartoon.Duration * Time.deltaTime;
 
         }
-        rectPostition.localPosition = pos;
+        cartoon.image.rectTransform.localPosition = pos;
+    }
+
+    public IEnumerator AlphaCotrol(Cartoon cartoon)
+    {
+        while (cartoon.image.color.a != 1)
+        {
+            cartoon.image.color += new Color(0, 0, 0, Time.deltaTime / cartoon.Duration);
+            yield return null;
+        }
     }
 
 }
