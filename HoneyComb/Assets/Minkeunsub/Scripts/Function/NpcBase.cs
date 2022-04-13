@@ -44,7 +44,7 @@ public abstract class NpcBase : MonoBehaviour
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         //debug
-        //temp = 0;
+        temp = 0;
 
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
@@ -80,6 +80,7 @@ public abstract class NpcBase : MonoBehaviour
     {
         if (!isSpeeching)
         {
+            isSpeeching = true;
             switch (npcState)
             {
                 case NpcState.FirstMeet:
@@ -90,7 +91,6 @@ public abstract class NpcBase : MonoBehaviour
 
                     break;
                 case NpcState.None:
-                    isSpeeching = true;
                     SpeechRandomMessage();
                     break;
                 case NpcState.QuestExists:
