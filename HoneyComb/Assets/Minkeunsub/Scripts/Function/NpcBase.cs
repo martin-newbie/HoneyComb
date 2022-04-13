@@ -44,7 +44,7 @@ public abstract class NpcBase : MonoBehaviour
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         //debug
-        //temp = 0;
+        temp = 0;
 
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
@@ -68,7 +68,6 @@ public abstract class NpcBase : MonoBehaviour
     void QuestUIOn()
     {
         questName.text = thisQuest.SetQuestName(StatusManager.Instance.CurQuestIdx);
-        questProgress.text = "현재 진행도: " + thisQuest.curValue.ToString() + "/" + thisQuest.maxValue.ToString();
         questBG.rectTransform.DOAnchorPosX(330f, 0.5f).SetEase(Ease.OutBack);
     }
 
@@ -81,6 +80,7 @@ public abstract class NpcBase : MonoBehaviour
     {
         if (!isSpeeching)
         {
+            isSpeeching = true;
             switch (npcState)
             {
                 case NpcState.FirstMeet:
@@ -91,7 +91,6 @@ public abstract class NpcBase : MonoBehaviour
 
                     break;
                 case NpcState.None:
-                    isSpeeching = true;
                     SpeechRandomMessage();
                     break;
                 case NpcState.QuestExists:
@@ -109,8 +108,12 @@ public abstract class NpcBase : MonoBehaviour
         ExclamationPrint();
         CheckQuestExists();
 
-        thisQuest?.CheckIsClear();
-        thisQuest?.SetValue();
+        if(thisQuest != null)
+        {
+            thisQuest.CheckIsClear();
+            thisQuest.SetValue();
+            questProgress.text = "현재 진행도: " + thisQuest.curValue.ToString() + "/" + thisQuest.maxValue.ToString();
+        }
     }
 
     void CheckQuestExists()
