@@ -22,13 +22,15 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Bee Wax")]
     public int BeeWax; //¹Ð¶ø
     public int QueueWax;
-    public float WaxDelay = 360f;
+    public float WaxDelay = 60f;
     public float curWaxDelay;
 
     [Header("Status")]
     public int Honey; //²Ü
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
+    public bool gamePlayAble;
     public bool beeUpgradeAble;
+    public bool roomUpgradeAble;
 
     [Header("Quest")]
     public int CurQuestIdx;
@@ -36,6 +38,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<QuestData> QuestsList = new List<QuestData>();
     public QuestDataSave QuestSaveList = new QuestDataSave();
     public bool isQuestAble;
+    public List<Action> QuestClearActions = new List<Action>();
 
     void RemoveSaveData()
     {
@@ -73,6 +76,16 @@ public class StatusManager : Singleton<StatusManager>
         LoadData();
         LoadBeeTime();
         LoadQuest();
+
+        InitClearActions();
+    }
+
+    void InitClearActions()
+    {
+        QuestClearActions.Add(() => { SceneUnlock[0] = true; });
+        QuestClearActions.Add(() => { SceneUnlock[1] = true; });
+        QuestClearActions.Add(() => { roomUpgradeAble = true; });
+        QuestClearActions.Add(() => { SceneUnlock[2] = true; });
     }
 
     private void Start()
@@ -151,11 +164,14 @@ public class StatusManager : Singleton<StatusManager>
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
         BeeWax = dataSave.BeeWax;
+        curBeeDelay = dataSave.curBeeDelay;
         QueueWax = dataSave.QueueWax;
         curWaxDelay = dataSave.curWaxDelay;
         CurQuestIdx = dataSave.CurQuestIdx;
         SceneUnlock = dataSave.SceneUnlock;
+        gamePlayAble = dataSave.gamePlayAble;
         beeUpgradeAble = dataSave.beeUpgradeAble;
+        roomUpgradeAble = dataSave.roomUpgradeAble;
     }
 
     void SetDataToSave()
@@ -164,11 +180,14 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
         dataSave.BeeWax = BeeWax;
+        dataSave.curBeeDelay = curBeeDelay;
         dataSave.QueueWax = QueueWax;
         dataSave.curWaxDelay = curWaxDelay;
         dataSave.CurQuestIdx = CurQuestIdx;
         dataSave.SceneUnlock = SceneUnlock;
+        dataSave.gamePlayAble = gamePlayAble;
         dataSave.beeUpgradeAble = beeUpgradeAble;
+        dataSave.roomUpgradeAble = roomUpgradeAble;
     }
 
     public void SaveData()
@@ -193,7 +212,7 @@ public class StatusManager : Singleton<StatusManager>
             curWaxDelay -= f_timeDif;
 
             int beeCount = (int)(f_timeDif / BeeDelay);
-            curBeeDelay = f_timeDif % BeeDelay;
+            curBeeDelay += f_timeDif % BeeDelay;
             CurBee += beeCount;
 
             if (CurBee > MaxBee) CurBee = MaxBee;
@@ -229,11 +248,14 @@ public class StatusSave
     public int CurBee;
     public int Honey;
     public int BeeWax;
+    public float curBeeDelay;
     public int QueueWax;
     public int CurQuestIdx;
     public float curWaxDelay;
     public bool[] SceneUnlock = new bool[3];
+    public bool gamePlayAble;
     public bool beeUpgradeAble;
+    public bool roomUpgradeAble;
 }
 
 public enum QuestNpcState
@@ -248,7 +270,8 @@ public enum QuestValueKind
 {
     Honey,
     Bee,
-    Wax
+    Wax,
+    Room
 }
 
 [Serializable]
@@ -298,6 +321,9 @@ public class QuestData
             case QuestValueKind.Wax:
                 defaultValue = StatusManager.Instance.BeeWax;
                 break;
+            case QuestValueKind.Room:
+                defaultValue = StatusManager.Instance.Room;
+                break;
         }
 
         QuestActive = true;
@@ -315,6 +341,9 @@ public class QuestData
                 break;
             case QuestValueKind.Wax:
                 curValue = StatusManager.Instance.BeeWax - defaultValue;
+                break;
+            case QuestValueKind.Room:
+                curValue = StatusManager.Instance.Room - defaultValue;
                 break;
         }
     }

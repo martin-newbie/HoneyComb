@@ -110,6 +110,7 @@ public abstract class NpcBase : MonoBehaviour
         CheckQuestExists();
 
         thisQuest?.CheckIsClear();
+        thisQuest?.SetValue();
     }
 
     void CheckQuestExists()
@@ -150,6 +151,7 @@ public abstract class NpcBase : MonoBehaviour
         string[] scripts = thisQuest.GetQuestClearScript();
         SpeechOn(scripts);
         thisQuest.GetReward(GetRewardAction);
+        StatusManager.Instance.QuestClearActions[StatusManager.Instance.CurQuestIdx]?.Invoke();
         npcState = NpcState.None;
         QuestUIOff();
         thisQuest = null;

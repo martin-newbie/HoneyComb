@@ -14,10 +14,11 @@ public class WorkerNPC : NpcBase
 
     protected override void GetQuestAction()
     {
+        StatusManager.Instance.gamePlayAble = true;
     }
 
     protected override void GetRewardAction()
     {
-        StatusManager.Instance.SceneUnlock[0] = true;
+        
     }
 }
