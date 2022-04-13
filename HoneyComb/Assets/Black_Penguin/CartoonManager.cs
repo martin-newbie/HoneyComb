@@ -8,13 +8,19 @@ public class Cartoon
 {
     public Image image;
     public float Duration;
-    System.Action<Image> action;
+    public delegate IEnumerator action(Cartoon cartoon);
 }
 
 public class CartoonManager : MonoBehaviour
 {
     float MaxDuration;
 
+    private void Start()
+    {
+        Cartoon cartoon = new Cartoon();
+        //cartoon.action += CartoonAlpha(cartoon);
+        //cartoon.action
+    }
     IEnumerator CartoonStart(Cartoon[] funcCartoons)
     {
         foreach (Cartoon cartoon in funcCartoons)
@@ -25,21 +31,20 @@ public class CartoonManager : MonoBehaviour
         }
 
     }
-    public IEnumerator CartoonShake(Cartoon cartoon, float shakeScale, float shakeRange, float duration)
+    public IEnumerator CartoonShake(Cartoon cartoon, float shakeScale, float duration)
     {
         Vector2 pos = cartoon.image.rectTransform.localPosition;
-        while (duration <= 0)
+        while (cartoon.Duration <= 0)
         {
             cartoon.image.rectTransform.position = Random.insideUnitCircle * shakeScale * pos;
 
             yield return new WaitForSeconds(cartoon.Duration);
-            duration -= cartoon.Duration * Time.deltaTime;
-
+            cartoon.Duration -= Time.deltaTime;
         }
         cartoon.image.rectTransform.localPosition = pos;
     }
 
-    public IEnumerator AlphaCotrol(Cartoon cartoon)
+    public IEnumerator CartoonAlpha(Cartoon cartoon)
     {
         while (cartoon.image.color.a != 1)
         {
