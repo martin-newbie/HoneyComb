@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstruction : MonoBehaviour
+public class Obstruction : ItemBase
 {
 
     [SerializeField] List<SpriteRenderer> Obj = new List<SpriteRenderer>();
@@ -12,15 +12,15 @@ public class Obstruction : MonoBehaviour
         Init();
     }
 
-    void Update()
-    {
-        
-    }
-
     void Init()
     {
         Obj.ForEach(item => item.gameObject.SetActive(false));
         int rand = Random.Range(0, 2);
         Obj[rand].gameObject.SetActive(true);
+    }
+
+    protected override void DestroyItem()
+    {
+        Destroy(gameObject);
     }
 }

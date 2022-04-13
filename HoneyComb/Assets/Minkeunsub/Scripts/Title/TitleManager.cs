@@ -14,6 +14,10 @@ public class TitleManager : Singleton<TitleManager>
     [SerializeField] Text beeCntTxt;
     [SerializeField] Text beeChargeTxt;
 
+    [Header("UI Objects")]
+    [SerializeField] Image[] SceneLock;
+    [SerializeField] Image GameLock;
+
 
     void Start()
     {
@@ -23,6 +27,15 @@ public class TitleManager : Singleton<TitleManager>
     void Update()
     {
         SetTexts();
+        SetLockImage();
+    }
+
+    void SetLockImage()
+    {
+        for (int i = 0; i < SceneLock.Length; i++)
+            SceneLock[i].gameObject.SetActive(!StatusManager.Instance.SceneUnlock[i]);
+
+        GameLock.gameObject.SetActive(!StatusManager.Instance.gamePlayAble);
     }
 
     void SetTexts()

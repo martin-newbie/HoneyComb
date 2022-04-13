@@ -10,7 +10,7 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] Transform[] PlayerPoses = new Transform[3];
     public int curDir;
     [SerializeField] HoneyItem honeyItem;
-    [SerializeField] GameObject Obstruction;
+    [SerializeField] Obstruction obstruction;
     [SerializeField] Camera cam;
     Vector3 originPos;
     Stack<HoneyItem> HoneyItemPool = new Stack<HoneyItem>();
@@ -18,6 +18,7 @@ public class InGameManager : Singleton<InGameManager>
     [Header("Status")]
     public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
     public float distance;
+    public float objectMoveSpeed;
     public float moveSpeed;
     public float damage;
 
@@ -44,6 +45,8 @@ public class InGameManager : Singleton<InGameManager>
     {
         Player.isGameOver = false;
         Player.Hp = Player.MaxHp;
+
+        StartCoroutine(ReviveSpeedUp(2f));
     }
 
     public void SaveDataToManager()
@@ -56,7 +59,7 @@ public class InGameManager : Singleton<InGameManager>
         if (!Player.isGameOver)
             distance += Time.deltaTime * moveSpeed;
     }
-    
+
     void PoolInit(int count)
     {
         for (int i = 0; i < count; i++)
@@ -67,7 +70,7 @@ public class InGameManager : Singleton<InGameManager>
             HoneyItemPool.Push(temp);
         }
     }
-    
+
     IEnumerator SpawnCoroutine(float time)
     {
         float duration = time;
@@ -75,6 +78,10 @@ public class InGameManager : Singleton<InGameManager>
         while (true)
         {
             Pop(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0));
+
+            int randChance = Random.Range(0, 10);
+            if (randChance == 0)
+                Instantiate(obstruction, PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0), Quaternion.identity);
 
             idx++;
 
@@ -103,7 +110,34 @@ public class InGameManager : Singleton<InGameManager>
 
     public void GameOver()
     {
+        StartCoroutine(GameoverSlowDown(2f));
+    }
+
+    IEnumerator GameoverSlowDown(float duration)
+    {
+        float timer = duration;
+        while (timer > 0f)
+        {
+            objectMoveSpeed = 5f * (timer / duration);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        objectMoveSpeed = 0f;
         InGameUI.Instance.GameOverUIOn(distance, roundHoney);
+    }
+
+    IEnumerator ReviveSpeedUp(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            objectMoveSpeed = 5f * (timer / duration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        objectMoveSpeed = 5f;
     }
 
     /// <summary>
@@ -112,11 +146,11 @@ public class InGameManager : Singleton<InGameManager>
     /// <param name="dir">only can add -1 or 1</param>
     public void SetPlayerPos(int dir)
     {
-        if(dir == -1)
+        if (dir == -1)
         {
             if (curDir != 0) curDir += dir;
         }
-        else if(dir == 1)
+        else if (dir == 1)
         {
             if (curDir != 2) curDir += dir;
         }

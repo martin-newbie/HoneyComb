@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoneyItem : MonoBehaviour
+public class HoneyItem : ItemBase
 {
     public int value;
     [SerializeField] List<SpriteRenderer> Flowers = new List<SpriteRenderer>();
@@ -11,7 +11,7 @@ public class HoneyItem : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
 
@@ -27,7 +27,7 @@ public class HoneyItem : MonoBehaviour
     /// <param name="kind">-1 is random</param>
     public void PosInit(Vector3 position, int kind = -1)
     {
-        if(kind == -1)
+        if (kind == -1)
         {
             kind = Random.Range(0, Flowers.Count);
         }
@@ -37,18 +37,6 @@ public class HoneyItem : MonoBehaviour
         transform.position = position;
         Honey.SetActive(true);
 
-    }
-
-    void Update()
-    {
-        if(transform.position.y <= -6f)
-        {
-            Push();
-        }
-        else
-        {
-            transform.Translate(Vector3.down * Time.deltaTime * 5);
-        }
     }
 
     void Push()
@@ -63,5 +51,10 @@ public class HoneyItem : MonoBehaviour
             Honey.SetActive(false);
             InGameManager.Instance.roundHoney += value;
         }
+    }
+
+    protected override void DestroyItem()
+    {
+        Push();
     }
 }

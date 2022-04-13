@@ -479,10 +479,11 @@ MonoBehaviour:
   - {fileID: 1475722348}
   curDir: 1
   honeyItem: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
-  Obstruction: {fileID: 7732094619369151075, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+  obstruction: {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
   cam: {fileID: 1562137953}
   roundHoney: 0
   distance: 0
+  objectMoveSpeed: 5
   moveSpeed: 20
   damage: 5
   FlowerTime: []
