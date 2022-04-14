@@ -3,55 +3,98 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 [System.Serializable]
 public class Cartoon
 {
     public Image image;
     public float Duration;
-    public delegate IEnumerator action(Cartoon cartoon);
+
+    [Header("특수효과")]
+    public bool isShaking;
+    public float shakingScale;
+
+    public bool isFade;
+    public bool isScaleFade;
+
     public System.Action<IEnumerator> actionQueue;
+}
+[System.Serializable]
+public class CartoonArray
+{
+    public Cartoon[] cartoons;
 }
 
 public class CartoonManager : MonoBehaviour
 {
-    float MaxDuration;
+    //근섭선배가 넣어야할 함수
+    public System.Action Func;
+    public List<CartoonArray> cartoons;
 
     private void Start()
     {
-        Cartoon cartoon = new Cartoon();
-        cartoon.actionQueue += (func) => StartCoroutine(CartoonAlpha(cartoon));
+        StartCoroutine(CartoonStart(cartoons[0]));
 
-        //cartoon.action += CartoonAlpha(cartoon);
-        //cartoon.action
     }
-    IEnumerator CartoonStart(Cartoon[] funcCartoons)
+    public void CartoonStartFunction(int cartoonNum)
     {
-        foreach (Cartoon cartoon in funcCartoons)
+        StartCoroutine(CartoonStart(cartoons[cartoonNum]));
+    }
+
+    IEnumerator CartoonStart(CartoonArray funcCartoons)
+    {
+        foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
+            float Delay = 0;
+
             cartoon.image.gameObject.SetActive(true);
-            while (Input.GetMouseButtonDown(0))
+
+            if (cartoon.isFade)
+                cartoon.actionQueue += (func) => StartCoroutine(CartoonFade(cartoon));
+            if (cartoon.isShaking)
+                cartoon.actionQueue += (func) => StartCoroutine(CartoonShake(cartoon));
+            if (cartoon.isScaleFade)
+                cartoon.actionQueue += (func) => StartCoroutine(CartoonScale(cartoon));
+
+            cartoon.actionQueue?.Invoke(null);
+            while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
+            {
+                Delay += Time.deltaTime;
                 yield return null;
+            }
+            yield return new WaitForSeconds(0.1f);
         }
-
+        Func?.Invoke();
     }
-    public IEnumerator CartoonShake(Cartoon cartoon, float shakeScale, float duration)
+    public IEnumerator CartoonShake(Cartoon cartoon)
     {
+        float duration = cartoon.Duration;
         Vector2 pos = cartoon.image.rectTransform.localPosition;
-        while (cartoon.Duration <= 0)
+        while (duration > 0)
         {
-            cartoon.image.rectTransform.position = Random.insideUnitCircle * shakeScale * pos;
+            cartoon.image.rectTransform.localPosition = Random.insideUnitCircle * cartoon.shakingScale * pos;
 
-            yield return new WaitForSeconds(cartoon.Duration);
-            cartoon.Duration -= Time.deltaTime;
+            yield return null;
+            duration -= Time.deltaTime;
         }
         cartoon.image.rectTransform.localPosition = pos;
     }
 
-    public IEnumerator CartoonAlpha(Cartoon cartoon)
+    public IEnumerator CartoonFade(Cartoon cartoon)
     {
-        while (cartoon.image.color.a != 1)
+        while (Mathf.Approximately(cartoon.image.color.a, 1) == false)
         {
             cartoon.image.color += new Color(0, 0, 0, Time.deltaTime / cartoon.Duration);
+            yield return null;
+        }
+    }
+
+    public IEnumerator CartoonScale(Cartoon cartoon)
+    {
+        cartoon.image.rectTransform.localScale = Vector2.zero;
+        while (cartoon.image.rectTransform.localScale.x < 1)
+        {
+            cartoon.image.rectTransform.localScale += (Vector3.one * Time.deltaTime) / cartoon.Duration;
             yield return null;
         }
     }
