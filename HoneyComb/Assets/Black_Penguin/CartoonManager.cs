@@ -9,6 +9,7 @@ public class Cartoon
     public Image image;
     public float Duration;
     public delegate IEnumerator action(Cartoon cartoon);
+    public System.Action<IEnumerator> actionQueue;
 }
 
 public class CartoonManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class CartoonManager : MonoBehaviour
     private void Start()
     {
         Cartoon cartoon = new Cartoon();
+        cartoon.actionQueue += (func) => StartCoroutine(CartoonAlpha(cartoon));
+
         //cartoon.action += CartoonAlpha(cartoon);
         //cartoon.action
     }
