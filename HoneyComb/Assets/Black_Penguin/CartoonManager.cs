@@ -33,7 +33,15 @@ public class CartoonManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CartoonStart(cartoons[0]));
+        foreach(CartoonArray cartoonary in cartoons)
+        {
+            foreach(Cartoon cartoon in cartoonary.cartoons)
+            {
+                cartoon.image.gameObject.SetActive(false);
+            }
+        }
+        //테스트용 코드
+        //StartCoroutine(CartoonStart(cartoons[0]));
 
     }
     public void CartoonStartFunction(int cartoonNum)
@@ -72,7 +80,7 @@ public class CartoonManager : MonoBehaviour
         Vector2 pos = cartoon.image.rectTransform.localPosition;
         while (duration > 0)
         {
-            cartoon.image.rectTransform.localPosition = Random.insideUnitCircle * cartoon.shakingScale * pos;
+            cartoon.image.rectTransform.localPosition = Random.insideUnitCircle * cartoon.shakingScale + pos;
 
             yield return null;
             duration -= Time.deltaTime;
@@ -82,6 +90,7 @@ public class CartoonManager : MonoBehaviour
 
     public IEnumerator CartoonFade(Cartoon cartoon)
     {
+        cartoon.image.color = new Color(1, 1, 1, 0);
         while (Mathf.Approximately(cartoon.image.color.a, 1) == false)
         {
             cartoon.image.color += new Color(0, 0, 0, Time.deltaTime / cartoon.Duration);
