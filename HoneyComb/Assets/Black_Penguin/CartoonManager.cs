@@ -100,10 +100,11 @@ public class CartoonManager : MonoBehaviour
 
     public IEnumerator CartoonScale(Cartoon cartoon)
     {
-        cartoon.image.rectTransform.localScale = Vector2.zero;
+        Vector2 originalSize = cartoon.image.rectTransform.sizeDelta;
+        cartoon.image.rectTransform.sizeDelta = Vector2.zero;
         while (cartoon.image.rectTransform.localScale.x < 1)
         {
-            cartoon.image.rectTransform.localScale += (Vector3.one * Time.deltaTime) / cartoon.Duration;
+            cartoon.image.rectTransform.sizeDelta += (originalSize * Time.deltaTime) / cartoon.Duration;
             yield return null;
         }
     }
