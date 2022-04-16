@@ -102,7 +102,7 @@ public class CartoonManager : MonoBehaviour
     {
         Vector2 originalSize = cartoon.image.rectTransform.sizeDelta;
         cartoon.image.rectTransform.sizeDelta = Vector2.zero;
-        while (cartoon.image.rectTransform.localScale.x < 1)
+        while (cartoon.image.rectTransform.sizeDelta.x < originalSize.x)
         {
             cartoon.image.rectTransform.sizeDelta += (originalSize * Time.deltaTime) / cartoon.Duration;
             yield return null;

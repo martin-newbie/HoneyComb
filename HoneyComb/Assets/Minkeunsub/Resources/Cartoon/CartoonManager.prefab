@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8752450909679529266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8752450909679529264}
+  - component: {fileID: 8752450909679529265}
+  m_Layer: 0
+  m_Name: CartoonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8752450909679529264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752450909679529266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.2637067, y: -7.6685324, z: -17.659145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8752450909679529265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752450909679529266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c9333c032423f44b5617ee1685ac34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cartoons:
+  - cartoons:
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 5
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 1
+      shakingScale: 5
+      isFade: 1
+      isScaleFade: 1
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 1
+      shakingScale: 5
+      isFade: 1
+      isScaleFade: 1
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 1
+      shakingScale: 5
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+    - image: {fileID: 0}
+      Duration: 1
+      isShaking: 0
+      shakingScale: 1
+      isFade: 1
+      isScaleFade: 0
+  - cartoons: []
+  - cartoons: []
+  - cartoons: []
+  - cartoons: []
