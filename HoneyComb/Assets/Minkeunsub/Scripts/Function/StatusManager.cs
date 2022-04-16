@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StatusManager : Singleton<StatusManager>
 {
+    [SerializeField] bool debug;
     public StatusSave dataSave = new StatusSave();
     public string dataSaveName = "status data save";
     public string questSaveName = "quest data save";
@@ -72,7 +73,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        //RemoveSaveData();
+        if(debug) RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
