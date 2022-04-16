@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
+    [SerializeField] UnityEngine.UI.Text curBee;
+
+    private void Update()
+    {
+        curBee.text = StatusManager.Instance.CurBee.ToString();
+    }
 
     public void Resume()
     {
@@ -14,9 +20,13 @@ public class Pause : MonoBehaviour
 
     public void Replay()
     {
-        SaveData();
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("InGameScene");
+        if(StatusManager.Instance.CurBee > 0)
+        {
+            SaveData();
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("InGameScene");
+            StatusManager.Instance.CurBee--;
+        }
     }
 
     public void Title()
