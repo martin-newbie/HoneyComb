@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StatusManager : Singleton<StatusManager>
 {
-    [SerializeField] bool debug;
+    public bool debug;
     public StatusSave dataSave = new StatusSave();
     public string dataSaveName = "status data save";
     public string questSaveName = "quest data save";
