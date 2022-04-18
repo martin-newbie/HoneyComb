@@ -44,7 +44,8 @@ public abstract class NpcBase : MonoBehaviour
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         //debug
-        //temp = 0;
+        if (StatusManager.Instance.debug)
+            temp = 0;
 
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
@@ -108,7 +109,7 @@ public abstract class NpcBase : MonoBehaviour
         ExclamationPrint();
         CheckQuestExists();
 
-        if(thisQuest != null)
+        if (thisQuest != null)
         {
             thisQuest.CheckIsClear();
             thisQuest.SetValue();
