@@ -44,8 +44,9 @@ public class CartoonManager : MonoBehaviour
         //StartCoroutine(CartoonStart(cartoons[0]));
 
     }
-    public void CartoonStartFunction(int cartoonNum)
+    public void CartoonStartFunction(int cartoonNum,System.Action action)
     {
+        Func = action;
         StartCoroutine(CartoonStart(cartoons[cartoonNum]));
     }
 
