@@ -10,14 +10,17 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] RectTransform ContentContainer;
     [SerializeField] ScrollRect Scroll;
     List<RectTransform> buttonList = new List<RectTransform>();
-    float offset;
-    float curSet;
-    int curIdx;
-    int maxIdx;
+
+    [Header("Data")]
+    [SerializeField] int count = 5;
+    [SerializeField] float offset;
+    [SerializeField] float curSet;
+    [SerializeField] int curIdx;
+    [SerializeField] int maxIdx;
 
     void Start()
     {
-        InitScroll(StatusManager.Instance.QuestsList.Count);
+        InitScroll(count);
     }
 
     void Update()
@@ -48,7 +51,7 @@ public class LibraryManager : MonoBehaviour
         }
 
 
-        offset = 1f / n;
+        offset = 1f / (n - 1);
     }
 
     void OnClickEvent(int idx)
