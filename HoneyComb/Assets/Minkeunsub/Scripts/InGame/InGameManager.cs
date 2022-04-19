@@ -89,7 +89,7 @@ public class InGameManager : Singleton<InGameManager>
 
             yield return new WaitForSeconds(duration);
 
-            while (Player.isGameOver) yield return null;
+            while (Player.isGameOver || objectMoveSpeed != 5f) yield return null;
         }
     }
 
