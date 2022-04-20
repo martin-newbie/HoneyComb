@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PrinceNPC : NpcBase
+{
+    protected override void FirstMeetScript()
+    {
+        TextAsset asset = Resources.Load("Texts/FirstMeet/" + path) as TextAsset;
+        string[] message = asset.text.Split('\n');
+
+        SpeechOn(message);
+    }
+
+    protected override void GetQuestAction()
+    {
+    }
+
+    protected override void GetRewardAction()
+    {
+    }
+}
