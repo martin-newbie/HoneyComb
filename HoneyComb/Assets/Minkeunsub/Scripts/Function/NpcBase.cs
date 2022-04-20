@@ -95,7 +95,7 @@ public abstract class NpcBase : MonoBehaviour
                     SpeechRandomMessage();
                     break;
                 case NpcState.QuestExists:
-                    QuestExistsMessage();
+                    CartoonManager.Instance.CartoonStartFunction(StatusManager.Instance.CurQuestIdx, QuestExistsMessage);
                     break;
                 case NpcState.QuestClear:
                     QuestClearMessage();

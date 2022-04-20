@@ -56,7 +56,7 @@ public class LibraryManager : MonoBehaviour
 
     void OnClickEvent(int idx)
     {
-
+        CartoonManager.Instance.CartoonStartFunction(idx, null);
     }
 
     public void SetScrollIdx(int idx)
