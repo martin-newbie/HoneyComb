@@ -25,7 +25,7 @@ public class CartoonArray
     public Cartoon[] cartoons;
 }
 
-public class CartoonManager : MonoBehaviour
+public class CartoonManager : Singleton<CartoonManager>
 {
     //근섭선배가 넣어야할 함수
     public System.Action Func;
