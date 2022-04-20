@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 
 
@@ -31,11 +32,19 @@ public class CartoonManager : Singleton<CartoonManager>
     public System.Action Func;
     public List<CartoonArray> cartoons;
 
+    private void Awake()
+    {
+        var anotherObj = FindObjectsOfType<CartoonManager>().Where(m => m != gameObject.GetComponent<CartoonManager>());
+        if (anotherObj != null)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
-        foreach(CartoonArray cartoonary in cartoons)
+        foreach (CartoonArray cartoonary in cartoons)
         {
-            foreach(Cartoon cartoon in cartoonary.cartoons)
+            foreach (Cartoon cartoon in cartoonary.cartoons)
             {
                 cartoon.image.gameObject.SetActive(false);
             }
@@ -44,7 +53,7 @@ public class CartoonManager : Singleton<CartoonManager>
         //StartCoroutine(CartoonStart(cartoons[0]));
 
     }
-    public void CartoonStartFunction(int cartoonNum,System.Action action)
+    public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
         Func = action;
         StartCoroutine(CartoonStart(cartoons[cartoonNum]));
