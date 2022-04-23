@@ -88,10 +88,15 @@ public class CartoonManager : Singleton<CartoonManager>
             cartoon.actionQueue?.Invoke(null);
             while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
             {
+                if (Delay * 2> cartoon.Duration) break;
                 Delay += Time.deltaTime;
                 yield return null;
             }
             yield return new WaitForSeconds(0.1f);
+        }
+        foreach (Cartoon cartoon in funcCartoons.cartoons)
+        {
+            StartCoroutine(CartoonOff(cartoon));
         }
         Func?.Invoke();
     }
@@ -117,6 +122,16 @@ public class CartoonManager : Singleton<CartoonManager>
             cartoon.image.color += new Color(0, 0, 0, Time.deltaTime / cartoon.Duration);
             yield return null;
         }
+    }
+    public IEnumerator CartoonOff(Cartoon cartoon)
+    {
+        cartoon.image.color = new Color(1, 1, 1, 1);
+        while (cartoon.image.color.a > 0)
+        {
+            cartoon.image.color -= new Color(0, 0, 0, 0.1f);
+            yield return new WaitForSeconds(0.05f);
+        }
+        cartoon.image.gameObject.SetActive(false);
     }
 
     public IEnumerator CartoonScale(Cartoon cartoon)
