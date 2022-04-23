@@ -44,8 +44,8 @@ public abstract class NpcBase : MonoBehaviour
 
         int temp = PlayerPrefs.GetInt("FirstMeet: " + path, 0);
         //debug
-        if (StatusManager.Instance.debug)
-            temp = 0;
+        /*if (StatusManager.Instance.debug)
+            temp = 0;*/
 
         if (temp == 1) npcState = NpcState.None;
         else if (temp == 0) npcState = NpcState.FirstMeet;
@@ -95,7 +95,11 @@ public abstract class NpcBase : MonoBehaviour
                     SpeechRandomMessage();
                     break;
                 case NpcState.QuestExists:
-                    QuestExistsMessage();
+
+                    if (CartoonManager.Instance.cartoons == null) QuestExistsMessage();
+                    else
+                        CartoonManager.Instance.CartoonStartFunction(StatusManager.Instance.CurQuestIdx, QuestExistsMessage);
+
                     break;
                 case NpcState.QuestClear:
                     QuestClearMessage();
@@ -104,12 +108,12 @@ public abstract class NpcBase : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void Update()
     {
         ExclamationPrint();
         CheckQuestExists();
 
-        if (thisQuest != null)
+        if (thisQuest != null && thisQuest.QuestActive)
         {
             thisQuest.CheckIsClear();
             thisQuest.SetValue();
@@ -119,7 +123,7 @@ public abstract class NpcBase : MonoBehaviour
 
     void CheckQuestExists()
     {
-        if (thisQuest != null && npcState == NpcState.None)
+        if (thisQuest != null && npcState != NpcState.FirstMeet)
         {
             if (thisQuest.isCleared && thisQuest.QuestActive)
             {

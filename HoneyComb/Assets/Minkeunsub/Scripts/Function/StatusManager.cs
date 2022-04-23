@@ -161,6 +161,7 @@ public class StatusManager : Singleton<StatusManager>
 
     void GetDataFromSave()
     {
+        Room = dataSave.Room;
         MaxBee = dataSave.MaxBee;
         CurBee = dataSave.CurBee;
         Honey = dataSave.Honey;
@@ -177,6 +178,7 @@ public class StatusManager : Singleton<StatusManager>
 
     void SetDataToSave()
     {
+        dataSave.Room = Room;
         dataSave.MaxBee = MaxBee;
         dataSave.CurBee = CurBee;
         dataSave.Honey = Honey;
@@ -245,6 +247,7 @@ public class StatusManager : Singleton<StatusManager>
 [Serializable]
 public class StatusSave
 {
+    public int Room;
     public int MaxBee;
     public int CurBee;
     public int Honey;

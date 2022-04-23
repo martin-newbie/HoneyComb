@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 0
   dataSave:
+    Room: 0
     MaxBee: 0
     CurBee: 0
     Honey: 0

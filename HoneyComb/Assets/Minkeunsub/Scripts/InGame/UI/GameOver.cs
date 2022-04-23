@@ -119,9 +119,9 @@ public class GameOver : MonoBehaviour
     IEnumerator ResultEffect()
     {
         state = 1;
-        yield return StartCoroutine(TextCounting(DistanceTxt, distance, 2f, "Distance: ", "m"));
+        yield return StartCoroutine(TextCounting(DistanceTxt, distance, 2f, "m"));
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(TextCounting(HoneyTxt, honey, 2f, "Honey: "));
+        yield return StartCoroutine(TextCounting(HoneyTxt, honey, 2f));
         yield return new WaitForSeconds(0.5f);
 
         TitleBtn.gameObject.SetActive(true);
@@ -134,7 +134,7 @@ public class GameOver : MonoBehaviour
         ReplayBtn.GetComponent<RectTransform>().DOAnchorPosX(-380f, 0.5f);
     }
 
-    IEnumerator TextCounting(Text text, float max, float timer, string format, string unit = "")
+    IEnumerator TextCounting(Text text, float max, float timer, string unit = "")
     {
         float duration = timer;
         float cur = 0f;
@@ -143,11 +143,11 @@ public class GameOver : MonoBehaviour
         while (cur < max)
         {
             cur += offset * timer * Time.deltaTime;
-            text.text = format + ((int)cur).ToString() + unit;
+            text.text = ((int)cur).ToString() + unit;
             yield return null;
         }
         cur = max;
-        text.text = format + ((int)cur).ToString() + unit;
+        text.text = ((int)cur).ToString() + unit;
     }
 
     void StateStandby()

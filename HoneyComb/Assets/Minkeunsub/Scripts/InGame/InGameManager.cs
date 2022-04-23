@@ -39,6 +39,14 @@ public class InGameManager : Singleton<InGameManager>
         Player.transform.position = Vector3.Lerp(Player.transform.position, PlayerPoses[curDir].position, Time.deltaTime * 15f);
         DistanceLogic();
         InGameUI.Instance.SetStatusTexts(roundHoney, distance);
+
+        ComputerMove();
+    }
+
+    void ComputerMove()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) SetPlayerPos(1);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) SetPlayerPos(-1);
     }
 
     public void Revive()

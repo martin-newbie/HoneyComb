@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LibraryManager : MonoBehaviour
 {
+    public Image blackImg;
+
     [SerializeField] Sprite[] ButtonSprites;
     [SerializeField] RectTransform button;
     [SerializeField] RectTransform ContentContainer;
@@ -20,12 +23,50 @@ public class LibraryManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(FadeIn(1f));
         InitScroll(count);
     }
 
     void Update()
     {
         SetScrollRect();
+    }
+
+    public void Back()
+    {
+        StartCoroutine(SceneMove("TitleScene"));
+    }
+
+    IEnumerator SceneMove(string sceneName)
+    {
+        yield return StartCoroutine(FadeOut(1f));
+        SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator FadeIn(float delay)
+    {
+        float timer = delay;
+        blackImg.gameObject.SetActive(true);
+        while (timer > 0)
+        {
+            blackImg.color = new Color(0, 0, 0, timer / delay);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        blackImg.gameObject.SetActive(false);
+    }
+
+    IEnumerator FadeOut(float delay)
+    {
+        float timer = 0f;
+        blackImg.gameObject.SetActive(true);
+        while (timer < delay)
+        {
+            blackImg.color = new Color(0, 0, 0, timer / delay);
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 
     void SetScrollRect()
@@ -56,7 +97,7 @@ public class LibraryManager : MonoBehaviour
 
     void OnClickEvent(int idx)
     {
-
+        CartoonManager.Instance.CartoonStartFunction(idx, null);
     }
 
     public void SetScrollIdx(int idx)
