@@ -49,6 +49,10 @@ public class CartoonManager : Singleton<CartoonManager>
         Func = action;
         StartCoroutine(CartoonStart(cartoons[cartoonNum]));
     }
+    public void CartoonStartFunction(int cartoonNum)
+    {
+        StartCoroutine(CartoonStart(cartoons[cartoonNum]));
+    }
 
     IEnumerator CartoonStart(CartoonArray funcCartoons)
     {
