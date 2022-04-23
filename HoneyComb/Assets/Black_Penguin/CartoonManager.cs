@@ -31,7 +31,9 @@ public class CartoonManager : Singleton<CartoonManager>
     //근섭선배가 넣어야할 함수
     public System.Action Func;
     public List<CartoonArray> cartoons;
+    public Text pressPleaseText;
 
+    float Delay = 0;
     private void Awake()
     {
         var objs = FindObjectsOfType<CartoonManager>();
@@ -49,6 +51,7 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     private void Start()
     {
+        pressPleaseText.gameObject.SetActive(false);
         foreach (CartoonArray cartoonary in cartoons)
         {
             foreach (Cartoon cartoon in cartoonary.cartoons)
@@ -56,9 +59,12 @@ public class CartoonManager : Singleton<CartoonManager>
                 cartoon.image.gameObject.SetActive(false);
             }
         }
-        //테스트용 코드
-        //StartCoroutine(CartoonStart(cartoons[0]));
-
+    }
+    private void Update()
+    {
+        pressPleaseText.gameObject.SetActive(Delay > 3 ? true : false);
+        pressPleaseText.rectTransform.localPosition += new Vector3(0, Mathf.Cos(Time.time) * 200 * Time.deltaTime, 0);
+        pressPleaseText.color = new Color(1, 1, 1, Mathf.Abs(Mathf.Sin(Time.time)));
     }
     public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
@@ -74,7 +80,7 @@ public class CartoonManager : Singleton<CartoonManager>
     {
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
-            float Delay = 0;
+            Delay = 0;
 
             cartoon.image.gameObject.SetActive(true);
 
@@ -88,7 +94,6 @@ public class CartoonManager : Singleton<CartoonManager>
             cartoon.actionQueue?.Invoke(null);
             while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
             {
-                if (Delay * 2> cartoon.Duration) break;
                 Delay += Time.deltaTime;
                 yield return null;
             }
@@ -98,6 +103,7 @@ public class CartoonManager : Singleton<CartoonManager>
         {
             StartCoroutine(CartoonOff(cartoon));
         }
+        yield return new WaitForSeconds(2);
         Func?.Invoke();
     }
     public IEnumerator CartoonShake(Cartoon cartoon)
