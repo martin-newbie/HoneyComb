@@ -34,11 +34,18 @@ public class CartoonManager : Singleton<CartoonManager>
 
     private void Awake()
     {
-        var anotherObj = FindObjectsOfType<CartoonManager>().Where(m => m != gameObject.GetComponent<CartoonManager>());
-        if (anotherObj != null)
-            Destroy(gameObject);
-        else
-            DontDestroyOnLoad(gameObject);
+        var objs = FindObjectsOfType<CartoonManager>();
+        foreach (var obj in objs)
+        {
+            if (obj.gameObject != gameObject)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
     }
     private void Start()
     {
