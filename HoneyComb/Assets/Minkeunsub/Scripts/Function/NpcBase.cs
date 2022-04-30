@@ -15,9 +15,12 @@ public enum NpcState
 
 public abstract class NpcBase : MonoBehaviour
 {
-
+    bool isSkip;
     bool trigger;
     bool isSpeeching;
+    bool isTextPrinting;
+    Coroutine curTextPrinting;
+    string curPrintingTxt;
 
     [Header("Status")]
     public List<string> Messages = new List<string>();
@@ -185,15 +188,27 @@ public abstract class NpcBase : MonoBehaviour
 
     public void NextSpeech()
     {
-        trigger = true;
+        if (!isTextPrinting)
+            trigger = true;
+        else
+        {
+            curTextPrinting = null;
+            SpeechTxt.text = curPrintingTxt;
+            isTextPrinting = false;
+            trigger = false;
+            isSkip = true;
+        }
     }
 
     IEnumerator DoArrayText(Text txt, float delay, List<string> messages)
     {
         foreach (var message in messages)
         {
-            yield return StartCoroutine(DoTextConsistentSpeed(txt, message, delay));
+            isSkip = false;
+            curTextPrinting = StartCoroutine(DoTextConsistentSpeed(txt, message, delay));
+            yield return curTextPrinting;
             trigger = false;
+
             while (!trigger) yield return null;
         }
 
@@ -202,12 +217,16 @@ public abstract class NpcBase : MonoBehaviour
 
     IEnumerator DoTextConsistentSpeed(Text txt, string message, float delay)
     {
+        isTextPrinting = true;
+        curPrintingTxt = message;
         txt.text = "";
         for (int i = 0; i < message.Length; i++)
         {
+            if (isSkip) yield break;
             txt.text += message[i];
             yield return new WaitForSeconds(delay);
         }
+        isTextPrinting = false;
     }
 
     public void SpeechOff()
