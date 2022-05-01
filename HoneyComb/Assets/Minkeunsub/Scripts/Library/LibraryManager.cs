@@ -126,4 +126,9 @@ public class LibraryManager : MonoBehaviour
     {
         CartoonChoose.SetActive(true);
     }
+
+    public void CloseCartoon()
+    {
+        CartoonChoose.SetActive(false);
+    }
 }
