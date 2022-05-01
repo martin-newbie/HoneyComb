@@ -3090,6 +3090,7 @@ GameObject:
   - component: {fileID: 1485979732}
   - component: {fileID: 1485979734}
   - component: {fileID: 1485979733}
+  - component: {fileID: 1485979735}
   m_Layer: 5
   m_Name: BookChoose
   m_TagString: Untagged
@@ -3155,6 +3156,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485979731}
   m_CullTransparentMesh: 1
+--- !u!114 &1485979735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485979731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaecd8ee997a414f822b4e1179027e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailObject: {fileID: 0}
+  DetailName: {fileID: 0}
+  DetailDesc: {fileID: 0}
+  DetailImage: {fileID: 0}
+  book: {fileID: 0}
+  bookContainer: {fileID: 714685447}
+  BookDatas: []
 --- !u!1 &1563434475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2035144015}
+  - component: {fileID: 2035144016}
   m_Layer: 5
   m_Name: Book
   m_TagString: Untagged
@@ -4101,6 +4122,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1100, y: 400}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &2035144016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035144014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e84f29ae640b44c8798be71b1bff4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  Name: {fileID: 0}
+  Desc: {fileID: 0}
 --- !u!1 &2035568302
 GameObject:
   m_ObjectHideFlags: 0

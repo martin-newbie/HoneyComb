@@ -12,11 +12,14 @@ public class Book : ScriptableObject
     public string BookName;
     public string BookDesc1;
     public string BookDesc2;
+    public Sprite Icon;
+    public Sprite Image;
 
     public Book Init()
     {
         TextAsset asset = Resources.Load("Texts/Book/" + path) as TextAsset;
         string[] temp = asset.text.Split('\n');
+
         BookName = temp[0];
         BookDesc1 = temp[1] + temp[2] + temp[3] + temp[4];
 

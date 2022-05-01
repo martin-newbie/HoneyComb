@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BookContainer : MonoBehaviour
+public class BookButton : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] Image Focus;
     [SerializeField] Image Icon;
     [SerializeField] Text Name;
     [SerializeField] Text Desc;
@@ -16,7 +15,6 @@ public class BookContainer : MonoBehaviour
 
     void Start()
     {
-        OnButtonExit();
     }
 
     void Update()
@@ -24,30 +22,20 @@ public class BookContainer : MonoBehaviour
         
     }
 
-    public void Init(BookChoose _manager, Book book, Sprite icon)
+    public void Init(BookChoose _manager, Book book)
     {
         manager = _manager;
         thisBook = book;
-        Icon.sprite = icon;
 
+        thisBook.Init();
+
+        Icon.sprite = thisBook.Icon;
         Name.text = thisBook.BookName;
         Desc.text = thisBook.BookDesc1;
     }
 
     public void OnButtonClick()
     {
-        
-    }
-
-    public void OnButtonEnter()
-    {
-        isChoosing = true;
-        Focus.gameObject.SetActive(true);
-    }
-
-    public void OnButtonExit()
-    {
-        isChoosing = false;
-        Focus.gameObject.SetActive(true);
+        manager.OpenDetail(thisBook);
     }
 }
