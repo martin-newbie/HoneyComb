@@ -17,7 +17,7 @@ public class Book : ScriptableObject
 
     public Book Init()
     {
-        TextAsset asset = Resources.Load("Texts/Book/" + path) as TextAsset;
+        TextAsset asset = Resources.Load("Texts/Books/" + path) as TextAsset;
         string[] temp = asset.text.Split('\n');
 
         BookName = temp[0];
