@@ -10,7 +10,6 @@ public class BookButton : MonoBehaviour
     [SerializeField] Text Name;
     [SerializeField] Text Desc;
     Book thisBook;
-    bool isChoosing;
     BookChoose manager;
 
     void Start()
