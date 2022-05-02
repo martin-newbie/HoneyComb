@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 8_BeeVenom
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: BeeVenom
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

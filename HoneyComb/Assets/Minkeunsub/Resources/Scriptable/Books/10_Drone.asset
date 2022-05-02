@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 10_Drone
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: Drone
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

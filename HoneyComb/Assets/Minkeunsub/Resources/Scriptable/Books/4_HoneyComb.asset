@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4_HoneyComb
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: HoneyComb
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

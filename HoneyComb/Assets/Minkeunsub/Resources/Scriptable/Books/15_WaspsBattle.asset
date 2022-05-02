@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 15_WaspsBattle
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: WaspsBattle
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

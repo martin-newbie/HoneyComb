@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 13_FalseQueen
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: FalseQueen
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

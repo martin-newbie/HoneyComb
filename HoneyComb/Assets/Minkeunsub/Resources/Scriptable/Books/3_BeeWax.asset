@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3_BeeWax
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: BeeWax
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

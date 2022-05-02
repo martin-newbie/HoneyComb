@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 5_RoyalJelly
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: RoyalJelly
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

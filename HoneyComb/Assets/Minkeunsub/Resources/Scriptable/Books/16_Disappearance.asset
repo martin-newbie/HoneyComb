@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 16_Disappearance
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: Disappearance
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

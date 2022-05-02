@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 14_ClusterCollapse
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: ClusterCollapse
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

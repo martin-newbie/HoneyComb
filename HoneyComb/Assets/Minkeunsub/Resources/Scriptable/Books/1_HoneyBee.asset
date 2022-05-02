@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1_HoneyBee
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: HoneyBee
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

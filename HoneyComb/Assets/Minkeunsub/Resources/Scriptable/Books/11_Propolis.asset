@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 11_Propolis
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: Propolis
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}

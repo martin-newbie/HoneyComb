@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 6_Winter
   m_EditorClassIdentifier: 
   path: 
-  BookName: 
+  BookName: Winter
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}
