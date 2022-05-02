@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e92a5d16b68c341a41812c85881ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1220542619}
   Messages: []
   QuestAble: 0
   npcState: 0
@@ -2085,7 +2086,7 @@ Animator:
   m_GameObject: {fileID: 1220542615}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 740c8c12502e2a842bf8c7f797e441bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 92f4e35711f63ba41966d59b1a77a7a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

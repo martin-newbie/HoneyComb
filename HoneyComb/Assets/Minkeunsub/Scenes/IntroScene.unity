@@ -336,6 +336,7 @@ MonoBehaviour:
   curWaxDelay: 0
   Honey: 0
   SceneUnlock: 000000
+  bookAble: 0
   gamePlayAble: 0
   beeUpgradeAble: 0
   roomUpgradeAble: 0
@@ -411,3 +412,4 @@ MonoBehaviour:
   QuestSaveList:
     QuestLists: []
   isQuestAble: 0
+  BookUnlocked: 0101010101
