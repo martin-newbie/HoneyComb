@@ -21,12 +21,12 @@ public class Book : ScriptableObject
         string[] temp = asset.text.Split('\n');
 
         BookName = temp[0];
-        BookDesc1 = temp[1] + temp[2] + temp[3] + temp[4];
+        BookDesc1 = temp[1] + "\n" + temp[2];
 
         StringBuilder SB = new StringBuilder();
-        for (int i = 5; i < temp.Length; i++)
+        for (int i = 3; i < temp.Length; i++)
         {
-            SB.Append(temp[i]);
+            SB.Append(temp[i] + "\n");
         }
         BookDesc2 = SB.ToString();
         return this;

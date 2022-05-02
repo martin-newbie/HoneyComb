@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767459bfa7445b14e91f782572a64a55, type: 3}
   m_Name: 6_Winter
   m_EditorClassIdentifier: 
-  path: 
-  BookName: Winter
+  path: Winter
+  BookName: 
   BookDesc1: 
   BookDesc2: 
   Icon: {fileID: 0}
