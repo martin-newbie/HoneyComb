@@ -3537,7 +3537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f770593e5de4944901651f314cb1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1190267693}
   Messages: []
   QuestAble: 0
   npcState: 0
