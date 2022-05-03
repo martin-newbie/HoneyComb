@@ -124,6 +124,7 @@ public class CartoonManager : Singleton<CartoonManager>
                 yield return new WaitForSeconds(0.1f);
                 cartoon.forcingQuit = false;
             }
+            Delay = 0;
         }
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
@@ -161,11 +162,12 @@ public class CartoonManager : Singleton<CartoonManager>
     public IEnumerator ImageFadeBlack(Image cartoon)
     {
         cartoon.color = new Color(0, 0, 0, 1);
-        while (Mathf.Approximately(cartoon.color.a, 1) == false)
+        while (Mathf.Approximately(cartoon.color.a, 0) == false)
         {
             cartoon.color = Color.Lerp(cartoon.color, Color.clear, Time.deltaTime * 5);
             yield return null;
         }
+        cartoon.gameObject.SetActive(false);
     }
     public IEnumerator CartoonScale(Cartoon cartoon)
     {
