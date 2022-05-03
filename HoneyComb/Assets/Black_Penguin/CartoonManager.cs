@@ -70,7 +70,16 @@ public class CartoonManager : Singleton<CartoonManager>
     public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
         Func = action;
-        StartCoroutine(CartoonStart(cartoons[cartoonNum]));
+        if (cartoonNum == 0)
+        {
+            cartoonNum = 1;
+        }
+        else if (cartoonNum == 1)
+        {
+            cartoonNum = 0;
+            action += () => CartoonStartFunction(1);
+        }
+        CartoonStartFunction(cartoonNum);
     }
     public void CartoonStartFunction(int cartoonNum)
     {
