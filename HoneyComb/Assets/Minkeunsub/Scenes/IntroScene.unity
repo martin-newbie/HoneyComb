@@ -321,6 +321,7 @@ MonoBehaviour:
     gamePlayAble: 0
     beeUpgradeAble: 0
     roomUpgradeAble: 0
+    BookUnlocked: 
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
@@ -412,4 +413,4 @@ MonoBehaviour:
   QuestSaveList:
     QuestLists: []
   isQuestAble: 0
-  BookUnlocked: 0101010101
+  BookUnlocked: 010101010100000000000000000000000000

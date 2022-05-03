@@ -178,6 +178,7 @@ public class StatusManager : Singleton<StatusManager>
         gamePlayAble = dataSave.gamePlayAble;
         beeUpgradeAble = dataSave.beeUpgradeAble;
         roomUpgradeAble = dataSave.roomUpgradeAble;
+        BookUnlocked = dataSave.BookUnlocked;
     }
 
     void SetDataToSave()
@@ -195,6 +196,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.gamePlayAble = gamePlayAble;
         dataSave.beeUpgradeAble = beeUpgradeAble;
         dataSave.roomUpgradeAble = roomUpgradeAble;
+        dataSave.BookUnlocked = BookUnlocked;
     }
 
     public void SaveData()
@@ -264,6 +266,7 @@ public class StatusSave
     public bool gamePlayAble;
     public bool beeUpgradeAble;
     public bool roomUpgradeAble;
+    public List<bool> BookUnlocked = new List<bool>();
 }
 
 public enum QuestNpcState
