@@ -3644,7 +3644,6 @@ MonoBehaviour:
   book: {fileID: 6029411930754639664, guid: dd74094e6079f494e9c08c919a600f86, type: 3}
   bookContainer: {fileID: 714685447}
   BookDatas:
-  - {fileID: 11400000, guid: 72fb4fe6fea156742bf03f5645f2973c, type: 2}
   - {fileID: 11400000, guid: c277d80361d0f0248a78c5470c59387f, type: 2}
   - {fileID: 11400000, guid: 57e5ccecc5abe9747853d9a9267754ae, type: 2}
   - {fileID: 11400000, guid: 30a58ac95eb92584dbc5760f6cb4b63c, type: 2}
@@ -3660,6 +3659,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61307f37504248c47bb96628e5007e13, type: 2}
   - {fileID: 11400000, guid: 3be10da98cd7c6a43b3a7cea683fd860, type: 2}
   - {fileID: 11400000, guid: 4693efef2ec9f9b46ad132008f3effa7, type: 2}
+  - {fileID: 11400000, guid: 72fb4fe6fea156742bf03f5645f2973c, type: 2}
+  - {fileID: 11400000, guid: 794c114ad428b764c876176b124e4da6, type: 2}
+  - {fileID: 11400000, guid: 22ca42c01e90fb94d8ae923f6da216b6, type: 2}
 --- !u!1 &1563434475
 GameObject:
   m_ObjectHideFlags: 0
