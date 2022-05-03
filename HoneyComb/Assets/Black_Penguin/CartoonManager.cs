@@ -69,10 +69,11 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
+        Func = action;
         if (cartoonNum == 0)
         {
             cartoonNum = 1;
-            Func = () => CartoonStartFunction(-1, action);
+            Func += () => CartoonStartFunction(-1, action);
         }
         else if (cartoonNum == -1)
         {
@@ -82,7 +83,6 @@ public class CartoonManager : Singleton<CartoonManager>
         {
             cartoonNum++;
         }
-        Func = action;
         CartoonStartFunction(cartoonNum);
     }
     public void CartoonStartFunction(int cartoonNum)
@@ -126,8 +126,8 @@ public class CartoonManager : Singleton<CartoonManager>
             if (cartoon.image != null)
                 StartCoroutine(CartoonOff(cartoon));
         }
-        yield return new WaitForSeconds(2);
         Func?.Invoke();
+        yield return new WaitForSeconds(2);
     }
     public IEnumerator CartoonShake(Cartoon cartoon)
     {
