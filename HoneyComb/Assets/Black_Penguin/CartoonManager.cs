@@ -19,11 +19,12 @@ public class Cartoon
     public bool isScaleFade;
 
     public System.Action<IEnumerator> actionQueue;
+    public bool forcingQuit;
 }
 [System.Serializable]
 public class CartoonArray
 {
-    public Cartoon[] cartoons;
+    public List<Cartoon> cartoons;
 }
 
 public class CartoonManager : Singleton<CartoonManager>
@@ -56,7 +57,7 @@ public class CartoonManager : Singleton<CartoonManager>
         {
             foreach (Cartoon cartoon in cartoonary.cartoons)
             {
-                cartoon.image.gameObject.SetActive(false);
+                if (cartoon.image != null) cartoon.image.gameObject.SetActive(false);
             }
         }
     }
@@ -68,8 +69,17 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
-        Func = action;
-        StartCoroutine(CartoonStart(cartoons[cartoonNum]));
+        if (cartoonNum == 0)
+        {
+            cartoonNum = 1;
+            Func = () => CartoonStartFunction(1,action);
+        }
+        else if (cartoonNum == 1)
+        {
+            cartoonNum = 0;
+            Func = action;
+        }
+        CartoonStartFunction(cartoonNum);
     }
     public void CartoonStartFunction(int cartoonNum)
     {
@@ -81,27 +91,36 @@ public class CartoonManager : Singleton<CartoonManager>
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
             Delay = 0;
-
-            cartoon.image.gameObject.SetActive(true);
-
-            if (cartoon.isFade)
-                cartoon.actionQueue += (func) => StartCoroutine(CartoonFade(cartoon));
-            if (cartoon.isShaking)
-                cartoon.actionQueue += (func) => StartCoroutine(CartoonShake(cartoon));
-            if (cartoon.isScaleFade)
-                cartoon.actionQueue += (func) => StartCoroutine(CartoonScale(cartoon));
-
-            cartoon.actionQueue?.Invoke(null);
-            while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
+            if (cartoon.image != null)
             {
-                Delay += Time.deltaTime;
-                yield return null;
+                cartoon.image.gameObject.SetActive(true);
+
+                if (cartoon.isFade)
+                    cartoon.actionQueue += (func) => StartCoroutine(CartoonFade(cartoon));
+                if (cartoon.isShaking)
+                    cartoon.actionQueue += (func) => StartCoroutine(CartoonShake(cartoon));
+                if (cartoon.isScaleFade)
+                    cartoon.actionQueue += (func) => StartCoroutine(CartoonScale(cartoon));
+
+                cartoon.actionQueue?.Invoke(null);
+                while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        cartoon.forcingQuit = true;
+                        break;
+                    }
+                    Delay += Time.deltaTime;
+                    yield return null;
+                }
+                yield return new WaitForSeconds(0.1f);
+                cartoon.forcingQuit = false;
             }
-            yield return new WaitForSeconds(0.1f);
         }
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
-            StartCoroutine(CartoonOff(cartoon));
+            if (cartoon.image != null)
+                StartCoroutine(CartoonOff(cartoon));
         }
         yield return new WaitForSeconds(2);
         Func?.Invoke();
@@ -112,6 +131,7 @@ public class CartoonManager : Singleton<CartoonManager>
         Vector2 pos = cartoon.image.rectTransform.localPosition;
         while (duration > 0)
         {
+            if (cartoon.forcingQuit) break;
             cartoon.image.rectTransform.localPosition = Random.insideUnitCircle * cartoon.shakingScale + pos;
 
             yield return null;
@@ -125,7 +145,19 @@ public class CartoonManager : Singleton<CartoonManager>
         cartoon.image.color = new Color(1, 1, 1, 0);
         while (Mathf.Approximately(cartoon.image.color.a, 1) == false)
         {
+            if (cartoon.forcingQuit) cartoon.image.color = Color.white;
             cartoon.image.color += new Color(0, 0, 0, Time.deltaTime / cartoon.Duration);
+            yield return null;
+        }
+    }
+    public IEnumerator CartoonScale(Cartoon cartoon)
+    {
+        Vector2 originalSize = cartoon.image.rectTransform.sizeDelta;
+        cartoon.image.rectTransform.sizeDelta = Vector2.zero;
+        while (cartoon.image.rectTransform.sizeDelta.x < originalSize.x)
+        {
+            if (cartoon.forcingQuit) cartoon.image.rectTransform.sizeDelta = originalSize;
+            cartoon.image.rectTransform.sizeDelta += (originalSize * Time.deltaTime) / cartoon.Duration;
             yield return null;
         }
     }
@@ -139,17 +171,5 @@ public class CartoonManager : Singleton<CartoonManager>
         }
         cartoon.image.gameObject.SetActive(false);
     }
-
-    public IEnumerator CartoonScale(Cartoon cartoon)
-    {
-        Vector2 originalSize = cartoon.image.rectTransform.sizeDelta;
-        cartoon.image.rectTransform.sizeDelta = Vector2.zero;
-        while (cartoon.image.rectTransform.sizeDelta.x < originalSize.x)
-        {
-            cartoon.image.rectTransform.sizeDelta += (originalSize * Time.deltaTime) / cartoon.Duration;
-            yield return null;
-        }
-    }
-
 }
 

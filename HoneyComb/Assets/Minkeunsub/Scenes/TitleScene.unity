@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e92a5d16b68c341a41812c85881ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1220542619}
   Messages: []
   QuestAble: 0
   npcState: 0
@@ -2009,6 +2010,7 @@ GameObject:
   - component: {fileID: 1220542616}
   - component: {fileID: 1220542618}
   - component: {fileID: 1220542617}
+  - component: {fileID: 1220542619}
   m_Layer: 5
   m_Name: NPC
   m_TagString: Untagged
@@ -2074,6 +2076,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220542615}
   m_CullTransparentMesh: 1
+--- !u!95 &1220542619
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220542615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92f4e35711f63ba41966d59b1a77a7a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1229237526
 GameObject:
   m_ObjectHideFlags: 0

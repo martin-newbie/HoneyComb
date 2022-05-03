@@ -8,18 +8,24 @@ public class LibraryManager : MonoBehaviour
 {
     public Image blackImg;
 
+    [Header("Cartoon")]
+    [SerializeField] GameObject CartoonChoose;
     [SerializeField] Sprite[] ButtonSprites;
     [SerializeField] RectTransform button;
     [SerializeField] RectTransform ContentContainer;
-    [SerializeField] ScrollRect Scroll;
+    [SerializeField] RectTransform rightVoid;
     List<RectTransform> buttonList = new List<RectTransform>();
+
+    [Header("Book Choose")]
+    [SerializeField] BookChoose bookChoose;
 
     [Header("Data")]
     [SerializeField] int count = 5;
-    [SerializeField] float offset;
-    [SerializeField] float curSet;
     [SerializeField] int curIdx;
     [SerializeField] int maxIdx;
+
+    Vector2 DefaultSize = new Vector2(700, 1000);
+    Vector2 SelectSize = new Vector2(800, 1200);
 
     void Start()
     {
@@ -30,6 +36,24 @@ public class LibraryManager : MonoBehaviour
     void Update()
     {
         SetScrollRect();
+        SetButtonSize();
+    }
+
+    public void BookOn()
+    {
+        bookChoose.gameObject.SetActive(true);
+        bookChoose.UIon();
+    }
+
+    void SetButtonSize()
+    {
+        for (int i = 0; i < buttonList.Count; i++)
+        {
+            if(i == curIdx)
+                buttonList[i].sizeDelta = Vector2.Lerp(buttonList[i].sizeDelta, SelectSize, Time.deltaTime * 15f);
+            else
+                buttonList[i].sizeDelta = Vector2.Lerp(buttonList[i].sizeDelta, DefaultSize, Time.deltaTime * 15f);
+        }
     }
 
     public void Back()
@@ -71,28 +95,28 @@ public class LibraryManager : MonoBehaviour
 
     void SetScrollRect()
     {
-        Scroll.verticalScrollbar.value = Mathf.Lerp(Scroll.verticalScrollbar.value, curSet, Time.deltaTime * 15f);
+        float posX = -(curIdx * 800f + 480f);
+        ContentContainer.anchoredPosition = Vector2.Lerp(ContentContainer.anchoredPosition, new Vector2(posX, 0), Time.deltaTime * 15f);
     }
 
     void InitScroll(int n)
     {
-        button.GetComponent<Image>().sprite = ButtonSprites[0];
+        //button.GetComponent<Image>().sprite = ButtonSprites[0];
         button.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(0); });
         buttonList.Add(button);
 
         maxIdx = n;
-        for (int i = 1; i < maxIdx; i++)
+        for (int i = 1; i < maxIdx - 1; i++)
         {
             RectTransform temp = Instantiate(button, ContentContainer.transform);
             temp.GetComponent<Image>().sprite = ButtonSprites[i];
 
-            int idx = i;
+            int idx = i + 1;
             temp.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(idx); });
             buttonList.Add(temp);
         }
 
-
-        offset = 1f / (n - 1);
+        rightVoid.SetAsLastSibling();
     }
 
     void OnClickEvent(int idx)
@@ -103,9 +127,17 @@ public class LibraryManager : MonoBehaviour
     public void SetScrollIdx(int idx)
     {
         curIdx += idx;
-        if (curIdx == maxIdx) curIdx = 0;
+        if (curIdx == maxIdx - 1) curIdx = 0;
         else if (curIdx < 0) curIdx = maxIdx - 1;
+    }
 
-        curSet = 1f - offset * curIdx;
+    public void OpenCartoon()
+    {
+        CartoonChoose.SetActive(true);
+    }
+
+    public void CloseCartoon()
+    {
+        CartoonChoose.SetActive(false);
     }
 }

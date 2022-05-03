@@ -29,6 +29,7 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Status")]
     public int Honey; //²Ü
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
+    public bool bookAble;
     public bool gamePlayAble;
     public bool beeUpgradeAble;
     public bool roomUpgradeAble;
@@ -40,6 +41,9 @@ public class StatusManager : Singleton<StatusManager>
     public QuestDataSave QuestSaveList = new QuestDataSave();
     public bool isQuestAble;
     public List<Action> QuestClearActions = new List<Action>();
+
+    [Header("Books")]
+    public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
 
     void RemoveSaveData()
     {
@@ -73,7 +77,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         //load data first
         DontDestroyOnLoad(this.gameObject);
-        if(debug) RemoveSaveData();
+        if (debug) RemoveSaveData();
         LoadData();
         LoadBeeTime();
         LoadQuest();
@@ -106,11 +110,11 @@ public class StatusManager : Singleton<StatusManager>
 
     void WaxCharging()
     {
-        if(QueueWax > 0)
+        if (QueueWax > 0)
         {
             curWaxDelay -= Time.deltaTime * Charging;
 
-            if(curWaxDelay <= 0f)
+            if (curWaxDelay <= 0f)
             {
                 QueueWax--;
                 BeeWax++;

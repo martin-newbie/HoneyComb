@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Book", menuName = "Book", order = int.MinValue)]
+public class Book : ScriptableObject
+{
+    [SerializeField] string path;
+
+    [Header("Datas")]
+    public string BookName;
+    public string BookDesc1;
+    public string BookDesc2;
+    public Sprite Icon;
+    public Sprite Image;
+
+    public Book Init()
+    {
+        TextAsset asset = Resources.Load("Texts/Books/" + path) as TextAsset;
+        string[] temp = asset.text.Split('\n');
+
+        BookName = temp[0];
+        BookDesc1 = temp[1] + "\n" + temp[2];
+
+        StringBuilder SB = new StringBuilder();
+        for (int i = 3; i < temp.Length; i++)
+        {
+            SB.Append(temp[i] + "\n");
+        }
+        BookDesc2 = SB.ToString();
+        return this;
+    }
+}

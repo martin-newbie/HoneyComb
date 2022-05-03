@@ -27,6 +27,10 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [SerializeField] int RoomCost = 250;
     [SerializeField] int BeeCost = 1000;
 
+    [Header("Locked")]
+    [SerializeField] GameObject BeeLocked;
+    [SerializeField] GameObject RoomLocked;
+
     void Start()
     {
         StartCoroutine(FadeIn(1f));
@@ -35,6 +39,9 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     void Update()
     {
         SetTexts();
+
+        BeeLocked.SetActive(!StatusManager.Instance.beeUpgradeAble);
+        RoomLocked.SetActive(!StatusManager.Instance.roomUpgradeAble);
     }
 
     IEnumerator SceneMove(string sceneName)

@@ -15,9 +15,14 @@ public enum NpcState
 
 public abstract class NpcBase : MonoBehaviour
 {
-
+    bool isSkip;
     bool trigger;
     bool isSpeeching;
+    bool isTextPrinting;
+    Coroutine curTextPrinting;
+    string curPrintingTxt;
+
+    [SerializeField] Animator anim;
 
     [Header("Status")]
     public List<string> Messages = new List<string>();
@@ -64,6 +69,8 @@ public abstract class NpcBase : MonoBehaviour
             }
             else thisQuest = null;
         }
+
+        anim.SetTrigger("Default");
     }
 
     void QuestUIOn()
@@ -89,7 +96,6 @@ public abstract class NpcBase : MonoBehaviour
 
                     npcState = NpcState.None;
                     PlayerPrefs.SetInt("FirstMeet: " + path, 1);
-
                     break;
                 case NpcState.None:
                     SpeechRandomMessage();
@@ -185,16 +191,31 @@ public abstract class NpcBase : MonoBehaviour
 
     public void NextSpeech()
     {
-        trigger = true;
+        if (!isTextPrinting)
+        {
+            trigger = true;
+        }
+        else
+        {
+            curTextPrinting = null;
+            SpeechTxt.text = curPrintingTxt;
+            isTextPrinting = false;
+            trigger = false;
+            isSkip = true;
+        }
     }
 
     IEnumerator DoArrayText(Text txt, float delay, List<string> messages)
     {
         foreach (var message in messages)
         {
-            yield return StartCoroutine(DoTextConsistentSpeed(txt, message, delay));
+            isSkip = false;
+            curTextPrinting = StartCoroutine(DoTextConsistentSpeed(txt, message, delay));
+            yield return curTextPrinting;
             trigger = false;
+
             while (!trigger) yield return null;
+            anim.SetTrigger("Default");
         }
 
         SpeechOff();
@@ -202,12 +223,27 @@ public abstract class NpcBase : MonoBehaviour
 
     IEnumerator DoTextConsistentSpeed(Text txt, string message, float delay)
     {
+        string[] temp = message.Split('@');
+
+        isTextPrinting = true;
+        curPrintingTxt = temp[0];
+
+        int face = 0;
+        if (temp.Length > 1 && !string.IsNullOrEmpty(temp[1]))
+            face = int.Parse(temp[1]);
+
+        if (face == 0) anim.SetTrigger("Default");
+        else if (face == 1) anim.SetTrigger("Depress");
+        else if (face == 2) anim.SetTrigger("Happy");
+
         txt.text = "";
-        for (int i = 0; i < message.Length; i++)
+        for (int i = 0; i < curPrintingTxt.Length; i++)
         {
-            txt.text += message[i];
+            if (isSkip) yield break;
+            txt.text += curPrintingTxt[i];
             yield return new WaitForSeconds(delay);
         }
+        isTextPrinting = false;
     }
 
     public void SpeechOff()
