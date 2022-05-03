@@ -370,12 +370,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1994902554}
         m_TargetAssemblyTypeName: CartoonManager, Assembly-CSharp
-        m_MethodName: CartoonStartFunction
-        m_Mode: 3
+        m_MethodName: test
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -707,6 +707,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681869354490933759, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681869354490933759, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681869354490933759, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681869354490933759, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7487759230116085468, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}

@@ -69,23 +69,28 @@ public class CartoonManager : Singleton<CartoonManager>
         pressPleaseText.rectTransform.localPosition += new Vector3(0, Mathf.Cos(Time.time) * 200 * Time.deltaTime, 0);
         pressPleaseText.color = new Color(1, 1, 1, Mathf.Abs(Mathf.Sin(Time.time)));
     }
+    public void test()
+    {
+        CartoonStartFunction(0, null);
+    }
     public void CartoonStartFunction(int cartoonNum, System.Action action)
     {
-        Func = action;
         if (cartoonNum == 0)
         {
             cartoonNum = 1;
-            action += () => ImageFadeBlack(cartoonBlackScreen);
+            action += () => StartCoroutine(ImageFadeBlack(cartoonBlackScreen));
             Func = () => CartoonStartFunction(-1, action);
             Func += () => cartoonBlackScreen.gameObject.SetActive(true);
         }
         else if (cartoonNum == -1)
         {
             cartoonNum = 0;
+            Func = action;
         }
         else
         {
             cartoonNum++;
+            Func = action;
         }
         CartoonStartFunction(cartoonNum);
     }
@@ -124,15 +129,15 @@ public class CartoonManager : Singleton<CartoonManager>
                 yield return new WaitForSeconds(0.1f);
                 cartoon.forcingQuit = false;
             }
-            Delay = 0;
         }
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
             if (cartoon.image != null)
                 StartCoroutine(CartoonOff(cartoon));
         }
+        Delay = 0;
+        cartoonBlackScreen.gameObject.SetActive(false);
         Func?.Invoke();
-        yield return new WaitForSeconds(2);
     }
     public IEnumerator CartoonShake(Cartoon cartoon)
     {
@@ -161,10 +166,10 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     public IEnumerator ImageFadeBlack(Image cartoon)
     {
-        cartoon.color = new Color(0, 0, 0, 1);
-        while (Mathf.Approximately(cartoon.color.a, 0) == false)
+        cartoon.color = new Color(1, 1, 1, 1);
+        while (cartoon.color.a > 0.01f)
         {
-            cartoon.color = Color.Lerp(cartoon.color, Color.clear, Time.deltaTime * 5);
+            cartoon.color = Color.Lerp(cartoon.color, Color.clear, Time.deltaTime);
             yield return null;
         }
         cartoon.gameObject.SetActive(false);
@@ -183,12 +188,10 @@ public class CartoonManager : Singleton<CartoonManager>
     public IEnumerator CartoonOff(Cartoon cartoon)
     {
         cartoon.image.color = new Color(1, 1, 1, 1);
-        Color ColorValue = new Color(0, 0, 0, 0f);
-        WaitForSeconds waitForSeconds = new WaitForSeconds(0.05f);
-        while (cartoon.image.color.a > 0.01f)
+        while (cartoon.image.color.a > 0.001f)
         {
-            cartoon.image.color = Color.Lerp(cartoon.image.color, Color.clear, Time.deltaTime * 5);
-            yield return waitForSeconds;
+            cartoon.image.color = new Color(1, 1, 1, Mathf.Lerp(cartoon.image.color.a, -1, Time.deltaTime));
+            yield return null;
         }
         cartoon.image.gameObject.SetActive(false);
     }
