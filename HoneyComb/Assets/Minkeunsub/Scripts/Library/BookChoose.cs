@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BookChoose : MonoBehaviour
 {
+
+    [Header("UI objects")]
+    [SerializeField] RectTransform BG;
+
     [Header("Detail")]
     [SerializeField] GameObject DetailObject;
     [SerializeField] Text DetailName;
@@ -44,5 +49,19 @@ public class BookChoose : MonoBehaviour
     public void CloseDetail()
     {
         DetailObject.SetActive(false);
+    }
+
+    public void UIon()
+    {
+        BG.anchoredPosition = new Vector2(1500, 0);
+        BG.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void UIoff()
+    {
+        BG.DOAnchorPosX(1500f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+        });
     }
 }

@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e84f29ae640b44c8798be71b1bff4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Name: {fileID: 0}
-  Desc: {fileID: 0}
+  Icon: {fileID: 6029411931445986280}
+  Name: {fileID: 6029411931302983383}
+  Desc: {fileID: 6029411931972511251}
 --- !u!1 &6029411931302983381
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +253,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6029411931445986280}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6029411930754639664}
+        m_TargetAssemblyTypeName: BookButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6029411931455881956
 GameObject:
   m_ObjectHideFlags: 0

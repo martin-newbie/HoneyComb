@@ -16,6 +16,9 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] RectTransform rightVoid;
     List<RectTransform> buttonList = new List<RectTransform>();
 
+    [Header("Book Choose")]
+    [SerializeField] BookChoose bookChoose;
+
     [Header("Data")]
     [SerializeField] int count = 5;
     [SerializeField] int curIdx;
@@ -34,6 +37,12 @@ public class LibraryManager : MonoBehaviour
     {
         SetScrollRect();
         SetButtonSize();
+    }
+
+    public void BookOn()
+    {
+        bookChoose.gameObject.SetActive(true);
+        bookChoose.UIon();
     }
 
     void SetButtonSize()
