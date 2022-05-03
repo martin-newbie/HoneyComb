@@ -34,6 +34,8 @@ public class CartoonManager : Singleton<CartoonManager>
     public List<CartoonArray> cartoons;
     public Text pressPleaseText;
 
+    public Image cartoonBlackScreen;
+
     float Delay = 0;
     private void Awake()
     {
@@ -73,13 +75,15 @@ public class CartoonManager : Singleton<CartoonManager>
         if (cartoonNum == 0)
         {
             cartoonNum = 1;
-            Func += () => CartoonStartFunction(-1, action);
+            action += () => ImageFadeBlack(cartoonBlackScreen);
+            Func = () => CartoonStartFunction(-1, action);
+            Func += () => cartoonBlackScreen.gameObject.SetActive(true);
         }
         else if (cartoonNum == -1)
         {
             cartoonNum = 0;
         }
-        else 
+        else
         {
             cartoonNum++;
         }
@@ -154,6 +158,15 @@ public class CartoonManager : Singleton<CartoonManager>
             yield return null;
         }
     }
+    public IEnumerator ImageFadeBlack(Image cartoon)
+    {
+        cartoon.color = new Color(0, 0, 0, 1);
+        while (Mathf.Approximately(cartoon.color.a, 1) == false)
+        {
+            cartoon.color = Color.Lerp(cartoon.color, Color.clear, Time.deltaTime * 5);
+            yield return null;
+        }
+    }
     public IEnumerator CartoonScale(Cartoon cartoon)
     {
         Vector2 originalSize = cartoon.image.rectTransform.sizeDelta;
@@ -168,10 +181,12 @@ public class CartoonManager : Singleton<CartoonManager>
     public IEnumerator CartoonOff(Cartoon cartoon)
     {
         cartoon.image.color = new Color(1, 1, 1, 1);
-        while (cartoon.image.color.a > 0)
+        Color ColorValue = new Color(0, 0, 0, 0f);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(0.05f);
+        while (cartoon.image.color.a > 0.01f)
         {
-            cartoon.image.color -= new Color(0, 0, 0, 0.1f);
-            yield return new WaitForSeconds(0.05f);
+            cartoon.image.color = Color.Lerp(cartoon.image.color, Color.clear, Time.deltaTime * 5);
+            yield return waitForSeconds;
         }
         cartoon.image.gameObject.SetActive(false);
     }
