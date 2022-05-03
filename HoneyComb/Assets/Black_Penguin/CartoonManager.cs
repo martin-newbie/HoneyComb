@@ -72,13 +72,17 @@ public class CartoonManager : Singleton<CartoonManager>
         if (cartoonNum == 0)
         {
             cartoonNum = 1;
-            Func = () => CartoonStartFunction(1,action);
+            Func = () => CartoonStartFunction(-1, action);
         }
-        else if (cartoonNum == 1)
+        else if (cartoonNum == -1)
         {
             cartoonNum = 0;
-            Func = action;
         }
+        else 
+        {
+            cartoonNum++;
+        }
+        Func = action;
         CartoonStartFunction(cartoonNum);
     }
     public void CartoonStartFunction(int cartoonNum)
