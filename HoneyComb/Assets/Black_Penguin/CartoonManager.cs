@@ -31,6 +31,7 @@ public class CartoonManager : Singleton<CartoonManager>
 {
     //근섭선배가 넣어야할 함수
     public System.Action Func;
+
     public List<CartoonArray> cartoons;
     public Text pressPleaseText;
 
@@ -190,7 +191,7 @@ public class CartoonManager : Singleton<CartoonManager>
         cartoon.image.color = new Color(1, 1, 1, 1);
         while (cartoon.image.color.a > 0.001f)
         {
-            cartoon.image.color = new Color(1, 1, 1, Mathf.Lerp(cartoon.image.color.a, -1, Time.deltaTime));
+            cartoon.image.color = new Color(1, 1, 1, Mathf.Lerp(cartoon.image.color.a, -1, Time.deltaTime * 4));
             yield return null;
         }
         cartoon.image.gameObject.SetActive(false);
