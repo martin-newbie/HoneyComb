@@ -473,6 +473,7 @@ MonoBehaviour:
   - cartoons: []
   - cartoons: []
   - cartoons: []
+  - cartoons: []
   pressPleaseText: {fileID: 5665321472570139704}
   cartoonBlackScreen: {fileID: 6881626924728952449}
 --- !u!1 &7064163125750811113
@@ -554,7 +555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press to Next Page
+  m_Text: Touch to Next Page
 --- !u!114 &6400544147161320510
 MonoBehaviour:
   m_ObjectHideFlags: 0

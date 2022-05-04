@@ -13,18 +13,9 @@ public class SoundManager : Singleton<SoundManager>
     Dictionary<SoundType, AudioSource> audioSources;
     Dictionary<string, AudioClip> audioClips;
     private Dictionary<SoundType, float> audioVolume;
-
-    public Dictionary<SoundType, float> _audioVolume
-    {
-        get { return audioVolume; }
-        set
-        {
-            audioVolume = value;
-        }
-    }
-
     private void Awake()
     {
+
         audioVolume[SoundType.SE] = 0.5f;
         //리소스 폴더안 Sounds폴더안에 오디오클립들을 모은다
         AudioClip[] clips = Resources.LoadAll<AudioClip>("Sounds/");

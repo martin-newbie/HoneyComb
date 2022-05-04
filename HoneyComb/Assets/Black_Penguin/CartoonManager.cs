@@ -88,7 +88,7 @@ public class CartoonManager : Singleton<CartoonManager>
             cartoonNum = 0;
             Func = action;
         }
-        else
+        else if(cartoons[cartoonNum] != null)
         {
             cartoonNum++;
             Func = action;
