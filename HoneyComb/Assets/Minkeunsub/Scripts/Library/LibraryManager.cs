@@ -8,6 +8,10 @@ public class LibraryManager : MonoBehaviour
 {
     public Image blackImg;
 
+    [Header("UI objects")]
+    [SerializeField] Text WaxText;
+    [SerializeField] Text HoneyText;
+
     [Header("Cartoon")]
     [SerializeField] GameObject CartoonChoose;
     [SerializeField] Sprite[] ButtonSprites;
@@ -35,21 +39,34 @@ public class LibraryManager : MonoBehaviour
 
     void Update()
     {
+        WaxText.text = Format(StatusManager.Instance.BeeWax);
+        HoneyText.text = Format(StatusManager.Instance.Honey);
+
         SetScrollRect();
         SetButtonSize();
     }
 
+    string Format(float value)
+    {
+        string retStr = string.Format("{0:#,0}", value);
+        return retStr;
+    }
+
     public void BookOn()
     {
-        bookChoose.gameObject.SetActive(true);
-        bookChoose.UIon();
+
+        if (StatusManager.Instance.bookAble)
+        {
+            bookChoose.gameObject.SetActive(true);
+            bookChoose.UIon();
+        }
     }
 
     void SetButtonSize()
     {
         for (int i = 0; i < buttonList.Count; i++)
         {
-            if(i == curIdx)
+            if (i == curIdx)
                 buttonList[i].sizeDelta = Vector2.Lerp(buttonList[i].sizeDelta, SelectSize, Time.deltaTime * 15f);
             else
                 buttonList[i].sizeDelta = Vector2.Lerp(buttonList[i].sizeDelta, DefaultSize, Time.deltaTime * 15f);
@@ -133,7 +150,8 @@ public class LibraryManager : MonoBehaviour
 
     public void OpenCartoon()
     {
-        CartoonChoose.SetActive(true);
+        if (StatusManager.Instance.bookAble)
+            CartoonChoose.SetActive(true);
     }
 
     public void CloseCartoon()
