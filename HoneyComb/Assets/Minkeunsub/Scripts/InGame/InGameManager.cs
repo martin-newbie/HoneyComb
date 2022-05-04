@@ -10,6 +10,7 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] Transform[] PlayerPoses = new Transform[3];
     public int curDir;
     [SerializeField] HoneyItem honeyItem;
+    [SerializeField] BookItem BookItem;
     [SerializeField] Obstruction obstruction;
     [SerializeField] Camera cam;
     Vector3 originPos;
@@ -25,13 +26,46 @@ public class InGameManager : Singleton<InGameManager>
     TextAsset FlowerSpawnTxt;
     [SerializeField] List<string> FlowerTime = new List<string>();
 
+    bool bookCollectAble; //그 판에서 책 획득할 수 있는 조건
+    int ableBookIdx; //StatusManager의 BookUnlocked에서 해제될 수 있는 인덱스
+    [SerializeField] int bookSpawnIdx; //책이 스폰될 꽃의 인덱스
+
     void Start()
     {
         PoolInit(20);
         originPos = cam.transform.position;
         FlowerSpawnTxt = Resources.Load("Texts/FlowerSpawn") as TextAsset;
         FlowerTime = FlowerSpawnTxt.text.Split('\n').ToList();
+        SetBookAble();
         StartCoroutine(SpawnCoroutine(0.5f));
+    }
+
+    void SetBookAble()
+    {
+        if (StatusManager.Instance.bookAble)
+        {
+            int chance = Random.Range(0, 100);
+            int per = 15;
+            if (StatusManager.Instance.debug) per = 100;
+            if (chance <= per)
+            {
+                List<int> ableArr = new List<int>();
+                for (int i = 0; i < StatusManager.Instance.BookUnlocked.Count; i++)
+                {
+                    if (!StatusManager.Instance.BookUnlocked[i])
+                    {
+                        ableArr.Add(i);
+                    }
+                }
+
+                if (ableArr.Count > 0)
+                {
+                    ableBookIdx = Random.Range(0, ableArr.Count);
+                    bookCollectAble = true;
+                    bookSpawnIdx = Random.Range(150, 500);
+                }
+            }
+        }
     }
 
     void Update()
@@ -40,7 +74,8 @@ public class InGameManager : Singleton<InGameManager>
         DistanceLogic();
         InGameUI.Instance.SetStatusTexts(roundHoney, distance);
 
-        ComputerMove();
+        if (!Player.isGameOver)
+            ComputerMove();
     }
 
     void ComputerMove()
@@ -79,19 +114,34 @@ public class InGameManager : Singleton<InGameManager>
         }
     }
 
+    public void BookGet()
+    {
+        bookCollectAble = false;
+        StatusManager.Instance.BookUnlocked[ableBookIdx] = true;
+    }
+
     IEnumerator SpawnCoroutine(float time)
     {
         float duration = time;
         int idx = 0;
+        int curBookIdx = 0;
         while (true)
         {
-            Pop(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0));
+            HoneyItem temp = Pop(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0));
+            if (curBookIdx == bookSpawnIdx && bookCollectAble)
+            {
+                BookItem tempBook = Instantiate(BookItem, Vector3.zero, Quaternion.identity, temp.transform);
+                tempBook.transform.localPosition = Vector3.zero;
+            }
 
             int randChance = Random.Range(0, 10);
             if (randChance == 0)
                 Instantiate(obstruction, PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0), Quaternion.identity);
 
             idx++;
+
+            if (bookCollectAble)
+                curBookIdx++;
 
             if (idx == FlowerTime.Count) idx = 0;
 

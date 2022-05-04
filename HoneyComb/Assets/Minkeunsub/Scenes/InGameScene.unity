@@ -479,6 +479,7 @@ MonoBehaviour:
   - {fileID: 1475722348}
   curDir: 1
   honeyItem: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  BookItem: {fileID: 1766265605335746699, guid: 393e87c43e6d2d345acec3fbf620b547, type: 3}
   obstruction: {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
   cam: {fileID: 1562137953}
   roundHoney: 0
@@ -487,6 +488,7 @@ MonoBehaviour:
   moveSpeed: 20
   damage: 5
   FlowerTime: []
+  bookSpawnIdx: 0
 --- !u!1 &243512887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4841,7 +4843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21.9, y: 0}
+  m_AnchoredPosition: {x: -21.899994, y: 0}
   m_SizeDelta: {x: -43.9, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097252581
