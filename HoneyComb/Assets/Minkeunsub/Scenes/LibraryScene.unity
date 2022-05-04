@@ -2412,6 +2412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackImg: {fileID: 782389449}
+  WaxText: {fileID: 864682246}
+  HoneyText: {fileID: 223519980}
   CartoonChoose: {fileID: 2121168765}
   ButtonSprites:
   - {fileID: 0}
