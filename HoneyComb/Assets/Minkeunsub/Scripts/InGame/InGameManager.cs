@@ -63,6 +63,8 @@ public class InGameManager : Singleton<InGameManager>
                     ableBookIdx = Random.Range(0, ableArr.Count);
                     bookCollectAble = true;
                     bookSpawnIdx = Random.Range(150, 500);
+
+                    if (StatusManager.Instance.debug) bookSpawnIdx = 10;
                 }
             }
         }
