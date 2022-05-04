@@ -4832,7 +4832,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1033009744}
         m_TargetAssemblyTypeName: NpcBase, Assembly-CSharp
         m_MethodName: SpeechMessage
         m_Mode: 1
@@ -5044,7 +5044,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1033009744}
         m_TargetAssemblyTypeName: NpcBase, Assembly-CSharp
         m_MethodName: NextSpeech
         m_Mode: 1
