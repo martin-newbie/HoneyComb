@@ -66,7 +66,7 @@ public class InGameUI : Singleton<InGameUI>
     public void SetStatusTexts(int honey, float distance)
     {
         HoneyTxt.text = string.Format("{0:#,0}", honey);
-        DistanceTxt.text = string.Format("{0:#,0}", distance) + "m";
+        DistanceTxt.text = "°Å¸®: "+string.Format("{0:#,0}", distance) + "M";
     }
 
     public void GameOverUIOn(float distance, int honey)
