@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatusManager : Singleton<StatusManager>
 {
@@ -11,6 +12,7 @@ public class StatusManager : Singleton<StatusManager>
     public string dataSaveName = "status data save";
     public string questSaveName = "quest data save";
     public string timeSaveName = "time save";
+    public List<Book> BookDatas = new List<Book>();
 
     [Header("Bee")]
     public int Room = 20; //ÃÑ ¹æ °¹¼ö (¿©¿Õ ¹æ¿¡¼­ ¾÷±×·¹ÀÌµå)
@@ -129,7 +131,7 @@ public class StatusManager : Singleton<StatusManager>
 
     void BeeCharging()
     {
-        if (CurBee < MaxBee)
+        if (CurBee < MaxBee && SceneManager.GetActiveScene().name != "InGameScene")
         {
             curBeeDelay += Time.deltaTime * Charging;
 

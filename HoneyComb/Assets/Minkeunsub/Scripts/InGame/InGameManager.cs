@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InGameManager : Singleton<InGameManager>
 {
+
     [Header("Objects")]
     public Player Player;
     [SerializeField] Transform[] PlayerPoses = new Transform[3];

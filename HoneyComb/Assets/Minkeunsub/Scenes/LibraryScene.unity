@@ -3645,25 +3645,7 @@ MonoBehaviour:
   DetailImage: {fileID: 1211812337}
   book: {fileID: 6029411930754639664, guid: dd74094e6079f494e9c08c919a600f86, type: 3}
   bookContainer: {fileID: 714685447}
-  BookDatas:
-  - {fileID: 11400000, guid: c277d80361d0f0248a78c5470c59387f, type: 2}
-  - {fileID: 11400000, guid: 57e5ccecc5abe9747853d9a9267754ae, type: 2}
-  - {fileID: 11400000, guid: 30a58ac95eb92584dbc5760f6cb4b63c, type: 2}
-  - {fileID: 11400000, guid: af0d76092b929f74985695b628fe9afd, type: 2}
-  - {fileID: 11400000, guid: 20e966e38ef42c14587631ba6aaa075e, type: 2}
-  - {fileID: 11400000, guid: 505be22271e64ca4299720deffcf3ac7, type: 2}
-  - {fileID: 11400000, guid: ee1f59d41bfaae043a184827ea4b210e, type: 2}
-  - {fileID: 11400000, guid: 2c9c6baec80769842b43c7e963dcbb60, type: 2}
-  - {fileID: 11400000, guid: aed9cee093ac0d645b6856042b871d45, type: 2}
-  - {fileID: 11400000, guid: dba7a28d794dd444384678c9b6d3bafd, type: 2}
-  - {fileID: 11400000, guid: 4e569a9176a955a4c8ec01c5be5aad34, type: 2}
-  - {fileID: 11400000, guid: 474e90ec7bfc8ee4a8525d2f602fe681, type: 2}
-  - {fileID: 11400000, guid: 61307f37504248c47bb96628e5007e13, type: 2}
-  - {fileID: 11400000, guid: 3be10da98cd7c6a43b3a7cea683fd860, type: 2}
-  - {fileID: 11400000, guid: 4693efef2ec9f9b46ad132008f3effa7, type: 2}
-  - {fileID: 11400000, guid: 72fb4fe6fea156742bf03f5645f2973c, type: 2}
-  - {fileID: 11400000, guid: 794c114ad428b764c876176b124e4da6, type: 2}
-  - {fileID: 11400000, guid: 22ca42c01e90fb94d8ae923f6da216b6, type: 2}
+  BookDatas: []
 --- !u!1 &1563434475
 GameObject:
   m_ObjectHideFlags: 0

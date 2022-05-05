@@ -7,6 +7,10 @@ using DG.Tweening;
 
 public class GameOver : MonoBehaviour
 {
+
+    [Header("Colors")]
+    [SerializeField] Color[] TextColors = new Color[16];
+
     [Header("State")]
     public float maxWait = 15f;
     int state = 0; //0: revive?, 2: result ( 0 -> 1 -> 2 )
@@ -88,18 +92,36 @@ public class GameOver : MonoBehaviour
 
     void StateRevive()
     {
-        reviveTime.text = ((int)waitTime).ToString();
-        reviveTimeImg.fillAmount = waitTime / maxWait;
+        StartCoroutine(ReviveCoroutine());
+        state = 1;
+    }
 
-        if (waitTime > 0f)
+    IEnumerator ReviveCoroutine()
+    {
+
+        int time = 15;
+        reviveTime.text = time.ToString();
+        reviveTime.color = TextColors[15 - time];
+        while (time > 0)
         {
-            waitTime -= Time.deltaTime;
+            int dir = time % 2 == 0 ? 1 : -1;
+            reviveTime.transform.DORotate(new Vector3(0, 0, 30f * dir), 0.3f);
+            reviveTime.transform.DOScale(2f, 0.3f).OnComplete(() =>
+            {
+                reviveTime.transform.DOScale(1f, 0.05f);
+                reviveTime.transform.DORotate(Vector3.zero, 0.05f).OnComplete(() =>
+                {
+                    time--;
+                    reviveTime.text = time.ToString();
+                    reviveTime.color = TextColors[15 - time];
+                });
+            });
+
+            yield return new WaitForSecondsRealtime(1f);
         }
-        else
-        {
-            state = 1;
-            StartCoroutine(ReviveToReulst(0.5f));
-        }
+
+        yield return null;
+        StartCoroutine(ReviveToReulst(0.5f));
     }
 
     IEnumerator ReviveToReulst(float delay)

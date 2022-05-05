@@ -28,6 +28,8 @@ public class BookChoose : MonoBehaviour
 
     void InitBooks()
     {
+        BookDatas = StatusManager.Instance.BookDatas;
+
         for (int i = 0; i < StatusManager.Instance.BookUnlocked.Count; i++)
         {
             if (StatusManager.Instance.BookUnlocked[i])
