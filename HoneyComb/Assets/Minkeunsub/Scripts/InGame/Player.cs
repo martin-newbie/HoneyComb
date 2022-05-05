@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float invincibleDelay;
     public bool isInvincible;
 
+    [SerializeField] ParticleSystem HoneyParticle;
+
     void Start()
     {
         Hp = MaxHp;
@@ -37,6 +39,11 @@ public class Player : MonoBehaviour
             isGameOver = true;
             InGameManager.Instance.GameOver();
         }
+    }
+
+    public void GetHoney()
+    {
+        HoneyParticle.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

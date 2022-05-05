@@ -121,6 +121,8 @@ public class InGameManager : Singleton<InGameManager>
     {
         bookCollectAble = false;
         StatusManager.Instance.BookUnlocked[ableBookIdx] = true;
+
+        InGameUI.Instance.GetBookEffect(StatusManager.Instance.BookDatas[ableBookIdx], Player.transform.position);
     }
 
     IEnumerator SpawnCoroutine(float time)

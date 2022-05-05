@@ -50,6 +50,7 @@ public class HoneyItem : ItemBase
         {
             Honey.SetActive(false);
             InGameManager.Instance.roundHoney += value;
+            InGameManager.Instance.Player.GetHoney();
         }
     }
 
