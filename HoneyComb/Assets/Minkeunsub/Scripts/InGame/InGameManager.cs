@@ -151,7 +151,7 @@ public class InGameManager : Singleton<InGameManager>
             if (bookCollectAble)
                 curBookIdx++;
 
-            if (idx == FlowerTime.Count) idx = 0;
+            if (idx == FlowerTime.Count) idx = FlowerTime.Count / 2;
 
             yield return new WaitForSeconds(duration);
 

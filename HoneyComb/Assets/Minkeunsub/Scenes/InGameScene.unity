@@ -490,6 +490,8 @@ MonoBehaviour:
   moveSpeed: 20
   damage: 5
   FlowerTime: []
+  bookCollectAble: 0
+  ableBookIdx: 0
   bookSpawnIdx: 0
 --- !u!1 &243512887
 GameObject:
@@ -1826,7 +1828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5283245242925281427, guid: 7c1d57b2e655ab14fb169a9fefb75335, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96c79eabe7b6c6046b4655bc4b1cc64f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3032,7 +3034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5283245242925281427, guid: 7c1d57b2e655ab14fb169a9fefb75335, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96c79eabe7b6c6046b4655bc4b1cc64f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

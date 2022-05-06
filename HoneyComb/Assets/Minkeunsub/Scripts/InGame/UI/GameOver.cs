@@ -184,7 +184,7 @@ public class GameOver : MonoBehaviour
 
     public void ReviveSkipButton()
     {
-        if (state == 0)
+        if (state == 1)
             waitTime = 0f;
     }
 
