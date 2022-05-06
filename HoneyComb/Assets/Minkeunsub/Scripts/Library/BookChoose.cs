@@ -24,6 +24,7 @@ public class BookChoose : MonoBehaviour
     void Start()
     {
         InitBooks();
+        gameObject.SetActive(false);
     }
 
     void InitBooks()
