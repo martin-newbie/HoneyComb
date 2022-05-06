@@ -27,8 +27,9 @@ public class InGameManager : Singleton<InGameManager>
     TextAsset FlowerSpawnTxt;
     [SerializeField] List<string> FlowerTime = new List<string>();
 
-    bool bookCollectAble; //그 판에서 책 획득할 수 있는 조건
-    int ableBookIdx; //StatusManager의 BookUnlocked에서 해제될 수 있는 인덱스
+    [Header("Books")]
+    [SerializeField] bool bookCollectAble; //그 판에서 책 획득할 수 있는 조건
+    [SerializeField] int ableBookIdx; //StatusManager의 BookUnlocked에서 해제될 수 있는 인덱스
     [SerializeField] int bookSpawnIdx; //책이 스폰될 꽃의 인덱스
 
     void Start()
@@ -61,7 +62,7 @@ public class InGameManager : Singleton<InGameManager>
 
                 if (ableArr.Count > 0)
                 {
-                    ableBookIdx = Random.Range(0, ableArr.Count);
+                    ableBookIdx = ableArr[Random.Range(0, ableArr.Count)];
                     bookCollectAble = true;
                     bookSpawnIdx = Random.Range(150, 500);
 
