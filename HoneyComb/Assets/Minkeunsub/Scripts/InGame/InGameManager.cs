@@ -138,10 +138,12 @@ public class InGameManager : Singleton<InGameManager>
                 BookItem tempBook = Instantiate(BookItem, Vector3.zero, Quaternion.identity, temp.transform);
                 tempBook.transform.localPosition = Vector3.zero;
             }
-
-            int randChance = Random.Range(0, 10);
-            if (randChance == 0)
-                Instantiate(obstruction, PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0), Quaternion.identity);
+            else
+            {
+                int randChance = Random.Range(0, 10);
+                if (randChance == 0)
+                    Instantiate(obstruction, PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0), Quaternion.identity);
+            }
 
             idx++;
 
