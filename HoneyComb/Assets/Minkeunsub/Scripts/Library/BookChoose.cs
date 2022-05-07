@@ -27,6 +27,10 @@ public class BookChoose : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+    }
+
     void InitBooks()
     {
         BookDatas = StatusManager.Instance.BookDatas;

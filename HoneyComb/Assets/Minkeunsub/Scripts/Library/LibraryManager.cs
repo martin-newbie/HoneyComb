@@ -11,6 +11,7 @@ public class LibraryManager : MonoBehaviour
     [Header("UI objects")]
     [SerializeField] Text WaxText;
     [SerializeField] Text HoneyText;
+    [SerializeField] Image[] Locked = new Image[2];
 
     [Header("Cartoon")]
     [SerializeField] GameObject CartoonChoose;
@@ -41,6 +42,8 @@ public class LibraryManager : MonoBehaviour
     {
         WaxText.text = Format(StatusManager.Instance.BeeWax);
         HoneyText.text = Format(StatusManager.Instance.Honey);
+        Locked[0].gameObject.SetActive(!StatusManager.Instance.bookAble);
+        Locked[1].gameObject.SetActive(!StatusManager.Instance.bookAble);
 
         SetScrollRect();
         SetButtonSize();
