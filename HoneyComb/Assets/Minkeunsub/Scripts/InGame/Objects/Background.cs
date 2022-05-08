@@ -8,14 +8,10 @@ public class Background : MonoBehaviour
     float start, end, moveSpeed;
     InGameManager manager;
 
-    void Update()
+    private void Update()
     {
         moveSpeed = manager.objectMoveSpeed;
-    }
-
-    private void FixedUpdate()
-    {
-        if(transform.position.y < end)
+        if (transform.position.y <= end)
         {
             transform.position = new Vector3(0, start, 0);
         }
