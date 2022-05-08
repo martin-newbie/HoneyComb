@@ -184,8 +184,7 @@ public class GameOver : MonoBehaviour
 
     public void ReviveSkipButton()
     {
-        if (state == 1)
-            waitTime = 0f;
+        waitTime = 0f;
     }
 
     public void ReviveAdWatch()
