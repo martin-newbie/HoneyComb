@@ -15,6 +15,7 @@ public class ButtonPop : MonoBehaviour
 
     public void ButtonAnim()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         anim.SetTrigger("Trigger_1");
     }
 }

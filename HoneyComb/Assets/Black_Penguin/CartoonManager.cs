@@ -121,6 +121,7 @@ public class CartoonManager : Singleton<CartoonManager>
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
+                        SoundManager.Instance.PlaySound("Button_Click");
                         cartoon.forcingQuit = true;
                         break;
                     }
