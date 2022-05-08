@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     {
         isInvincible = true;
         Hp -= InGameManager.Instance.damage;
+        SoundManager.Instance.PlaySound("Hit");
         InGameManager.Instance.CameraShake(0.3f);
         yield return new WaitForSeconds(invincibleDelay);
         isInvincible = false;

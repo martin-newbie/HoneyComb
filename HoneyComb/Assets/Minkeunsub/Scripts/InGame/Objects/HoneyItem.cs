@@ -48,6 +48,7 @@ public class HoneyItem : ItemBase
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySound("Button_Click2");
             Honey.SetActive(false);
             InGameManager.Instance.roundHoney += value;
         }

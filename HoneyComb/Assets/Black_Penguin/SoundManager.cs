@@ -10,13 +10,12 @@ public enum SoundType
 
 public class SoundManager : Singleton<SoundManager>
 {
-    Dictionary<SoundType, AudioSource> audioSources;
-    Dictionary<string, AudioClip> audioClips;
-    private Dictionary<SoundType, float> audioVolume;
+    Dictionary<SoundType, AudioSource> audioSources = new Dictionary<SoundType, AudioSource>();
+    Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
+    private Dictionary<SoundType, float> audioVolume = new Dictionary<SoundType, float>();
     private void Awake()
     {
-
-        audioVolume[SoundType.SE] = 0.5f;
+        DontDestroyOnLoad(this.gameObject);
         //리소스 폴더안 Sounds폴더안에 오디오클립들을 모은다
         AudioClip[] clips = Resources.LoadAll<AudioClip>("Sounds/");
         foreach (AudioClip clip in clips)
@@ -25,13 +24,13 @@ public class SoundManager : Singleton<SoundManager>
         //오디오 소스 생성후 사운드매니저에 상속
         GameObject BgmObj = new GameObject();
         audioSources[SoundType.BGM] = BgmObj.AddComponent<AudioSource>();
-        BgmObj.transform.parent = this.gameObject.transform;
+        BgmObj.transform.parent = transform;
         audioSources[SoundType.BGM].loop = true;
         audioVolume[SoundType.BGM] = 0.5f;
 
         GameObject SeObj = new GameObject();
         audioSources[SoundType.SE] = SeObj.AddComponent<AudioSource>();
-        SeObj.transform.parent = this.gameObject.transform;
+        SeObj.transform.parent = transform;
         audioVolume[SoundType.SE] = 0.5f;
     }
     public void PlaySound(string ClipName, SoundType type = SoundType.SE, float Volume = 1, float Pitch = 1)
@@ -50,5 +49,17 @@ public class SoundManager : Singleton<SoundManager>
                 break;
         }
     }
-
+    private void OnLevelWasLoaded(int level)
+    {
+        switch (level)
+        {
+            case 2:
+                PlaySound("Ingame", SoundType.BGM);
+                break;
+            default:
+                if (audioSources[SoundType.BGM].clip != audioClips["Title"])
+                    PlaySound("Title", SoundType.BGM);
+                break;
+        }
+    }
 }
