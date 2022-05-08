@@ -8,6 +8,7 @@ public class HoneyItem : ItemBase
     [SerializeField] List<SpriteRenderer> Flowers = new List<SpriteRenderer>();
     [SerializeField] GameObject Honey;
     InGameManager manager;
+    bool collectAble;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class HoneyItem : ItemBase
         Flowers[kind].gameObject.SetActive(true);
         transform.position = position;
         Honey.SetActive(true);
-
+        collectAble = true;
     }
 
     void Push()
@@ -46,11 +47,12 @@ public class HoneyItem : ItemBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && collectAble)
         {
             Honey.SetActive(false);
             InGameManager.Instance.roundHoney += value;
             InGameManager.Instance.Player.GetHoney();
+            collectAble = false;
         }
     }
 
