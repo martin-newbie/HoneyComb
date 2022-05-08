@@ -12,9 +12,9 @@ public class GameOver : MonoBehaviour
     [SerializeField] Color[] TextColors = new Color[16];
 
     [Header("State")]
-    public float maxWait = 15f;
+    public int maxWait = 15;
     int state = 0; //0: revive?, 2: result ( 0 -> 1 -> 2 )
-    float waitTime;
+    int waitTime;
 
     [Header("Revive Objects")]
     [SerializeField] GameObject reviveObj;
@@ -99,21 +99,21 @@ public class GameOver : MonoBehaviour
     IEnumerator ReviveCoroutine()
     {
 
-        int time = 15;
-        reviveTime.text = time.ToString();
-        reviveTime.color = TextColors[15 - time];
-        while (time > 0)
+        waitTime = maxWait;
+        reviveTime.text = waitTime.ToString();
+        reviveTime.color = TextColors[15 - waitTime];
+        while (waitTime > 0)
         {
-            int dir = time % 2 == 0 ? 1 : -1;
+            int dir = waitTime % 2 == 0 ? 1 : -1;
             reviveTime.transform.DORotate(new Vector3(0, 0, 30f * dir), 0.3f);
             reviveTime.transform.DOScale(2f, 0.3f).OnComplete(() =>
             {
                 reviveTime.transform.DOScale(1f, 0.05f);
                 reviveTime.transform.DORotate(Vector3.zero, 0.05f).OnComplete(() =>
                 {
-                    time--;
-                    reviveTime.text = time.ToString();
-                    reviveTime.color = TextColors[15 - time];
+                    waitTime--;
+                    reviveTime.text = waitTime.ToString();
+                    reviveTime.color = TextColors[15 - waitTime];
                 });
             });
 
@@ -184,7 +184,7 @@ public class GameOver : MonoBehaviour
 
     public void ReviveSkipButton()
     {
-        waitTime = 0f;
+        waitTime = 0;
     }
 
     public void ReviveAdWatch()
