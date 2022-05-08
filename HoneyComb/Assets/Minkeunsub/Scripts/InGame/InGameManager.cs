@@ -32,6 +32,11 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] int ableBookIdx; //StatusManager의 BookUnlocked에서 해제될 수 있는 인덱스
     [SerializeField] int bookSpawnIdx; //책이 스폰될 꽃의 인덱스
 
+    [Header("Background")]
+    [SerializeField] Background BackgroundPrefab;
+    float height;
+    List<Background> backgrounds = new List<Background>();
+
     void Start()
     {
         PoolInit(20);
@@ -40,6 +45,30 @@ public class InGameManager : Singleton<InGameManager>
         FlowerTime = FlowerSpawnTxt.text.Split('\n').ToList();
         SetBookAble();
         StartCoroutine(SpawnCoroutine(0.5f));
+
+        height = Camera.main.orthographicSize;
+
+        for (int i = 0; i < 2; i++)
+        {
+            Background temp = Instantiate(BackgroundPrefab);
+            temp.Init(height * 2f, -height * 2f, this);
+            temp.transform.position = new Vector3(0, (-height * 2f) + (i * height * 2), 0);
+            temp.transform.localScale = SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
+            backgrounds.Add(temp);
+        }
+    }
+
+    Vector2 SetSpriteCameraSize(SpriteRenderer SR)
+    {
+        float X = SR.bounds.size.x;
+        float Y = SR.bounds.size.y;
+
+        float screenY = Camera.main.orthographicSize * 2;
+        float screenX = screenY / Screen.height * Screen.width;
+
+        Vector2 Scale = new Vector2(screenX / X,screenY / Y);
+        SR.transform.localScale = Scale;
+        return Scale;
     }
 
     void SetBookAble()

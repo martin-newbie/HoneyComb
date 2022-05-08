@@ -29,6 +29,7 @@ public class BookChoose : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     void InitBooks()
