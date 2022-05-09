@@ -3275,7 +3275,7 @@ MonoBehaviour:
   BeeUpgradeBG: {fileID: 1804958252}
   CurHoneyValue: {fileID: 1350209328}
   CurWaxValue: {fileID: 169275443}
-  RoomCost: 250
+  RoomCost: 500
   BeeCost: 1000
   BeeLocked: {fileID: 2068431227}
   RoomLocked: {fileID: 729693195}
