@@ -93,6 +93,7 @@ public class StatusManager : Singleton<StatusManager>
         QuestClearActions.Add(() => { SceneUnlock[1] = true; });
         QuestClearActions.Add(() => { roomUpgradeAble = true; });
         QuestClearActions.Add(() => { SceneUnlock[2] = true; });
+        QuestClearActions.Add(() => { bookAble = true; });
     }
 
     private void Start()
