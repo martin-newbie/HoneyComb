@@ -93,6 +93,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
 
     public void Back()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         StartCoroutine(SceneMove("TitleScene"));
     }
 
@@ -100,6 +101,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     {
         if (StatusManager.Instance.roomUpgradeAble)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             RoomUpgradeWindow.SetActive(true);
             RoomUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
             RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
@@ -107,35 +109,41 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //you must clear the quest first
         }
     }
 
     public void RoomClose()
     {
-        RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(-2960f, 0.5f).SetEase(Ease.InBack).OnComplete(()=> {
+        SoundManager.Instance.PlaySound("Button_Click");
+        RoomUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(-2960f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
             RoomUpgradeWindow.SetActive(false);
         });
     }
 
     public void RoomUpgradeConfirm()
     {
-        if(StatusManager.Instance.BeeWax >= RoomCost)
+        if (StatusManager.Instance.BeeWax >= RoomCost)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             StatusManager.Instance.BeeWax -= RoomCost;
             StatusManager.Instance.Room++;
             RoomClose();
         }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //not enought wax remain
         }
     }
 
     public void BeeUpgrade()
     {
-        if(StatusManager.Instance.beeUpgradeAble)
+        if (StatusManager.Instance.beeUpgradeAble)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             BeeUpgradeWindow.SetActive(true);
             BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
             BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
@@ -143,12 +151,14 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //you must clear the quest first
         }
     }
 
     public void BeeClose()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         BeeUpgradeBG.GetComponent<RectTransform>().DOAnchorPosY(-2960f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
             BeeUpgradeWindow.SetActive(false);
@@ -157,21 +167,24 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
 
     public void BeeUpgradeConfirm()
     {
-        if(StatusManager.Instance.Honey >= BeeCost)
+        if (StatusManager.Instance.Honey >= BeeCost)
         {
-            if(StatusManager.Instance.MaxBee < StatusManager.Instance.Room)
+            if (StatusManager.Instance.MaxBee < StatusManager.Instance.Room)
             {
+                SoundManager.Instance.PlaySound("Button_Click");
                 StatusManager.Instance.Honey -= BeeCost;
                 StatusManager.Instance.MaxBee++;
                 BeeClose();
             }
             else
             {
+                SoundManager.Instance.PlaySound("Button_Click_Fail");
                 //not enought room remain
             }
         }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //not enought honey remain
         }
     }

@@ -114,9 +114,13 @@ public class TitleManager : Singleton<TitleManager>
     public void RoyalSceneMove()
     {
         if (StatusManager.Instance.SceneUnlock[0])
+        {
+            SoundManager.Instance.PlaySound("Button_Click");
             StartCoroutine(SceneMove("RoyalScene"));
+        }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //you must clear the quest first
         }
     }
@@ -124,9 +128,13 @@ public class TitleManager : Singleton<TitleManager>
     public void LabSceneMove()
     {
         if (StatusManager.Instance.SceneUnlock[1])
+        {
+            SoundManager.Instance.PlaySound("Button_Click");
             StartCoroutine(SceneMove("LabScene"));
+        }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //you must clear the quest first
         }
     }
@@ -134,9 +142,14 @@ public class TitleManager : Singleton<TitleManager>
     public void LibrarySceneMove()
     {
         if (StatusManager.Instance.SceneUnlock[2])
+        {
+            SoundManager.Instance.PlaySound("Button_Click");
             StartCoroutine(SceneMove("LibraryScene"));
+        }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
+
             //you must clear the quest first
         }
     }

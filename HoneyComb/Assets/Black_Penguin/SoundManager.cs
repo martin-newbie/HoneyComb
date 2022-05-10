@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
@@ -15,7 +16,9 @@ public class SoundManager : Singleton<SoundManager>
     private Dictionary<SoundType, float> audioVolume = new Dictionary<SoundType, float>();
     private void Awake()
     {
+        SceneManager.sceneLoaded += whenSceneLoad;
         DontDestroyOnLoad(this.gameObject);
+        
         //리소스 폴더안 Sounds폴더안에 오디오클립들을 모은다
         AudioClip[] clips = Resources.LoadAll<AudioClip>("Sounds/");
         foreach (AudioClip clip in clips)
@@ -49,11 +52,12 @@ public class SoundManager : Singleton<SoundManager>
                 break;
         }
     }
-    private void OnLevelWasLoaded(int level)
+    private void whenSceneLoad(Scene level,LoadSceneMode mode)
     {
-        switch (level)
+        //씬이 불러와질때 어떤씬이냐에 따라 배경음악을 전환한다
+        switch (level.name)
         {
-            case 2:
+            case "InGameScene":
                 PlaySound("Ingame", SoundType.BGM);
                 break;
             default:
