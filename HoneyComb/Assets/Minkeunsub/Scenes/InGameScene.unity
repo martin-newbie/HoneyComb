@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 43778894}
   - component: {fileID: 43778895}
   - component: {fileID: 43778896}
+  - component: {fileID: 43778897}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,7 +227,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.82, y: 4.14}
+    oldSize: {x: 4.5, y: 4.5}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -274,6 +275,25 @@ MonoBehaviour:
   invincibleDelay: 0.15
   isInvincible: 0
   HoneyParticle: {fileID: 831758151}
+--- !u!95 &43778897
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43778891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34abc2559a2411446807269e7cf662c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &81545621
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,7 +72,8 @@ public class StatusManager : Singleton<StatusManager>
         }
 
 
-        CurQuest = QuestsList[CurQuestIdx];
+        if (CurQuestIdx < QuestsList.Count)
+            CurQuest = QuestsList[CurQuestIdx];
     }
 
     private void Awake()
@@ -93,6 +94,7 @@ public class StatusManager : Singleton<StatusManager>
         QuestClearActions.Add(() => { SceneUnlock[1] = true; });
         QuestClearActions.Add(() => { roomUpgradeAble = true; });
         QuestClearActions.Add(() => { SceneUnlock[2] = true; });
+        QuestClearActions.Add(() => { bookAble = true; });
     }
 
     private void Start()
