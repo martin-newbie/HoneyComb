@@ -72,7 +72,8 @@ public class StatusManager : Singleton<StatusManager>
         }
 
 
-        CurQuest = QuestsList[CurQuestIdx];
+        if (CurQuestIdx < QuestsList.Count)
+            CurQuest = QuestsList[CurQuestIdx];
     }
 
     private void Awake()

@@ -69,6 +69,7 @@ public abstract class NpcBase : MonoBehaviour
             }
             else thisQuest = null;
         }
+        else thisQuest = null;
 
         anim.SetTrigger("Default");
     }
