@@ -97,16 +97,20 @@ public class TitleManager : Singleton<TitleManager>
         {
             if (StatusManager.Instance.CurBee > 0)
             {
+
+            SoundManager.Instance.PlaySound("Button_Click");
                 StatusManager.Instance.CurBee--;
                 StartCoroutine(SceneMove("InGameScene"));
             }
             else
             {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
                 //bee is not able now
             }
         }
         else
         {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
             //you must clear the quest first
         }
     }
