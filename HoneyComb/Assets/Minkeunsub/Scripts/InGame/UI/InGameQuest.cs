@@ -8,6 +8,7 @@ public class InGameQuest : MonoBehaviour
 {
 
     RectTransform rt;
+    bool questAble;
     public QuestData thisQuest;
 
     [Header("Quests")]
@@ -21,14 +22,17 @@ public class InGameQuest : MonoBehaviour
 
         if (StatusManager.Instance.CurQuest != null)
         {
+            questAble = true;
             InitQuest(StatusManager.Instance.CurQuest);
             UIInit();
         }
+        else questAble = false;
     }
 
     void Update()
     {
-        SetQuestValue();
+        if (questAble)
+            SetQuestValue();
     }
 
     void InitQuest(QuestData data)
@@ -50,7 +54,8 @@ public class InGameQuest : MonoBehaviour
 
     public void UIon()
     {
-        questObj.DOAnchorPosX(-250f, 0.5f).SetEase(Ease.OutBack);
+        if (questAble)
+            questObj.DOAnchorPosX(-250f, 0.5f).SetEase(Ease.OutBack);
     }
 
     public void UIoff()
