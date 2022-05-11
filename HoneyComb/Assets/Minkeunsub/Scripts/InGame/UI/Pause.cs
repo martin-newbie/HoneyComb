@@ -14,14 +14,16 @@ public class Pause : MonoBehaviour
 
     public void Resume()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         InGameUI.Instance.SetResumeTime();
         gameObject.SetActive(false);
     }
 
     public void Replay()
     {
-        if(StatusManager.Instance.CurBee > 0)
+        if (StatusManager.Instance.CurBee > 0)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             SaveData();
             Time.timeScale = 1f;
             SceneManager.LoadScene("InGameScene");
@@ -31,7 +33,9 @@ public class Pause : MonoBehaviour
 
     public void Title()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         SaveData();
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScene");
     }

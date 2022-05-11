@@ -78,20 +78,25 @@ public class GameOver : MonoBehaviour
     {
         if (StatusManager.Instance.CurBee > 0)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             StatusManager.Instance.CurBee--;
             SceneManager.LoadScene("InGameScene");
             InGameManager.Instance.SaveDataToManager();
         }
+        else
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
     }
 
     public void ResultTitle()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         SceneManager.LoadScene("TitleScene");
         InGameManager.Instance.SaveDataToManager();
     }
 
     void StateRevive()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         StartCoroutine(ReviveCoroutine());
         state = 1;
     }
@@ -184,6 +189,7 @@ public class GameOver : MonoBehaviour
 
     public void ReviveSkipButton()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         waitTime = 0;
     }
 
@@ -197,9 +203,12 @@ public class GameOver : MonoBehaviour
     {
         if (StatusManager.Instance.Honey >= 700)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             StatusManager.Instance.Honey -= 700;
             Revive();
         }
+        else
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
     }
 
     void Revive()

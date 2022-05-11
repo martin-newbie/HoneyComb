@@ -50,6 +50,7 @@ public class InGameUI : Singleton<InGameUI>
 
     public void PauseOn()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         pauseUI.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -65,10 +66,12 @@ public class InGameUI : Singleton<InGameUI>
 
         for (int i = 3; i > 0; i--)
         {
+            SoundManager.Instance.PlaySound("count");
             ResumeTimeTxt.text = i.ToString();
             yield return new WaitForSecondsRealtime(1f);
         }
         ResumeTimeTxt.text = "START";
+            SoundManager.Instance.PlaySound("Start");
         yield return new WaitForSecondsRealtime(1f);
         ResumeTimeContainer.SetActive(false);
         Time.timeScale = 1f;
@@ -82,6 +85,7 @@ public class InGameUI : Singleton<InGameUI>
 
     public void GameOverUIOn(float distance, int honey)
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         gameOver.gameObject.SetActive(true);
         gameOver.Init(distance, honey);
     }
@@ -93,6 +97,8 @@ public class InGameUI : Singleton<InGameUI>
 
     public void GetBookEffect(Book bookData, Vector3 startPos)
     {
+        SoundManager.Instance.PlaySound("EarnBook");
+
         BookName.text = "";
         string bookName = bookData.Init().BookName;
 
