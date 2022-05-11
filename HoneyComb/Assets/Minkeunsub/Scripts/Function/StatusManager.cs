@@ -179,6 +179,7 @@ public class StatusManager : Singleton<StatusManager>
         curWaxDelay = dataSave.curWaxDelay;
         CurQuestIdx = dataSave.CurQuestIdx;
         SceneUnlock = dataSave.SceneUnlock;
+        bookAble = dataSave.bookAble;
         gamePlayAble = dataSave.gamePlayAble;
         beeUpgradeAble = dataSave.beeUpgradeAble;
         roomUpgradeAble = dataSave.roomUpgradeAble;
@@ -197,6 +198,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.curWaxDelay = curWaxDelay;
         dataSave.CurQuestIdx = CurQuestIdx;
         dataSave.SceneUnlock = SceneUnlock;
+        dataSave.bookAble = bookAble;
         dataSave.gamePlayAble = gamePlayAble;
         dataSave.beeUpgradeAble = beeUpgradeAble;
         dataSave.roomUpgradeAble = roomUpgradeAble;
@@ -267,6 +269,7 @@ public class StatusSave
     public int CurQuestIdx;
     public float curWaxDelay;
     public bool[] SceneUnlock = new bool[3];
+    public bool bookAble;
     public bool gamePlayAble;
     public bool beeUpgradeAble;
     public bool roomUpgradeAble;
