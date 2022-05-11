@@ -29,7 +29,7 @@ public abstract class NpcBase : MonoBehaviour
     public bool QuestAble;
     public NpcState npcState;
     public string path;
-    public QuestData thisQuest;
+    [HideInInspector] public QuestData thisQuest;
     public QuestNpcState thisQuestState;
 
     [Header("UI Objects")]
