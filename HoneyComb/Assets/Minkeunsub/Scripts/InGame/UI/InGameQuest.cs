@@ -20,7 +20,7 @@ public class InGameQuest : MonoBehaviour
     {
         rt = GetComponent<RectTransform>();
 
-        if (StatusManager.Instance.CurQuest != null)
+        if (StatusManager.Instance.CurQuest != null && StatusManager.Instance.CurQuest.QuestActive)
         {
             questAble = true;
             InitQuest(StatusManager.Instance.CurQuest);

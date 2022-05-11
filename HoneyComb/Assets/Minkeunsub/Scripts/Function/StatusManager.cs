@@ -38,6 +38,7 @@ public class StatusManager : Singleton<StatusManager>
 
     [Header("Quest")]
     public int CurQuestIdx;
+    [HideInInspector]
     public QuestData CurQuest; // == head
     public List<QuestData> QuestsList = new List<QuestData>();
     public QuestDataSave QuestSaveList = new QuestDataSave();
