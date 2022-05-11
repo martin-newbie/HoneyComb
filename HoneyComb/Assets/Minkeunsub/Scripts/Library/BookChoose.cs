@@ -48,6 +48,7 @@ public class BookChoose : MonoBehaviour
 
     public void OpenDetail(Book _book)
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         DetailObject.SetActive(true);
         DetailName.text = _book.BookName;
         DetailDesc.text = _book.BookDesc2;
@@ -56,17 +57,20 @@ public class BookChoose : MonoBehaviour
 
     public void CloseDetail()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         DetailObject.SetActive(false);
     }
 
     public void UIon()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         BG.anchoredPosition = new Vector2(1500, 0);
         BG.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutBack);
     }
 
     public void UIoff()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         BG.DOAnchorPosX(1500f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
             gameObject.SetActive(false);

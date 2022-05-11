@@ -35,6 +35,7 @@ public class BookButton : MonoBehaviour
 
     public void OnButtonClick()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         manager.OpenDetail(thisBook);
     }
 }

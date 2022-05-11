@@ -60,9 +60,12 @@ public class LibraryManager : MonoBehaviour
 
         if (StatusManager.Instance.bookAble)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             bookChoose.gameObject.SetActive(true);
             bookChoose.UIon();
         }
+        else
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
     }
 
     void SetButtonSize()
@@ -78,6 +81,7 @@ public class LibraryManager : MonoBehaviour
 
     public void Back()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         StartCoroutine(SceneMove("TitleScene"));
     }
 
@@ -141,6 +145,7 @@ public class LibraryManager : MonoBehaviour
 
     void OnClickEvent(int idx)
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         CartoonManager.Instance.CartoonStartFunction(idx, null);
     }
 
@@ -154,11 +159,17 @@ public class LibraryManager : MonoBehaviour
     public void OpenCartoon()
     {
         if (StatusManager.Instance.bookAble)
+        {
+            SoundManager.Instance.PlaySound("Button_Click");
             CartoonChoose.SetActive(true);
+        }
+        else
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
     }
 
     public void CloseCartoon()
     {
+        SoundManager.Instance.PlaySound("Button_Click");
         CartoonChoose.SetActive(false);
     }
 }
