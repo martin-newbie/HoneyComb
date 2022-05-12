@@ -118,7 +118,7 @@ public class InGameUI : Singleton<InGameUI>
             BookImg.DOMoveY(BookTarget.transform.position.y, 0.5f).SetEase(Ease.InBack);
             BookImg.DOMoveX(BookTarget.transform.position.x, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
             {
-                BookContainer.GetComponent<Image>().sprite = BookSprite;
+                BookContainer.GetComponentsInChildren<Image>()[1].sprite = BookSprite;
                 BookName.text = bookName;
                 BookImg.gameObject.SetActive(false);
                 BookContainer.DOAnchorPosX(775f, 0.5f).SetEase(Ease.InBack).SetDelay(2f);

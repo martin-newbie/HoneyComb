@@ -120,7 +120,7 @@ public class InGameManager : Singleton<InGameManager>
     public void Revive()
     {
         Player.isGameOver = false;
-        Player.Hp = Player.MaxHp;
+        Player.Hp = Player.MaxHp / 3;
 
         StartCoroutine(ReviveSpeedUp(2f));
     }

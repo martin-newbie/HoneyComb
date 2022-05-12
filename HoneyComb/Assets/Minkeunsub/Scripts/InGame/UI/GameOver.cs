@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour
 
     [Header("State")]
     public int maxWait = 15;
-    int state = 0; //0: revive?, 2: result ( 0 -> 1 -> 2 )
+    [SerializeField] int state = 0; //0: revive, 2: result ( 0 -> 1 -> 2 )
     int waitTime;
 
     [Header("Revive Objects")]
@@ -32,6 +32,8 @@ public class GameOver : MonoBehaviour
     float distance;
     int honey;
     bool already;
+
+    Coroutine activeCoroutine;
 
     public void Init(float _distance, int _honey)
     {
@@ -55,8 +57,8 @@ public class GameOver : MonoBehaviour
                     StateRevive();
                 else
                 {
-                    state = 1;
                     StartCoroutine(ReviveToReulst(0.5f));
+                    state = 1;
                 }
                 break;
             case 1:
@@ -97,7 +99,7 @@ public class GameOver : MonoBehaviour
     void StateRevive()
     {
         SoundManager.Instance.PlaySound("Button_Click");
-        StartCoroutine(ReviveCoroutine());
+        activeCoroutine = StartCoroutine(ReviveCoroutine());
         state = 1;
     }
 
@@ -214,7 +216,10 @@ public class GameOver : MonoBehaviour
     void Revive()
     {
         already = true;
+        state = 0;
+        waitTime = maxWait;
         InGameManager.Instance.Revive();
+        StopCoroutine(activeCoroutine);
         gameObject.SetActive(false);
     }
 }
