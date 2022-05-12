@@ -146,11 +146,13 @@ public class LibraryManager : MonoBehaviour
     void OnClickEvent(int idx)
     {
         SoundManager.Instance.PlaySound("Button_Click");
+        SoundManager.Instance.PlaySound("PageFlip");
         CartoonManager.Instance.CartoonStartFunction(idx, null);
     }
 
     public void SetScrollIdx(int idx)
     {
+        SoundManager.Instance.PlaySound("PageFlip",SoundType.SE,2,1.5f);
         curIdx += idx;
         if (curIdx == maxIdx - 1) curIdx = 0;
         else if (curIdx < 0) curIdx = maxIdx - 1;

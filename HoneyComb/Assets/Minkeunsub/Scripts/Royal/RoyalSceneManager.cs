@@ -128,6 +128,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         if (StatusManager.Instance.BeeWax >= RoomCost)
         {
             SoundManager.Instance.PlaySound("Button_Click");
+            SoundManager.Instance.PlaySound("Build");
             StatusManager.Instance.BeeWax -= RoomCost;
             StatusManager.Instance.Room++;
             RoomClose();
@@ -143,6 +144,7 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     {
         if (StatusManager.Instance.beeUpgradeAble)
         {
+            SoundManager.Instance.PlaySound("beebuzz");
             SoundManager.Instance.PlaySound("Button_Click");
             BeeUpgradeWindow.SetActive(true);
             BeeUpgradeBG.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2960f);
