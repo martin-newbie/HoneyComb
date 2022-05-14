@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315a5ad410f55054d8b65edd1b339f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   dataSave:
     Room: 0
     MaxBee: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
     CurQuestIdx: 0
     curWaxDelay: 0
     SceneUnlock: 000000
+    bookAble: 0
     gamePlayAble: 0
     beeUpgradeAble: 0
     roomUpgradeAble: 0
