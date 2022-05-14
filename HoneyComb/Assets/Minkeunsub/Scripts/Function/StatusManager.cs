@@ -249,10 +249,15 @@ public class StatusManager : Singleton<StatusManager>
         PlayerPrefs.SetString(questSaveName, jsonSave);
     }
 
-    private void OnApplicationQuit()
+    public void DataSave()
     {
         SaveData();
         SaveQuestData();
+    }
+
+    private void OnApplicationQuit()
+    {
+        DataSave();
         SaveBeeTime();
     }
 }

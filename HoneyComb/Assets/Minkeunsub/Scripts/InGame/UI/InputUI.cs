@@ -11,6 +11,7 @@ public class InputUI : MonoBehaviour
     [SerializeField] Vector3 currentSwipe;
 
     [SerializeField] bool isTouching = false;
+    Coroutine nowCoroutine;
 
     private void Update()
     {
@@ -25,25 +26,33 @@ public class InputUI : MonoBehaviour
             if (Input.GetMouseButton(0) && isTouching)
             {
                 firstPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
-            if (Input.GetMouseButtonUp(0) && isTouching)
-            {
-                secondPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                currentSwipe = secondPressPos - firstPressPos;
-                currentSwipe.Normalize();
-
-                if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-                {
-                    InGameManager.Instance.SetPlayerPos(-1);
-                    //swipe left
-                }
-                if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-                {
-                    InGameManager.Instance.SetPlayerPos(1);
-                    //swipe right
-                }
+                nowCoroutine = StartCoroutine(SwipeCoroutine());
                 isTouching = false;
             }
+            if(Input.GetMouseButtonUp(0) && !isTouching)
+            {
+                StopCoroutine(nowCoroutine);
+                isTouching = true;
+            }
+        }
+    }
+
+    IEnumerator SwipeCoroutine()
+    {
+        yield return new WaitForSeconds(0.05f);
+        secondPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        currentSwipe = secondPressPos - firstPressPos;
+        currentSwipe.Normalize();
+
+        if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+        {
+            InGameManager.Instance.SetPlayerPos(-1);
+            //swipe left
+        }
+        if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+        {
+            InGameManager.Instance.SetPlayerPos(1);
+            //swipe right
         }
     }
 
@@ -54,5 +63,6 @@ public class InputUI : MonoBehaviour
 
     public void OnEndDrag()
     {
+        isTouching = false;
     }
 }
