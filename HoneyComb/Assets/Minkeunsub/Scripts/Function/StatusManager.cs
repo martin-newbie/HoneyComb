@@ -216,8 +216,8 @@ public class StatusManager : Singleton<StatusManager>
 
     void LoadBeeTime()
     {
-        string timeStr = PlayerPrefs.GetString(timeSaveName, "");
-        if (timeStr != "")
+        string timeStr = PlayerPrefs.GetString(timeSaveName, "none");
+        if (timeStr != "none")
         {
             DateTime endTime = Convert.ToDateTime(timeStr);
 
@@ -255,10 +255,17 @@ public class StatusManager : Singleton<StatusManager>
         SaveQuestData();
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationPause(bool pause)
     {
-        DataSave();
-        SaveBeeTime();
+        if(pause)
+        {
+            DataSave();
+            SaveBeeTime();
+        }
+        else
+        {
+            LoadBeeTime();
+        }
     }
 }
 
