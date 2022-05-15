@@ -155,7 +155,7 @@ public class LibraryManager : MonoBehaviour
         SoundManager.Instance.PlaySound("PageFlip",SoundType.SE,2,1.5f);
         curIdx += idx;
         if (curIdx == maxIdx - 1) curIdx = 0;
-        else if (curIdx < 0) curIdx = maxIdx - 1;
+        else if (curIdx < 0) curIdx = maxIdx - 2;
     }
 
     public void OpenCartoon()
