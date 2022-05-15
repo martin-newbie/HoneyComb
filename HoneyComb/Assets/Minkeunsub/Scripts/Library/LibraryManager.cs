@@ -35,7 +35,7 @@ public class LibraryManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn(1f));
-        InitScroll(count);
+        InitScroll(CartoonManager.Instance.cartoons.Count);
     }
 
     void Update()
@@ -125,7 +125,7 @@ public class LibraryManager : MonoBehaviour
 
     void InitScroll(int n)
     {
-        //button.GetComponent<Image>().sprite = ButtonSprites[0];
+        button.GetComponent<Image>().sprite = ButtonSprites[0];
         button.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(0); });
         buttonList.Add(button);
 
