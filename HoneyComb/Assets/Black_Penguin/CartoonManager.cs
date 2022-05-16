@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System;
+using Random = UnityEngine.Random;
 
-
-[System.Serializable]
+[Serializable]
 public class Cartoon
 {
     public Image image;
@@ -18,10 +19,10 @@ public class Cartoon
     public bool isFade;
     public bool isScaleFade;
 
-    public System.Action<IEnumerator> actionQueue;
+    public Action<IEnumerator> actionQueue;
     public bool forcingQuit;
 }
-[System.Serializable]
+[Serializable]
 public class CartoonArray
 {
     public List<Cartoon> cartoons;
@@ -30,7 +31,7 @@ public class CartoonArray
 public class CartoonManager : Singleton<CartoonManager>
 {
     //근섭선배가 넣어야할 함수
-    public System.Action Func;
+    public Action Func;
 
     public List<CartoonArray> cartoons;
     public Text pressPleaseText;
@@ -74,7 +75,7 @@ public class CartoonManager : Singleton<CartoonManager>
     {
         CartoonStartFunction(0, null);
     }
-    public void CartoonStartFunction(int cartoonNum, System.Action action)
+    public void CartoonStartFunction(int cartoonNum, Action action)
     {
         if (cartoonNum == 0)
         {
@@ -168,7 +169,7 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     public IEnumerator ImageFadeBlack(Image cartoon)
     {
-        cartoon.color = new Color(1, 1, 1, 1);
+        cartoon.color = new Color(1, 1, 1, 1);//Color.White; 
         while (cartoon.color.a > 0.01f)
         {
             cartoon.color = Color.Lerp(cartoon.color, Color.clear, Time.deltaTime);
