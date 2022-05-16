@@ -326,6 +326,7 @@ MonoBehaviour:
     CurQuestIdx: 0
     curWaxDelay: 0
     SceneUnlock: 000000
+    bookAble: 0
     gamePlayAble: 0
     beeUpgradeAble: 0
     roomUpgradeAble: 0

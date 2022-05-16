@@ -35,7 +35,7 @@ public class LibraryManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn(1f));
-        InitScroll(count);
+        InitScroll(CartoonManager.Instance.cartoons.Count);
     }
 
     void Update()
@@ -125,7 +125,7 @@ public class LibraryManager : MonoBehaviour
 
     void InitScroll(int n)
     {
-        //button.GetComponent<Image>().sprite = ButtonSprites[0];
+        button.GetComponent<Image>().sprite = ButtonSprites[0];
         button.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(0); });
         buttonList.Add(button);
 
@@ -155,7 +155,7 @@ public class LibraryManager : MonoBehaviour
         SoundManager.Instance.PlaySound("PageFlip",SoundType.SE,2,1.5f);
         curIdx += idx;
         if (curIdx == maxIdx - 1) curIdx = 0;
-        else if (curIdx < 0) curIdx = maxIdx - 1;
+        else if (curIdx < 0) curIdx = maxIdx - 2;
     }
 
     public void OpenCartoon()

@@ -38,6 +38,36 @@ public class TitleManager : Singleton<TitleManager>
         GameLock.gameObject.SetActive(!StatusManager.Instance.gamePlayAble);
     }
 
+
+    int cheatCount = 0;
+    public void Cheat()
+    {
+        if (cheatCount < 5) cheatCount++;
+        else if(StatusManager.Instance.isQuestAble)
+        {
+            switch (StatusManager.Instance.CurQuestIdx)
+            {
+                case 0:
+                    StatusManager.Instance.Honey += 500;
+                    break;
+                case 1:
+                    StatusManager.Instance.MaxBee += 5;
+                    break;
+                case 2:
+                    StatusManager.Instance.BeeWax += 100;
+                    break;
+                case 3:
+                    StatusManager.Instance.Room += 15;
+                    break;
+                case 4:
+                    StatusManager.Instance.Honey += 5000;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     void SetTexts()
     {
         beewaxTxt.text = Format(StatusManager.Instance.BeeWax);
