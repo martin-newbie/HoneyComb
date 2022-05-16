@@ -99,7 +99,6 @@ public class CartoonManager : Singleton<CartoonManager>
     {
         StartCoroutine(CartoonStart(cartoons[cartoonNum]));
     }
-
     IEnumerator CartoonStart(CartoonArray funcCartoons)
     {
         foreach (Cartoon cartoon in funcCartoons.cartoons)
