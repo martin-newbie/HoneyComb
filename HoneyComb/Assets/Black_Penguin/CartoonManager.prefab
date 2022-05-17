@@ -488,126 +488,126 @@ MonoBehaviour:
       forcingQuit: 0
   - cartoons:
     - image: {fileID: 2088512420876062861}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 3255224134545744533}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5019877858011048462}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5983160172661799924}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8544055674781300602}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5395198984042032384}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5680332304540509887}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6565220252940630448}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8961378777033267853}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 3555720799366218561}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2799407434323449603}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2710272186538936879}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 1716399149881582573}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2138704567353023452}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 382128307000518894}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6914716549807302118}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 1869358986644055175}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6359498531757205214}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
@@ -615,119 +615,119 @@ MonoBehaviour:
       forcingQuit: 0
   - cartoons:
     - image: {fileID: 6248825806742160656}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 1613130555752984438}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2974758123296020229}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6796680783244358916}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 916982558934367205}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8153612777834770579}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 4418968682092921308}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5579633791597598095}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5845594751175107385}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 4571095767340076157}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 4371966575645108065}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 3994601364279130742}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 3861082643750475944}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 1665046943040426022}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6307203759270724476}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5086790195101376394}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 287926572044175316}
-      Duration: 5
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
@@ -735,126 +735,126 @@ MonoBehaviour:
       forcingQuit: 0
   - cartoons:
     - image: {fileID: 2484988201569939355}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 4418507245658867848}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2484988201569939355}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6235226839252930932}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2031376531822596990}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8810798640950891367}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 4725560771329520796}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5072615078536096506}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 3995850893954477100}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 337690845956391019}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 2226883160224406300}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6480150758203657908}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 5073505545875460792}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6874158804850147376}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6946195299571041129}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8887788619789364949}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 8501104857762732064}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
     - image: {fileID: 6598714341256076493}
-      Duration: 3
+      Duration: 1
       isShaking: 0
       shakingScale: 0
       isFade: 1
