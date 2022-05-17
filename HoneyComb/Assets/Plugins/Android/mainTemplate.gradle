@@ -10,6 +10,7 @@ constraints {
     FLAG_IMMUTABLE or FLAG_MUTABLE and will fail in Apps
     targeting S+.'''
 	}
+    }
 }
 
 android {
