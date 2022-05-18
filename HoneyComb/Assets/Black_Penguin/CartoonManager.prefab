@@ -748,13 +748,6 @@ MonoBehaviour:
       isFade: 1
       isScaleFade: 0
       forcingQuit: 0
-    - image: {fileID: 2484988201569939355}
-      Duration: 1
-      isShaking: 0
-      shakingScale: 0
-      isFade: 1
-      isScaleFade: 0
-      forcingQuit: 0
     - image: {fileID: 6235226839252930932}
       Duration: 1
       isShaking: 0
@@ -3280,6 +3273,14 @@ PrefabInstance:
     - target: {fileID: 4533839174784337047, guid: 37f07a890bc16e544964aa6e98ed1730, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924871179505790855, guid: 37f07a890bc16e544964aa6e98ed1730, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 7255.3125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924871179505790855, guid: 37f07a890bc16e544964aa6e98ed1730, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.100586
       objectReference: {fileID: 0}
     - target: {fileID: 5409300743111087939, guid: 37f07a890bc16e544964aa6e98ed1730, type: 3}
       propertyPath: m_IsActive

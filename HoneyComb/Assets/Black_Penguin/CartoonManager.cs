@@ -158,7 +158,7 @@ public class CartoonManager : Singleton<CartoonManager>
 
     public IEnumerator CartoonFade(Cartoon cartoon)
     {
-        cartoon.image.color = new Color(1, 1, 1, 0);
+        cartoon.image.color = new Color(1, 1, 1, 0) * cartoon.image.color;
         while (Mathf.Approximately(cartoon.image.color.a, 1) == false)
         {
             if (cartoon.forcingQuit) cartoon.image.color = Color.white;
