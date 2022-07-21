@@ -8,7 +8,6 @@ public class InputUI : MonoBehaviour
 
     [SerializeField] Vector2 firstPressPos;
     [SerializeField] Vector2 secondPressPos;
-    [SerializeField] Vector3 currentSwipe;
 
     [SerializeField] bool isTouching = false;
     Coroutine nowCoroutine;
@@ -41,15 +40,13 @@ public class InputUI : MonoBehaviour
     {
         yield return new WaitForSeconds(0.05f);
         secondPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        currentSwipe = secondPressPos - firstPressPos;
-        currentSwipe.Normalize();
 
-        if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+        if (firstPressPos.x >= secondPressPos.x)
         {
             InGameManager.Instance.SetPlayerPos(-1);
             //swipe left
         }
-        if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+        else
         {
             InGameManager.Instance.SetPlayerPos(1);
             //swipe right
