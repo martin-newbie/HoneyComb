@@ -100,7 +100,7 @@ public class StatusManager : Singleton<StatusManager>
 
     private void Start()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("TitleScene");
     }
 
     private void Update()
