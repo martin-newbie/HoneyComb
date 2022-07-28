@@ -54,6 +54,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
+    [Serializable]
     public class PlayableCharacterInfo
     {
         public EPlayableCharacter character;
@@ -82,6 +83,8 @@ public class StatusManager : Singleton<StatusManager>
     {
         //just for debug  
         PlayerPrefs.DeleteKey(dataSaveName);
+        PlayerPrefs.DeleteKey(stageSaveName);
+        PlayerPrefs.DeleteKey(characterSaveName);
         PlayerPrefs.DeleteKey(questSaveName);
         PlayerPrefs.DeleteKey(timeSaveName);
     }

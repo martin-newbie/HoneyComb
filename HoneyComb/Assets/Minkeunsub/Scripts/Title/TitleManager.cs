@@ -18,6 +18,8 @@ public class TitleManager : Singleton<TitleManager>
     [SerializeField] Image[] SceneLock;
     [SerializeField] Image GameLock;
 
+    [Header("Click Effect")]
+    [SerializeField] GameObject clickEffectObj;
 
     void Start()
     {
@@ -43,7 +45,7 @@ public class TitleManager : Singleton<TitleManager>
     public void Cheat()
     {
         if (cheatCount < 5) cheatCount++;
-        else if(StatusManager.Instance.isQuestAble)
+        else if (StatusManager.Instance.isQuestAble)
         {
             switch (StatusManager.Instance.CurQuestIdx)
             {
@@ -128,13 +130,13 @@ public class TitleManager : Singleton<TitleManager>
             if (StatusManager.Instance.CurBee > 0)
             {
 
-            SoundManager.Instance.PlaySound("Button_Click");
+                SoundManager.Instance.PlaySound("Button_Click");
                 StatusManager.Instance.CurBee--;
                 StartCoroutine(SceneMove("InGameScene"));
             }
             else
             {
-            SoundManager.Instance.PlaySound("Button_Click_Fail");
+                SoundManager.Instance.PlaySound("Button_Click_Fail");
                 //bee is not able now
             }
         }
