@@ -12,6 +12,7 @@ public class StatusManager : Singleton<StatusManager>
     public string dataSaveName = "status data save";
     public string questSaveName = "quest data save";
     public string timeSaveName = "time save";
+    public string characterSaveName = "character save";
     public List<Book> BookDatas = new List<Book>();
 
     [Header("Bee")]
@@ -48,6 +49,33 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Books")]
     public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
 
+    [Header("PlayableCharacter")]
+    public List<PlayerableCharacterInfo> PlayerableCharacterInfos = new List<PlayerableCharacterInfo>();
+
+    public class PlayerableCharacterInfo
+    {
+        public EPlayerableCharacter character;
+        public bool isHave;
+    }
+    public enum EPlayerableCharacter
+    {
+        HONENY_BEE,
+        MEGA_BEE,
+        DIRT_BEE,
+        PUMPKIN_BEE,
+        GARDENER_BEE,
+        FAT_BEE,
+        FABULOUS_BEE,
+        CYBORG_BEE,
+        MISCHIEF_BEE,
+        ONI_BEE,
+        HORSE_BEE,
+        SIMBULSE_BEE,
+        KING_BEE,
+        KNIGHT_BEE,
+        VIP_BEE,
+        END
+    }
     void RemoveSaveData()
     {
         //just for debug
@@ -257,7 +285,7 @@ public class StatusManager : Singleton<StatusManager>
 
     private void OnApplicationPause(bool pause)
     {
-        if(pause)
+        if (pause)
         {
             DataSave();
             SaveBeeTime();
