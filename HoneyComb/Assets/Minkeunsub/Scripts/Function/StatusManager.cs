@@ -13,6 +13,7 @@ public class StatusManager : Singleton<StatusManager>
     public string questSaveName = "quest data save";
     public string timeSaveName = "time save";
     public string characterSaveName = "character save";
+    public string stageSaveName = "stage save";
     public List<Book> BookDatas = new List<Book>();
 
     [Header("Bee")]
@@ -50,14 +51,15 @@ public class StatusManager : Singleton<StatusManager>
     public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
 
     [Header("PlayableCharacter")]
-    public List<PlayerableCharacterInfo> PlayerableCharacterInfos = new List<PlayerableCharacterInfo>();
-
-    public class PlayerableCharacterInfo
+    public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
+    [Header("Stage")]
+    public List<bool> stageInfos = new List<bool>(4);
+    public class PlayableCharacterInfo
     {
-        public EPlayerableCharacter character;
+        public EPlayableCharacter character;
         public bool isHave;
     }
-    public enum EPlayerableCharacter
+    public enum EPlayableCharacter
     {
         HONENY_BEE,
         MEGA_BEE,
@@ -78,7 +80,7 @@ public class StatusManager : Singleton<StatusManager>
     }
     void RemoveSaveData()
     {
-        //just for debug
+        //just for debug  
         PlayerPrefs.DeleteKey(dataSaveName);
         PlayerPrefs.DeleteKey(questSaveName);
         PlayerPrefs.DeleteKey(timeSaveName);
@@ -113,6 +115,8 @@ public class StatusManager : Singleton<StatusManager>
         LoadData();
         LoadBeeTime();
         LoadQuest();
+        LoadCharacterInfo();
+        LoadStageInfo();
 
         InitClearActions();
     }
@@ -263,7 +267,46 @@ public class StatusManager : Singleton<StatusManager>
         }
         else CurBee = MaxBee;
     }
-
+    void LoadStageInfo()
+    {
+        string dataStr = PlayerPrefs.GetString(stageSaveName, "none");
+        if (dataStr == "none")
+        {
+            stageInfos[0] = true;
+        }
+        else
+        {
+            stageInfos = JsonUtility.FromJson<List<bool>>(dataStr);
+        }
+    }
+    void LoadCharacterInfo()
+    {
+        string dataStr = PlayerPrefs.GetString(characterSaveName, "none");
+        if (dataStr == "none")
+        {
+            int count = (int)EPlayableCharacter.END;
+            for (int i = 0; i < count; i++)
+            {
+                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i, isHave = false });
+                if (i == 0)
+                {
+                    playableCharacterInfos[0].isHave = true;
+                }
+            }
+        }
+        else
+        {
+            playableCharacterInfos = JsonUtility.FromJson<List<PlayableCharacterInfo>>(dataStr);
+        }
+    }
+    void SaveStageInfo()
+    {
+        PlayerPrefs.SetString(stageSaveName, JsonUtility.ToJson(stageInfos));
+    }
+    void SaveCharacterInfo()
+    {
+        PlayerPrefs.SetString(characterSaveName, JsonUtility.ToJson(playableCharacterInfos));
+    }
     void SaveBeeTime()
     {
         DateTime endTime = DateTime.Now;
@@ -289,6 +332,8 @@ public class StatusManager : Singleton<StatusManager>
         {
             DataSave();
             SaveBeeTime();
+            SaveCharacterInfo();
+            SaveStageInfo();
         }
         else
         {

@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CartoonManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4849638771175795730, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
+      propertyPath: cartoonBlackScreen2
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -334,6 +338,8 @@ MonoBehaviour:
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
+  characterSaveName: character save
+  stageSaveName: stage save
   BookDatas:
   - {fileID: 11400000, guid: c277d80361d0f0248a78c5470c59387f, type: 2}
   - {fileID: 11400000, guid: 57e5ccecc5abe9747853d9a9267754ae, type: 2}
@@ -442,6 +448,7 @@ MonoBehaviour:
     QuestLists: []
   isQuestAble: 0
   BookUnlocked: 010101010100000000000000000000000000
+  stageInfos: 
 --- !u!1001 &1577870229
 PrefabInstance:
   m_ObjectHideFlags: 0
