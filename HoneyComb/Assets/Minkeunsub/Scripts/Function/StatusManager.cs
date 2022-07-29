@@ -5,6 +5,25 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum EPlayableCharacter
+{
+    HONENY_BEE,
+    MEGA_BEE,
+    DIRT_BEE,
+    PUMPKIN_BEE,
+    GARDENER_BEE,
+    FAT_BEE,
+    FABULOUS_BEE,
+    CYBORG_BEE,
+    MISCHIEF_BEE,
+    ONI_BEE,
+    HORSE_BEE,
+    SIMBULSE_BEE,
+    KING_BEE,
+    KNIGHT_BEE,
+    VIP_BEE,
+    END
+}
 public class StatusManager : Singleton<StatusManager>
 {
     public bool debug;
@@ -51,6 +70,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
 
     [Header("PlayableCharacter")]
+    public EPlayableCharacter nowCharacter;
     public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
@@ -58,26 +78,28 @@ public class StatusManager : Singleton<StatusManager>
     public class PlayableCharacterInfo
     {
         public EPlayableCharacter character;
-        public bool isHave;
-    }
-    public enum EPlayableCharacter
-    {
-        HONENY_BEE,
-        MEGA_BEE,
-        DIRT_BEE,
-        PUMPKIN_BEE,
-        GARDENER_BEE,
-        FAT_BEE,
-        FABULOUS_BEE,
-        CYBORG_BEE,
-        MISCHIEF_BEE,
-        ONI_BEE,
-        HORSE_BEE,
-        SIMBULSE_BEE,
-        KING_BEE,
-        KNIGHT_BEE,
-        VIP_BEE,
-        END
+        public bool IsHave
+        {
+            get
+            {
+                if (level >= 1)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        public int level;
+        public int pieceCount;
+
+        public void LevelUp()
+        {
+            int requireCount = level * 20 + 10;
+            if (pieceCount >= requireCount)
+            {
+                level++;
+                pieceCount -= requireCount;
+            }
+        }
     }
     void RemoveSaveData()
     {
@@ -104,7 +126,6 @@ public class StatusManager : Singleton<StatusManager>
             QuestSaveList = JsonUtility.FromJson<QuestDataSave>(questTmp);
             QuestsList = QuestSaveList.QuestLists;
         }
-
 
         if (CurQuestIdx < QuestsList.Count)
             CurQuest = QuestsList[CurQuestIdx];
@@ -290,10 +311,10 @@ public class StatusManager : Singleton<StatusManager>
             int count = (int)EPlayableCharacter.END;
             for (int i = 0; i < count; i++)
             {
-                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i, isHave = false });
+                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i });
                 if (i == 0)
                 {
-                    playableCharacterInfos[0].isHave = true;
+                    playableCharacterInfos[0].level = 1;
                 }
             }
         }

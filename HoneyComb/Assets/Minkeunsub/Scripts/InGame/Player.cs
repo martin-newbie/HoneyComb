@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -11,10 +12,19 @@ public class Player : MonoBehaviour
     public float invincibleDelay;
     public bool isInvincible;
 
+    private StatusManager statusManager;
     [SerializeField] ParticleSystem HoneyParticle;
 
     void Start()
     {
+        statusManager = StatusManager.Instance;
+
+        int level = statusManager.playableCharacterInfos.Find((x) => x.character == statusManager.nowCharacter).level;
+        if (level > 1)
+        {
+            MaxHp += ( level - 1) * 15;
+        }
+
         Hp = MaxHp;
     }
 
@@ -23,7 +33,6 @@ public class Player : MonoBehaviour
         if (!isGameOver)
         {
             HpLogic();
-
         }
     }
 
