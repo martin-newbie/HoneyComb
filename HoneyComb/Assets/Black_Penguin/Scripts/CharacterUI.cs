@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CharacterUI : MonoBehaviour
 {
@@ -11,10 +10,10 @@ public class CharacterUI : MonoBehaviour
 
     [SerializeField] private Button rightButton;
     [SerializeField] private Button leftButton;
-    [SerializeField] private Button seleteButton;
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private Button selectButton;
+    [SerializeField] private Text nameText;
+    [SerializeField] private Text levelText;
+    [SerializeField] private Text descriptionText;
 
     private SoundManager soundManager;
     private StatusManager statusManager;
@@ -24,7 +23,12 @@ public class CharacterUI : MonoBehaviour
         statusManager = StatusManager.Instance;
         soundManager = SoundManager.Instance;
 
-        seleteButton.onClick.AddListener(() => ButtonClickFunc());
+        selectButton.onClick.AddListener(() => ButtonClickFunc());
+    }
+
+    private void OnDestroy()
+    {
+        selectButton.onClick.RemoveAllListeners();
     }
     void ButtonClickFunc()
     {

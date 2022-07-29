@@ -9,5 +9,7 @@ public class CharacterScript : ScriptableObject
     public EPlayableCharacter characterType;
     public Sprite Icon;
     public string characterName;
+    [TextArea]
     public string Description;
 }
+

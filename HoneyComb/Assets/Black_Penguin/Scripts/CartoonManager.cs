@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.UI;
 using System;
 using Random = UnityEngine.Random;
@@ -31,14 +30,14 @@ public class CartoonArray
 public class CartoonManager : Singleton<CartoonManager>
 {
     //근섭선배가 넣어야할 함수
-    public Action Func;
+    public Action func;
 
     public List<CartoonArray> cartoons;
     public Text pressPleaseText;
 
     public Image cartoonBlackScreen;
 
-    float Delay = 0;
+    private float delay;
     private void Awake()
     {
         var objs = FindObjectsOfType<CartoonManager>();
@@ -67,7 +66,7 @@ public class CartoonManager : Singleton<CartoonManager>
     }
     private void Update()
     {
-        pressPleaseText.gameObject.SetActive(Delay > 3 ? true : false);
+        pressPleaseText.gameObject.SetActive(delay > 3 ? true : false);
         pressPleaseText.rectTransform.localPosition += new Vector3(0, Mathf.Cos(Time.time) * 200 * Time.deltaTime, 0);
         pressPleaseText.color = new Color(1, 1, 1, Mathf.Abs(Mathf.Sin(Time.time)));
     }
@@ -81,30 +80,27 @@ public class CartoonManager : Singleton<CartoonManager>
         {
             cartoonNum = 1;
             action += () => StartCoroutine(ImageFadeBlack(cartoonBlackScreen));
-            Func = () => CartoonStartFunction(-1, action);
-            Func += () => cartoonBlackScreen.gameObject.SetActive(true);
+            func = () => CartoonStartFunction(-1, action);
+            func += () => cartoonBlackScreen.gameObject.SetActive(true);
         }
         else if (cartoonNum == -1)
         {
             cartoonNum = 0;
-            Func = action;
+            func = action;
         }
-        else if(cartoons[cartoonNum] != null)
+        else if (cartoons[cartoonNum] != null)
         {
             cartoonNum++;
-            Func = action;
+            func = action;
         }
         CartoonStartFunction(cartoonNum);
     }
-    public void CartoonStartFunction(int cartoonNum)
-    {
-        StartCoroutine(CartoonStart(cartoons[cartoonNum]));
-    }
+    public void CartoonStartFunction(int cartoonNum) => StartCoroutine(CartoonStart(cartoons[cartoonNum]));
     IEnumerator CartoonStart(CartoonArray funcCartoons)
     {
         foreach (Cartoon cartoon in funcCartoons.cartoons)
         {
-            Delay = 0;
+            delay = 0;
             if (cartoon.image != null)
             {
                 cartoon.image.gameObject.SetActive(true);
@@ -117,7 +113,7 @@ public class CartoonManager : Singleton<CartoonManager>
                     cartoon.actionQueue += (func) => StartCoroutine(CartoonScale(cartoon));
 
                 cartoon.actionQueue?.Invoke(null);
-                while (!Input.GetMouseButtonDown(0) || Delay < cartoon.Duration)
+                while (!Input.GetMouseButtonDown(0) || delay < cartoon.Duration)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -125,7 +121,7 @@ public class CartoonManager : Singleton<CartoonManager>
                         cartoon.forcingQuit = true;
                         break;
                     }
-                    Delay += Time.deltaTime;
+                    delay += Time.deltaTime;
                     yield return null;
                 }
                 yield return new WaitForSeconds(0.1f);
@@ -137,9 +133,9 @@ public class CartoonManager : Singleton<CartoonManager>
             if (cartoon.image != null)
                 StartCoroutine(CartoonOff(cartoon));
         }
-        Delay = 0;
+        delay = 0;
         cartoonBlackScreen.gameObject.SetActive(false);
-        Func?.Invoke();
+        func?.Invoke();
     }
     public IEnumerator CartoonShake(Cartoon cartoon)
     {

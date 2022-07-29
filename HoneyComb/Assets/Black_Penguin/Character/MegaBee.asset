@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 0
   Icon: {fileID: 0}
-  characterName: 
-  Description: 
+  characterName: "\uBA54\uAC00 \uAFC0\uBC8C"
+  Description: "\uBA54\uAC00 \uBC8C~\n\uB2A5\uB825\uB3C4 \uBA54\uAC00~\n\uC0DD\uAE34\uAC83\uB3C4
+    \uBA54\uAC00~\n\uAC00\uC11C \uBA54\uAC00~\uD55C \uD558\uB8E8 \uB418\uC138\uC694."

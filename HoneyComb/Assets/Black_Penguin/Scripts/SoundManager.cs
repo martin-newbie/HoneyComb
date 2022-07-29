@@ -12,8 +12,8 @@ public enum SoundType
 
 public class SoundManager : Singleton<SoundManager>
 {
-    Dictionary<SoundType, AudioSource> audioSources = new Dictionary<SoundType, AudioSource>();
-    Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
+    private Dictionary<SoundType, AudioSource> audioSources = new Dictionary<SoundType, AudioSource>();
+    private Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
     private Dictionary<SoundType, float> audioVolume = new Dictionary<SoundType, float>();
     private void Awake()
     {

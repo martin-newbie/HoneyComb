@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -72,8 +71,10 @@ public class StatusManager : Singleton<StatusManager>
     [Header("PlayableCharacter")]
     public EPlayableCharacter nowCharacter;
     public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
+    
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
+
     [Serializable]
     public class PlayableCharacterInfo
     {
