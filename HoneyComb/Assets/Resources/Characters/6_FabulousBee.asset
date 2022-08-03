@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
+  m_Name: 6_FabulousBee
+  m_EditorClassIdentifier: 
+  characterType: 6
+  Icon: {fileID: 21300000, guid: bf29abead7675e2418c4457c6d756586, type: 3}
+  characterName: "!\uAC00\uC7A5! \uBA4B\uC9C4 \uBC8C"
+  Description: "\uC138\uC0C1\uC5D0\uC11C \uAC00\uC7A5 \uCFE8\uD55C \uBC8C\uC785\uB2C8\uB2E4.\n\uC544\uC8FC
+    \uCFE0\uC6B0\uC6B0\uC6B0\uC6B8\uD574!\n\uB108\uBB34 \uCFE8\uD55C \uB098\uBA38\uC9C0
+    \uB0A8\uB4E4\uC5D0\uBE44\uD574 \uB354\uC6B1 \uCFE8\uD55C \uC18D\uB3C4\uB85C \uB2EC\uB9BD\uB2C8\uB2E4."

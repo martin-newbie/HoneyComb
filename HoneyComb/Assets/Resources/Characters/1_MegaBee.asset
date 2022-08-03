@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
-  m_Name: MegaBee
+  m_Name: 1_MegaBee
   m_EditorClassIdentifier: 
   characterType: 1
-  Icon: {fileID: 4351261504423703655, guid: 88c867a53e27ca24d8d3ab1e8249e413, type: 3}
+  Icon: {fileID: 21300000, guid: 79af9c973b848b64aabaec746afa71ea, type: 3}
   characterName: "\uBA54\uAC00 \uAFC0\uBC8C"
-  Description: "\uBA54\uAC00 \uBC8C~\n\uB2A5\uB825\uB3C4 \uBA54\uAC00~\n\uC0DD\uAE34\uAC83\uB3C4
-    \uBA54\uAC00~"
+  Description: "\uBA54\uAC00 \uBC8C\uC740 \uB204\uAD6C\uBCF4\uB2E4 \uAC15\uD569\uB2C8\uB2E4!\n\uADF8
+    \uC5B4\uB5A4 \uC7A5\uC560\uBB3C\uB3C4 \uBA54\uAC00\uBC8C\uC744 \uC774\uAE38 \uC218
+    \uC5C6\uC8E0!\n"
