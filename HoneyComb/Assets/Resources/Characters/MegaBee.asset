@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
-  m_Name: HoneyBee
+  m_Name: MegaBee
   m_EditorClassIdentifier: 
-  characterType: 0
-  Icon: {fileID: 21300000, guid: 337e449aa62a3664198ffd0c4330b3e4, type: 3}
-  characterName: "\uAFC0\uBC8C"
-  Description: "\uADF8\uB0E5 \uBC8C\uC785\uB2C8\uB2E4\n\uB124 \uADF8\uB0E5 \uBC8C\uC774\uC694."
+  characterType: 1
+  Icon: {fileID: 4351261504423703655, guid: 88c867a53e27ca24d8d3ab1e8249e413, type: 3}
+  characterName: "\uBA54\uAC00 \uAFC0\uBC8C"
+  Description: "\uBA54\uAC00 \uBC8C~\n\uB2A5\uB825\uB3C4 \uBA54\uAC00~\n\uC0DD\uAE34\uAC83\uB3C4
+    \uBA54\uAC00~"

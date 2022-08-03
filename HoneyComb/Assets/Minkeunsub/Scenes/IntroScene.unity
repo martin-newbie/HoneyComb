@@ -527,6 +527,7 @@ MonoBehaviour:
     QuestLists: []
   isQuestAble: 0
   BookUnlocked: 010101010100000000000000000000000000
+  nowCharacter: 0
   playableCharacterInfos: []
   stageInfos: 00000000
 --- !u!1001 &1577870229

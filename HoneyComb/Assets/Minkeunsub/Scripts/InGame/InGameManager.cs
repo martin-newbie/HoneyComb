@@ -34,8 +34,8 @@ public class InGameManager : Singleton<InGameManager>
 
     [Header("Background")]
     [SerializeField] Background BackgroundPrefab;
-    float height;
-    List<Background> backgrounds = new List<Background>();
+    private float height;
+    private List<Background> backgrounds = new List<Background>();
 
     void Start()
     {

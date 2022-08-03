@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
+public interface IChracterHaveSpecialSkill
+{
+    public void SpecialSkill();
+}
 public class Player : MonoBehaviour
 {
     public float MaxHp;
@@ -13,22 +16,23 @@ public class Player : MonoBehaviour
     public bool isInvincible;
 
     private StatusManager statusManager;
-    [SerializeField] ParticleSystem HoneyParticle;
+    [SerializeField]
+    private ParticleSystem HoneyParticle;
 
-    void Start()
+    protected virtual void Start()
     {
         statusManager = StatusManager.Instance;
 
         int level = statusManager.playableCharacterInfos.Find((x) => x.character == statusManager.nowCharacter).level;
         if (level > 1)
         {
-            MaxHp += ( level - 1) * 15;
+            MaxHp += (level - 1) * 15;
         }
 
         Hp = MaxHp;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!isGameOver)
         {
@@ -50,7 +54,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GetHoney()
+    public virtual void GetHoney()
     {
         HoneyParticle.Play();
     }
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator OnDamage()
+    protected virtual IEnumerator OnDamage()
     {
         isInvincible = true;
         Hp -= InGameManager.Instance.damage;

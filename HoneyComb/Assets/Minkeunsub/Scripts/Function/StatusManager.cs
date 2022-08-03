@@ -23,6 +23,33 @@ public enum EPlayableCharacter
     VIP_BEE,
     END
 }
+[Serializable]
+public class PlayableCharacterInfo
+{
+    public EPlayableCharacter character;
+    public bool IsHave
+    {
+        get
+        {
+            if (level >= 1)
+                return true;
+            else
+                return false;
+        }
+    }
+    public int level;
+    public int pieceCount;
+
+    public void LevelUp()
+    {
+        int requireCount = level * 20 + 10;
+        if (pieceCount >= requireCount)
+        {
+            level++;
+            pieceCount -= requireCount;
+        }
+    }
+}
 public class StatusManager : Singleton<StatusManager>
 {
     public bool debug;
@@ -71,37 +98,9 @@ public class StatusManager : Singleton<StatusManager>
     [Header("PlayableCharacter")]
     public EPlayableCharacter nowCharacter;
     public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
-    
+
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
-
-    [Serializable]
-    public class PlayableCharacterInfo
-    {
-        public EPlayableCharacter character;
-        public bool IsHave
-        {
-            get
-            {
-                if (level >= 1)
-                    return true;
-                else
-                    return false;
-            }
-        }
-        public int level;
-        public int pieceCount;
-
-        public void LevelUp()
-        {
-            int requireCount = level * 20 + 10;
-            if (pieceCount >= requireCount)
-            {
-                level++;
-                pieceCount -= requireCount;
-            }
-        }
-    }
     void RemoveSaveData()
     {
         //just for debug  
