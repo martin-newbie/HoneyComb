@@ -16,6 +16,7 @@ public class CharacterUI : MonoBehaviour
     [SerializeField] private Button selectButton;
     [SerializeField] private Text nameText;
     [SerializeField] private Text descriptionText;
+    [SerializeField] private Image characterIcon;
 
     private int beeListIndexNumber;
     private bool isOpen;
@@ -53,6 +54,17 @@ public class CharacterUI : MonoBehaviour
         selectButton.onClick.AddListener(() => SelectButtonClickFunc());
         leftButton.onClick.AddListener(() => ArrowButtonClickFunc(-1));
         rightButton.onClick.AddListener(() => ArrowButtonClickFunc(1));
+
+        foreach (CharacterScript script in characterScripts)
+        {
+            if (script.characterType == EPlayableCharacter.HONENY_BEE) continue;
+            Image image = Instantiate(characterIcon, characterIcon.transform.parent);
+            image.name = $"{script.name}Icon";
+            if (script.Icon != null)
+                image.sprite = script.Icon;
+            else
+                image.sprite = null;
+        }
 
         nowShowCharacterType = statusManager.nowCharacter;
         beeListIndexNumber = (int)nowShowCharacterType;
