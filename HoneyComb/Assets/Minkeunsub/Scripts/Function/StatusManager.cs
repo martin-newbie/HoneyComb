@@ -111,7 +111,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<bool> stageInfos = new List<bool>(4);
 
     [Header("Daily Quest")]
-
+    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
 
     void RemoveSaveData()
     {
