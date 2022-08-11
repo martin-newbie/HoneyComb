@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
   m_Name: 13_KnightBee
   m_EditorClassIdentifier: 
-  characterType: 13
-  Icon: {fileID: 0}
-  characterName: 
-  Description: 
+  characterType: 12
+  Icon: {fileID: 21300000, guid: e986ed4a8ccddb14191356ca4288007c, type: 3}
+  characterName: "\uAE30\uC0AC \uBC8C"
+  Description: "\uC804\uBC29\uC5D0\uC11C \uC6A9\uB9F9\uD558\uAC8C \uC2F8\uC6CC\n\uC218\uCC28\uB840\uC5D0
+    \uC2F8\uC6C0\uC5D0\uC11C \uC5EC\uC655\uBC8C\uC744 \uC9C0\uCF1C\uC628 \uBC8C\uC785\uB2C8\uB2E4."

@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+public enum EStageType
+{
+    PLAIN,
+    FOREST,
+    TUNDRA,
+    DESSERT
+
+}
 public enum EPlayableCharacter
 {
     HONENY_BEE,
@@ -17,7 +26,6 @@ public enum EPlayableCharacter
     MISCHIEF_BEE,
     ONI_BEE,
     HORSE_BEE,
-    SIMBULSE_BEE,
     KING_BEE,
     KNIGHT_BEE,
     VIP_BEE,
@@ -101,6 +109,10 @@ public class StatusManager : Singleton<StatusManager>
 
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
+
+    [Header("Daily Quest")]
+
+
     void RemoveSaveData()
     {
         //just for debug  

@@ -95,7 +95,7 @@ public class CartoonManager : Singleton<CartoonManager>
         }
         CartoonStartFunction(cartoonNum);
     }
-    public void CartoonStartFunction(int cartoonNum) => StartCoroutine(CartoonStart(cartoons[cartoonNum]));
+    public void CartoonStartFunction(int cartoonNum) =>  StartCoroutine(CartoonStart(cartoons[cartoonNum]));
     IEnumerator CartoonStart(CartoonArray funcCartoons)
     {
         foreach (Cartoon cartoon in funcCartoons.cartoons)

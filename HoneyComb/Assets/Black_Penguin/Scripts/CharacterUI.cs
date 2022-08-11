@@ -30,7 +30,6 @@ public class CharacterUI : MonoBehaviour
             {
                 case true:
                     transform.DOLocalMoveX(0, 1).SetEase(Ease.InOutBack);
-                    Debug.Log(Time.timeScale);
                     break;
                 case false:
                     transform.DOLocalMoveX(1500, 1).SetEase(Ease.InOutBack);
@@ -42,6 +41,7 @@ public class CharacterUI : MonoBehaviour
 
     private SoundManager soundManager;
     private StatusManager statusManager;
+    [SerializeField]
     private List<CharacterScript> characterScripts;
 
     private void Start()
@@ -60,10 +60,7 @@ public class CharacterUI : MonoBehaviour
             if (script.characterType == EPlayableCharacter.HONENY_BEE) continue;
             Image image = Instantiate(characterIcon, characterIcon.transform.parent);
             image.name = $"{script.name}Icon";
-            if (script.Icon != null)
-                image.sprite = script.Icon;
-            else
-                image.sprite = null;
+            image.sprite = script.Icon;
         }
 
         nowShowCharacterType = statusManager.nowCharacter;
