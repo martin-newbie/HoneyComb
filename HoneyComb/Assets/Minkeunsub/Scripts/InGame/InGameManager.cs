@@ -51,8 +51,8 @@ public class InGameManager : Singleton<InGameManager>
         for (int i = 0; i < 2; i++)
         {
             Background temp = Instantiate(BackgroundPrefab);
-            temp.Init(height * 2f, -height * 2f, this);
-            temp.transform.position = new Vector3(0, (-height * 2f) + (i * height * 2), 0);
+            temp.Init(20f, -10f, this);
+            temp.transform.position = new Vector3(0, i * 10f, 0);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
             backgrounds.Add(temp);
         }
@@ -66,7 +66,7 @@ public class InGameManager : Singleton<InGameManager>
         float screenY = Camera.main.orthographicSize * 2;
         float screenX = screenY / Screen.height * Screen.width;
 
-        Vector2 Scale = new Vector2(screenX / X,screenY / Y) + new Vector2(0.01f, 0.01f);
+        Vector2 Scale = new Vector2(screenX / X, screenY / Y) + new Vector2(0.01f, 0.01f);
         SR.transform.localScale = Scale;
         return Scale;
     }
