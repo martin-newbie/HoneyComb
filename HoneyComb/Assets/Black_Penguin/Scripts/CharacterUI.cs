@@ -9,6 +9,7 @@ public class CharacterUI : MonoBehaviour
 {
     public EPlayableCharacter nowShowCharacterType;
 
+    [SerializeField] Image backBlur;
     [SerializeField] private GameObject beeList;
     [SerializeField] private Button openButton;
     [SerializeField] private Button rightButton;
@@ -20,7 +21,7 @@ public class CharacterUI : MonoBehaviour
 
     private int beeListIndexNumber;
     private bool isOpen;
-    private bool _isOpen
+    public bool _isOpen
     {
         set
         {
@@ -29,10 +30,14 @@ public class CharacterUI : MonoBehaviour
             switch (value)
             {
                 case true:
-                    transform.DOLocalMoveX(0, 1).SetEase(Ease.InOutBack);
+                    backBlur.enabled = true;
+                    transform.DOLocalMoveX(0, 0.5f).SetEase(Ease.OutBack);
                     break;
                 case false:
-                    transform.DOLocalMoveX(1500, 1).SetEase(Ease.InOutBack);
+                    transform.DOLocalMoveX(1500, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+                    {
+                        backBlur.enabled = false;
+                    });
                     break;
             }
             isOpen = value;
@@ -67,9 +72,10 @@ public class CharacterUI : MonoBehaviour
         beeListIndexNumber = (int)nowShowCharacterType;
         PannelReload();
     }
+
     private void Update()
     {
-        beeList.transform.localPosition = Vector3.Lerp(beeList.transform.localPosition, new Vector3(beeListIndexNumber * -600, 0), Time.deltaTime * 3);
+        beeList.transform.localPosition = Vector3.Lerp(beeList.transform.localPosition, new Vector3(beeListIndexNumber * -600, 0), Time.deltaTime * 15f);
 
         openButton.image.sprite = characterScripts[(int)statusManager.nowCharacter].Icon;
     }
