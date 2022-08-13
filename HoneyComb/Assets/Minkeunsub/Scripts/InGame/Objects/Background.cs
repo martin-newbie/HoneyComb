@@ -11,9 +11,9 @@ public class Background : MonoBehaviour
     private void Update()
     {
         moveSpeed = manager.objectMoveSpeed;
-        if (transform.position.y <= end)
+        if (transform.position.y < end)
         {
-            transform.position = new Vector3(0, start, 0);
+            transform.position += new Vector3(0, start, 0);
         }
 
         transform.Translate(Vector3.down * Time.deltaTime * moveSpeed);

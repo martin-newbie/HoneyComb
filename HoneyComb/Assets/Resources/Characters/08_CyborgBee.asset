@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
-  m_Name: 10_HorseBee
+  m_Name: 08_CyborgBee
   m_EditorClassIdentifier: 
-  characterType: 0
-  Icon: {fileID: 0}
-  characterName: 
-  Description: 
+  characterType: 7
+  Icon: {fileID: 21300000, guid: 135e0dd89a70b2044b8b0072b335934c, type: 3}
+  characterName: "\uC0AC\uC774\uBCF4\uADF8 \uBC8C"
+  Description: "111010111010\n110110010000\n...\uB77C\uACE0 \uD558\uB124\uC694...
+    \uB124... \uBB50\uC9C0?"

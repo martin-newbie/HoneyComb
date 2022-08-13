@@ -9,6 +9,7 @@ public class CharacterUI : MonoBehaviour
 {
     public EPlayableCharacter nowShowCharacterType;
 
+    [SerializeField] Image backBlur;
     [SerializeField] private GameObject beeList;
     [SerializeField] private Button openButton;
     [SerializeField] private Button rightButton;
@@ -20,7 +21,7 @@ public class CharacterUI : MonoBehaviour
 
     private int beeListIndexNumber;
     private bool isOpen;
-    private bool _isOpen
+    public bool _isOpen
     {
         set
         {
@@ -29,11 +30,14 @@ public class CharacterUI : MonoBehaviour
             switch (value)
             {
                 case true:
-                    transform.DOLocalMoveX(0, 1).SetEase(Ease.InOutBack);
-                    Debug.Log(Time.timeScale);
+                    backBlur.enabled = true;
+                    transform.DOLocalMoveX(0, 0.5f).SetEase(Ease.OutBack);
                     break;
                 case false:
-                    transform.DOLocalMoveX(1500, 1).SetEase(Ease.InOutBack);
+                    transform.DOLocalMoveX(1500, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+                    {
+                        backBlur.enabled = false;
+                    });
                     break;
             }
             isOpen = value;
@@ -42,6 +46,7 @@ public class CharacterUI : MonoBehaviour
 
     private SoundManager soundManager;
     private StatusManager statusManager;
+    [SerializeField]
     private List<CharacterScript> characterScripts;
 
     private void Start()
@@ -60,19 +65,17 @@ public class CharacterUI : MonoBehaviour
             if (script.characterType == EPlayableCharacter.HONENY_BEE) continue;
             Image image = Instantiate(characterIcon, characterIcon.transform.parent);
             image.name = $"{script.name}Icon";
-            if (script.Icon != null)
-                image.sprite = script.Icon;
-            else
-                image.sprite = null;
+            image.sprite = script.Icon;
         }
 
         nowShowCharacterType = statusManager.nowCharacter;
         beeListIndexNumber = (int)nowShowCharacterType;
         PannelReload();
     }
+
     private void Update()
     {
-        beeList.transform.localPosition = Vector3.Lerp(beeList.transform.localPosition, new Vector3(beeListIndexNumber * -600, 0), Time.deltaTime * 3);
+        beeList.transform.localPosition = Vector3.Lerp(beeList.transform.localPosition, new Vector3(beeListIndexNumber * -600, 0), Time.deltaTime * 15f);
 
         openButton.image.sprite = characterScripts[(int)statusManager.nowCharacter].Icon;
     }
@@ -111,7 +114,7 @@ public class CharacterUI : MonoBehaviour
     }
     void PannelReload()
     {
-        PlayableCharacterInfo playableCharacterInfo = statusManager.playableCharacterInfos.Find((x) => x.character == nowShowCharacterType);
+        PlayableCharacterInfo playableCharacterInfo = statusManager.playableCharacterInfos[beeListIndexNumber];
 
         nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName}";
         descriptionText.text = characterScripts[beeListIndexNumber].Description;

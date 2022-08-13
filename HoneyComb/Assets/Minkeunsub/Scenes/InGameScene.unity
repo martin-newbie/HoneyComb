@@ -227,7 +227,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 4.5}
+    oldSize: {x: 3.82, y: 4.14}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -800,7 +800,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPressPos: {x: 0, y: 0}
   secondPressPos: {x: 0, y: 0}
-  currentSwipe: {x: 0, y: 0, z: 0}
   isTouching: 0
 --- !u!1 &359510899
 GameObject:
@@ -1499,6 +1498,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   maxWait: 15
+  state: 0
   reviveObj: {fileID: 1738636453}
   reviveTime: {fileID: 1672547595}
   reviveTimeImg: {fileID: 579974098}
