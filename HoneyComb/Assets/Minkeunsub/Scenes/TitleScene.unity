@@ -727,7 +727,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -421.9, y: 450}
-  m_SizeDelta: {x: 196, y: 600}
+  m_SizeDelta: {x: 221, y: 377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230469842
 MonoBehaviour:
@@ -2527,6 +2527,7 @@ MonoBehaviour:
   nameText: {fileID: 661171561}
   descriptionText: {fileID: 1670534192}
   characterIcon: {fileID: 47734008}
+  characterScripts: []
 --- !u!1 &1100207313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 427, y: 450}
-  m_SizeDelta: {x: 196, y: 600}
+  m_SizeDelta: {x: 221, y: 377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499062516
 MonoBehaviour:
