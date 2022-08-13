@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClickEffect : MonoBehaviour
 {
     [SerializeField] GameObject clickEffectObj;
+    [SerializeField] ParticleSystem particle;
     TrailRenderer trail;
     private bool isClicked;
     private void Awake()
@@ -16,8 +17,7 @@ public class ClickEffect : MonoBehaviour
     void Update()
     {
         ClickEffectPlay();
-        if (isClicked)
-            clickEffectObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
+        clickEffectObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
         trail.enabled = isClicked;
     }
     void ClickEffectPlay()
@@ -25,10 +25,7 @@ public class ClickEffect : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isClicked = true;
-            foreach (ParticleSystem particle in clickEffectObj.transform.GetComponentsInChildren<ParticleSystem>())
-            {
-                particle.Play();
-            }
+            particle.Play();
         }
         if (Input.GetMouseButtonUp(0))
         {

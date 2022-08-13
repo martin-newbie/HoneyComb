@@ -219,6 +219,8 @@ public class StatusManager : Singleton<StatusManager>
     {
         PlayerPrefs.DeleteKey(dataSaveName);
         PlayerPrefs.DeleteKey(timeSaveName);
+        PlayerPrefs.DeleteKey(characterSaveName);
+        PlayerPrefs.DeleteKey(stageSaveName);
     }
     #endregion
     public void LoadData()

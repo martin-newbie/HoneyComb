@@ -108,7 +108,7 @@ public class CharacterUI : MonoBehaviour
     }
     void PannelReload()
     {
-        PlayableCharacterInfo playableCharacterInfo = statusManager.playableCharacterInfos.Find((x) => x.character == nowShowCharacterType);
+        PlayableCharacterInfo playableCharacterInfo = statusManager.playableCharacterInfos[beeListIndexNumber];
 
         nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName}";
         descriptionText.text = characterScripts[beeListIndexNumber].Description;
