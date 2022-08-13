@@ -33,7 +33,7 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] int bookSpawnIdx; //책이 스폰될 꽃의 인덱스
 
     [Header("Background")]
-    [SerializeField] Background BackgroundPrefab;
+    [SerializeField] Background[] BackgroundPrefab;
     private float height;
     private List<Background> backgrounds = new List<Background>();
 
@@ -48,9 +48,11 @@ public class InGameManager : Singleton<InGameManager>
 
         height = Camera.main.orthographicSize;
 
+        int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
+
         for (int i = 0; i < 2; i++)
         {
-            Background temp = Instantiate(BackgroundPrefab);
+            Background temp = Instantiate(BackgroundPrefab[mapIdx]);
             temp.Init(20f, -10f, this);
             temp.transform.position = new Vector3(0, i * 10f, 0);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
