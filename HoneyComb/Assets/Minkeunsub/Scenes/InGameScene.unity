@@ -513,7 +513,8 @@ MonoBehaviour:
   bookCollectAble: 0
   ableBookIdx: 0
   bookSpawnIdx: 0
-  BackgroundPrefab: {fileID: -8706853375152461968, guid: 0bdff7ebc7eee854694095bf59570ab5, type: 3}
+  BackgroundPrefab:
+  - {fileID: -8706853375152461968, guid: 0bdff7ebc7eee854694095bf59570ab5, type: 3}
 --- !u!1 &243512887
 GameObject:
   m_ObjectHideFlags: 0
