@@ -2545,6 +2545,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 0
     textId: 
+    comicAble: 1
+    comicIdx: 0
     Reward: 0
   thisQuestState: 3
   SpeechImg: {fileID: 2022529390}

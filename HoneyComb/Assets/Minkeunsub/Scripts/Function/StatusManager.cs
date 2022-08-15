@@ -16,11 +16,11 @@ public enum EStageType
 public enum EPlayableCharacter
 {
     HONENY_BEE,
+    FAT_BEE,
     MEGA_BEE,
     DIRT_BEE,
     PUMPKIN_BEE,
     GARDENER_BEE,
-    FAT_BEE,
     FABULOUS_BEE,
     CYBORG_BEE,
     MISCHIEF_BEE,
@@ -151,7 +151,6 @@ public class StatusManager : Singleton<StatusManager>
         LoadData();
         LoadBeeTime();
         LoadQuest();
-        LoadCharacterInfo();
         LoadStageInfo();
 
         InitClearActions();
@@ -219,6 +218,8 @@ public class StatusManager : Singleton<StatusManager>
     {
         PlayerPrefs.DeleteKey(dataSaveName);
         PlayerPrefs.DeleteKey(timeSaveName);
+        PlayerPrefs.DeleteKey(characterSaveName);
+        PlayerPrefs.DeleteKey(stageSaveName);
     }
     #endregion
     public void LoadData()
@@ -232,6 +233,18 @@ public class StatusManager : Singleton<StatusManager>
             {
                 dataSave = temp;
                 GetDataFromSave();
+            }
+        }
+        else
+        {
+            int count = (int)EPlayableCharacter.END;
+            for (int i = 0; i < count; i++)
+            {
+                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i });
+                if (i == 0)
+                {
+                    playableCharacterInfos[0].level = 1;
+                }
             }
         }
     }
@@ -253,6 +266,7 @@ public class StatusManager : Singleton<StatusManager>
         beeUpgradeAble = dataSave.beeUpgradeAble;
         roomUpgradeAble = dataSave.roomUpgradeAble;
         BookUnlocked = dataSave.BookUnlocked;
+        playableCharacterInfos = dataSave.CharactersInfo;
     }
 
     void SetDataToSave()
@@ -272,6 +286,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.beeUpgradeAble = beeUpgradeAble;
         dataSave.roomUpgradeAble = roomUpgradeAble;
         dataSave.BookUnlocked = BookUnlocked;
+        dataSave.CharactersInfo = playableCharacterInfos;
     }
 
     public void SaveData()
@@ -315,33 +330,9 @@ public class StatusManager : Singleton<StatusManager>
             stageInfos = JsonUtility.FromJson<List<bool>>(dataStr);
         }
     }
-    void LoadCharacterInfo()
-    {
-        string dataStr = PlayerPrefs.GetString(characterSaveName, "none");
-        if (dataStr == "none")
-        {
-            int count = (int)EPlayableCharacter.END;
-            for (int i = 0; i < count; i++)
-            {
-                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i });
-                if (i == 0)
-                {
-                    playableCharacterInfos[0].level = 1;
-                }
-            }
-        }
-        else
-        {
-            playableCharacterInfos = JsonUtility.FromJson<List<PlayableCharacterInfo>>(dataStr);
-        }
-    }
     void SaveStageInfo()
     {
         PlayerPrefs.SetString(stageSaveName, JsonUtility.ToJson(stageInfos));
-    }
-    void SaveCharacterInfo()
-    {
-        PlayerPrefs.SetString(characterSaveName, JsonUtility.ToJson(playableCharacterInfos));
     }
     void SaveBeeTime()
     {
@@ -368,13 +359,19 @@ public class StatusManager : Singleton<StatusManager>
         {
             DataSave();
             SaveBeeTime();
-            SaveCharacterInfo();
             SaveStageInfo();
         }
         else
         {
             LoadBeeTime();
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        DataSave();
+        SaveBeeTime();
+        SaveStageInfo();
     }
 }
 
@@ -396,6 +393,7 @@ public class StatusSave
     public bool beeUpgradeAble;
     public bool roomUpgradeAble;
     public List<bool> BookUnlocked = new List<bool>();
+    public List<PlayableCharacterInfo> CharactersInfo = new List<PlayableCharacterInfo>();
 }
 
 public enum QuestNpcState
@@ -437,6 +435,9 @@ public class QuestData
     public int maxValue;
 
     public string textId;
+
+    public bool comicAble = true;
+    [DrawIf("comicAble", true)] public int comicIdx;
 
     public int Reward;
 

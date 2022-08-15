@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
+  m_Name: 03_MegaBee
+  m_EditorClassIdentifier: 
+  characterType: 1
+  Icon: {fileID: 21300000, guid: 79af9c973b848b64aabaec746afa71ea, type: 3}
+  characterName: "\uBA54\uAC00 \uAFC0\uBC8C"
+  Description: "\uBA54\uAC00 \uBC8C\uC740 \uB204\uAD6C\uBCF4\uB2E4 \uAC15\uD569\uB2C8\uB2E4!\n\uADF8
+    \uC5B4\uB5A4 \uC7A5\uC560\uBB3C\uB3C4 \uBA54\uAC00\uBC8C\uC744 \uC774\uAE38 \uC218
+    \uC5C6\uC8E0!\n"

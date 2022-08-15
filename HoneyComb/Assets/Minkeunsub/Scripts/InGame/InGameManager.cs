@@ -33,7 +33,7 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] int bookSpawnIdx; //√•¿Ã Ω∫∆˘µ… ≤…¿« ¿Œµ¶Ω∫
 
     [Header("Background")]
-    [SerializeField] Background BackgroundPrefab;
+    [SerializeField] Background[] BackgroundPrefab;
     private float height;
     private List<Background> backgrounds = new List<Background>();
 
@@ -48,11 +48,13 @@ public class InGameManager : Singleton<InGameManager>
 
         height = Camera.main.orthographicSize;
 
+        int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
+
         for (int i = 0; i < 2; i++)
         {
-            Background temp = Instantiate(BackgroundPrefab);
-            temp.Init(height * 2f, -height * 2f, this);
-            temp.transform.position = new Vector3(0, (-height * 2f) + (i * height * 2), 0);
+            Background temp = Instantiate(BackgroundPrefab[mapIdx]);
+            temp.Init(height * 4, height * -2, this);
+            temp.transform.position = new Vector3(0, i * height * 2, 0);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
             backgrounds.Add(temp);
         }
@@ -66,7 +68,7 @@ public class InGameManager : Singleton<InGameManager>
         float screenY = Camera.main.orthographicSize * 2;
         float screenX = screenY / Screen.height * Screen.width;
 
-        Vector2 Scale = new Vector2(screenX / X,screenY / Y) + new Vector2(0.01f, 0.01f);
+        Vector2 Scale = new Vector2(screenX / X, screenY / Y);
         SR.transform.localScale = Scale;
         return Scale;
     }

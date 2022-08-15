@@ -16,5 +16,5 @@ MonoBehaviour:
   BookName: 
   BookDesc1: 
   BookDesc2: 
-  Icon: {fileID: 0}
-  Image: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 4890e28b7027a444d88e8baddac0d783, type: 3}
+  Image: {fileID: 21300000, guid: ae1a2f589d482ad4687df6d4d95509cb, type: 3}

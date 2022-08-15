@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum QuestType
+{
+    GO_FAST,
+
+}
+
 public abstract class BaseDailyQuest
 {
     public string questName;
