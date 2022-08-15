@@ -139,10 +139,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CartoonManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4849638771175795730, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: cartoonBlackScreen2
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -185,14 +181,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4849638771331734238, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4849638771972346053, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
