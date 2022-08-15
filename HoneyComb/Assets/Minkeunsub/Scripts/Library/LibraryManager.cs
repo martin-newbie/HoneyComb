@@ -125,21 +125,17 @@ public class LibraryManager : MonoBehaviour
 
     void InitScroll(int n)
     {
-        button.GetComponent<Image>().sprite = ButtonSprites[0];
-        button.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(0); });
-        buttonList.Add(button);
-
         maxIdx = n;
-        for (int i = 1; i < maxIdx - 1; i++)
+        for (int i = 0; i < maxIdx-1; i++)
         {
             RectTransform temp = Instantiate(button, ContentContainer.transform);
             temp.GetComponent<Image>().sprite = ButtonSprites[i];
 
-            int idx = i + 1;
+            int idx = i;
             temp.GetComponent<Button>().onClick.AddListener(() => { OnClickEvent(idx); });
             buttonList.Add(temp);
         }
-
+        button.gameObject.SetActive(false);
         rightVoid.SetAsLastSibling();
     }
 
@@ -147,7 +143,7 @@ public class LibraryManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound("Button_Click");
         SoundManager.Instance.PlaySound("PageFlip");
-        CartoonManager.Instance.CartoonStartFunction(idx, null);
+        CartoonManager.Instance.CartoonStartFunction(idx);
     }
 
     public void SetScrollIdx(int idx)

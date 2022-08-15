@@ -139,10 +139,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CartoonManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4849638771175795730, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: cartoonBlackScreen2
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -185,14 +181,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849638771175795731, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4849638771331734238, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4849638771972346053, guid: 031895a9578ccc24491d73a0ae6ca37c, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -972,6 +960,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 0
     textId: 
+    comicAble: 1
+    comicIdx: 0
     Reward: 0
   QuestsList:
   - questName: 
@@ -984,6 +974,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 500
     textId: quest_0
+    comicAble: 1
+    comicIdx: 0
     Reward: 100
   - questName: 
     thisState: 1
@@ -995,6 +987,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 5
     textId: quest_1
+    comicAble: 1
+    comicIdx: 1
     Reward: 250
   - questName: 
     thisState: 2
@@ -1006,6 +1000,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 100
     textId: quest_2
+    comicAble: 1
+    comicIdx: 2
     Reward: 500
   - questName: 
     thisState: 1
@@ -1017,6 +1013,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 15
     textId: quest_3
+    comicAble: 0
+    comicIdx: 0
     Reward: 1000
   - questName: 
     thisState: 3
@@ -1028,6 +1026,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 5000
     textId: quest_4
+    comicAble: 1
+    comicIdx: 3
     Reward: 100
   QuestSaveList:
     QuestLists: []
