@@ -108,6 +108,10 @@ public abstract class NpcBase : MonoBehaviour
                     {
                         if (thisQuest.comicAble)
                             CartoonManager.Instance.CartoonStartFunction(thisQuest.comicIdx, QuestExistsMessage);
+                        else
+                        {
+                            QuestExistsMessage();
+                        }
                     }
 
                     break;
