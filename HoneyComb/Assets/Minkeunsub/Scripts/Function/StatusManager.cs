@@ -436,6 +436,9 @@ public class QuestData
 
     public string textId;
 
+    public bool comicAble = true;
+    [DrawIf("comicAble", true)] public int comicIdx;
+
     public int Reward;
 
     public string SetQuestName(int idx)

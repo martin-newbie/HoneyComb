@@ -105,7 +105,10 @@ public abstract class NpcBase : MonoBehaviour
 
                     if (CartoonManager.Instance.cartoons == null) QuestExistsMessage();
                     else
-                        CartoonManager.Instance.CartoonStartFunction(StatusManager.Instance.CurQuestIdx, QuestExistsMessage);
+                    {
+                        if (thisQuest.comicAble)
+                            CartoonManager.Instance.CartoonStartFunction(thisQuest.comicIdx, QuestExistsMessage);
+                    }
 
                     break;
                 case NpcState.QuestClear:
