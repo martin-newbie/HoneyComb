@@ -143,7 +143,7 @@ public class LibraryManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound("Button_Click");
         SoundManager.Instance.PlaySound("PageFlip");
-        CartoonManager.Instance.CartoonStartFunction(idx);
+        CartoonManager.Instance.CartoonStartByLibrary(idx);
     }
 
     public void SetScrollIdx(int idx)
