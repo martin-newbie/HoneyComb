@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoneyBee : CharacterScript
+public class HoneyBee : Player
 {
     //¹«´É·Â
 }

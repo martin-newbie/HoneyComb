@@ -16,11 +16,11 @@ public enum EStageType
 public enum EPlayableCharacter
 {
     HONENY_BEE,
+    FAT_BEE,
     MEGA_BEE,
     DIRT_BEE,
     PUMPKIN_BEE,
     GARDENER_BEE,
-    FAT_BEE,
     FABULOUS_BEE,
     CYBORG_BEE,
     MISCHIEF_BEE,

@@ -16,12 +16,13 @@ public class Player : MonoBehaviour
     public float invincibleDelay;
     public bool isInvincible;
 
+    public EPlayableCharacter characterType;
     private StatusManager statusManager;
-    [SerializeField]
     private ParticleSystem HoneyParticle;
 
     protected virtual void Start()
     {
+        HoneyParticle = transform.GetComponentInChildren<ParticleSystem>();
         statusManager = StatusManager.Instance;
 
         int level = statusManager.playableCharacterInfos.Find((x) => x.character == statusManager.nowCharacter).level;
