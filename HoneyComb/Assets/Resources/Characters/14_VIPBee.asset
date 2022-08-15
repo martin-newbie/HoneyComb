@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
   m_Name: 14_VIPBee
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 13
   Icon: {fileID: 0}
-  characterName: 
-  Description: 
+  characterName: "VIP \uBC8C"
+  Description: "\uC5EC\uB7EC\uBD84\uD55C\uD14C \uC5B4\uC6B8\uB9AC\uB294 \uBC8C\uC785\uB2C8\uB2E4\n\uC774
+    \uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4"
