@@ -274,7 +274,7 @@ MonoBehaviour:
   isGameOver: 0
   invincibleDelay: 0.15
   isInvincible: 0
-  HoneyParticle: {fileID: 831758151}
+  characterType: 0
 --- !u!95 &43778897
 Animator:
   serializedVersion: 3
@@ -1962,11 +1962,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3817288594678894980, guid: d6e9c6b91c938934abd1d2bee98e4e90, type: 3}
   m_PrefabInstance: {fileID: 831758149}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &831758151 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3817288594678894979, guid: d6e9c6b91c938934abd1d2bee98e4e90, type: 3}
-  m_PrefabInstance: {fileID: 831758149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &859369944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,6 +3601,8 @@ MonoBehaviour:
     curValue: 0
     maxValue: 0
     textId: 
+    comicAble: 1
+    comicIdx: 0
     Reward: 0
   questObj: {fileID: 1788459335}
   TitleTxt: {fileID: 1694568833}

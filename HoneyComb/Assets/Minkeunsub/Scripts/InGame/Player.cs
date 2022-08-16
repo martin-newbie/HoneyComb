@@ -17,11 +17,14 @@ public class Player : MonoBehaviour
     public bool isInvincible;
 
     public EPlayableCharacter characterType;
+
+    private Animator animator;
     private StatusManager statusManager;
     private ParticleSystem HoneyParticle;
 
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
         HoneyParticle = transform.GetComponentInChildren<ParticleSystem>();
         statusManager = StatusManager.Instance;
 

@@ -129,7 +129,10 @@ public class InGameManager : Singleton<InGameManager>
 
     public void SaveDataToManager()
     {
-        StatusManager.Instance.Honey += roundHoney;
+        if (StatusManager.Instance.nowCharacter == EPlayableCharacter.PUMPKIN_BEE)
+            StatusManager.Instance.Honey += (int)(roundHoney * 1.5f);
+        else
+            StatusManager.Instance.Honey += roundHoney;
     }
 
     void DistanceLogic()

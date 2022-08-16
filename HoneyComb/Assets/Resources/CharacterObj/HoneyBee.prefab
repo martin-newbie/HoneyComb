@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 650383026600376191}
   - component: {fileID: 650383026600376189}
   - component: {fileID: 650383026600376188}
-  - component: {fileID: 650383026600376163}
   - component: {fileID: 650383026600376162}
   - component: {fileID: 1595533422684723259}
   m_Layer: 0
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: c638301e67e426847a531b5b5a4767b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db61cafd29608214293f5cd13ebe34f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.82, y: 4.14}
+    oldSize: {x: 4.8, y: 5.27}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -135,24 +134,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &650383026600376163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650383026600376184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afdad450a3fdb7546b8635c44464a659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHp: 100
-  Hp: 0
-  isGameOver: 0
-  invincibleDelay: 0.15
-  isInvincible: 0
-  HoneyParticle: {fileID: 4467329118274763509}
 --- !u!95 &650383026600376162
 Animator:
   serializedVersion: 3
@@ -184,12 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171339958d5673b4289949ee30639b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 0
+  MaxHp: 100
   Hp: 0
   isGameOver: 0
-  invincibleDelay: 0
+  invincibleDelay: 0.15
   isInvincible: 0
-  HoneyParticle: {fileID: 0}
+  characterType: 0
 --- !u!1001 &650383025845758838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,10 +263,5 @@ PrefabInstance:
 --- !u!4 &4467329118274763506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3817288594678894980, guid: d6e9c6b91c938934abd1d2bee98e4e90, type: 3}
-  m_PrefabInstance: {fileID: 650383025845758838}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4467329118274763509 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3817288594678894979, guid: d6e9c6b91c938934abd1d2bee98e4e90, type: 3}
   m_PrefabInstance: {fileID: 650383025845758838}
   m_PrefabAsset: {fileID: 0}

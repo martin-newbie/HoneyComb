@@ -15,7 +15,7 @@ public enum EStageType
 }
 public enum EPlayableCharacter
 {
-    HONENY_BEE,
+    HONEY_BEE,
     FAT_BEE,
     MEGA_BEE,
     DIRT_BEE,
@@ -201,7 +201,7 @@ public class StatusManager : Singleton<StatusManager>
 
     void BeeCharging()
     {
-        if (CurBee < MaxBee && SceneManager.GetActiveScene().name != "InGameScene")
+        if (CurBee < MaxBee && SceneManager.GetActiveScene().name.Equals("InGameScene") == false)
         {
             curBeeDelay += Time.deltaTime * Charging;
 
@@ -213,11 +213,6 @@ public class StatusManager : Singleton<StatusManager>
         }
         else curBeeDelay = -0.01f;
     }
-    #region Debug
-    void ClearPlayerPrefs()
-    {
-    }
-    #endregion
     public void LoadData()
     {
         string dataStr = PlayerPrefs.GetString(dataSaveName, "none");

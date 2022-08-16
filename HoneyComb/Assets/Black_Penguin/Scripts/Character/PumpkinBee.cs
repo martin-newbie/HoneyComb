@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FatBee : Player
+public class PumpkinBee : Player
 {
 }

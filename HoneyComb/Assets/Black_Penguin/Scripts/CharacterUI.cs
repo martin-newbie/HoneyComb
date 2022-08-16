@@ -62,10 +62,14 @@ public class CharacterUI : MonoBehaviour
 
         foreach (CharacterScript script in characterScripts)
         {
-            if (script.characterType == EPlayableCharacter.HONENY_BEE) continue;
+            if (script.characterType == EPlayableCharacter.HONEY_BEE) continue;
             Image image = Instantiate(characterIcon, characterIcon.transform.parent);
             image.name = $"{script.name}Icon";
             image.sprite = script.Icon;
+            if (statusManager.playableCharacterInfos.Find((x) => x.character == script.characterType).level <= 0)
+            {
+                image.transform.GetChild(0).GetComponent<Image>().color = new Color(0, 0, 0, 0.7f);
+            }
         }
 
         nowShowCharacterType = statusManager.nowCharacter;
