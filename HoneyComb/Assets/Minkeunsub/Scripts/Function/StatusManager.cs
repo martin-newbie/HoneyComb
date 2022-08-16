@@ -216,10 +216,6 @@ public class StatusManager : Singleton<StatusManager>
     #region Debug
     void ClearPlayerPrefs()
     {
-        PlayerPrefs.DeleteKey(dataSaveName);
-        PlayerPrefs.DeleteKey(timeSaveName);
-        PlayerPrefs.DeleteKey(characterSaveName);
-        PlayerPrefs.DeleteKey(stageSaveName);
     }
     #endregion
     public void LoadData()
@@ -240,7 +236,9 @@ public class StatusManager : Singleton<StatusManager>
             int count = (int)EPlayableCharacter.END;
             for (int i = 0; i < count; i++)
             {
-                playableCharacterInfos.Add(new PlayableCharacterInfo() { character = (EPlayableCharacter)i });
+                PlayableCharacterInfo character = new PlayableCharacterInfo() { character = (EPlayableCharacter)i };
+                Debug.Log(character.character);
+                playableCharacterInfos.Add(character);
                 if (i == 0)
                 {
                     playableCharacterInfos[0].level = 1;
@@ -295,6 +293,11 @@ public class StatusManager : Singleton<StatusManager>
 
         string saveStr = JsonUtility.ToJson(dataSave, true);
         PlayerPrefs.SetString(dataSaveName, saveStr);
+    }
+    public void SaveCharacterData()
+    {
+        string saveStr = JsonUtility.ToJson(playableCharacterInfos, true);
+        PlayerPrefs.SetString(characterSaveName, saveStr);
     }
 
     void LoadBeeTime()
@@ -360,6 +363,7 @@ public class StatusManager : Singleton<StatusManager>
             DataSave();
             SaveBeeTime();
             SaveStageInfo();
+            SaveCharacterData();
         }
         else
         {
