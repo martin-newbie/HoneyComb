@@ -18,6 +18,7 @@ public class CharacterUI : MonoBehaviour
     [SerializeField] private Text nameText;
     [SerializeField] private Text descriptionText;
     [SerializeField] private Image characterIcon;
+    [SerializeField] private Image characterGauge;
 
     private int beeListIndexNumber;
     private bool isOpen;
@@ -56,7 +57,7 @@ public class CharacterUI : MonoBehaviour
 
         characterScripts = Resources.LoadAll<CharacterScript>("Characters/").ToList();
         openButton.onClick.AddListener(() => _isOpen = true);
-        selectButton.onClick.AddListener(() => SelectButtonClickFunc());
+        selectButton.onClick.AddListener(SelectButtonClickFunc);
         leftButton.onClick.AddListener(() => ArrowButtonClickFunc(-1));
         rightButton.onClick.AddListener(() => ArrowButtonClickFunc(1));
 
@@ -123,8 +124,12 @@ public class CharacterUI : MonoBehaviour
     {
         PlayableCharacterInfo playableCharacterInfo = statusManager.playableCharacterInfos[beeListIndexNumber];
 
-        nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName}";
+        int index = statusManager.playableCharacterInfos.Find((x) => x.character == playableCharacterInfo.character).level;
+
+        nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName} ({playableCharacterInfo.pieceCount}/{playableCharacterInfo.ReturnRequireCount()})";
         descriptionText.text = characterScripts[beeListIndexNumber].Description;
+
+        characterGauge.fillAmount = (float)playableCharacterInfo.pieceCount / playableCharacterInfo.ReturnRequireCount();
     }
 
     void SelectButtonClickFunc()

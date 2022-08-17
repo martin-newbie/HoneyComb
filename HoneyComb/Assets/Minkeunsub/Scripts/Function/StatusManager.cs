@@ -57,6 +57,10 @@ public class PlayableCharacterInfo
             pieceCount -= requireCount;
         }
     }
+    public int ReturnRequireCount()
+    {
+        return level * 20 + 10;
+    }
 }
 public class StatusManager : Singleton<StatusManager>
 {
