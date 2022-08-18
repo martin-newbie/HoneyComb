@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum QuestType
+public enum QuestType
 {
-    GO_FAST,
-
+    DailyQuestGoFaraway,
+    DailyQuestGetSomeHoney,
+    DailyQuestHit,
+    DailyQuestMove,
+    DailyQuestPlayGame,
+    END
 }
 
 public abstract class BaseDailyQuest
@@ -21,14 +25,39 @@ public abstract class BaseDailyQuest
         return value / 2;
     }
 }
-public class GoFaraway : BaseDailyQuest
+public class DailyQuestGoFaraway : BaseDailyQuest
 {
-    public override bool isClear()
-    {
-        return ReturnLevelIndex() * 5000 <= index;
-    }
+    public override bool isClear() => ReturnLevelIndex() * 5000 <= index;
+}
+public class DailyQuestGetSomeHoney : BaseDailyQuest
+{
+    public override bool isClear() => ReturnLevelIndex() * 250 <= index;
+}
+public class DailyQuestHit : BaseDailyQuest
+{
+    public override bool isClear() => ReturnLevelIndex() * 50 <= index;
+}
+public class DailyQuestMove : BaseDailyQuest
+{
+    public override bool isClear() => ReturnLevelIndex() * 399 <= index;
+}
+public class DailyQuestPlayGame : BaseDailyQuest
+{
+    public override bool isClear() => ReturnLevelIndex() * 30 <= index;
 }
 public class DailyQuest : MonoBehaviour
 {
+    void Update()
+    {
 
+    }
+    private void Start()
+    {
+        List<BaseDailyQuest> baseDailyQuests = new List<BaseDailyQuest>();
+        baseDailyQuests.Add(new DailyQuestPlayGame());
+        baseDailyQuests.Add(new DailyQuestGetSomeHoney());
+        baseDailyQuests.Add(new DailyQuestGoFaraway());
+        baseDailyQuests.Add(new DailyQuestMove());
+        baseDailyQuests.Add(new DailyQuestHit());
+    }
 }

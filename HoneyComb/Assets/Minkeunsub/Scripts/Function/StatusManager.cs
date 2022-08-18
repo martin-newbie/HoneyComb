@@ -89,6 +89,7 @@ public class StatusManager : Singleton<StatusManager>
 
     [Header("Status")]
     public int Honey; //²Ü
+    public int royalGel;
     public bool[] SceneUnlock = new bool[3]; // 0: royal, 1: lab, 2: library
     public bool bookAble;
     public bool gamePlayAble;
@@ -103,6 +104,10 @@ public class StatusManager : Singleton<StatusManager>
     public QuestDataSave QuestSaveList = new QuestDataSave();
     public bool isQuestAble;
     public List<Action> QuestClearActions = new List<Action>();
+
+    [Header("DailyQuest")]
+
+    public List<BaseDailyQuest> baseDailyQuests = new List<BaseDailyQuest>();
 
     [Header("Books")]
     public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
@@ -397,6 +402,7 @@ public class StatusSave
     public bool roomUpgradeAble;
     public List<bool> BookUnlocked = new List<bool>();
     public List<PlayableCharacterInfo> CharactersInfo = new List<PlayableCharacterInfo>();
+    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>();
 }
 
 public enum QuestNpcState
