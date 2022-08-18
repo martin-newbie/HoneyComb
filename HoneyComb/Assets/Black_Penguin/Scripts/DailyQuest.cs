@@ -14,8 +14,28 @@ public enum QuestType
 
 public abstract class BaseDailyQuest
 {
+    public QuestType type;
     public int index;
-    public abstract bool isClear();
+    public bool isClear()
+    {
+        switch (type)
+        {
+            case QuestType.DailyQuestGoFaraway:
+                return ReturnLevelIndex() * 5000 <= index;
+            case QuestType.DailyQuestGetSomeHoney:
+                return ReturnLevelIndex() * 250 <= index;
+            case QuestType.DailyQuestHit:
+                return ReturnLevelIndex() * 50 <= index;
+            case QuestType.DailyQuestMove:
+                return ReturnLevelIndex() * 300 <= index;
+            case QuestType.DailyQuestPlayGame:
+                return ReturnLevelIndex() * 30 <= index;
+            default:
+                Debug.Log("DailyQuestLog Eror");
+                break;
+        }
+        return false;
+    }
     public int ReturnLevelIndex()
     {
         int value = 0;
@@ -25,28 +45,11 @@ public abstract class BaseDailyQuest
         return value / 2;
     }
 }
-public class DailyQuestGoFaraway : BaseDailyQuest
-{
-    public override bool isClear() => ReturnLevelIndex() * 5000 <= index;
-}
-public class DailyQuestGetSomeHoney : BaseDailyQuest
-{
-    public override bool isClear() => ReturnLevelIndex() * 250 <= index;
-}
-public class DailyQuestHit : BaseDailyQuest
-{
-    public override bool isClear() => ReturnLevelIndex() * 50 <= index;
-}
-public class DailyQuestMove : BaseDailyQuest
-{
-    public override bool isClear() => ReturnLevelIndex() * 399 <= index;
-}
-public class DailyQuestPlayGame : BaseDailyQuest
-{
-    public override bool isClear() => ReturnLevelIndex() * 30 <= index;
-}
 public class DailyQuest : MonoBehaviour
 {
+    public int distance;
+    public int getHoneyCount;
+    public int hitCount;
     void Update()
     {
 
@@ -54,10 +57,5 @@ public class DailyQuest : MonoBehaviour
     private void Start()
     {
         List<BaseDailyQuest> baseDailyQuests = new List<BaseDailyQuest>();
-        baseDailyQuests.Add(new DailyQuestPlayGame());
-        baseDailyQuests.Add(new DailyQuestGetSomeHoney());
-        baseDailyQuests.Add(new DailyQuestGoFaraway());
-        baseDailyQuests.Add(new DailyQuestMove());
-        baseDailyQuests.Add(new DailyQuestHit());
     }
 }
