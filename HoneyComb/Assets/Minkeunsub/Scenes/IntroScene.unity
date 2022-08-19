@@ -837,6 +837,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83324479de19704895d2969ed0b59f6, type: 3}
+--- !u!1 &771608303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771608305}
+  - component: {fileID: 771608304}
+  m_Layer: 0
+  m_Name: Datetime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &771608304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771608303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559ea9d08b8eca647ac0087569ad2189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+  getHoneyCount: 0
+  hitCount: 0
+  moveCount: 0
+  playCount: 0
+  makingWaxCount: 0
+  makingBeeCount: 0
+--- !u!4 &771608305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771608303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.323793, y: -0.09897001, z: 76.19025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1417701634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1003101515696151977, guid: a83324479de19704895d2969ed0b59f6, type: 3}
@@ -943,6 +993,7 @@ MonoBehaviour:
   WaxDelay: 60
   curWaxDelay: 0
   Honey: 0
+  royalGel: 0
   SceneUnlock: 000000
   bookAble: 0
   gamePlayAble: 0
