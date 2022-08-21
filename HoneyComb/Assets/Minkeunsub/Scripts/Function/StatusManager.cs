@@ -118,6 +118,7 @@ public class StatusManager : Singleton<StatusManager>
 
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>(4);
+    public EStageType nowStage;
 
     [Header("Daily Quest")]
     public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);

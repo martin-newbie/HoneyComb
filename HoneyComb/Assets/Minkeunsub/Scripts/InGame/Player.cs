@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Obstruction") && !isInvincible)
         {
             StartCoroutine(OnDamage());
+            DailyQuest.Instance.hitCount++;
         }
     }
 

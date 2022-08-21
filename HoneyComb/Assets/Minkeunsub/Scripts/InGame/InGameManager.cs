@@ -254,6 +254,7 @@ public class InGameManager : Singleton<InGameManager>
         {
             if (curDir != 2) curDir += dir;
         }
+        DailyQuest.Instance.moveCount++;
     }
 
     public void CameraShake(float duration)

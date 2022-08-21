@@ -90,6 +90,11 @@ public class InGameUI : Singleton<InGameUI>
         gameOver.Init(distance, honey);
     }
 
+    void OnAcceptDailyQuest()
+    {
+
+    }
+
     public void SetPlayerHp(float fill)
     {
         HpImg.fillAmount = fill;

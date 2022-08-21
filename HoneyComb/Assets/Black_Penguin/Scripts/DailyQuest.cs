@@ -1,9 +1,8 @@
 using Newtonsoft.Json;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using DateTime = System.DateTime;
 
 public enum QuestType
 {
@@ -12,27 +11,54 @@ public enum QuestType
     DailyQuestHit,
     DailyQuestMove,
     DailyQuestPlayGame,
+    DailyQuestCollectWax = 101,
+    DailyQuestCollectBee,
     END
 }
 
-public abstract class BaseDailyQuest
+public class BaseDailyQuest
 {
     public QuestType type;
-    public int index;
+    public EPlayableCharacter characterType;
+    public EStageType stageType;
+    public bool isCompleted;
+    private int index;
+    public int _index
+    {
+        get { return index; }
+        set
+        {
+            if ((int)type < 100)
+            {
+                if (StatusManager.Instance.nowStage == stageType && StatusManager.Instance.nowCharacter == characterType)
+                {
+                    index = value;
+                }
+            }
+            else
+            {
+                index = value;
+            }
+        }
+    }
     public bool isClear()
     {
         switch (type)
         {
             case QuestType.DailyQuestGoFaraway:
-                return ReturnLevelIndex() * 5000 <= index;
+                return ReturnLevelIndex() * 3000 <= index;
             case QuestType.DailyQuestGetSomeHoney:
                 return ReturnLevelIndex() * 250 <= index;
             case QuestType.DailyQuestHit:
-                return ReturnLevelIndex() * 50 <= index;
+                return ReturnLevelIndex() * 20 <= index;
             case QuestType.DailyQuestMove:
-                return ReturnLevelIndex() * 300 <= index;
+                return ReturnLevelIndex() * 200 <= index;
             case QuestType.DailyQuestPlayGame:
-                return ReturnLevelIndex() * 30 <= index;
+                return ReturnLevelIndex() * 5 <= index;
+            case QuestType.DailyQuestCollectWax:
+                return 10 <= index;
+            case QuestType.DailyQuestCollectBee:
+                return 10 <= index;
             default:
                 Debug.Log("DailyQuestLog Eror");
                 break;
@@ -48,9 +74,10 @@ public abstract class BaseDailyQuest
         return value / 2;
     }
 }
-public class DailyQuest : MonoBehaviour
+public class DailyQuest : Singleton<DailyQuest>
 {
-    private string receiveDailyQuestTimeString = "DaillyQuest DataString";
+    private string dailyQuestTimeSavePath = "DaillyQuestTime DataPath";
+    private string dailyQuestSavePath = "DaillyQuest DataPath";
 
     public int distance;
     public int getHoneyCount;
@@ -60,31 +87,53 @@ public class DailyQuest : MonoBehaviour
 
     public int makingWaxCount;
     public int makingBeeCount;
-    private void Start()
+
+    List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
+    private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         CheckTimeToReset();
-        List<BaseDailyQuest> baseDailyQuests = new List<BaseDailyQuest>();
     }
 
     /// <summary>
     /// 일일퀘스트는 새벽 4시마다 갱신된다
     /// </summary>
-    void CheckTimeToReset()
+    private void CheckTimeToReset()
     {
-        string lastTime = PlayerPrefs.GetString(receiveDailyQuestTimeString, "null");
-        if (lastTime != "null")
+        string lastTimeData = PlayerPrefs.GetString(dailyQuestTimeSavePath, "null");
+        if (lastTimeData != "null")
         {
-            string[] nowtime = DateTime.Now.ToString("yyyy-MM-dd-HH").Split('-');
-            string dataString = JsonUtility.ToJson(nowtime);
-            PlayerPrefs.SetString(receiveDailyQuestTimeString, dataString);
+            DateTime nowtime = DateTime.Now;
+            DateTime lastTime = JsonUtility.FromJson<DateTime>(lastTimeData);
+
+            if (new DateTime(lastTime.Year, lastTime.Month, lastTime.Day + 1, 4, 0, 0) <= nowtime)
+            {
+                QuestReset(nowtime);
+            }
+            else
+            {
+                string dataLoadString = PlayerPrefs.GetString(dailyQuestSavePath, "null");
+                if (dataLoadString != "null")
+                {
+                    dailyQuests = JsonUtility.FromJson<List<BaseDailyQuest>>(dataLoadString);
+                }
+                else
+                {
+                    Debug.Log("QUEST SAVE LOAD ERROR");
+                }
+            }
         }
         else
         {
-            QuestReset();
+            QuestReset(DateTime.Now);
         }
-
     }
-    void QuestReset()
+    private void QuestInfoSave()
+    {
+        string dailyQuestDataString = JsonUtility.ToJson(dailyQuests);
+        PlayerPrefs.SetString(dailyQuestSavePath, dailyQuestDataString);
+    }
+    private void QuestReset(DateTime nowTime)
     {
         distance = 0;
         hitCount = 0;
@@ -92,5 +141,57 @@ public class DailyQuest : MonoBehaviour
         playCount = 0;
         makingWaxCount = 0;
         makingBeeCount = 0;
+
+        dailyQuests.Clear();
+        for (int i = 0; i < 3; i++)
+        {
+            List<PlayableCharacterInfo> infos = StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1);
+            EPlayableCharacter CharacterType = infos[Random.Range(0, infos.Count)].character;
+            EStageType StageType;
+            while (true)
+            {
+                int index = Random.Range(0, StatusManager.Instance.stageInfos.Count);
+                if (StatusManager.Instance.stageInfos[index] == true)
+                {
+                    StageType = (EStageType)index;
+                    break;
+                }
+            }
+
+            while (dailyQuests.Count < 3)
+            {
+                QuestType questType = (QuestType)Random.Range(0, (int)QuestType.END);
+                if (dailyQuests.Find((x) => x.type == questType) != null) continue;
+
+                dailyQuests.Add(new BaseDailyQuest()
+                {
+                    type = questType,
+                    stageType = StageType,
+                    characterType = CharacterType
+                });
+            }
+        }
+
+        string dataString = JsonUtility.ToJson(nowTime);
+        PlayerPrefs.SetString(dailyQuestTimeSavePath, dataString);
+
+        QuestInfoSave();
     }
+    private void OnApplicationQuit()
+    {
+        QuestInfoSave();
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            QuestInfoSave();
+        }
+    }
+}
+[CreateAssetMenu(fileName = "DailyQuestInfo", menuName = "DailyQuestInfo", order = int.MinValue)]
+public class DailyQuestUI_Info : ScriptableObject
+{
+    public QuestType questType;
+    public string questName;
 }

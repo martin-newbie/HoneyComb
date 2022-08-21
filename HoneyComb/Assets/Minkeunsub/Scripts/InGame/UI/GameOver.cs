@@ -47,6 +47,12 @@ public class GameOver : MonoBehaviour
         distance = _distance;
         honey = _honey;
     }
+    void OnAcceptDailyQuest()
+    {
+        DailyQuest.Instance.distance += (int)distance;
+        DailyQuest.Instance.getHoneyCount += honey;
+        DailyQuest.Instance.playCount++;
+    }
 
     private void Update()
     {
