@@ -28,6 +28,11 @@ public class BaseDailyQuest
         get { return index; }
         set
         {
+            if (value < index)
+            {
+                index = value;
+                return;
+            }
             if ((int)type < 100)
             {
                 if (StatusManager.Instance.nowStage == stageType && StatusManager.Instance.nowCharacter == characterType)
@@ -43,27 +48,32 @@ public class BaseDailyQuest
     }
     public bool isClear()
     {
+        if (GetClearCount() <= _index) return true;
+        else return false;
+    }
+    public int GetClearCount()
+    {
         switch (type)
         {
             case QuestType.DailyQuestGoFaraway:
-                return ReturnLevelIndex() * 3000 <= index;
+                return ReturnLevelIndex() * 3000;
             case QuestType.DailyQuestGetSomeHoney:
-                return ReturnLevelIndex() * 250 <= index;
+                return ReturnLevelIndex() * 250;
             case QuestType.DailyQuestHit:
-                return ReturnLevelIndex() * 20 <= index;
+                return ReturnLevelIndex() * 20;
             case QuestType.DailyQuestMove:
-                return ReturnLevelIndex() * 200 <= index;
+                return ReturnLevelIndex() * 200;
             case QuestType.DailyQuestPlayGame:
-                return ReturnLevelIndex() * 5 <= index;
+                return ReturnLevelIndex() * 5;
             case QuestType.DailyQuestCollectWax:
-                return 10 <= index;
+                return 10;
             case QuestType.DailyQuestCollectBee:
-                return 10 <= index;
+                return 10;
             default:
                 Debug.Log("DailyQuestLog Eror");
                 break;
         }
-        return false;
+        return 0;
     }
     public int ReturnLevelIndex()
     {
@@ -79,16 +89,126 @@ public class DailyQuest : Singleton<DailyQuest>
     private string dailyQuestTimeSavePath = "DaillyQuestTime DataPath";
     private string dailyQuestSavePath = "DaillyQuest DataPath";
 
-    public int distance;
-    public int getHoneyCount;
-    public int hitCount;
-    public int moveCount;
-    public int playCount;
+    public int distance
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
+            if (quest != null)
+                return quest._index;
+            else return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int getHoneyCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int hitCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestHit);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestHit);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int moveCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestMove);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestMove);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int playCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int makingWaxCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
+    public int makingBeeCount
+    {
+        get
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
+            if (quest != null)
+                return quest._index;
+            else
+                return 0;
+        }
+        set
+        {
+            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
+            if (quest != null)
+                quest._index = value;
+        }
+    }
 
-    public int makingWaxCount;
-    public int makingBeeCount;
-
-    List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
+    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -189,9 +309,4 @@ public class DailyQuest : Singleton<DailyQuest>
         }
     }
 }
-[CreateAssetMenu(fileName = "DailyQuestInfo", menuName = "DailyQuestInfo", order = int.MinValue)]
-public class DailyQuestUI_Info : ScriptableObject
-{
-    public QuestType questType;
-    public string questName;
-}
+

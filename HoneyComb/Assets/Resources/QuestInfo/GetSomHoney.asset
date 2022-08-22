@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: GetSomeHoney
-  m_EditorClassIdentifier: Assembly-CSharp::DailyQuestUI_Info
+  m_Script: {fileID: 11500000, guid: 35dae9f587152db4fadeee20170e3bf6, type: 3}
+  m_Name: GetSomHoney
+  m_EditorClassIdentifier: 
   questType: 1
   questName: "\uAFC0 \uBAA8\uC73C\uAE30"
+  questDescription: " \uAFC0\uC744 \uBAA8\uC73C\uC2ED\uC2DC\uC624"
