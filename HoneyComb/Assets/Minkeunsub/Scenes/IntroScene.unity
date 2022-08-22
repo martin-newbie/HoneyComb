@@ -866,13 +866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559ea9d08b8eca647ac0087569ad2189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
-  getHoneyCount: 0
-  hitCount: 0
-  moveCount: 0
-  playCount: 0
-  makingWaxCount: 0
-  makingBeeCount: 0
+  DEBUG: 0
+  dailyQuests:
+    quests: []
 --- !u!4 &771608305
 Transform:
   m_ObjectHideFlags: 0
@@ -886,6 +882,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1163749234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163749236}
+  - component: {fileID: 1163749235}
+  m_Layer: 0
+  m_Name: DailyQuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1163749235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163749234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559ea9d08b8eca647ac0087569ad2189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG: 0
+  dailyQuests:
+    quests: []
+--- !u!4 &1163749236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163749234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7844247, y: -0.19371036, z: 67.08551}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1417701634 stripped
 GameObject:
@@ -958,6 +1000,7 @@ MonoBehaviour:
     roomUpgradeAble: 0
     BookUnlocked: 
     CharactersInfo: []
+    stageInfo: 
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
@@ -1083,10 +1126,13 @@ MonoBehaviour:
   QuestSaveList:
     QuestLists: []
   isQuestAble: 0
+  baseDailyQuests: []
   BookUnlocked: 010101010100000000000000000000000000
   nowCharacter: 0
   playableCharacterInfos: []
-  stageInfos: 00000000
+  stageInfos: 01000000
+  nowStage: 0
+  dailyQuests: []
 --- !u!1001 &1577870229
 PrefabInstance:
   m_ObjectHideFlags: 0

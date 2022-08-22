@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dae9f587152db4fadeee20170e3bf6, type: 3}
   m_Name: CollectBee
   m_EditorClassIdentifier: 
-  questType: 102
+  questType: 6
   questName: "\uB3D9\uB8CC \uBAA8\uC9D1"
   questDescription: " \uBC8C\uC744 \uC0DD\uC0B0\uD558\uC2DC\uC624"

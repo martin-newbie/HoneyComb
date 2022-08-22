@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using DateTime = System.DateTime;
 
 public enum QuestType
@@ -11,11 +12,11 @@ public enum QuestType
     DailyQuestHit,
     DailyQuestMove,
     DailyQuestPlayGame,
-    DailyQuestCollectWax = 101,
+    DailyQuestCollectWax,
     DailyQuestCollectBee,
     END
 }
-
+[System.Serializable]
 public class BaseDailyQuest
 {
     public QuestType type;
@@ -33,7 +34,7 @@ public class BaseDailyQuest
                 index = value;
                 return;
             }
-            if ((int)type < 100)
+            if (type < QuestType.DailyQuestCollectWax)
             {
                 if (StatusManager.Instance.nowStage == stageType && StatusManager.Instance.nowCharacter == characterType)
                 {
@@ -79,28 +80,36 @@ public class BaseDailyQuest
     {
         int value = 0;
         value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count;
-        value += StatusManager.Instance.stageInfos.FindAll((x) => x == true).Count;
+        value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
 
         return value / 2;
     }
 }
+[System.Serializable]
+public class DailyQuests
+{
+    public List<BaseDailyQuest> quests = new List<BaseDailyQuest>();
+}
+
 public class DailyQuest : Singleton<DailyQuest>
 {
     private string dailyQuestTimeSavePath = "DaillyQuestTime DataPath";
     private string dailyQuestSavePath = "DaillyQuest DataPath";
 
+    public bool DEBUG;
+
     public int distance
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
             if (quest != null)
                 return quest._index;
             else return 0;
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestGoFaraway);
             if (quest != null)
                 quest._index = value;
         }
@@ -109,7 +118,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
             if (quest != null)
                 return quest._index;
             else
@@ -117,7 +126,7 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestGetSomeHoney);
             if (quest != null)
                 quest._index = value;
         }
@@ -126,7 +135,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestHit);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestHit);
             if (quest != null)
                 return quest._index;
             else
@@ -134,7 +143,7 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestHit);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestHit);
             if (quest != null)
                 quest._index = value;
         }
@@ -143,7 +152,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestMove);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestMove);
             if (quest != null)
                 return quest._index;
             else
@@ -151,7 +160,7 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestMove);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestMove);
             if (quest != null)
                 quest._index = value;
         }
@@ -160,7 +169,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
             if (quest != null)
                 return quest._index;
             else
@@ -168,7 +177,7 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestPlayGame);
             if (quest != null)
                 quest._index = value;
         }
@@ -177,7 +186,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
             if (quest != null)
                 return quest._index;
             else
@@ -185,7 +194,7 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestCollectWax);
             if (quest != null)
                 quest._index = value;
         }
@@ -194,7 +203,7 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         get
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
             if (quest != null)
                 return quest._index;
             else
@@ -202,16 +211,24 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         set
         {
-            BaseDailyQuest quest = dailyQuests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
+            BaseDailyQuest quest = dailyQuests.quests.Find((x) => x.type == QuestType.DailyQuestCollectBee);
             if (quest != null)
                 quest._index = value;
         }
     }
 
-    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
+    public DailyQuests dailyQuests = new DailyQuests();
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+    }
+    private void Start()
+    {
+        if (DEBUG)
+        {
+            PlayerPrefs.DeleteKey(dailyQuestTimeSavePath);
+            PlayerPrefs.DeleteKey(dailyQuestSavePath);
+        }
         CheckTimeToReset();
     }
 
@@ -224,18 +241,17 @@ public class DailyQuest : Singleton<DailyQuest>
         if (lastTimeData != "null")
         {
             DateTime nowtime = DateTime.Now;
-            DateTime lastTime = JsonUtility.FromJson<DateTime>(lastTimeData);
-
+            DateTime lastTime = DateTime.Parse(lastTimeData);
             if (new DateTime(lastTime.Year, lastTime.Month, lastTime.Day + 1, 4, 0, 0) <= nowtime)
             {
-                QuestReset(nowtime);
+                QuestReset();
             }
             else
             {
                 string dataLoadString = PlayerPrefs.GetString(dailyQuestSavePath, "null");
                 if (dataLoadString != "null")
                 {
-                    dailyQuests = JsonUtility.FromJson<List<BaseDailyQuest>>(dataLoadString);
+                    dailyQuests = JsonUtility.FromJson<DailyQuests>(dataLoadString);
                 }
                 else
                 {
@@ -245,15 +261,18 @@ public class DailyQuest : Singleton<DailyQuest>
         }
         else
         {
-            QuestReset(DateTime.Now);
+            QuestReset();
         }
     }
     private void QuestInfoSave()
     {
         string dailyQuestDataString = JsonUtility.ToJson(dailyQuests);
         PlayerPrefs.SetString(dailyQuestSavePath, dailyQuestDataString);
+
+        DateTime nowTime = DateTime.Now;
+        PlayerPrefs.SetString(dailyQuestTimeSavePath, nowTime.ToString());
     }
-    private void QuestReset(DateTime nowTime)
+    private void QuestReset()
     {
         distance = 0;
         hitCount = 0;
@@ -262,7 +281,7 @@ public class DailyQuest : Singleton<DailyQuest>
         makingWaxCount = 0;
         makingBeeCount = 0;
 
-        dailyQuests.Clear();
+        dailyQuests.quests.Clear();
         for (int i = 0; i < 3; i++)
         {
             List<PlayableCharacterInfo> infos = StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1);
@@ -278,12 +297,12 @@ public class DailyQuest : Singleton<DailyQuest>
                 }
             }
 
-            while (dailyQuests.Count < 3)
+            while (dailyQuests.quests.Count < 3)
             {
                 QuestType questType = (QuestType)Random.Range(0, (int)QuestType.END);
-                if (dailyQuests.Find((x) => x.type == questType) != null) continue;
+                if (dailyQuests.quests.Find((x) => x.type == questType) != null) continue;
 
-                dailyQuests.Add(new BaseDailyQuest()
+                dailyQuests.quests.Add(new BaseDailyQuest()
                 {
                     type = questType,
                     stageType = StageType,
@@ -292,8 +311,6 @@ public class DailyQuest : Singleton<DailyQuest>
             }
         }
 
-        string dataString = JsonUtility.ToJson(nowTime);
-        PlayerPrefs.SetString(dailyQuestTimeSavePath, dataString);
 
         QuestInfoSave();
     }

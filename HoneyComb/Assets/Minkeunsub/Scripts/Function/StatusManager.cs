@@ -10,8 +10,8 @@ public enum EStageType
     PLAIN,
     FOREST,
     TUNDRA,
-    DESSERT
-
+    DESSERT,
+    END
 }
 public enum EPlayableCharacter
 {
@@ -117,7 +117,7 @@ public class StatusManager : Singleton<StatusManager>
     public List<PlayableCharacterInfo> playableCharacterInfos = new List<PlayableCharacterInfo>();
 
     [Header("Stage")]
-    public List<bool> stageInfos = new List<bool>(4);
+    public List<bool> stageInfos = new List<bool>();
     public EStageType nowStage;
 
     [Header("Daily Quest")]
@@ -161,7 +161,6 @@ public class StatusManager : Singleton<StatusManager>
         LoadData();
         LoadBeeTime();
         LoadQuest();
-        LoadStageInfo();
 
         InitClearActions();
     }
@@ -242,7 +241,6 @@ public class StatusManager : Singleton<StatusManager>
             for (int i = 0; i < count; i++)
             {
                 PlayableCharacterInfo character = new PlayableCharacterInfo() { character = (EPlayableCharacter)i };
-                Debug.Log(character.character);
                 playableCharacterInfos.Add(character);
                 if (i == 0)
                 {
@@ -270,6 +268,7 @@ public class StatusManager : Singleton<StatusManager>
         roomUpgradeAble = dataSave.roomUpgradeAble;
         BookUnlocked = dataSave.BookUnlocked;
         playableCharacterInfos = dataSave.CharactersInfo;
+        stageInfos = dataSave.stageInfo;
     }
 
     void SetDataToSave()
@@ -290,6 +289,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.roomUpgradeAble = roomUpgradeAble;
         dataSave.BookUnlocked = BookUnlocked;
         dataSave.CharactersInfo = playableCharacterInfos;
+        dataSave.stageInfo = stageInfos;
     }
 
     public void SaveData()
@@ -326,21 +326,10 @@ public class StatusManager : Singleton<StatusManager>
         }
         else CurBee = MaxBee;
     }
-    void LoadStageInfo()
-    {
-        string dataStr = PlayerPrefs.GetString(stageSaveName, "none");
-        if (dataStr == "none")
-        {
-            stageInfos[0] = true;
-        }
-        else
-        {
-            stageInfos = JsonUtility.FromJson<List<bool>>(dataStr);
-        }
-    }
     void SaveStageInfo()
     {
-        PlayerPrefs.SetString(stageSaveName, JsonUtility.ToJson(stageInfos));
+        string saveData = JsonUtility.ToJson(stageInfos);
+        PlayerPrefs.SetString(stageSaveName, saveData);
     }
     void SaveBeeTime()
     {
@@ -403,7 +392,7 @@ public class StatusSave
     public bool roomUpgradeAble;
     public List<bool> BookUnlocked = new List<bool>();
     public List<PlayableCharacterInfo> CharactersInfo = new List<PlayableCharacterInfo>();
-    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>();
+    public List<bool> stageInfo = new List<bool>();
 }
 
 public enum QuestNpcState
