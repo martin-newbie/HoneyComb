@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+[System.Serializable]
 public enum EStageType
 {
     PLAIN,
@@ -13,6 +14,8 @@ public enum EStageType
     DESSERT,
     END
 }
+
+[System.Serializable]
 public enum EPlayableCharacter
 {
     HONEY_BEE,
@@ -105,10 +108,6 @@ public class StatusManager : Singleton<StatusManager>
     public bool isQuestAble;
     public List<Action> QuestClearActions = new List<Action>();
 
-    [Header("DailyQuest")]
-
-    public List<BaseDailyQuest> baseDailyQuests = new List<BaseDailyQuest>();
-
     [Header("Books")]
     public List<bool> BookUnlocked = new List<bool>(new bool[5] { true, true, true, true, true });
 
@@ -119,9 +118,6 @@ public class StatusManager : Singleton<StatusManager>
     [Header("Stage")]
     public List<bool> stageInfos = new List<bool>();
     public EStageType nowStage;
-
-    [Header("Daily Quest")]
-    public List<BaseDailyQuest> dailyQuests = new List<BaseDailyQuest>(3);
 
     void RemoveSaveData()
     {

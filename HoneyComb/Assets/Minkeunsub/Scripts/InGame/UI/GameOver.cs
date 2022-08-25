@@ -47,7 +47,7 @@ public class GameOver : MonoBehaviour
         distance = _distance;
         honey = _honey;
     }
-    void OnAcceptDailyQuest()
+    void OnMergeDailyQuest()
     {
         DailyQuest.Instance.distance += (int)distance;
         DailyQuest.Instance.getHoneyCount += honey;
@@ -97,6 +97,7 @@ public class GameOver : MonoBehaviour
 
     public void ResultTitle()
     {
+        OnMergeDailyQuest();
         SoundManager.Instance.PlaySound("Button_Click");
         SceneManager.LoadScene("TitleScene");
         InGameManager.Instance.SaveDataToManager();

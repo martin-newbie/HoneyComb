@@ -1126,13 +1126,11 @@ MonoBehaviour:
   QuestSaveList:
     QuestLists: []
   isQuestAble: 0
-  baseDailyQuests: []
   BookUnlocked: 010101010100000000000000000000000000
   nowCharacter: 0
   playableCharacterInfos: []
   stageInfos: 01000000
   nowStage: 0
-  dailyQuests: []
 --- !u!1001 &1577870229
 PrefabInstance:
   m_ObjectHideFlags: 0

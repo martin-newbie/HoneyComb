@@ -8,8 +8,12 @@ public class DailyQuestUI : MonoBehaviour
 {
     public bool isUIOn;
 
-    public Text[] QuestTitle;
-    public Text[] QuestDescription;
+    public Text[] questTitle;
+    public Text[] questDescription;
+    public Image[] questClearShow;
+
+    public Image questGuage;
+    public int questClearCount;
     private void Start()
     {
         List<BaseDailyQuest> dailyQuests = DailyQuest.Instance.dailyQuests.quests;
@@ -17,32 +21,68 @@ public class DailyQuestUI : MonoBehaviour
         for (int i = 0; i < dailyQuests.Count; i++)
         {
             DailyQuestUI_Info questInfo = dailyQuestUI_Infos.Find((x) => x.questType == dailyQuests[i].type);
-            QuestTitle[i].text = questInfo.questName;
+            questTitle[i].text = questInfo.questName;
 
             string DescriptionString = "";
             if (dailyQuests[i].type < QuestType.DailyQuestCollectWax)
                 DescriptionString = $"<color=#FFFF33>{GetCharacterName(dailyQuests[i].characterType)}</color>캐릭터를 사용하여<color=#0099FF> {GetStageName(dailyQuests[i].stageType)}</color>스테이지에서\n";
             DescriptionString += $"<color=#FF9999>{dailyQuests[i]._index}/{dailyQuests[i].GetClearCount()}</color>{questInfo.questDescription}";
 
-            QuestDescription[i].text = DescriptionString;
+            questDescription[i].text = DescriptionString;
         }
+
+        QuestAllCompleteUIShow();
     }
     private void Update()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            questClearShow[i].gameObject.SetActive(DailyQuest.Instance.dailyQuests.quests[i].isCompleted);
+        }
+        if (questClearCount >= 3)
+        {
+            questClearShow[3].gameObject.SetActive(true);
+        }
+
         if (isUIOn)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 0, 0), Time.deltaTime * 5);
+            if (Input.GetKeyDown(KeyCode.Escape)) isUIOn = false;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 0, 0), Time.deltaTime * 15);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(-1420, 0, 0), Time.deltaTime * 5);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(-1420, 0, 0), Time.deltaTime * 15);
         }
+    }
+    void QuestAllCompleteUIShow()
+    {
+        questDescription[3].text = $"모든 일일퀘스트를 클리어하면 추가 보상이 있습니다! ({questClearCount}/3)";
+        questGuage.fillAmount = questClearCount / 3;
     }
 
     //이 함수 버튼에서 씀
     public void UIOnOff(bool isOn)
     {
         isUIOn = isOn;
+    }
+    public void QuestClearCheck(int index)
+    {
+        BaseDailyQuest quest = DailyQuest.Instance.dailyQuests.quests[index];
+        if (quest.isClear())
+        {
+            SoundManager.Instance.PlaySound("Button_Click");
+
+            quest.isCompleted = true;
+            questClearCount++;
+
+            QuestAllCompleteUIShow();
+
+            StatusManager.Instance.Honey += 500;
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("Button_Click_Fail");
+        }
     }
     public string GetCharacterName(EPlayableCharacter character)
     {
@@ -57,7 +97,7 @@ public class DailyQuestUI : MonoBehaviour
             case EStageType.FOREST:
                 return "숲";
             case EStageType.TUNDRA:
-                return "툰드라";
+                return "설원";
             case EStageType.DESSERT:
                 return "사막";
             default:

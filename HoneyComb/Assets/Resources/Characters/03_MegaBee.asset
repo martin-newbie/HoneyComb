@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
   m_Name: 03_MegaBee
   m_EditorClassIdentifier: 
-  characterType: 1
+  characterType: 2
   Icon: {fileID: 21300000, guid: 79af9c973b848b64aabaec746afa71ea, type: 3}
   characterName: "\uBA54\uAC00 \uAFC0\uBC8C"
   Description: "\uBA54\uAC00 \uBC8C\uC740 \uB204\uAD6C\uBCF4\uB2E4 \uAC15\uD569\uB2C8\uB2E4!\n\uADF8

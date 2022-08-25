@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3ea5fb094d3f4bb6932d7dc99c0b6, type: 3}
   m_Name: 02_FatBee
   m_EditorClassIdentifier: 
-  characterType: 5
+  characterType: 1
   Icon: {fileID: 21300000, guid: 84f966ea7ad3489489db2533b7175209, type: 3}
   characterName: "\uB6B1\uBC8C"
   Description: "\uBC8C\uC778\uB370... \uC870\uAE08 \uC0B4\uC774 \uCA97\uB124\uC694.\n\uB2E4\uC774\uC5B4\uD2B8

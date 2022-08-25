@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using DateTime = System.DateTime;
 
+[System.Serializable]
 public enum QuestType
 {
     DailyQuestGoFaraway,
@@ -23,7 +24,7 @@ public class BaseDailyQuest
     public EPlayableCharacter characterType;
     public EStageType stageType;
     public bool isCompleted;
-    private int index;
+    public int index;
     public int _index
     {
         get { return index; }
@@ -33,6 +34,10 @@ public class BaseDailyQuest
             {
                 index = value;
                 return;
+            }
+            if (value > GetClearCount())
+            {
+                value = GetClearCount();
             }
             if (type < QuestType.DailyQuestCollectWax)
             {
@@ -251,6 +256,7 @@ public class DailyQuest : Singleton<DailyQuest>
                 string dataLoadString = PlayerPrefs.GetString(dailyQuestSavePath, "null");
                 if (dataLoadString != "null")
                 {
+                    Debug.Log(dataLoadString);
                     dailyQuests = JsonUtility.FromJson<DailyQuests>(dataLoadString);
                 }
                 else
@@ -310,7 +316,6 @@ public class DailyQuest : Singleton<DailyQuest>
                 });
             }
         }
-
 
         QuestInfoSave();
     }
