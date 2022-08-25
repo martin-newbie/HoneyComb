@@ -34,8 +34,8 @@ public class InGameManager : Singleton<InGameManager>
 
     [Header("Background")]
     [SerializeField] Background[] BackgroundPrefab;
+    [SerializeField] ShadowBackground woodlandShadow;
     private float height;
-    private List<Background> backgrounds = new List<Background>();
 
     void Start()
     {
@@ -51,14 +51,21 @@ public class InGameManager : Singleton<InGameManager>
         height = Camera.main.orthographicSize;
 
         int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
-
         for (int i = 0; i < 2; i++)
         {
             Background temp = Instantiate(BackgroundPrefab[mapIdx]);
             temp.Init(height * 4, height * -2, this);
             temp.transform.position = new Vector3(0, i * height * 2, 0);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
-            backgrounds.Add(temp);
+
+            if(mapIdx == 1)
+            {
+                ShadowBackground woodShadow = Instantiate(woodlandShadow);
+                woodShadow.Init(height * 4, height * -2, this);
+                woodShadow.transform.position = new Vector3(0, i * height * 2, 0);
+                SetSpriteCameraSize(woodShadow.GetComponent<SpriteRenderer>());
+            }
+
         }
     }
     private void SpawnCharacter()

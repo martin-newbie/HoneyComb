@@ -227,7 +227,8 @@ public class DailyQuest : Singleton<DailyQuest>
     {
         DontDestroyOnLoad(this.gameObject);
     }
-    private void Start()
+
+    public void StartDailyQuest()
     {
         if (DEBUG)
         {
@@ -277,6 +278,12 @@ public class DailyQuest : Singleton<DailyQuest>
 
         DateTime nowTime = DateTime.Now;
         PlayerPrefs.SetString(dailyQuestTimeSavePath, nowTime.ToString());
+
+        if (DEBUG)
+        {
+            PlayerPrefs.DeleteKey(dailyQuestTimeSavePath);
+            PlayerPrefs.DeleteKey(dailyQuestSavePath);
+        }
     }
     private void QuestReset()
     {
