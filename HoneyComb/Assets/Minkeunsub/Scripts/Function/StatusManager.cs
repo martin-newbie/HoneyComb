@@ -159,6 +159,7 @@ public class StatusManager : Singleton<StatusManager>
         LoadQuest();
 
         InitClearActions();
+        DailyQuest.Instance.StartDailyQuest();
     }
 
     void InitClearActions()
@@ -244,6 +245,7 @@ public class StatusManager : Singleton<StatusManager>
                 }
             }
         }
+
     }
 
     void GetDataFromSave()

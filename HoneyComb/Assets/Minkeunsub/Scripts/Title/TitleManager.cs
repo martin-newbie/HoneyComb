@@ -17,6 +17,7 @@ public class TitleManager : Singleton<TitleManager>
     [Header("UI Objects")]
     [SerializeField] Image[] SceneLock;
     [SerializeField] Image GameLock;
+    public MapSelect mapSelect;
 
     [Header("Click Effect")]
     [SerializeField] GameObject clickEffectObj;
@@ -68,6 +69,12 @@ public class TitleManager : Singleton<TitleManager>
                     break;
             }
         }
+    }
+
+    public void OpenMapSelect()
+    {
+        mapSelect.gameObject.SetActive(true);
+        mapSelect.UIon();
     }
 
     void SetTexts()
