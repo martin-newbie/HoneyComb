@@ -39,6 +39,8 @@ public class InGameManager : Singleton<InGameManager>
 
     void Start()
     {
+        SpawnCharacter();
+
         PoolInit(20);
         originPos = cam.transform.position;
         FlowerSpawnTxt = Resources.Load("Texts/FlowerSpawn") as TextAsset;
@@ -59,7 +61,11 @@ public class InGameManager : Singleton<InGameManager>
             backgrounds.Add(temp);
         }
     }
-
+    private void SpawnCharacter()
+    {
+        List<Player> players = Resources.LoadAll<Player>("CharacterObj/").ToList();
+        Player = Instantiate(players.Find((x) => x.characterType == StatusManager.Instance.nowCharacter), new Vector3(0, -4, 0), Quaternion.identity);
+    }
     Vector2 SetSpriteCameraSize(SpriteRenderer SR)
     {
         float X = SR.bounds.size.x;
