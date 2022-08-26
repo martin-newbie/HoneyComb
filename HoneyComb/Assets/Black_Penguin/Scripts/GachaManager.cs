@@ -20,14 +20,15 @@ public class GachaManager : MonoBehaviour
             int addCount = Random.Range(10, 20);
 
             StatusManager.Instance.BeeWax -= 10;
-            PlayableCharacterInfo playableCharacterInfo = StatusManager.Instance.playableCharacterInfos
-                [Random.Range(0, StatusManager.Instance.playableCharacterInfos.Count)];
+            PlayableCharacterInfo playableCharacterInfo = StatusManager.Instance.playableCharacterInfos[Random.Range(0, StatusManager.Instance.playableCharacterInfos.Count)];
 
-            playableCharacterInfo.pieceCount += addCount;
+            playableCharacterInfo._pieceCount += addCount;
 
             CharacterScript Info = characterScripts.Find((x) => x.characterType == playableCharacterInfo.character);
             image.sprite = Info.Icon;
             text.text = $"{Info.characterName}의 조각 {addCount}개";
+
+            OffGacha();
         }
         else
         {
