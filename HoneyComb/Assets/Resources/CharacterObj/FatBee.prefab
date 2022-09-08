@@ -9746,8 +9746,8 @@ GameObject:
   - component: {fileID: 8058215428412722632}
   - component: {fileID: 8058215428412722634}
   - component: {fileID: 8058215428412722635}
-  - component: {fileID: 1952187438057027827}
   - component: {fileID: 5398334950930682180}
+  - component: {fileID: -3595180945934474191}
   m_Layer: 0
   m_Name: FatBee
   m_TagString: Player
@@ -9868,25 +9868,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &1952187438057027827
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8058215428412722639}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccb1dec18b0ddb441b95412e4d35db79, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5398334950930682180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9905,3 +9886,17 @@ MonoBehaviour:
   invincibleDelay: 0
   isInvincible: 0
   characterType: 1
+--- !u!114 &-3595180945934474191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058215428412722639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d234e5c3b690914d9f074ff3d8136a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationIndex: 1
+  frameSpeed: 0.01

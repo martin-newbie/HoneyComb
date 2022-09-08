@@ -9746,8 +9746,8 @@ GameObject:
   - component: {fileID: 2720291750358755388}
   - component: {fileID: 2720291750358755390}
   - component: {fileID: 2720291750358755391}
-  - component: {fileID: 135867211802460356}
   - component: {fileID: 2414364569634076598}
+  - component: {fileID: -4781324695062055358}
   m_Layer: 0
   m_Name: MegaBee
   m_TagString: Player
@@ -9868,25 +9868,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &135867211802460356
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2720291750358755387}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92758cf85d068ef458cd82e12024da19, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2414364569634076598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9905,3 +9886,17 @@ MonoBehaviour:
   invincibleDelay: 0.15
   isInvincible: 0
   characterType: 2
+--- !u!114 &-4781324695062055358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2720291750358755387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d234e5c3b690914d9f074ff3d8136a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationIndex: 2
+  frameSpeed: 0.01
