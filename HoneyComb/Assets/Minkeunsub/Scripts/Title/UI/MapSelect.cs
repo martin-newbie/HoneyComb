@@ -65,6 +65,7 @@ public class MapSelect : MonoBehaviour
 
     public void MapSelectButton(int idx)
     {
+
         PlayerPrefs.SetInt("MapIdx", idx);
         StatusManager.Instance.nowStage = (EStageType)idx;
         UIoff();

@@ -56,7 +56,7 @@ public class HoneyItem : ItemBase
         }
     }
 
-    protected override void DestroyItem()
+    public override void DestroyItem()
     {
         Push();
     }

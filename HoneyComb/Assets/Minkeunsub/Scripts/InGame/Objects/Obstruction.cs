@@ -19,7 +19,7 @@ public class Obstruction : ItemBase
         Obj[rand].gameObject.SetActive(true);
     }
 
-    protected override void DestroyItem()
+    public override void DestroyItem()
     {
         Destroy(gameObject);
     }
