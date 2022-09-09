@@ -9746,7 +9746,7 @@ GameObject:
   - component: {fileID: 7075694247642706853}
   - component: {fileID: 7075694247642706855}
   - component: {fileID: 7075694247642706854}
-  - component: {fileID: 3380844665235630617}
+  - component: {fileID: 2891574237450605690}
   m_Layer: 0
   m_Name: PumpkinBee
   m_TagString: Player
@@ -9867,22 +9867,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3380844665235630617
-Animator:
-  serializedVersion: 3
+--- !u!114 &2891574237450605690
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7075694247642706850}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b76abab629b3874e99f274486018cd7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d234e5c3b690914d9f074ff3d8136a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationIndex: 4
+  frameSpeed: 0.01
