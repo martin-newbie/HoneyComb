@@ -10,6 +10,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
     public Sprite[] sprites;
     public List<Sprite[]> PlayerSprites = new List<Sprite[]>();
     Sprite[] Player9Angry;
+    AsyncOperationHandle downHandle;
 
     private void Awake()
     {
@@ -18,6 +19,12 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     void Start()
     {
+        LoadSprite();
+    }
+
+    void LoadSprite()
+    {
+
         sprites = Addressables.LoadAssetsAsync<Sprite>("PlayerSprite", null).WaitForCompletion().ToArray();
 
         int cycleCount = sprites.Length / 60;
@@ -31,6 +38,11 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
             PlayerSprites.Add(temp.ToArray());
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Addressables.ClearDependencyCacheAsync("honeycomb");
     }
 }
 

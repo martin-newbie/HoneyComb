@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultGroup: e18c47c09d092bd45970796a460d1882
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
@@ -30,11 +30,11 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 33cce9080123d4b4288c61a8c79d99bf
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: babd47be35701d64db5710f3b5b4926f
   m_ContentStateBuildPath: 
-  m_overridePlayerVersion: 
+  m_overridePlayerVersion: Drive
   m_GroupAssets:
   - {fileID: 11400000, guid: 4f341ca656cf22e4f9bc81e9d1c03199, type: 2}
   - {fileID: 11400000, guid: ed376ba93b95daf44bd0d1a8c73fb6b9, type: 2}
@@ -59,7 +59,7 @@ MonoBehaviour:
       - m_Id: bbf2732c34a24d2439db0714aa5581bc
         m_Value: ServerData/[BuildTarget]
       - m_Id: e91735bbfb46fc14597f4de5f646337e
-        m_Value: http://localhost/[BuildTarget]
+        m_Value: https://honeycomb.s3.ap-northeast-2.amazonaws.com/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: e032604814a23d74c88a3eb0fe3820bc
       m_Name: BuildTarget
