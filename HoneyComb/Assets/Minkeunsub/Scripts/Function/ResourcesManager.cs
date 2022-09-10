@@ -24,7 +24,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     void LoadSprite()
     {
-
         sprites = Addressables.LoadAssetsAsync<Sprite>("PlayerSprite", null).WaitForCompletion().ToArray();
 
         int cycleCount = sprites.Length / 60;
