@@ -8,8 +8,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class ResourcesManager : Singleton<ResourcesManager>
 {
     public Sprite[] sprites;
+    public Sprite[] Player9Angry;
     public List<Sprite[]> PlayerSprites = new List<Sprite[]>();
-    Sprite[] Player9Angry;
     AsyncOperationHandle downHandle;
 
     private void Awake()
@@ -37,6 +37,8 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
             PlayerSprites.Add(temp.ToArray());
         }
+
+        Player9Angry = Addressables.LoadAssetsAsync<Sprite>("Skill_9", null).WaitForCompletion().ToArray();
     }
 
     private void OnApplicationQuit()
