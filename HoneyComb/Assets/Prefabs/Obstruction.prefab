@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7732094620367394705}
   - component: {fileID: 7732094620367394704}
   - component: {fileID: 7732094620367394706}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Obstruction_Wasp
   m_TagString: Obstruction
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 7732094620367394703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7732094619369151076}
   m_RootOrder: 1
@@ -124,7 +124,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 2.91, y: 2.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -151,11 +151,11 @@ BoxCollider2D:
     oldSize: {x: 5.82, y: 5.32}
     newSize: {x: 2.91, y: 2.66}
     adaptiveTilingThreshold: 0.5
-    drawMode: 1
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!1 &7732094621200098318
 GameObject:
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 7732094621200098320}
   - component: {fileID: 7732094621200098319}
   - component: {fileID: 7732094621200098321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Obstruction_SpiderWeb
   m_TagString: Obstruction
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 7732094621200098318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7732094619369151076}
   m_RootOrder: 0
@@ -264,5 +264,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 3.5}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0

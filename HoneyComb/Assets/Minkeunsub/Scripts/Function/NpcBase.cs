@@ -70,8 +70,19 @@ public abstract class NpcBase : MonoBehaviour
             else thisQuest = null;
         }
         else thisQuest = null;
+        anim.SetTrigger("Basic");
+        StartCoroutine(RandomMovementCoroutine());
+    }
 
-        anim.SetTrigger("Default");
+    IEnumerator RandomMovementCoroutine()
+    {
+        while (true)
+        {
+            int rand = Random.Range(1, 3);
+            string key = "Move" + rand.ToString();
+            yield return new WaitForSeconds(Random.Range(5, 15));
+            anim.SetTrigger(key);
+        }
     }
 
     void QuestUIOn()
@@ -223,7 +234,6 @@ public abstract class NpcBase : MonoBehaviour
             trigger = false;
 
             while (!trigger) yield return null;
-            anim.SetTrigger("Default");
         }
 
         SpeechOff();
@@ -240,8 +250,8 @@ public abstract class NpcBase : MonoBehaviour
         if (temp.Length > 1 && !string.IsNullOrEmpty(temp[1]))
             face = int.Parse(temp[1]);
 
-        if (face == 0) anim.SetTrigger("Default");
-        else if (face == 1) anim.SetTrigger("Depress");
+        if (face == 0) anim.SetTrigger("Basic");
+        else if (face == 1) anim.SetTrigger("Sad");
         else if (face == 2) anim.SetTrigger("Happy");
 
         txt.text = "";

@@ -11,7 +11,9 @@ public class CharacterScript : ScriptableObject
         get
         {
             int idx = (int)characterType;
-            Sprite iconSprite = ResourcesManager.Instance.PlayerSprites[idx][0];
+            Sprite iconSprite = null;
+            if (idx < ResourcesManager.Instance.PlayerSprites.Count)
+                iconSprite = ResourcesManager.Instance.PlayerSprites[idx][0];
             return iconSprite;
         }
     }

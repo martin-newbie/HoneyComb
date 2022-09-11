@@ -18,7 +18,10 @@ public class Player : MonoBehaviour
 
     public EPlayableCharacter characterType;
 
-    private Animator animator;
+    public Vector2 checkBox;
+    public Transform hitPos;
+
+    protected Animator animator;
     private StatusManager statusManager;
     private ParticleSystem HoneyParticle;
 
@@ -37,25 +40,25 @@ public class Player : MonoBehaviour
         Hp = MaxHp;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(hitPos.position, checkBox);
+    }
+
     protected virtual void Update()
     {
-        if (!isGameOver)
-        {
-            HpLogic();
-        }
+        HpLogic();
     }
 
     void HpLogic()
     {
-        if (Hp > 0)
+        InGameUI.Instance.SetPlayerHp(Hp / MaxHp);
+
+        if (!isGameOver)
         {
             Hp -= Time.deltaTime;
-            InGameUI.Instance.SetPlayerHp(Hp / MaxHp);
-        }
-        else if (Hp <= 0 && !isGameOver)
-        {
-            isGameOver = true;
-            InGameManager.Instance.GameOver();
+            CheckGameOver();
         }
     }
 
@@ -68,15 +71,35 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Obstruction") && !isInvincible)
         {
-            StartCoroutine(OnDamage());
-            DailyQuest.Instance.hitCount++;
+            if (Physics2D.OverlapBox(hitPos.position, checkBox, 0f, LayerMask.GetMask("Hostile")))
+            {
+                StartCoroutine(OnDamage());
+                DailyQuest.Instance.hitCount++;
+            }
+        }
+    }
+
+    void CheckGameOver()
+    {
+        if (Hp < 0)
+        {
+            Hp = 0;
+
+            if (!isGameOver)
+            {
+                isGameOver = true;
+                InGameManager.Instance.GameOver();
+            }
         }
     }
 
     protected virtual IEnumerator OnDamage()
     {
         isInvincible = true;
+
         Hp -= InGameManager.Instance.damage;
+        CheckGameOver();
+
         SoundManager.Instance.PlaySound("Hit", SoundType.SE, 0.2f);
         SoundManager.Instance.PlaySound("Hit2", SoundType.SE);
         InGameManager.Instance.CameraShake(0.3f);

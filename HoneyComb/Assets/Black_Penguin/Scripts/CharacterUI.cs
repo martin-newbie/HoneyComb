@@ -20,6 +20,10 @@ public class CharacterUI : MonoBehaviour
     [SerializeField] private Image characterIcon;
     [SerializeField] private Image characterGauge;
 
+    [Header("Sprite")]
+    public Sprite selectSprite;
+    public Sprite lockedSprite;
+
     private int beeListIndexNumber;
     private bool isOpen;
     public bool _isOpen
@@ -86,6 +90,8 @@ public class CharacterUI : MonoBehaviour
         beeList.transform.localPosition = Vector3.Lerp(beeList.transform.localPosition, new Vector3(beeListIndexNumber * -600, 0), Time.deltaTime * 15f);
 
         openButton.image.sprite = characterScripts[(int)statusManager.nowCharacter].Icon;
+
+        selectButton.image.sprite = StatusManager.Instance.playableCharacterInfos[beeListIndexNumber].level > 0 ? selectSprite : lockedSprite;
     }
 
     private void OnDestroy()

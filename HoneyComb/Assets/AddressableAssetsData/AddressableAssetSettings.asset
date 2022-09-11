@@ -39,6 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f341ca656cf22e4f9bc81e9d1c03199, type: 2}
   - {fileID: 11400000, guid: ed376ba93b95daf44bd0d1a8c73fb6b9, type: 2}
   - {fileID: 11400000, guid: 14be19849cfabab42beb4906130ef6e2, type: 2}
+  - {fileID: 11400000, guid: 6bd7946594b69f34c8d86d25013489f4, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -81,6 +82,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - PlayerSprite
+    - Skill_9
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a725da27ad7448a4cb858a4b4f2d9eb3, type: 2}
