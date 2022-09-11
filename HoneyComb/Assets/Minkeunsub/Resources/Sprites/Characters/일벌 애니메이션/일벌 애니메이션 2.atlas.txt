@@ -1,0 +1,230 @@
+
+일벌 애니메이션 2.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+감은 눈
+  rotate: false
+  xy: 408, 1843
+  size: 203, 59
+  orig: 203, 59
+  offset: 0, 0
+  index: -1
+감은 눈2
+  rotate: false
+  xy: 408, 1843
+  size: 203, 59
+  orig: 203, 59
+  offset: 0, 0
+  index: -1
+골반, 다리 끈
+  rotate: true
+  xy: 1592, 878
+  size: 560, 581
+  orig: 560, 582
+  offset: 0, 0
+  index: -1
+기본 눈
+  rotate: false
+  xy: 824, 1839
+  size: 209, 63
+  orig: 209, 63
+  offset: 0, 0
+  index: -1
+기본 표정
+  rotate: false
+  xy: 3516, 1718
+  size: 187, 184
+  orig: 187, 184
+  offset: 0, 0
+  index: -1
+뒷머리
+  rotate: false
+  xy: 3146, 1328
+  size: 415, 388
+  orig: 415, 388
+  offset: 0, 0
+  index: -1
+머리
+  rotate: true
+  xy: 925, 1500
+  size: 291, 335
+  orig: 291, 335
+  offset: 0, 0
+  index: -1
+목
+  rotate: true
+  xy: 1190, 1793
+  size: 109, 166
+  orig: 110, 166
+  offset: 0, 0
+  index: -1
+몸 다리
+  rotate: true
+  xy: 2, 2
+  size: 708, 2265
+  orig: 710, 2265
+  offset: 0, 0
+  index: -1
+상체 옷
+  rotate: false
+  xy: 2, 1138
+  size: 825, 490
+  orig: 825, 502
+  offset: 0, 1
+  index: -1
+슬픈 눈
+  rotate: false
+  xy: 613, 1840
+  size: 209, 62
+  orig: 209, 62
+  offset: 0, 0
+  index: -1
+슬픈표정 눈썹
+  rotate: true
+  xy: 2987, 1724
+  size: 178, 188
+  orig: 178, 188
+  offset: 0, 0
+  index: -1
+앞머리
+  rotate: true
+  xy: 1035, 1797
+  size: 105, 153
+  orig: 121, 153
+  offset: 0, 0
+  index: -1
+어깨 끈
+  rotate: true
+  xy: 2, 1649
+  size: 192, 566
+  orig: 193, 566
+  offset: 0, 0
+  index: -1
+오른쪽 날개
+  rotate: false
+  xy: 3563, 931
+  size: 521, 761
+  orig: 521, 761
+  offset: 0, 0
+  index: -1
+오른쪽 더듬이
+  rotate: true
+  xy: 2277, 1767
+  size: 135, 151
+  orig: 135, 151
+  offset: 0, 0
+  index: -1
+오른쪽 옆머리
+  rotate: true
+  xy: 2430, 1767
+  size: 135, 387
+  orig: 135, 387
+  offset: 0, 0
+  index: -1
+오른쪽 장식
+  rotate: true
+  xy: 2027, 1440
+  size: 325, 768
+  orig: 325, 768
+  offset: 0, 0
+  index: -1
+오른쪽 전완근, 손
+  rotate: true
+  xy: 2797, 1390
+  size: 332, 347
+  orig: 337, 347
+  offset: 3, 0
+  index: -1
+옷 목
+  rotate: true
+  xy: 3898, 1694
+  size: 208, 188
+  orig: 209, 190
+  offset: 1, 1
+  index: -1
+왼손
+  rotate: false
+  xy: 1722, 1774
+  size: 140, 128
+  orig: 142, 129
+  offset: 1, 1
+  index: -1
+왼쪽 날개
+  rotate: true
+  xy: 829, 925
+  size: 520, 761
+  orig: 521, 761
+  offset: 1, 0
+  index: -1
+왼쪽 더듬이
+  rotate: false
+  xy: 2819, 1760
+  size: 166, 142
+  orig: 166, 143
+  offset: 0, 0
+  index: -1
+왼쪽 옆머리
+  rotate: true
+  xy: 1358, 1778
+  size: 124, 362
+  orig: 124, 368
+  offset: 0, 0
+  index: -1
+왼쪽 장식
+  rotate: true
+  xy: 1262, 1447
+  size: 324, 763
+  orig: 349, 763
+  offset: 0, 0
+  index: -1
+왼쪽 전완근
+  rotate: true
+  xy: 3177, 1722
+  size: 180, 337
+  orig: 183, 337
+  offset: 1, 0
+  index: -1
+웃는 눈
+  rotate: false
+  xy: 197, 1844
+  size: 209, 58
+  orig: 209, 58
+  offset: 0, 0
+  index: -1
+웃는 표정
+  rotate: true
+  xy: 3705, 1715
+  size: 187, 191
+  orig: 187, 191
+  offset: 0, 0
+  index: -1
+웃는 표정 감은 눈
+  rotate: false
+  xy: 2, 1849
+  size: 193, 53
+  orig: 193, 53
+  offset: 0, 0
+  index: -1
+중간 장식
+  rotate: true
+  xy: 2175, 712
+  size: 676, 811
+  orig: 676, 811
+  offset: 0, 0
+  index: -1
+허리 끈
+  rotate: false
+  xy: 1864, 1773
+  size: 411, 129
+  orig: 413, 148
+  offset: 1, 18
+  index: -1
+헬멧
+  rotate: false
+  xy: 570, 1630
+  size: 353, 207
+  orig: 354, 207
+  offset: 1, 0
+  index: -1
