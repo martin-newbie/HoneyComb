@@ -71,6 +71,18 @@ public abstract class NpcBase : MonoBehaviour
         }
         else thisQuest = null;
         anim.SetTrigger("Basic");
+        StartCoroutine(RandomMovementCoroutine());
+    }
+
+    IEnumerator RandomMovementCoroutine()
+    {
+        while (true)
+        {
+            int rand = Random.Range(1, 3);
+            string key = "Move" + rand.ToString();
+            yield return new WaitForSeconds(Random.Range(5, 15));
+            anim.SetTrigger(key);
+        }
     }
 
     void QuestUIOn()
