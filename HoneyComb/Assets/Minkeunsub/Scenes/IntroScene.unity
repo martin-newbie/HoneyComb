@@ -334,13 +334,17 @@ PrefabInstance:
     - target: {fileID: 6716440829388478576, guid: a83324479de19704895d2969ed0b59f6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 977de93362813fd408929b456d36b048, type: 2}
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6716440829388478577, guid: a83324479de19704895d2969ed0b59f6, type: 3}
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6716440829388478577, guid: a83324479de19704895d2969ed0b59f6, type: 3}
       propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716440829388478577, guid: a83324479de19704895d2969ed0b59f6, type: 3}
+      propertyPath: NoiseModule.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6716440829388478577, guid: a83324479de19704895d2969ed0b59f6, type: 3}
