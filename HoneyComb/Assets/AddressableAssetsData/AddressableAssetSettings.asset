@@ -82,6 +82,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - PlayerSprite
+    - Skill_9
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a725da27ad7448a4cb858a4b4f2d9eb3, type: 2}

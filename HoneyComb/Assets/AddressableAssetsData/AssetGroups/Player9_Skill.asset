@@ -12,11 +12,311 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Player9_Skill
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: Player9_Skill
   m_Data:
     m_SerializedData: []
   m_GUID: f0aa58f80328cd14994a8d8445430f5f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: acfda2db67e33564c92319dbb4e2908a
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00000.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 804558aafdfd885468350b82fb02cf00
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00001.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 1c8a78def5ecefe40a80adcc8439373b
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00002.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 38ee3ce49bb7f554f87a778f7b66ba49
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00003.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: fed6341bf074fa04ab9a87fb4f2d12fa
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00004.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 26b2bcc98feccf742b22a13ef1dffd5c
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00005.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: da32e55746b92d54481e0192b297e4a3
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00006.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 8b09eb34f90738c44b610d89da8ac186
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00007.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 7f70864be38fdba42b86da266dd01c1b
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00008.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 0878821f6c9b937429ef41d25b7d66cd
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00009.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 9f85d6d9fc4dba549812efead907b46e
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00010.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 3dcf74e8fd4db894ab0c2fe3ea5f5e1a
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00011.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 403ac523f793c0445a847d3c012d0ff2
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00012.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 27aed47936bcdb74db18d27b0aae2718
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00013.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 911a106d5f0c82a4da4462e792ae675c
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00014.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: c9dc72b286632274abd21f149082cc4f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00015.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: aeedf7b0e78ef1348bb4db1f34ce040f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00016.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 830569b252956a04d8d6a6a8036ca710
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00017.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: fc1539636445ed44fb3434701c9bfef5
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00018.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 71b57456dff699f4796b0c08b31d65aa
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00019.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: aee9bbe3ba072834fa66a21f899fc61f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00020.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 7011e74401d3193408a97255720182da
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00021.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 9e782261e531b3b41bc0ab49b98f4562
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00022.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 134a9e6fcb1b40641a535c1b6dd38aea
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00023.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 3e3d05192d9e5d440beabafcec27b493
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00024.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 61cdb5b6dd5562e479f6fe38357293f8
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00025.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 7f0390112333416438f13ecc4b94ffec
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00026.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: b36246924fdea2845ac3cf0ae9f0c78f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00027.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: b4fc3f05c07aab04eac9acaf824e3c1a
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00028.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 71b84c9b15a231c4baf11cc2b958d9a9
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00029.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 9de0894110be42140b1aed2831ce4c0c
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00030.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: b30703a5e4a01114cbfd809ca2321bf2
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00031.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 22f7ddee90f858240a84854c9fe8eb03
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00032.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 88b8d0b30f8390a43842c1e85cefb694
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00033.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 9d07f15358d61e44a803c4c1f10961da
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00034.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 795fbdd6e41c8bd46a0a7fd021c32356
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00035.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 1ba9a7d14609f504594434ae433af599
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00036.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 36bb820fa4365a64eaceb393c4d02e19
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00037.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: bd03366df907be54aa5ce2a5b0d8f466
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00038.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 97771316c1ece294ebf17e49c9f09ffa
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00039.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 079405ec03e5ca64faa8b7a888eef20b
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00040.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: a01300a3aa37f7543985ec847fa65b2f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00041.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 3bdabffc831f3a544a19e4b18c6c155e
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00042.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 5d3b21badc558644092c55ee27063e23
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00043.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 452bd26ccf877c14480aad2ce3057fe0
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00044.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: a0410699ec6739e40b1dd203db9b889b
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00045.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 75741d7626f0a3b4eb96cb7723176cf3
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00046.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 491662ebadbb5b44da5c24357eb25610
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00047.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 4083f3c135b128043a970c442c956a50
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00048.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: a4b7c079992623949abf096bf6e3cb19
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00049.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 4b125584731f73140b44821a9811fb5f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00050.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: e418effe26d87c349bd9dc85f0addca7
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00051.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: bd7e59bf41e30fe4b91f08065f3104ab
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00052.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 6e4beaa5e160de646a177872e363b939
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00053.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 4316cf672ec883f4fb11c8878b562e4b
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00054.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: cc8b3677908d4cd4eb4c6e57e8ddaa53
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00055.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: 9cdd4f19a2ff71b4f8bb963dcac9c9c7
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00056.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: f7fac42b90cd89b42935434644899f0f
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00057.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: dfeff953cebaa834bb6acf61afc06db1
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00058.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
+  - m_GUID: f5fa1c2e374ce7441aeab0c1019785b8
+    m_Address: Assets/PlayableCharacter/Animation/09_flight/09_angry_flight/09_angry_00059.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Skill_9
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b0670174ebb363d49ba8a7bb69f5aa8e, type: 2}
   m_SchemaSet:
