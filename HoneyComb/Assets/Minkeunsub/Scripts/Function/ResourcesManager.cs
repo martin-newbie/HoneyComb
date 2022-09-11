@@ -9,7 +9,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
 {
     public Sprite[] sprites;
     public List<Sprite[]> PlayerSprites = new List<Sprite[]>();
-    Sprite[] Player9Angry;
+    public Sprite[] Player9Angry;
 
     private void Awake()
     {
