@@ -180,11 +180,6 @@ public class StatusManager : Singleton<StatusManager>
         QuestClearActions.Add(() => { bookAble = true; });
     }
 
-    private void Start()
-    {
-        SceneManager.LoadScene("TitleScene");
-    }
-
     private void Update()
     {
         isQuestAble = CurQuestIdx < QuestsList.Count;
