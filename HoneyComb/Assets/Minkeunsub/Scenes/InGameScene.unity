@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &997572
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.454622
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.4726894
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803146, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853929219643803148, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
-      propertyPath: m_Name
-      value: DirtBee
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2d5016e66d434440b837fdeacbca134, type: 3}
 --- !u!1 &43778891
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +208,7 @@ Transform:
   m_Children:
   - {fileID: 831758150}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &43778894
 BoxCollider2D:
@@ -332,6 +275,8 @@ MonoBehaviour:
   invincibleDelay: 0.15
   isInvincible: 0
   characterType: 0
+  checkBox: {x: 0, y: 0}
+  hitPos: {fileID: 0}
 --- !u!95 &43778897
 Animator:
   serializedVersion: 3
@@ -518,6 +463,10 @@ GameObject:
   m_Component:
   - component: {fileID: 174317885}
   - component: {fileID: 174317886}
+  - component: {fileID: 174317887}
+  - component: {fileID: 174317888}
+  - component: {fileID: 174317889}
+  - component: {fileID: 174317890}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -537,7 +486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174317886
 MonoBehaviour:
@@ -557,9 +506,7 @@ MonoBehaviour:
   - {fileID: 1718391779}
   - {fileID: 1475722348}
   curDir: 1
-  honeyItem: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
   BookItem: {fileID: 1766265605335746699, guid: 393e87c43e6d2d345acec3fbf620b547, type: 3}
-  obstruction: {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
   cam: {fileID: 1562137953}
   roundHoney: 0
   distance: 0
@@ -570,12 +517,76 @@ MonoBehaviour:
   bookCollectAble: 0
   ableBookIdx: 0
   bookSpawnIdx: 0
-  BackgroundPrefab:
-  - {fileID: -8706853375152461968, guid: 0bdff7ebc7eee854694095bf59570ab5, type: 3}
-  - {fileID: 317803402235590473, guid: c1842c9597bd49d49bfe077e185acfcd, type: 3}
-  - {fileID: 8876114882908744403, guid: 3605fc7756569b141ab198f5730a3333, type: 3}
-  - {fileID: 8292338352437013219, guid: f7d80edbba95c844cab56bab9a1eb414, type: 3}
-  woodlandShadow: {fileID: 7252901248607915955, guid: 184355eb4dc1f754b94c8daac62b4ed4, type: 3}
+--- !u!114 &174317887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174317884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d5a7f2485f32c48a6c16e87c8f9bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInfoTextPath: FlowerSpawn
+  background: {fileID: -8706853375152461968, guid: 0bdff7ebc7eee854694095bf59570ab5, type: 3}
+  flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  commonHurdle:
+  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+--- !u!114 &174317888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174317884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a275a784cbaf84ba91108e22ddee95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInfoTextPath: FlowerSpawn
+  background: {fileID: 317803402235590473, guid: c1842c9597bd49d49bfe077e185acfcd, type: 3}
+  flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  commonHurdle:
+  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+  shadow: {fileID: 7252901248607915955, guid: 184355eb4dc1f754b94c8daac62b4ed4, type: 3}
+--- !u!114 &174317889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174317884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c26536b52392845b992007ebc33ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInfoTextPath: FlowerSpawn
+  background: {fileID: 8876114882908744403, guid: 3605fc7756569b141ab198f5730a3333, type: 3}
+  flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  commonHurdle:
+  - {fileID: 7732094619369151077, guid: 8ca2b905b9194df46a796f2bf91ed67d, type: 3}
+  - {fileID: 7643779823891317081, guid: 4de642958eb244d4d88332947201ee60, type: 3}
+--- !u!114 &174317890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174317884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7d0851568409e44a811d3075552e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInfoTextPath: FlowerSpawn
+  background: {fileID: 8292338352437013219, guid: f7d80edbba95c844cab56bab9a1eb414, type: 3}
+  flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  commonHurdle:
+  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
 --- !u!1 &243512887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2619,7 @@ Transform:
   - {fileID: 1718391779}
   - {fileID: 1475722348}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175886893
 GameObject:
@@ -4625,7 +4636,7 @@ RectTransform:
   - {fileID: 515783690}
   - {fileID: 534713948}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5197,7 +5208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097252579
 GameObject:

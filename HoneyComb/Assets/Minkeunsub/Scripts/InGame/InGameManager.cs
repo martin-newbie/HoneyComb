@@ -6,16 +6,16 @@ using UnityEngine;
 public class InGameManager : Singleton<InGameManager>
 {
 
+    StageBase[] stages;
+    StageBase curStage;
+
     [Header("Objects")]
     public Player Player;
-    [SerializeField] Transform[] PlayerPoses = new Transform[3];
+    public Transform[] PlayerPoses = new Transform[3];
     public int curDir;
-    [SerializeField] HoneyItem honeyItem;
     [SerializeField] BookItem BookItem;
-    [SerializeField] Obstruction obstruction;
     [SerializeField] Camera cam;
     Vector3 originPos;
-    Stack<HoneyItem> HoneyItemPool = new Stack<HoneyItem>();
 
     [Header("Status")]
     public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
@@ -24,7 +24,6 @@ public class InGameManager : Singleton<InGameManager>
     public float moveSpeed;
     public float damage;
 
-    TextAsset FlowerSpawnTxt;
     [SerializeField] List<string> FlowerTime = new List<string>();
 
     [Header("Books")]
@@ -32,40 +31,28 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField] int ableBookIdx; //StatusManager의 BookUnlocked에서 해제될 수 있는 인덱스
     [SerializeField] int bookSpawnIdx; //책이 스폰될 꽃의 인덱스
 
-    [Header("Background")]
-    [SerializeField] Background[] BackgroundPrefab;
-    [SerializeField] ShadowBackground woodlandShadow;
     private float height;
 
     void Start()
     {
         SpawnCharacter();
+        stages = GetComponents<StageBase>();
+        int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
 
-        PoolInit(20);
+        curStage = stages[mapIdx];
+
         originPos = cam.transform.position;
-        FlowerSpawnTxt = Resources.Load("Texts/FlowerSpawn") as TextAsset;
-        FlowerTime = FlowerSpawnTxt.text.Split('\n').ToList();
+        FlowerTime = curStage.GetFlowerSpawn();
+
         SetBookAble();
         StartCoroutine(SpawnCoroutine(0.5f));
 
         height = Camera.main.orthographicSize;
 
-        int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
         for (int i = 0; i < 2; i++)
         {
-            Background temp = Instantiate(BackgroundPrefab[mapIdx]);
-            temp.Init(height * 4, height * -2, this);
-            temp.transform.position = new Vector3(0, i * height * 2, 0);
+            Background temp = curStage.SpawnBackground(i, height, this);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
-
-            if(mapIdx == 1)
-            {
-                ShadowBackground woodShadow = Instantiate(woodlandShadow);
-                woodShadow.Init(height * 4, height * -2, this);
-                woodShadow.transform.position = new Vector3(0, i * height * 2, 0);
-                SetSpriteCameraSize(woodShadow.GetComponent<SpriteRenderer>());
-            }
-
         }
     }
     private void SpawnCharacter()
@@ -154,17 +141,6 @@ public class InGameManager : Singleton<InGameManager>
             distance += Time.deltaTime * moveSpeed;
     }
 
-    void PoolInit(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            HoneyItem temp = Instantiate(honeyItem, transform);
-            temp.Init(this);
-            temp.gameObject.SetActive(false);
-            HoneyItemPool.Push(temp);
-        }
-    }
-
     public void BookGet()
     {
         bookCollectAble = false;
@@ -180,19 +156,14 @@ public class InGameManager : Singleton<InGameManager>
         int curBookIdx = 0;
         while (true)
         {
-            HoneyItem temp = Pop(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0));
-            if (curBookIdx == bookSpawnIdx && bookCollectAble)
+            bool bookAble = curBookIdx == bookSpawnIdx && bookCollectAble;
+            HoneyItem temp = curStage.SpawnFlower(PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 9), !bookAble);
+
+            if (bookAble)
             {
                 BookItem tempBook = Instantiate(BookItem, Vector3.zero, Quaternion.identity, temp.transform);
                 tempBook.transform.localPosition = Vector3.zero;
             }
-            else
-            {
-                int randChance = Random.Range(0, 10);
-                if (randChance == 0)
-                    Instantiate(obstruction, PlayerPoses[int.Parse(FlowerTime[idx])].position + new Vector3(0, 9, 0), Quaternion.identity);
-            }
-
             idx++;
 
             if (bookCollectAble)
@@ -204,21 +175,6 @@ public class InGameManager : Singleton<InGameManager>
 
             while (Player.isGameOver || objectMoveSpeed != 5f) yield return null;
         }
-    }
-
-    public void Push(HoneyItem item)
-    {
-        item.gameObject.SetActive(false);
-        HoneyItemPool.Push(item);
-    }
-
-    public HoneyItem Pop(Vector3 position)
-    {
-        HoneyItem retmp;
-        retmp = HoneyItemPool.Pop();
-        retmp.gameObject.SetActive(true);
-        retmp.PosInit(position);
-        return retmp;
     }
 
     public void GameOver()

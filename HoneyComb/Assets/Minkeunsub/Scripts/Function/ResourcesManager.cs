@@ -22,7 +22,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
         LoadSprite();
     }
 
-
     void LoadSprite()
     {
         sprites = Addressables.LoadAssetsAsync<Sprite>("PlayerSprite", null).WaitForCompletion().ToArray();

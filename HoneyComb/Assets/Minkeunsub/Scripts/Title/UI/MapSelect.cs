@@ -7,6 +7,7 @@ using DG.Tweening;
 public class MapSelect : MonoBehaviour
 {
     public int curIdx;
+    public Color[] titleColors = new Color[4];
     
     [Header("UI")]
     public Button[] mapSelect;
@@ -33,6 +34,7 @@ public class MapSelect : MonoBehaviour
     void SetFlavorTexts()
     {
         TitleTxt.text = names[curIdx];
+        TitleTxt.color = titleColors[curIdx];
 
         string temp = descs[curIdx].Replace("\\n", "\n");
         DescTxt.text = temp;
