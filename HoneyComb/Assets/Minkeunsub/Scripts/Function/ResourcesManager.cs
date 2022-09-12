@@ -18,10 +18,10 @@ public class ResourcesManager : Singleton<ResourcesManager>
     }
 
     void Start()
-    }
-
     {
         LoadSprite();
+    }
+
     void LoadSprite()
     {
         sprites = Addressables.LoadAssetsAsync<Sprite>("PlayerSprite", null).WaitForCompletion().ToArray();
@@ -41,9 +41,9 @@ public class ResourcesManager : Singleton<ResourcesManager>
         Player9Angry = Addressables.LoadAssetsAsync<Sprite>("Skill_9", null).WaitForCompletion().ToArray();
     }
 
-    }
     private void OnApplicationQuit()
     {
         Addressables.ClearDependencyCacheAsync("honeycomb");
+    }
 }
 
