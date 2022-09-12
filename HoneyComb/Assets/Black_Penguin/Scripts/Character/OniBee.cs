@@ -7,9 +7,12 @@ public class OniBee : Player
     [SerializeField] private int transformCount = 10;
     [SerializeField] private int curTransformCount = 10;
     [SerializeField] private bool isTransform;
+
+    private Sprite[] transformingSprites;
     protected override void Start()
     {
         base.Start();
+        transformingSprites = ResourcesManager.Instance.Player9Angry;
     }
     public override void GetHoney()
     {
@@ -21,7 +24,12 @@ public class OniBee : Player
         {
             curTransformCount = 0;
             isTransform = true;
+            
+            TryGetComponent(out PlayerAnimation anim);
 
+            Sprite[] sprites = anim.animationSprites;
+            anim.animationSprites = transformingSprites;
+            transformingSprites = sprites;
         }
     }
 }

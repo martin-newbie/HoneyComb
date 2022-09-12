@@ -6,7 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     public int animationIndex = 0;
     public float frameSpeed = 0.01f;
-    Sprite[] animationSprites;
+    public Sprite[] animationSprites;
     SpriteRenderer sprite;
 
     void Start()
