@@ -568,7 +568,7 @@ MonoBehaviour:
   background: {fileID: 8876114882908744403, guid: 3605fc7756569b141ab198f5730a3333, type: 3}
   flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
   commonHurdle:
-  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+  - {fileID: 7732094619369151077, guid: 8ca2b905b9194df46a796f2bf91ed67d, type: 3}
   - {fileID: 7643779823891317081, guid: 4de642958eb244d4d88332947201ee60, type: 3}
 --- !u!114 &174317890
 MonoBehaviour:
