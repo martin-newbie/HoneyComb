@@ -25,7 +25,7 @@ public class DailyQuestUI : MonoBehaviour
 
             string DescriptionString = "";
             if (dailyQuests[i].type < QuestType.DailyQuestCollectWax)
-                DescriptionString = $"<color=#FFFF33>{GetCharacterName(dailyQuests[i].characterType)}</color>캐릭터를 사용하여<color=#0099FF> {GetStageName(dailyQuests[i].stageType)}</color>스테이지에서\n";
+                DescriptionString = $"<color=#FFFF33>{GetCharacterName(dailyQuests[i].characterType)}</color>캐릭터를 사용하여<color=#0099FF> {GetStageName(dailyQuests[i].stageType)}</color>스테이지에서\n"; 
             DescriptionString += $"<color=#FF9999>{dailyQuests[i]._index}/{dailyQuests[i].GetClearCount()}</color>{questInfo.questDescription}";
 
             questDescription[i].text = DescriptionString;

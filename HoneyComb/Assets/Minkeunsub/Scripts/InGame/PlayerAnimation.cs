@@ -19,6 +19,7 @@ public class PlayerAnimation : MonoBehaviour
     IEnumerator AnimationCoroutine()
     {
         int idx = 0;
+        WaitForSeconds waitSeconds = new WaitForSeconds(frameSpeed);
 
         while (true)
         {
@@ -28,7 +29,7 @@ public class PlayerAnimation : MonoBehaviour
             if (idx < animationSprites.Length - 1) idx++;
             else idx = 0;
 
-            yield return new WaitForSeconds(frameSpeed);
+            yield return waitSeconds;
         }
     }
 }
