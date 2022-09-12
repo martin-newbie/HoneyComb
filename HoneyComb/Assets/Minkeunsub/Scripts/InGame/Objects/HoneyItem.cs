@@ -7,43 +7,19 @@ public class HoneyItem : ItemBase
     public int value;
     [SerializeField] List<SpriteRenderer> Flowers = new List<SpriteRenderer>();
     [SerializeField] GameObject Honey;
-    InGameManager manager;
-    bool collectAble;
+    bool collectAble = true;
 
     void Start()
     {
-
-    }
-
-
-    public void Init(InGameManager manager)
-    {
-        this.manager = manager;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="position">spawn position</param>
-    /// <param name="kind">-1 is random</param>
-    public void PosInit(Vector3 position, int kind = -1)
-    {
-        if (kind == -1)
+        int rand = Random.Range(0, Flowers.Count);
+        for (int i = 0; i < Flowers.Count; i++)
         {
-            kind = Random.Range(0, Flowers.Count);
+            if (i == rand) Flowers[i].gameObject.SetActive(true);
+            else Flowers[i].gameObject.SetActive(false);
         }
-
-        Flowers.ForEach(item => item.gameObject.SetActive(false));
-        Flowers[kind].gameObject.SetActive(true);
-        transform.position = position;
-        Honey.SetActive(true);
-        collectAble = true;
     }
 
-    void Push()
-    {
-        manager.Push(this);
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && collectAble)
@@ -58,6 +34,6 @@ public class HoneyItem : ItemBase
 
     public override void DestroyItem()
     {
-        Push();
+        Destroy(gameObject);
     }
 }
