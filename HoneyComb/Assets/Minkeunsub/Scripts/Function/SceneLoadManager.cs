@@ -14,6 +14,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public string nextSceneName;
     public float fadeSpeed = 0.5f;
     public float delaySpeed = 0.3f;
+    public float hexSize = 0.11f;
 
     private List<Transform[]> HexagonMutArr = new List<Transform[]>();
     private int[] arrCount = new int[8] { 1, 2, 3, 4, 4, 3, 2, 1 };
@@ -56,7 +57,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             foreach (var item in HexagonMutArr[i])
             {
-                item.DOScale(new Vector3(0.1f, 0.1f, 1f), fadeSpeed);
+                item.DOScale(new Vector3(hexSize, hexSize, 1f), fadeSpeed);
             }
             yield return new WaitForSeconds(delaySpeed);
         }
@@ -77,7 +78,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         foreach (var item in HexagonStencil)
         {
-            item.localScale = new Vector3(0.1f, 0.1f, 1);
+            item.localScale = new Vector3(hexSize, hexSize, 1);
             item.gameObject.SetActive(true);
         }
 
