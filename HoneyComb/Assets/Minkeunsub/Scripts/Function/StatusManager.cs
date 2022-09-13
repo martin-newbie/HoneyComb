@@ -171,6 +171,11 @@ public class StatusManager : Singleton<StatusManager>
         DailyQuest.Instance.StartDailyQuest();
     }
 
+    private void Start()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
     void InitClearActions()
     {
         QuestClearActions.Add(() => { SceneUnlock[0] = true; });

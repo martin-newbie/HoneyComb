@@ -14,7 +14,8 @@ public class LoginManager : MonoBehaviour
 
     void Login()
     {
-        //if (!PlayGamesPlatform.Instance.localUser.authenticated)
+/*
+        if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
             Social.localUser.Authenticate((bool success) =>
             {
@@ -28,5 +29,6 @@ public class LoginManager : MonoBehaviour
                 }
             });
         }
+*/
     }
 }

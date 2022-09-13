@@ -3,63 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InputUI : MonoBehaviour
+public class InputUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
     [SerializeField] Vector2 firstPressPos;
     [SerializeField] Vector2 secondPressPos;
 
-    [SerializeField] bool isTouching = false;
-    Coroutine nowCoroutine;
+    [SerializeField] bool isDrag = false;
 
-    private void Update()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!InGameManager.Instance.Player.isGameOver)
-            TouchCheck();
+        firstPressPos = eventData.position;
+        isDrag = true;
     }
 
-    void TouchCheck()
+    public void OnDrag(PointerEventData eventData)
     {
-        if (isTouching)
+        if (isDrag)
         {
-            if (Input.GetMouseButton(0) && isTouching)
+            secondPressPos = eventData.position;
+
+            if(Vector3.Distance(firstPressPos, secondPressPos) > 300f)
             {
-                firstPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                nowCoroutine = StartCoroutine(SwipeCoroutine());
-                isTouching = false;
+                isDrag = false;
+                MoveLogic();
             }
-            if(Input.GetMouseButtonUp(0) && !isTouching)
-            {
-                StopCoroutine(nowCoroutine);
-                isTouching = true;
-            }
+
         }
     }
 
-    IEnumerator SwipeCoroutine()
+    public void OnEndDrag(PointerEventData eventData)
     {
-        yield return new WaitForSeconds(0.05f);
-        secondPressPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (isDrag)
+        {
+            MoveLogic();
+        }
+    }
 
-        if (firstPressPos.x >= secondPressPos.x)
+    void MoveLogic()
+    {
+        if(firstPressPos.x > secondPressPos.x)
         {
             InGameManager.Instance.SetPlayerPos(-1);
-            //swipe left
         }
-        else
+        else if(firstPressPos.x < secondPressPos.x)
         {
             InGameManager.Instance.SetPlayerPos(1);
-            //swipe right
         }
-    }
-
-    public void OnPointerDown()
-    {
-        isTouching = true;
-    }
-
-    public void OnEndDrag()
-    {
-        isTouching = false;
     }
 }
