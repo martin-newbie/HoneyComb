@@ -6,57 +6,16 @@ using UnityEngine.UI;
 
 public class LabManager : MonoBehaviour
 {
-    [SerializeField] Image blackImg;
-
     public Text HoneyTxt;
     public Text WaxTxt;
     public Text RemainTimeTxt;
     public Text CurBeeQueueTxt;
     public int WaxCost = 100;
 
-    void Start()
-    {
-        StartCoroutine(FadeIn(1f));
-    }
-
     void Update()
     {
         SetText();
     }
-
-    IEnumerator SceneMove(string sceneName)
-    {
-        yield return StartCoroutine(FadeOut(1f));
-        SceneManager.LoadScene(sceneName);
-    }
-
-    IEnumerator FadeIn(float delay)
-    {
-        float timer = delay;
-        blackImg.gameObject.SetActive(true);
-        while (timer > 0)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        blackImg.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeOut(float delay)
-    {
-        float timer = 0f;
-        blackImg.gameObject.SetActive(true);
-        while (timer < delay)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-    }
-
 
     void SetText()
     {
@@ -97,6 +56,6 @@ public class LabManager : MonoBehaviour
 
     public void Back()
     {
-        StartCoroutine(SceneMove("TitleScene"));
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 }

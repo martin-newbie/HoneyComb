@@ -88,7 +88,8 @@ public class GameOver : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("Button_Click");
             StatusManager.Instance.CurBee--;
-            SceneManager.LoadScene("InGameScene");
+
+            SceneLoadManager.Instance.LoadScene("InGameScene");
             InGameManager.Instance.SaveDataToManager();
         }
         else
@@ -99,7 +100,8 @@ public class GameOver : MonoBehaviour
     {
         OnMergeDailyQuest();
         SoundManager.Instance.PlaySound("Button_Click");
-        SceneManager.LoadScene("TitleScene");
+
+        SceneLoadManager.Instance.LoadScene("TitleScene");
         InGameManager.Instance.SaveDataToManager();
     }
 

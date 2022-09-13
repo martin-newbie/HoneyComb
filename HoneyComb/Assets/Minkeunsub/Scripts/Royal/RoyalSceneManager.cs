@@ -7,8 +7,6 @@ using DG.Tweening;
 
 public class RoyalSceneManager : Singleton<RoyalSceneManager>
 {
-    [SerializeField] Image blackImg;
-
     [Header("Status Texts")]
     [SerializeField] Text HoneyTxt;
     [SerializeField] Text BeewaxTxt;
@@ -31,50 +29,12 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [SerializeField] GameObject BeeLocked;
     [SerializeField] GameObject RoomLocked;
 
-    void Start()
-    {
-        StartCoroutine(FadeIn(1f));
-    }
-
     void Update()
     {
         SetTexts();
 
         BeeLocked.SetActive(!StatusManager.Instance.beeUpgradeAble);
         RoomLocked.SetActive(!StatusManager.Instance.roomUpgradeAble);
-    }
-
-    IEnumerator SceneMove(string sceneName)
-    {
-        yield return StartCoroutine(FadeOut(1f));
-        SceneManager.LoadScene(sceneName);
-    }
-
-    IEnumerator FadeIn(float delay)
-    {
-        float timer = delay;
-        blackImg.gameObject.SetActive(true);
-        while (timer > 0)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        blackImg.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeOut(float delay)
-    {
-        float timer = 0f;
-        blackImg.gameObject.SetActive(true);
-        while (timer < delay)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
     }
 
     void SetTexts()
@@ -94,7 +54,8 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     public void Back()
     {
         SoundManager.Instance.PlaySound("Button_Click");
-        StartCoroutine(SceneMove("TitleScene"));
+
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 
     public void RoomUpgrade()

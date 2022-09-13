@@ -173,7 +173,7 @@ public class StatusManager : Singleton<StatusManager>
 
     private void Start()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 
     void InitClearActions()

@@ -26,7 +26,8 @@ public class Pause : MonoBehaviour
             SoundManager.Instance.PlaySound("Button_Click");
             SaveData();
             Time.timeScale = 1f;
-            SceneManager.LoadScene("InGameScene");
+
+            SceneLoadManager.Instance.LoadScene("InGameScene");
             StatusManager.Instance.CurBee--;
         }
     }
@@ -37,7 +38,7 @@ public class Pause : MonoBehaviour
         SaveData();
 
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScene");
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 
     void SaveData()

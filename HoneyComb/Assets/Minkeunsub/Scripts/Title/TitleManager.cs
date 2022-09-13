@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : Singleton<TitleManager>
 {
-    public Image blackImg;
-
     [Header("Status Texts")]
     [SerializeField] Text beewaxTxt;
     [SerializeField] Text honeyTxt;
@@ -21,11 +19,6 @@ public class TitleManager : Singleton<TitleManager>
 
     [Header("Click Effect")]
     [SerializeField] GameObject clickEffectObj;
-
-    void Start()
-    {
-        StartCoroutine(FadeIn(1f));
-    }
 
     void Update()
     {
@@ -97,39 +90,6 @@ public class TitleManager : Singleton<TitleManager>
         return retStr;
     }
 
-    IEnumerator SceneMove(string sceneName)
-    {
-        yield return StartCoroutine(FadeOut(1f));
-        SceneManager.LoadScene(sceneName);
-    }
-
-    IEnumerator FadeIn(float delay)
-    {
-        float timer = delay;
-        blackImg.gameObject.SetActive(true);
-        while (timer > 0)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        blackImg.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeOut(float delay)
-    {
-        float timer = 0f;
-        blackImg.gameObject.SetActive(true);
-        while (timer < delay)
-        {
-            blackImg.color = new Color(0, 0, 0, timer / delay);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-    }
-
     public void GameStart()
     {
         if (StatusManager.Instance.gamePlayAble)
@@ -139,7 +99,7 @@ public class TitleManager : Singleton<TitleManager>
 
                 SoundManager.Instance.PlaySound("Button_Click");
                 StatusManager.Instance.CurBee--;
-                StartCoroutine(SceneMove("InGameScene"));
+                SceneLoadManager.Instance.LoadScene("InGameScene");
             }
             else
             {
@@ -159,7 +119,7 @@ public class TitleManager : Singleton<TitleManager>
         if (StatusManager.Instance.SceneUnlock[0])
         {
             SoundManager.Instance.PlaySound("Button_Click");
-            StartCoroutine(SceneMove("RoyalScene"));
+            SceneLoadManager.Instance.LoadScene("RoyalScene");
         }
         else
         {
@@ -173,7 +133,7 @@ public class TitleManager : Singleton<TitleManager>
         if (StatusManager.Instance.SceneUnlock[1])
         {
             SoundManager.Instance.PlaySound("Button_Click");
-            StartCoroutine(SceneMove("LabScene"));
+            SceneLoadManager.Instance.LoadScene("LabScene");
         }
         else
         {
@@ -187,7 +147,7 @@ public class TitleManager : Singleton<TitleManager>
         if (StatusManager.Instance.SceneUnlock[2])
         {
             SoundManager.Instance.PlaySound("Button_Click");
-            StartCoroutine(SceneMove("LibraryScene"));
+            SceneLoadManager.Instance.LoadScene("LibraryScene");
         }
         else
         {
