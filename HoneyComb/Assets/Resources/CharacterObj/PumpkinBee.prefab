@@ -9747,6 +9747,7 @@ GameObject:
   - component: {fileID: 7075694247642706855}
   - component: {fileID: 7075694247642706854}
   - component: {fileID: 3380844665235630617}
+  - component: {fileID: 632215911066977848}
   m_Layer: 0
   m_Name: PumpkinBee
   m_TagString: Player
@@ -9886,3 +9887,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &632215911066977848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075694247642706850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174d3369ca00e3840857b84c6acb435f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 130
+  Hp: 0
+  isGameOver: 0
+  invincibleDelay: 0.15
+  isInvincible: 0
+  characterType: 4
