@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BookItem : ItemBase
 {
-    protected override void DestroyItem()
+    public override void DestroyItem()
     {
         Destroy(gameObject);
     }

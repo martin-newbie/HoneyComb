@@ -6,10 +6,19 @@ using DG.Tweening;
 
 public class MapSelect : MonoBehaviour
 {
+    public int curIdx;
+    public Color[] titleColors = new Color[4];
+    
+    [Header("UI")]
     public Button[] mapSelect;
     public RectTransform content;
     public RectTransform background;
-    public int curIdx;
+    public Text TitleTxt;
+    public Text DescTxt;
+    
+    [Header("Texts")]
+    public string[] names = new string[4];
+    public string[] descs = new string[4];
 
     void Start()
     {
@@ -18,6 +27,17 @@ public class MapSelect : MonoBehaviour
             int idx = i;
             mapSelect[i].onClick.AddListener(() => MapSelectButton(idx));
         }
+
+        SetFlavorTexts();
+    }
+
+    void SetFlavorTexts()
+    {
+        TitleTxt.text = names[curIdx];
+        TitleTxt.color = titleColors[curIdx];
+
+        string temp = descs[curIdx].Replace("\\n", "\n");
+        DescTxt.text = temp;
     }
 
     public void UIon()
@@ -40,7 +60,7 @@ public class MapSelect : MonoBehaviour
         {
             if (i == curIdx)
             {
-                mapSelect[i].image.rectTransform.sizeDelta = Vector2.Lerp(mapSelect[i].image.rectTransform.sizeDelta, new Vector2(470f, 1000f), Time.deltaTime * 15f);
+                mapSelect[i].image.rectTransform.sizeDelta = Vector2.Lerp(mapSelect[i].image.rectTransform.sizeDelta, new Vector2(470f, 850f), Time.deltaTime * 15f);
             }
             else
             {
@@ -55,16 +75,21 @@ public class MapSelect : MonoBehaviour
     {
         if (curIdx < mapSelect.Length - 1) curIdx++;
         else curIdx = 0;
+
+        SetFlavorTexts();
     }
 
     public void LeftButton()
     {
         if (curIdx > 0) curIdx--;
         else curIdx = mapSelect.Length - 1;
+
+        SetFlavorTexts();
     }
 
     public void MapSelectButton(int idx)
     {
+
         PlayerPrefs.SetInt("MapIdx", idx);
         StatusManager.Instance.nowStage = (EStageType)idx;
         UIoff();

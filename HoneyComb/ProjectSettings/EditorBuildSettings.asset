@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minkeunsub/Scenes/LibraryScene.unity
     guid: eb6b3e432d1643e4d9a00a8c4e3a829b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 18aec3656dbede34d878db746838bb15, type: 2}

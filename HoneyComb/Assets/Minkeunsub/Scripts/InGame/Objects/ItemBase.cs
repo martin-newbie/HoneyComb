@@ -15,6 +15,5 @@ public abstract class ItemBase : MonoBehaviour
             transform.Translate(Vector3.down * Time.deltaTime * InGameManager.Instance.objectMoveSpeed);
         }
     }
-
-    protected abstract void DestroyItem();
+    public abstract void DestroyItem();
 }
