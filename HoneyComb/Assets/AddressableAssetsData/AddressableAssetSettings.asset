@@ -60,7 +60,7 @@ MonoBehaviour:
       - m_Id: bbf2732c34a24d2439db0714aa5581bc
         m_Value: ServerData/[BuildTarget]
       - m_Id: e91735bbfb46fc14597f4de5f646337e
-        m_Value: https://honeycomb.s3.ap-northeast-2.amazonaws.com/[BuildTarget]
+        m_Value: ServerData/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: e032604814a23d74c88a3eb0fe3820bc
       m_Name: BuildTarget
