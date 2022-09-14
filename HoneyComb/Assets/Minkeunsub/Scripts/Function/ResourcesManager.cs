@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
 
 public class ResourcesManager : Singleton<ResourcesManager>
 {
     public Sprite[] sprites;
-    public Sprite[] Player9Angry;
+    public List<Sprite> Player9Angry;
     public List<Sprite[]> PlayerSprites = new List<Sprite[]>();
-    AsyncOperationHandle downHandle;
+
+    public Image fillImg;
+    public Text fillTxt;
 
     private void Awake()
     {
@@ -20,11 +21,12 @@ public class ResourcesManager : Singleton<ResourcesManager>
     void Start()
     {
         LoadSprite();
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 
     void LoadSprite()
     {
-        sprites = Addressables.LoadAssetsAsync<Sprite>("PlayerSprite", null).WaitForCompletion().ToArray();
+        sprites = Resources.LoadAll<Sprite>("PlayableCharacter/Animation/");
 
         int cycleCount = sprites.Length / 60;
         for (int i = 0; i < cycleCount; i++)
@@ -38,12 +40,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
             PlayerSprites.Add(temp.ToArray());
         }
 
-        Player9Angry = Addressables.LoadAssetsAsync<Sprite>("Skill_9", null).WaitForCompletion().ToArray();
-    }
-
-    private void OnApplicationQuit()
-    {
-        Addressables.ClearDependencyCacheAsync("honeycomb");
     }
 }
 

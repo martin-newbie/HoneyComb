@@ -12,7 +12,7 @@ public class OniBee : Player
     protected override void Start()
     {
         base.Start();
-        transformingSprites = ResourcesManager.Instance.Player9Angry;
+        transformingSprites = ResourcesManager.Instance.Player9Angry.ToArray();
     }
     public override void GetHoney()
     {
