@@ -1990,7 +1990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -240, y: -490}
+  m_AnchoredPosition: {x: -240, y: -2142}
   m_SizeDelta: {x: 268.8, y: 234.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1029000185
@@ -3651,7 +3651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60efd06068f5450478dbc09095205f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackImg: {fileID: 0}
   HoneyTxt: {fileID: 1669167298}
   BeewaxTxt: {fileID: 1369764308}
   RoomTxt: {fileID: 163725954}
