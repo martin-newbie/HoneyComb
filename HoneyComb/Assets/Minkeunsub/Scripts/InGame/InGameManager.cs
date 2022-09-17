@@ -35,6 +35,7 @@ public class InGameManager : Singleton<InGameManager>
 
     void Start()
     {
+
         SpawnCharacter();
         stages = GetComponents<StageBase>();
         int mapIdx = PlayerPrefs.GetInt("MapIdx", 0);
@@ -54,6 +55,7 @@ public class InGameManager : Singleton<InGameManager>
             Background temp = curStage.SpawnBackground(i, height, this);
             SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
         }
+        Camera.main.CameraSizeSet(1440, 2960);
     }
     private void SpawnCharacter()
     {
@@ -68,10 +70,11 @@ public class InGameManager : Singleton<InGameManager>
         float screenY = Camera.main.orthographicSize * 2;
         float screenX = screenY / Screen.height * Screen.width;
 
-        Vector2 Scale = new Vector2(screenX / X, screenY / Y);
+        Vector2 Scale = new Vector2(screenY / Y, screenY / Y);
         SR.transform.localScale = Scale;
         return Scale;
     }
+
 
     void SetBookAble()
     {

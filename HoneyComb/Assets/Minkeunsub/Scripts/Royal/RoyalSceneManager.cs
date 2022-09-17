@@ -29,6 +29,11 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [SerializeField] GameObject BeeLocked;
     [SerializeField] GameObject RoomLocked;
 
+    private void Start()
+    {
+        Camera.main.CameraSizeSet(1440, 2960);
+    }
+
     void Update()
     {
         SetTexts();

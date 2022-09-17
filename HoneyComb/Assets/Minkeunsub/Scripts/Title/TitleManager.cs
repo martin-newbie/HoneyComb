@@ -20,6 +20,11 @@ public class TitleManager : Singleton<TitleManager>
     [Header("Click Effect")]
     [SerializeField] GameObject clickEffectObj;
 
+    private void Start()
+    {
+        Camera.main.CameraSizeSet(1440, 2960);
+    }
+
     void Update()
     {
         SetTexts();
