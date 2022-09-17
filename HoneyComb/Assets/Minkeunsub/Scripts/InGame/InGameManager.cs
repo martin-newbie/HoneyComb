@@ -62,7 +62,7 @@ public class InGameManager : Singleton<InGameManager>
         List<Player> players = Resources.LoadAll<Player>("CharacterObj/").ToList();
         Player = Instantiate(players.Find((x) => x.characterType == StatusManager.Instance.nowCharacter), new Vector3(0, -4, 0), Quaternion.identity);
     }
-    Vector2 SetSpriteCameraSize(SpriteRenderer SR)
+    public Vector2 SetSpriteCameraSize(SpriteRenderer SR)
     {
         float X = SR.bounds.size.x;
         float Y = SR.bounds.size.y;

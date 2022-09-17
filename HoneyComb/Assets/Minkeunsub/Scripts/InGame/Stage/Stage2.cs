@@ -13,6 +13,8 @@ public class Stage2 : StageBase
         temp.Init(height * 4, height * -2, manager);
         temp.transform.position = new Vector3(0, idx * height * 2, 0);
 
+        InGameManager.Instance.SetSpriteCameraSize(temp.GetComponent<SpriteRenderer>());
+
         return base.SpawnBackground(idx, height, manager);
     }
 }
