@@ -12,6 +12,11 @@ public class LabManager : MonoBehaviour
     public Text CurBeeQueueTxt;
     public int WaxCost = 100;
 
+    private void Start()
+    {
+        Camera.main.CameraSizeSet(1440, 2960);
+    }
+
     void Update()
     {
         SetText();

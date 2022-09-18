@@ -32,6 +32,7 @@ public class LibraryManager : MonoBehaviour
 
     void Start()
     {
+        Camera.main.CameraSizeSet(1440, 2960);
         InitScroll(CartoonManager.Instance.cartoons.Count);
     }
 
