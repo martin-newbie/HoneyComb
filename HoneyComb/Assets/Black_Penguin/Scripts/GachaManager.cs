@@ -7,7 +7,7 @@ using System.Linq;
 public class GachaManager : MonoBehaviour
 {
     public GameObject MainBoard;
-    public Image image;
+    public Image characterImage;
     public Text text;
     public void DoGacha()
     {
@@ -25,7 +25,7 @@ public class GachaManager : MonoBehaviour
             playableCharacterInfo._pieceCount += addCount;
 
             CharacterScript Info = characterScripts.Find((x) => x.characterType == playableCharacterInfo.character);
-            image.sprite = Info.Icon;
+            characterImage.sprite = Info.Icon;
             text.text = $"{Info.characterName}의 조각 {addCount}개";
 
             OffGacha();
