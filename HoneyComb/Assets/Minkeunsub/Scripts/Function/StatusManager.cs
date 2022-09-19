@@ -61,11 +61,11 @@ public class PlayableCharacterInfo
 
     public void LevelUp()
     {
-        int requireCount = level * 20 + 10;
+        int requireCount = ReturnRequireCount();
         if (_pieceCount >= requireCount)
         {
-            level++;
             _pieceCount -= requireCount;
+            level++;
         }
     }
     public int ReturnRequireCount()

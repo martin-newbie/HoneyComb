@@ -10,7 +10,7 @@ public class ShadowBackground : MonoBehaviour
 
     private void Update()
     {
-        moveSpeed = manager.objectMoveSpeed * decrease;
+        moveSpeed = manager.curObjectMoveSpeed * decrease;
         if (transform.position.y < end)
         {
             transform.position += new Vector3(0, start, 0);

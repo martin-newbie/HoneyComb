@@ -20,6 +20,7 @@ public class InGameManager : Singleton<InGameManager>
     [Header("Status")]
     public int roundHoney; //한 판에서 얻은 꿀, 정상적으로 라운드를 종료해야만 획득 가능
     public float distance;
+    public float curObjectMoveSpeed;
     public float objectMoveSpeed;
     public float moveSpeed;
     public float damage;
@@ -176,7 +177,7 @@ public class InGameManager : Singleton<InGameManager>
 
             yield return new WaitForSeconds(duration);
 
-            while (Player.isGameOver || objectMoveSpeed != 5f) yield return null;
+            while (Player.isGameOver || curObjectMoveSpeed != objectMoveSpeed) yield return null;
         }
     }
 
@@ -190,12 +191,12 @@ public class InGameManager : Singleton<InGameManager>
         float timer = duration;
         while (timer > 0f)
         {
-            objectMoveSpeed = 5f * (timer / duration);
+            curObjectMoveSpeed = objectMoveSpeed * (timer / duration);
             timer -= Time.deltaTime;
             yield return null;
         }
 
-        objectMoveSpeed = 0f;
+        curObjectMoveSpeed = 0f;
         InGameUI.Instance.GameOverUIOn(distance, roundHoney);
     }
 
@@ -204,12 +205,12 @@ public class InGameManager : Singleton<InGameManager>
         float timer = 0f;
         while (timer < duration)
         {
-            objectMoveSpeed = 5f * (timer / duration);
+            curObjectMoveSpeed = objectMoveSpeed * (timer / duration);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        objectMoveSpeed = 5f;
+        curObjectMoveSpeed = objectMoveSpeed;
     }
 
     /// <summary>
