@@ -550,7 +550,7 @@ MonoBehaviour:
   background: {fileID: 317803402235590473, guid: c1842c9597bd49d49bfe077e185acfcd, type: 3}
   flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
   commonHurdle:
-  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+  - {fileID: 4774200439463183200, guid: aebb763bd59195049b4ddbaddab71a81, type: 3}
   shadow: {fileID: 7252901248607915955, guid: 184355eb4dc1f754b94c8daac62b4ed4, type: 3}
 --- !u!114 &174317889
 MonoBehaviour:
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInfoTextPath: FlowerSpawn
   background: {fileID: 8876114882908744403, guid: 3605fc7756569b141ab198f5730a3333, type: 3}
-  flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
+  flower: {fileID: 2130683989046382737, guid: 1e27bd4a96fc3b44f948131899ac0d08, type: 3}
   commonHurdle:
   - {fileID: 7732094619369151077, guid: 8ca2b905b9194df46a796f2bf91ed67d, type: 3}
   - {fileID: 7643779823891317081, guid: 4de642958eb244d4d88332947201ee60, type: 3}
@@ -586,7 +586,8 @@ MonoBehaviour:
   background: {fileID: 8292338352437013219, guid: f7d80edbba95c844cab56bab9a1eb414, type: 3}
   flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
   commonHurdle:
-  - {fileID: 7732094619369151077, guid: 66852568f0748b04b9e727c25ec27816, type: 3}
+  - {fileID: 6362266786857546092, guid: c0e6abb354760ee49b9e43c5cc4109f5, type: 3}
+  - {fileID: 3119872012938687854, guid: 9556d3945d962ff4eb7e4577fc6bf532, type: 3}
 --- !u!1 &243512887
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPressPos: {x: 0, y: 0}
   secondPressPos: {x: 0, y: 0}
-  isTouching: 0
+  isDrag: 0
 --- !u!1 &359510899
 GameObject:
   m_ObjectHideFlags: 0
