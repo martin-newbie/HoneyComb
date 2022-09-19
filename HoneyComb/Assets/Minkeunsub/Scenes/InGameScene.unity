@@ -510,6 +510,7 @@ MonoBehaviour:
   cam: {fileID: 1562137953}
   roundHoney: 0
   distance: 0
+  curObjectMoveSpeed: 5
   objectMoveSpeed: 5
   moveSpeed: 20
   damage: 5
