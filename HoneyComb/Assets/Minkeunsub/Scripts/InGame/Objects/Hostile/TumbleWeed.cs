@@ -28,30 +28,40 @@ public class TumbleWeed : Hostile
 
     IEnumerator MoveLogic()
     {
-        int dir = moveIdx;
         float t = 0f;
+        int prevIdx = spawnIdx;
+        int nextIdx = prevIdx + GetDir(prevIdx);
 
         while (true)
         {
-            if(t > 1f || t < 0f)
+            if (t > 1f)
             {
-                int d;
-                if (spawnIdx == 2) d = -1;
-                else if (spawnIdx == 0) d = 1;
-                else d = Random.Range(0, 2) == 0 ? 1 : -1;
+                prevIdx = nextIdx;
+                int dir = GetDir(prevIdx);
+                nextIdx += dir;
+                moveIdx = dir;
 
-                dir *= d;
+                t = 0f;
             }
 
-            t += Time.deltaTime * dir;
+            t += Time.deltaTime * 3f;
+            weed.transform.Rotate(Vector3.forward * moveIdx * Time.deltaTime * objectMoveSpeed * 100f);
 
-            weed.transform.Rotate(Vector3.forward * dir * Time.deltaTime * objectMoveSpeed * 100f);
 
-            Vector3 pos = Vector3.Lerp(poses[spawnIdx].position, poses[spawnIdx + moveIdx].position, t);
+            Vector3 pos = Vector3.Lerp(poses[prevIdx].position, poses[nextIdx].position, t);
             pos.y = transform.position.y;
             transform.position = pos;
             yield return null;
         }
+    }
+
+    int GetDir(int idx)
+    {
+        int d;
+        if (idx == 2) d = -1;
+        else if (idx == 0) d = 1;
+        else d = Random.Range(0, 2) == 0 ? 1 : -1;
+        return d;
     }
 
     public override void DestroyItem()
@@ -64,7 +74,6 @@ public class TumbleWeed : Hostile
         spawnIdx = idx;
 
         poses = InGameManager.Instance.PlayerPoses;
-        moveIdx = Random.Range(0, 2) == 0 ? 1 : -1;
     }
 
     IEnumerator SpriteAnimation(SpriteRenderer renderer, Sprite[] frame, float frameSpeed)
