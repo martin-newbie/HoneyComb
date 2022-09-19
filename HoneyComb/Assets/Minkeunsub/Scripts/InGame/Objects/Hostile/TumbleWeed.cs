@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnowBall : Hostile
+public class TumbleWeed : Hostile
 {
     public override float objectMoveSpeed => InGameManager.Instance.objectMoveSpeed + 3f;
 
     [Header("Objects")]
-    public SpriteRenderer snowBall;
-    public SpriteRenderer snowSplash;
+    public SpriteRenderer weed;
 
     [Header("Sprites")]
-    public Sprite[] ballSprites;
-    public Sprite[] splashSprites;
+    public Sprite[] weedSprites;
 
     [Header("Value")]
     public float frameSpeed = 0.1f;
@@ -21,47 +19,61 @@ public class SnowBall : Hostile
     int moveIdx = 1; // 1, -1
     Transform[] poses;
 
-
     private void Start()
     {
-        StartCoroutine(SpriteAnimation(snowBall, ballSprites, frameSpeed));
-        StartCoroutine(SpriteAnimation(snowSplash, splashSprites, frameSpeed));
+        StartCoroutine(SpriteAnimation(weed, weedSprites, frameSpeed));
 
         StartCoroutine(MoveLogic());
     }
 
-    protected void Init(int idx)
-    {
-        spawnIdx = idx;
-        poses = InGameManager.Instance.PlayerPoses;
-
-        if (spawnIdx == 0) moveIdx = 1;
-        else if (spawnIdx == 2) moveIdx = -1;
-        else moveIdx = Random.Range(0, 2) == 0 ? 1 : -1;
-    }
-
     IEnumerator MoveLogic()
     {
-        int dir = moveIdx;
         float t = 0f;
+        int prevIdx = spawnIdx;
+        int nextIdx = prevIdx + GetDir(prevIdx);
 
         while (true)
         {
-            if (t > 1f && dir == 1) dir = -1;
-            else if (t < 0f && dir == -1) dir = 1;
+            if (t > 1f)
+            {
+                prevIdx = nextIdx;
+                int dir = GetDir(prevIdx);
+                nextIdx += dir;
+                moveIdx = dir;
 
-            t += Time.deltaTime * dir;
+                t = 0f;
+            }
 
-            Vector3 pos = Vector3.Lerp(poses[spawnIdx].position, poses[spawnIdx + moveIdx].position, t);
+            t += Time.deltaTime * 3f;
+            weed.transform.Rotate(Vector3.forward * moveIdx * Time.deltaTime * objectMoveSpeed * 100f);
+
+
+            Vector3 pos = Vector3.Lerp(poses[prevIdx].position, poses[nextIdx].position, t);
             pos.y = transform.position.y;
             transform.position = pos;
             yield return null;
         }
     }
 
-    protected override void Update()
+    int GetDir(int idx)
     {
-        base.Update();
+        int d;
+        if (idx == 2) d = -1;
+        else if (idx == 0) d = 1;
+        else d = Random.Range(0, 2) == 0 ? 1 : -1;
+        return d;
+    }
+
+    public override void DestroyItem()
+    {
+        Destroy(gameObject);
+    }
+
+    void Init(int idx)
+    {
+        spawnIdx = idx;
+
+        poses = InGameManager.Instance.PlayerPoses;
     }
 
     IEnumerator SpriteAnimation(SpriteRenderer renderer, Sprite[] frame, float frameSpeed)
@@ -75,11 +87,6 @@ public class SnowBall : Hostile
             if (idx < frame.Length - 1) idx++;
             else idx = 0;
         }
-    }
-
-    public override void DestroyItem()
-    {
-        Destroy(gameObject);
     }
 
     public override void Init()
