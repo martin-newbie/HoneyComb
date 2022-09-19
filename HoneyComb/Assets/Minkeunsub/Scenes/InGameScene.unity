@@ -551,6 +551,7 @@ MonoBehaviour:
   flower: {fileID: 1427749850630400951, guid: fc6e66f729cfc4146991433d0d9a9af5, type: 3}
   commonHurdle:
   - {fileID: 4774200439463183200, guid: aebb763bd59195049b4ddbaddab71a81, type: 3}
+  - {fileID: 764514251502792588, guid: 8bcf00ef9b25cb947851a448944345fa, type: 3}
   shadow: {fileID: 7252901248607915955, guid: 184355eb4dc1f754b94c8daac62b4ed4, type: 3}
 --- !u!114 &174317889
 MonoBehaviour:

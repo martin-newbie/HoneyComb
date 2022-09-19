@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SnowBall : Hostile
 {
-    public override float objectMoveSpeed => InGameManager.Instance.objectMoveSpeed + 5f;
+    public override float objectMoveSpeed => InGameManager.Instance.objectMoveSpeed + 3f;
 
     [Header("Objects")]
     public SpriteRenderer snowBall;
