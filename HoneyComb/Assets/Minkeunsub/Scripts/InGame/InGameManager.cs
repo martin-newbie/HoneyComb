@@ -36,6 +36,7 @@ public class InGameManager : Singleton<InGameManager>
 
     void Start()
     {
+        curObjectMoveSpeed = objectMoveSpeed;
 
         SpawnCharacter();
         stages = GetComponents<StageBase>();
@@ -47,7 +48,7 @@ public class InGameManager : Singleton<InGameManager>
         FlowerTime = curStage.GetFlowerSpawn();
 
         SetBookAble();
-        StartCoroutine(SpawnCoroutine(0.5f));
+        StartCoroutine(SpawnCoroutine());
 
         height = Camera.main.orthographicSize;
 
@@ -153,9 +154,8 @@ public class InGameManager : Singleton<InGameManager>
         InGameUI.Instance.GetBookEffect(StatusManager.Instance.BookDatas[ableBookIdx], Player.transform.position);
     }
 
-    IEnumerator SpawnCoroutine(float time)
+    IEnumerator SpawnCoroutine(float delay = 0.5f)
     {
-        float duration = time;
         int idx = 0;
         int curBookIdx = 0;
         while (true)
@@ -175,9 +175,9 @@ public class InGameManager : Singleton<InGameManager>
 
             if (idx == FlowerTime.Count) idx = FlowerTime.Count / 2;
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds((objectMoveSpeed / curObjectMoveSpeed) * delay);
 
-            while (Player.isGameOver || curObjectMoveSpeed != objectMoveSpeed) yield return null;
+            while (Player.isGameOver) yield return null;
         }
     }
 
