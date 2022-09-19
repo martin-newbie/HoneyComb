@@ -510,6 +510,7 @@ MonoBehaviour:
   cam: {fileID: 1562137953}
   roundHoney: 0
   distance: 0
+  curObjectMoveSpeed: 5
   objectMoveSpeed: 5
   moveSpeed: 20
   damage: 5
@@ -873,7 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPressPos: {x: 0, y: 0}
   secondPressPos: {x: 0, y: 0}
-  isTouching: 0
+  isDrag: 0
 --- !u!1 &359510899
 GameObject:
   m_ObjectHideFlags: 0

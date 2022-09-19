@@ -85,7 +85,7 @@ public class BaseDailyQuest
     {
         int value = 0;
         value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count;
-        value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
+        //value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
 
         return value / 2;
     }
@@ -303,7 +303,8 @@ public class DailyQuest : Singleton<DailyQuest>
             while (true)
             {
                 int index = Random.Range(0, StatusManager.Instance.stageInfos.Count);
-                if (StatusManager.Instance.stageInfos[index] == true)
+                //if (StatusManager.Instance.stageInfos[index] == true)
+                //TODO: 맵 잠금이 사라진관계로 소유중인 맵 이라는 조건을 없앰
                 {
                     StageType = (EStageType)index;
                     break;

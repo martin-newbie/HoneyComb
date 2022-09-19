@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public float invincibleDelay;
     public bool isInvincible;
+    public float shieldDuration;
 
     public EPlayableCharacter characterType;
 
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     protected virtual void Update()
     {
         HpLogic();
+        shieldDuration -= Time.deltaTime;
     }
 
     void HpLogic()
@@ -53,7 +55,8 @@ public class Player : MonoBehaviour
 
         if (!isGameOver)
         {
-            Hp -= Time.deltaTime;
+            if (shieldDuration <= 0)
+                Hp -= Time.deltaTime;
             CheckGameOver();
         }
     }
@@ -91,6 +94,7 @@ public class Player : MonoBehaviour
 
     protected virtual IEnumerator OnDamage()
     {
+        if (shieldDuration > 0) yield break;
         isInvincible = true;
 
         Hp -= InGameManager.Instance.damage;
