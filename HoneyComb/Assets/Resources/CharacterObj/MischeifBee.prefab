@@ -9913,6 +9913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationIndex: 8
   frameSpeed: 0.01
+  animationSprites: []
 --- !u!114 &-2539498656824521818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9926,7 +9927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 100
-  Hp: 0
+  Hp: 100
   isGameOver: 0
   invincibleDelay: 5
   isInvincible: 0

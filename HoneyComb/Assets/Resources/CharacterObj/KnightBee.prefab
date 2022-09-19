@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6038616666903081976}
   - component: {fileID: 1426560367106542306}
   - component: {fileID: 6946432120223363784}
+  - component: {fileID: 3586387241100777052}
   m_Layer: 0
   m_Name: 12_attack_sword_00010
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 2551831386336354709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.12, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 6277466513363510505}
   m_RootOrder: 2
@@ -159,6 +160,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.9777884, y: 2.8421607}
   m_EdgeRadius: 0
+--- !u!114 &3586387241100777052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551831386336354709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab83037d7556b9749bb6dc499e515dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6277466513363510511
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,13 +336,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 100
-  Hp: 0
+  Hp: 100
   isGameOver: 0
   invincibleDelay: 0.15
   isInvincible: 0
   characterType: 12
   checkBox: {x: 0.61, y: 0.33}
   hitPos: {fileID: 4816136263529218413}
+  knightSword: {fileID: 2551831386336354709}
+  animator: {fileID: 0}
 --- !u!1 &7198917453107900623
 GameObject:
   m_ObjectHideFlags: 0
