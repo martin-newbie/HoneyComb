@@ -31,7 +31,6 @@ public enum EPlayableCharacter
     HORSE_BEE,
     KING_BEE,
     KNIGHT_BEE,
-    VIP_BEE,
     END
 }
 [Serializable]
@@ -170,7 +169,7 @@ public class StatusManager : Singleton<StatusManager>
         InitClearActions();
         DailyQuest.Instance.StartDailyQuest();
     }
-    
+
     void InitClearActions()
     {
         QuestClearActions.Add(() => { SceneUnlock[0] = true; });
@@ -271,6 +270,7 @@ public class StatusManager : Singleton<StatusManager>
         BookUnlocked = dataSave.BookUnlocked;
         playableCharacterInfos = dataSave.CharactersInfo;
         stageInfos = dataSave.stageInfo;
+        nowCharacter = dataSave.nowCharacter;
     }
 
     void SetDataToSave()
@@ -292,6 +292,7 @@ public class StatusManager : Singleton<StatusManager>
         dataSave.BookUnlocked = BookUnlocked;
         dataSave.CharactersInfo = playableCharacterInfos;
         dataSave.stageInfo = stageInfos;
+        dataSave.nowCharacter = nowCharacter;
     }
 
     public void SaveData()
@@ -395,6 +396,7 @@ public class StatusSave
     public List<bool> BookUnlocked = new List<bool>();
     public List<PlayableCharacterInfo> CharactersInfo = new List<PlayableCharacterInfo>();
     public List<bool> stageInfo = new List<bool>();
+    public EPlayableCharacter nowCharacter;
 }
 
 public enum QuestNpcState
