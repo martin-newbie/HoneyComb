@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public interface IChracterHaveSpecialSkill
-{
-    public void SpecialSkill();
-}
 public class Player : MonoBehaviour
 {
     public float MaxHp;

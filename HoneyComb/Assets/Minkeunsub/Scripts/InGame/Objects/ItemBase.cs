@@ -12,7 +12,7 @@ public abstract class ItemBase : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector3.down * Time.deltaTime * InGameManager.Instance.objectMoveSpeed);
+            transform.Translate(Vector3.down * Time.deltaTime * InGameManager.Instance.curObjectMoveSpeed);
         }
     }
     public abstract void DestroyItem();

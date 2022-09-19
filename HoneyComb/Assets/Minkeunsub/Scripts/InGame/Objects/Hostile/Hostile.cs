@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Hostile : MonoBehaviour
 {
-    public virtual float objectMoveSpeed => InGameManager.Instance.objectMoveSpeed;
+    public virtual float objectMoveSpeed => InGameManager.Instance.curObjectMoveSpeed;
 
     protected virtual void Update()
     {

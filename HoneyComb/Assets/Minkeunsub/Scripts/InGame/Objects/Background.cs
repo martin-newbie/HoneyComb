@@ -10,7 +10,7 @@ public class Background : MonoBehaviour
 
     private void Update()
     {
-        moveSpeed = manager.objectMoveSpeed;
+        moveSpeed = manager.curObjectMoveSpeed;
         if (transform.position.y < end)
         {
             transform.position += new Vector3(0, start, 0);

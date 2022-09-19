@@ -5,7 +5,7 @@ using UnityEngine;
 public class OniBee : Player
 {
     [SerializeField] private int transformCount = 10;
-    [SerializeField] private int curTransformCount = 10;
+    [SerializeField] private int curTransformCount = 0;
     [SerializeField] private bool isTransform;
 
     private Sprite[] transformingSprites;
@@ -20,16 +20,33 @@ public class OniBee : Player
         if (isTransform) return;
 
         curTransformCount++;
-        if (transformCount >= curTransformCount)
+        if (curTransformCount >= transformCount)
         {
             curTransformCount = 0;
             isTransform = true;
-            
+
             TryGetComponent(out PlayerAnimation anim);
 
             Sprite[] sprites = anim.animationSprites;
             anim.animationSprites = transformingSprites;
             transformingSprites = sprites;
         }
+    }
+    protected override IEnumerator OnDamage()
+    {
+        if (isTransform)
+        {
+            TryGetComponent(out PlayerAnimation anim);
+
+            SoundManager.Instance.PlaySound("Hit2", SoundType.SE);
+            Sprite[] sprites = anim.animationSprites;
+            anim.animationSprites = transformingSprites;
+            transformingSprites = sprites;
+
+            isTransform = false;
+            yield break;
+        }
+        else
+            yield return base.OnDamage();
     }
 }
