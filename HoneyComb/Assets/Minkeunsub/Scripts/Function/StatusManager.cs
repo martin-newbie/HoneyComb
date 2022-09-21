@@ -48,23 +48,20 @@ public class PlayableCharacterInfo
         }
     }
     public int level;
-    private int pieceCount;
-    public int _pieceCount
+    public int pieceCount;
+
+    public void IncreasePiece(int value)
     {
-        get { return pieceCount; }
-        set
-        {
-            pieceCount = value;
-            LevelUp();
-        }
+        pieceCount += value;
+        LevelUp();
     }
 
     public void LevelUp()
     {
         int requireCount = ReturnRequireCount();
-        if (_pieceCount >= requireCount)
+        if (pieceCount >= requireCount)
         {
-            _pieceCount -= requireCount;
+            pieceCount -= requireCount;
             level++;
         }
     }

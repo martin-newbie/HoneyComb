@@ -60,9 +60,11 @@ public class GachaManager : MonoBehaviour
             int rand = Random.Range(0, characterType.Count);
             randIdx[i] = characterType[rand];
             randCount[i] = Random.Range(1, 6);
+            StatusManager.Instance.playableCharacterInfos[(int)randIdx[i]].IncreasePiece(randCount[i]);
 
             characterType.Remove(characterType[rand]);
         }
+
 
         StartCoroutine(PrintResult());
     }
