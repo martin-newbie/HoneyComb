@@ -13,6 +13,8 @@ public class PlusHoneyItem : ItemBase
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySound("EarnItems");
+
             InGameManager.Instance.roundHoney += 25;
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);

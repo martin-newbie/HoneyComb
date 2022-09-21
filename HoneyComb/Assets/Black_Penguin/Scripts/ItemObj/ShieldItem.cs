@@ -13,6 +13,8 @@ public class ShieldItem : ItemBase
     {
         if (collision.CompareTag("Player"))
         {
+
+
             Player player = FindObjectOfType<Player>();
             player.shieldDuration = 5;
 
@@ -20,6 +22,7 @@ public class ShieldItem : ItemBase
             sprite.DOFade(0.3f, 0);
             sprite.DOFade(1, 5);
 
+            SoundManager.Instance.PlaySound("EarnItems");
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);
         }

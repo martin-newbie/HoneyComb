@@ -13,6 +13,8 @@ public class SpeedUpItem : ItemBase
     {
         if (collision.CompareTag("Player") && canGet == true)
         {
+            SoundManager.Instance.PlaySound("EarnItems");
+
             canGet = false;
             InGameManager.Instance.StartCoroutine(SpeedUp());
             SoundManager.Instance.PlaySound("Button_Click2");
