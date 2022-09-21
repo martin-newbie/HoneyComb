@@ -4515,8 +4515,8 @@ MonoBehaviour:
   BeeUpgradeBG: {fileID: 1804958252}
   CurHoneyValue: {fileID: 1350209328}
   CurWaxValue: {fileID: 169275443}
-  gachaCanvas: {fileID: 0}
-  gachaPanel: {fileID: 0}
+  gachaCanvas: {fileID: 1069440201}
+  gachaPanel: {fileID: 1190302500}
   RoomCost: 500
   BeeCost: 1000
   BeeLocked: {fileID: 2068431227}
