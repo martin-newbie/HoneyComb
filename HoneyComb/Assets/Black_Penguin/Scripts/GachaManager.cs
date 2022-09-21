@@ -2,64 +2,162 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-using DG.Tweening;
 
 public class GachaManager : MonoBehaviour
 {
-    public GameObject MainBoard;
-    public Image characterImage;
-    public Text text;
-    public Image whiteImage;
-    public void DoGacha()
+    Animator anim;
+    bool nextTrigger;
+    bool eventActing;
+
+    [Header("UI")]
+    public Image cardImg;
+    public Text cardCount;
+    public Image characterImg;
+    public Image beeSilhouette;
+    public GachaResult[] results;
+    public Button offButton;
+    public Text remainCount;
+
+    [Header("Sprites")]
+    public Sprite cardBack;
+    public Sprite cardFront;
+
+    [Header("Info")]
+    public List<Sprite> characterImages = new List<Sprite>();
+    public EPlayableCharacter[] randIdx;
+    public int[] randCount;
+    int curIdx;
+
+    private void Start()
     {
-        if (StatusManager.Instance.BeeWax >= 10)
+        foreach (var item in ResourcesManager.Instance.PlayerFirstSprites)
         {
-            SoundManager.Instance.PlaySound("Button_Click");
-            StartCoroutine(DoingGacha());
+            characterImages.Add(item);
         }
-        else
+        anim = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        ResultDeactive();
+        offButton.gameObject.SetActive(false);
+        remainCount.gameObject.SetActive(true);
+        List<EPlayableCharacter> characterType = new List<EPlayableCharacter>();
+        for (int i = 0; i < (int)EPlayableCharacter.END; i++)
         {
-            Debug.Log("왁스가 10개 필요해용");
-            SoundManager.Instance.PlaySound("Button_Click_Fail");
+            characterType.Add((EPlayableCharacter)i);
+        }
+
+        cardImg.gameObject.SetActive(false);
+        cardCount.gameObject.SetActive(false);
+        characterImg.gameObject.SetActive(false);
+
+        randIdx = new EPlayableCharacter[Random.Range(1, 4)];
+        randCount = new int[randIdx.Length];
+
+        for (int i = 0; i < randIdx.Length; i++)
+        {
+            int rand = Random.Range(0, characterType.Count);
+            randIdx[i] = characterType[rand];
+            randCount[i] = Random.Range(1, 6);
+            StatusManager.Instance.playableCharacterInfos[(int)randIdx[i]].IncreasePiece(randCount[i]);
+
+            characterType.Remove(characterType[rand]);
+        }
+
+
+        StartCoroutine(PrintResult());
+    }
+
+    IEnumerator PrintResult()
+    {
+        yield return null;
+        anim.SetTrigger("enable");
+        eventActing = false;
+        remainCount.text = (randIdx.Length).ToString();
+
+        for (int i = 0; i <= randIdx.Length; i++)
+        {
+            nextTrigger = false;
+            while (nextTrigger == false) yield return null;
+
+            eventActing = true;
+
+            curIdx = i;
+
+            if (i < randIdx.Length)
+            {
+                remainCount.text = (randIdx.Length - (curIdx + 1)).ToString();
+                anim.SetTrigger("nextEvent");
+            }
+            else
+            {
+                remainCount.text = "0";
+                anim.SetTrigger("endEvent");
+            }
         }
     }
-    IEnumerator DoingGacha()
+
+    public void NextButton()
     {
-        whiteImage.DOFade(1, 2);
-        yield return new WaitForSeconds(2);
-
-        whiteImage.color = new Color(1, 1, 1, 0);
-        List<CharacterScript> characterScripts = Resources.LoadAll<CharacterScript>("Characters/").ToList();
-        MainBoard.SetActive(true);
-
-        int addCount = Random.Range(10, 20);
-
-        StatusManager.Instance.BeeWax -= 10;
-        PlayableCharacterInfo playableCharacterInfo = StatusManager.Instance.playableCharacterInfos[Random.Range(0, StatusManager.Instance.playableCharacterInfos.Count)];
-
-        playableCharacterInfo._pieceCount += addCount;
-
-        CharacterScript Info = characterScripts.Find((x) => x.characterType == playableCharacterInfo.character);
-        characterImage.sprite = Info.Icon;
-        text.text = $"{Info.characterName}의 조각 {addCount}개";
-
-        StartCoroutine(OffGacha());
+        if (!eventActing)
+            nextTrigger = true;
     }
-    IEnumerator OffGacha()
+
+    void PrintCharacterInfo()
     {
-        yield return new WaitForSeconds(1);
+        StartCoroutine(PrintCharacterInfoCoroutine());
+    }
 
-        List<Image> FadeImg = new List<Image>();
-        FadeImg.Add(MainBoard.GetComponent<Image>());
-        FadeImg.Add(MainBoard.transform.GetChild(0).GetComponent<Image>());
-        Text text = MainBoard.GetComponentInChildren<Text>();
+    IEnumerator PrintCharacterInfoCoroutine()
+    {
 
-        foreach (Image image in FadeImg) image.DOFade(0, 2f);
-        text.DOFade(0, 2f);
-        yield return new WaitForSeconds(2f);
-        foreach (Image image in FadeImg) image.color = Color.white;
-        text.color = Color.white;
-        MainBoard.SetActive(false);
+        eventActing = false;
+        yield break;
+    }
+
+    void CardDrawStrat()
+    {
+        cardImg.gameObject.SetActive(true);
+        cardCount.gameObject.SetActive(false);
+        characterImg.gameObject.SetActive(false);
+
+        cardImg.sprite = cardBack;
+    }
+
+    void CardDrawEnd()
+    {
+        cardCount.gameObject.SetActive(true);
+        characterImg.gameObject.SetActive(true);
+
+        cardImg.sprite = cardFront;
+        cardCount.text = "x" + randCount[curIdx].ToString();
+
+        characterImg.sprite = characterImages[(int)randIdx[curIdx]];
+        characterImg.SetNativeSize();
+    }
+
+    void CardResultStart()
+    {
+        cardImg.gameObject.SetActive(false);
+        StartCoroutine(CardResultCoroutine());
+    }
+
+    void ResultDeactive()
+    {
+        foreach (var item in results)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator CardResultCoroutine()
+    {
+        for (int i = 0; i < randIdx.Length; i++)
+        {
+            results[i].Init(characterImages[(int)randIdx[i]], randCount[i]);
+            yield return new WaitForSeconds(0.5f);
+        }
+        offButton.gameObject.SetActive(true);
     }
 }

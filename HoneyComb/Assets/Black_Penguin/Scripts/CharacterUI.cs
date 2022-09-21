@@ -132,10 +132,10 @@ public class CharacterUI : MonoBehaviour
 
         int index = statusManager.playableCharacterInfos.Find((x) => x.character == playableCharacterInfo.character).level;
 
-        nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName} ({playableCharacterInfo._pieceCount}/{playableCharacterInfo.ReturnRequireCount()})";
+        nameText.text = $"Lv.{playableCharacterInfo.level} {characterScripts[beeListIndexNumber].characterName} ({playableCharacterInfo.pieceCount}/{playableCharacterInfo.ReturnRequireCount()})";
         descriptionText.text = characterScripts[beeListIndexNumber].Description;
 
-        characterGauge.fillAmount = (float)playableCharacterInfo._pieceCount / playableCharacterInfo.ReturnRequireCount();
+        characterGauge.fillAmount = (float)playableCharacterInfo.pieceCount / playableCharacterInfo.ReturnRequireCount();
     }
 
     void SelectButtonClickFunc()
