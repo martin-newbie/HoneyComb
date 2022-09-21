@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ShieldItem : ItemBase
 {
@@ -12,7 +13,16 @@ public class ShieldItem : ItemBase
     {
         if (collision.CompareTag("Player"))
         {
-            FindObjectOfType<Player>().shieldDuration = 5;
+
+
+            Player player = FindObjectOfType<Player>();
+            player.shieldDuration = 5;
+
+            SpriteRenderer sprite = player.GetComponent<SpriteRenderer>();
+            sprite.DOFade(0.3f, 0);
+            sprite.DOFade(1, 5);
+
+            SoundManager.Instance.PlaySound("EarnItems");
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);
         }

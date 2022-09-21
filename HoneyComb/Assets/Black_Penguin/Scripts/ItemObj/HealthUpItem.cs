@@ -13,6 +13,7 @@ public class HealthUpItem : ItemBase
         if (collision.CompareTag("Player"))
         {
             FindObjectOfType<Player>().Hp += 5;
+            SoundManager.Instance.PlaySound("EarnItems");
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);
         }

@@ -18,6 +18,7 @@ public class KnightBee : Player
         base.Update();
         if (HoneyCount >= 10)
         {
+            SoundManager.Instance.PlaySound("SwordSwing");
             knightSword.SetActive(true);
             HoneyCount = 0;
         }

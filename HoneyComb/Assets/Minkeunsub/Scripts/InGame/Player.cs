@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstruction") && !isInvincible)
+        if (collision.CompareTag("Obstruction") && !isInvincible && shieldDuration <= 0)
         {
             if (Physics2D.OverlapBox(hitPos.position, checkBox, 0f, LayerMask.GetMask("Hostile")))
             {
