@@ -14,12 +14,12 @@ public class SpeedUpItem : ItemBase
         if (collision.CompareTag("Player") && canGet == true)
         {
             canGet = false;
-            StartCoroutine(SpeedUp());
+            InGameManager.Instance.StartCoroutine(SpeedUp());
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);
         }
     }
-    IEnumerator SpeedUp()
+    public IEnumerator SpeedUp()
     {
         InGameManager.Instance.curObjectMoveSpeed += 3;
         yield return new WaitForSeconds(5);

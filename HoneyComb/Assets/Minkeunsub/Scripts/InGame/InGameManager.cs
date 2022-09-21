@@ -180,7 +180,12 @@ public class InGameManager : Singleton<InGameManager>
             while (Player.isGameOver) yield return null;
         }
     }
-
+    public IEnumerator SpeedUp()
+    {
+        curObjectMoveSpeed += 3;
+        yield return new WaitForSeconds(5);
+        curObjectMoveSpeed -= 3;
+    }
     public void GameOver()
     {
         StartCoroutine(GameoverSlowDown(2f));
