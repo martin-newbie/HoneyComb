@@ -21,6 +21,10 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [SerializeField] Text CurHoneyValue;
     [SerializeField] Text CurWaxValue;
 
+    [Header("Gacha")]
+    public Canvas gachaCanvas;
+    public GameObject gachaPanel;
+
     [Header("Value")]
     [SerializeField] int RoomCost = 250;
     [SerializeField] int BeeCost = 1000;
@@ -48,6 +52,16 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         BeewaxTxt.text = Format(StatusManager.Instance.BeeWax);
         RoomTxt.text = Format(StatusManager.Instance.Room);
         BeeTxt.text = Format(StatusManager.Instance.CurBee) + "/" + Format(StatusManager.Instance.MaxBee);
+    }
+
+    public void OpenGacha()
+    {
+        if(StatusManager.Instance.BeeWax >= 10)
+        {
+            StatusManager.Instance.BeeWax -= 10;
+            gachaCanvas.enabled = true;
+            gachaPanel.SetActive(true);
+        }
     }
 
     string Format(float value)

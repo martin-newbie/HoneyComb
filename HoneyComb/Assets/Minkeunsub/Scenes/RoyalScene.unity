@@ -2341,22 +2341,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1069440201}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1190302500}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1808875562}
+        m_TargetAssemblyTypeName: RoyalSceneManager, Assembly-CSharp
+        m_MethodName: OpenGacha
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4527,6 +4515,8 @@ MonoBehaviour:
   BeeUpgradeBG: {fileID: 1804958252}
   CurHoneyValue: {fileID: 1350209328}
   CurWaxValue: {fileID: 169275443}
+  gachaCanvas: {fileID: 0}
+  gachaPanel: {fileID: 0}
   RoomCost: 500
   BeeCost: 1000
   BeeLocked: {fileID: 2068431227}
