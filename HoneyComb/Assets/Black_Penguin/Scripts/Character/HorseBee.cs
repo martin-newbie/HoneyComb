@@ -7,6 +7,6 @@ public class HorseBee : Player
     protected override void Start()
     {
         base.Start();
-        InGameManager.Instance.curObjectMoveSpeed = 7f;
+        InGameManager.Instance.curObjectMoveSpeed = 8f;
     }
 }

@@ -2564,6 +2564,7 @@ MonoBehaviour:
     BookUnlocked: 
     CharactersInfo: []
     stageInfo: 
+    nowCharacter: 0
   dataSaveName: status data save
   questSaveName: quest data save
   timeSaveName: time save
