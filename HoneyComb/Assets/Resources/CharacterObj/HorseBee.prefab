@@ -9777,8 +9777,7 @@ GameObject:
   - component: {fileID: 7039013170904806355}
   - component: {fileID: 7039013170904806354}
   - component: {fileID: 3152128520788710414}
-  - component: {fileID: 245431813115018589}
-  - component: {fileID: -4804035508616563679}
+  - component: {fileID: -6656583782676319183}
   m_Layer: 0
   m_Name: HorseBee
   m_TagString: Player
@@ -9915,7 +9914,7 @@ MonoBehaviour:
   animationIndex: 10
   frameSpeed: 0.01
   animationSprites: []
---- !u!114 &245431813115018589
+--- !u!114 &-6656583782676319183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9924,30 +9923,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7039013170904806358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fd62c2a5aa5894fad5348e8169ae7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHp: 100
-  Hp: 0
-  isGameOver: 0
-  invincibleDelay: 0.15
-  isInvincible: 0
-  characterType: 10
-  checkBox: {x: 0.61, y: 0.33}
-  hitPos: {fileID: 8387894716509443668}
-  transformCount: 10
-  curTransformCount: 10
-  isTransform: 0
---- !u!114 &-4804035508616563679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7039013170904806358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171339958d5673b4289949ee30639b5e, type: 3}
+  m_Script: {fileID: 11500000, guid: a3ae3632ada2d9d469d3a9e185341e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 100
