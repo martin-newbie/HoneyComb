@@ -87,7 +87,9 @@ public class BaseDailyQuest
         value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count;
         //value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
 
-        return value / 2;
+        value += value / 2;
+
+        return value;
     }
 }
 [System.Serializable]
