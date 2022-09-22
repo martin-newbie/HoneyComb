@@ -177,7 +177,7 @@ public class InGameManager : Singleton<InGameManager>
 
             yield return new WaitForSeconds((objectMoveSpeed / curObjectMoveSpeed) * delay);
 
-            while (Player.isGameOver) yield return null;
+            if (Player.isGameOver) yield break;
         }
     }
 
@@ -209,8 +209,9 @@ public class InGameManager : Singleton<InGameManager>
             timer += Time.deltaTime;
             yield return null;
         }
-
+        Player.isGameOver = false;
         curObjectMoveSpeed = objectMoveSpeed;
+        StartCoroutine(SpawnCoroutine());
     }
 
     /// <summary>
