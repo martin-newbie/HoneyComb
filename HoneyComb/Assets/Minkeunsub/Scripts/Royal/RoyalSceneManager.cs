@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEditor.AssetImporters;
 
 public class RoyalSceneManager : Singleton<RoyalSceneManager>
 {
@@ -56,8 +57,9 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
 
     public void OpenGacha()
     {
-        if(StatusManager.Instance.BeeWax >= 10)
+        if (StatusManager.Instance.BeeWax >= 10)
         {
+            SoundManager.Instance.PlaySound("Button_Click");
             StatusManager.Instance.BeeWax -= 10;
             gachaCanvas.enabled = true;
             gachaPanel.SetActive(true);

@@ -84,10 +84,10 @@ public class BaseDailyQuest
     public int ReturnLevelIndex()
     {
         int value = 0;
-        value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count;
+        value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count / 2;
         //value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
 
-        return value / 2;
+        return value;
     }
 }
 [System.Serializable]
