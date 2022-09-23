@@ -4,30 +4,8 @@ using UnityEngine;
 
 public class LoginManager : MonoBehaviour
 {
-
-    private void Start()
+    public void Login()
     {
-        //PlayGamesPlatform.DebugLogEnabled = true;
-        //PlayGamesPlatform.Activate();
-    }
-
-    void Login()
-    {
-/*
-        if (!PlayGamesPlatform.Instance.localUser.authenticated)
-        {
-            Social.localUser.Authenticate((bool success) =>
-            {
-                if (success)
-                {
-
-                }
-                else
-                {
-
-                }
-            });
-        }
-*/
+        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 }

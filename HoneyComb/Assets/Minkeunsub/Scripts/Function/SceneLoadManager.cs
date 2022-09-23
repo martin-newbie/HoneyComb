@@ -36,7 +36,11 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             }
             HexagonMutArr.Add(trArr);
         }
+    }
 
+    void Start()
+    {
+        StartCoroutine(FadeOutCoroutine());
     }
 
     public void LoadScene(string name)

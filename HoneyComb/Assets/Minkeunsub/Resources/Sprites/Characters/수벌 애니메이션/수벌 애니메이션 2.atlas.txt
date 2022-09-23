@@ -1,0 +1,139 @@
+
+수벌 애니메이션 2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+감은 눈
+  rotate: true
+  xy: 1727, 1469
+  size: 238, 19
+  orig: 238, 19
+  offset: 0, 0
+  index: -1
+기본 눈
+  rotate: false
+  xy: 1453, 2329
+  size: 250, 58
+  orig: 250, 60
+  offset: 0, 1
+  index: -1
+기본 표정
+  rotate: false
+  xy: 1453, 2389
+  size: 234, 227
+  orig: 234, 241
+  offset: 0, 7
+  index: -1
+기쁜 눈
+  rotate: true
+  xy: 1727, 1709
+  size: 234, 27
+  orig: 234, 27
+  offset: 0, 0
+  index: -1
+기쁜 표정
+  rotate: true
+  xy: 2650, 3417
+  size: 212, 233
+  orig: 212, 247
+  offset: 0, 7
+  index: -1
+뒷머리
+  rotate: false
+  xy: 1727, 2202
+  size: 142, 186
+  orig: 142, 186
+  offset: 0, 0
+  index: -1
+몸
+  rotate: true
+  xy: 2, 438
+  size: 976, 1935
+  orig: 976, 1935
+  offset: 0, 0
+  index: -1
+슬픈 표정
+  rotate: true
+  xy: 1689, 2390
+  size: 226, 221
+  orig: 226, 235
+  offset: 0, 7
+  index: -1
+슬픈눈
+  rotate: true
+  xy: 1880, 2833
+  size: 250, 52
+  orig: 250, 54
+  offset: 0, 1
+  index: -1
+앞머리
+  rotate: false
+  xy: 2406, 3631
+  size: 500, 367
+  orig: 502, 367
+  offset: 0, 0
+  index: -1
+얼굴
+  rotate: false
+  xy: 1453, 2618
+  size: 425, 465
+  orig: 425, 465
+  offset: 0, 0
+  index: -1
+오른 날개
+  rotate: true
+  xy: 727, 3085
+  size: 913, 1677
+  orig: 913, 1677
+  offset: 0, 0
+  index: -1
+오른 다리
+  rotate: false
+  xy: 2, 1416
+  size: 723, 2582
+  orig: 723, 2582
+  offset: 0, 0
+  index: -1
+오른 더듬이
+  rotate: false
+  xy: 1727, 1945
+  size: 111, 255
+  orig: 111, 255
+  offset: 0, 0
+  index: -1
+오른 팔
+  rotate: false
+  xy: 727, 2324
+  size: 724, 759
+  orig: 724, 759
+  offset: 0, 0
+  index: -1
+왼 날개
+  rotate: false
+  xy: 1939, 1406
+  size: 913, 1677
+  orig: 913, 1677
+  offset: 0, 0
+  index: -1
+왼 다리
+  rotate: true
+  xy: 2, 2
+  size: 434, 2225
+  orig: 434, 2225
+  offset: 0, 0
+  index: -1
+왼 더듬이
+  rotate: false
+  xy: 2406, 3416
+  size: 242, 213
+  orig: 242, 213
+  offset: 0, 0
+  index: -1
+왼 팔
+  rotate: true
+  xy: 727, 1604
+  size: 718, 998
+  orig: 718, 998
+  offset: 0, 0
+  index: -1
