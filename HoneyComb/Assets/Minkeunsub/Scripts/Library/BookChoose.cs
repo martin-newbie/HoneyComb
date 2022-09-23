@@ -26,11 +26,6 @@ public class BookChoose : MonoBehaviour
         InitBooks();
     }
 
-    private void Update()
-    {
-
-    }
-
     void InitBooks()
     {
         BookDatas = StatusManager.Instance.BookDatas;
