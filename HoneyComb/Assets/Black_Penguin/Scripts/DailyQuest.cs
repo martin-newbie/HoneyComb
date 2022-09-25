@@ -83,8 +83,7 @@ public class BaseDailyQuest
     }
     public int ReturnLevelIndex()
     {
-        int value = 0;
-        value += StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count / 2;
+        int value = StatusManager.Instance.playableCharacterInfos.FindAll((x) => x.level >= 1).Count / 2 + 1;
         //value += StatusManager.Instance.stageInfos.ToList().FindAll((x) => x == true).Count;
 
         return value;
