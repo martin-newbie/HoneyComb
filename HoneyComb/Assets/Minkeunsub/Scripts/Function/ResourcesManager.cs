@@ -11,9 +11,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
     public List<Sprite[]> PlayerSprites = new List<Sprite[]>();
     public List<Sprite> PlayerFirstSprites = new List<Sprite>();
 
-    public Image fillImg;
-    public Text fillTxt;
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -22,7 +19,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
     void Start()
     {
         LoadSprite();
-        SceneLoadManager.Instance.LoadScene("TitleScene");
     }
 
     void LoadSprite()

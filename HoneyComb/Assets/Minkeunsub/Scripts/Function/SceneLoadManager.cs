@@ -19,6 +19,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     private List<Transform[]> HexagonMutArr = new List<Transform[]>();
     private int[] arrCount = new int[8] { 1, 2, 3, 4, 4, 3, 2, 1 };
 
+    bool isActing = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,20 +36,31 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             }
             HexagonMutArr.Add(trArr);
         }
+    }
 
+    void Start()
+    {
+        StartCoroutine(FadeOutCoroutine());
     }
 
     public void LoadScene(string name)
     {
-        nextSceneName = name;
-        StartCoroutine(SceneMoveCoroutine());
+        if (!isActing)
+        {
+            nextSceneName = name;
+            StartCoroutine(SceneMoveCoroutine());
+        }
     }
 
     IEnumerator SceneMoveCoroutine()
     {
+        isActing = true;
+        
         yield return StartCoroutine(FadeInCoroutine());
         SceneManager.LoadScene(nextSceneName);
         yield return StartCoroutine(FadeOutCoroutine());
+
+        isActing = false;
         yield break;
     }
 

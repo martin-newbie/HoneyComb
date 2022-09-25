@@ -1,0 +1,223 @@
+
+여왕벌 애니메이션 3.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+기본 표정
+  rotate: true
+  xy: 2025, 2
+  size: 193, 194
+  orig: 193, 194
+  offset: 0, 0
+  index: -1
+기본 표정 감은눈
+  rotate: false
+  xy: 1625, 1936
+  size: 190, 57
+  orig: 190, 57
+  offset: 0, 0
+  index: -1
+기본눈
+  rotate: false
+  xy: 1817, 1938
+  size: 206, 55
+  orig: 206, 55
+  offset: 0, 0
+  index: -1
+기쁜 표정
+  rotate: true
+  xy: 2432, 144
+  size: 188, 213
+  orig: 188, 213
+  offset: 0, 0
+  index: -1
+기쁜눈
+  rotate: true
+  xy: 1569, 2764
+  size: 187, 51
+  orig: 187, 51
+  offset: 0, 0
+  index: -1
+뒷머리 1
+  rotate: true
+  xy: 1391, 1999
+  size: 88, 285
+  orig: 88, 286
+  offset: 0, 1
+  index: -1
+뒷머리 2
+  rotate: true
+  xy: 2, 53
+  size: 464, 772
+  orig: 464, 772
+  offset: 0, 0
+  index: -1
+뒷머리 3
+  rotate: false
+  xy: 1678, 2445
+  size: 306, 714
+  orig: 306, 714
+  offset: 0, 0
+  index: -1
+뒷머리 오
+  rotate: true
+  xy: 511, 1910
+  size: 177, 581
+  orig: 177, 581
+  offset: 0, 0
+  index: -1
+뒷머리 왼
+  rotate: true
+  xy: 1467, 327
+  size: 190, 441
+  orig: 190, 441
+  offset: 0, 0
+  index: -1
+목 장식
+  rotate: true
+  xy: 1817, 17
+  size: 308, 206
+  orig: 308, 207
+  offset: 0, 0
+  index: -1
+몸
+  rotate: true
+  xy: 511, 2162
+  size: 504, 644
+  orig: 504, 644
+  offset: 0, 0
+  index: -1
+슬픈 표정
+  rotate: true
+  xy: 2647, 146
+  size: 186, 194
+  orig: 186, 194
+  offset: 0, 0
+  index: -1
+슬픈 표정 감은눈
+  rotate: false
+  xy: 1817, 1911
+  size: 190, 25
+  orig: 190, 25
+  offset: 0, 0
+  index: -1
+슬픈눈
+  rotate: true
+  xy: 1569, 2953
+  size: 206, 55
+  orig: 206, 55
+  offset: 0, 0
+  index: -1
+앞머리
+  rotate: true
+  xy: 776, 118
+  size: 399, 689
+  orig: 399, 689
+  offset: 0, 0
+  index: -1
+얼굴
+  rotate: true
+  xy: 1467, 44
+  size: 281, 348
+  orig: 281, 349
+  offset: 0, 0
+  index: -1
+오 날개
+  rotate: false
+  xy: 2568, 2840
+  size: 772, 1238
+  orig: 772, 1238
+  offset: 0, 0
+  index: -1
+오 다리, 골반
+  rotate: false
+  xy: 2, 1905
+  size: 507, 2173
+  orig: 507, 2173
+  offset: 0, 0
+  index: -1
+오 더듬이
+  rotate: true
+  xy: 1391, 1919
+  size: 78, 232
+  orig: 80, 232
+  offset: 1, 0
+  index: -1
+오 옷 뒤 장식
+  rotate: false
+  xy: 2015, 2089
+  size: 551, 1989
+  orig: 552, 1992
+  offset: 1, 0
+  index: -1
+오 팔
+  rotate: true
+  xy: 511, 2668
+  size: 491, 1056
+  orig: 491, 1056
+  offset: 0, 0
+  index: -1
+왼 날개
+  rotate: false
+  xy: 3162, 1600
+  size: 772, 1238
+  orig: 772, 1238
+  offset: 0, 0
+  index: -1
+왼 다리
+  rotate: false
+  xy: 2029, 197
+  size: 295, 1890
+  orig: 295, 1890
+  offset: 0, 0
+  index: -1
+왼 더듬이
+  rotate: false
+  xy: 2221, 3
+  size: 209, 192
+  orig: 209, 192
+  offset: 0, 0
+  index: -1
+왼 옷 뒤 장식
+  rotate: true
+  xy: 2, 519
+  size: 1384, 2025
+  orig: 1384, 2025
+  offset: 0, 0
+  index: -1
+왼 전완근
+  rotate: false
+  xy: 1157, 2155
+  size: 450, 511
+  orig: 450, 511
+  offset: 0, 0
+  index: -1
+왼 전완근 뒤
+  rotate: true
+  xy: 1094, 1911
+  size: 176, 295
+  orig: 176, 295
+  offset: 0, 0
+  index: -1
+왼 팔
+  rotate: false
+  xy: 1678, 1995
+  size: 294, 448
+  orig: 294, 448
+  offset: 0, 0
+  index: -1
+허리장식
+  rotate: true
+  xy: 511, 3161
+  size: 917, 1502
+  orig: 917, 1502
+  offset: 0, 0
+  index: -1
+허리장식 뒤
+  rotate: false
+  xy: 2432, 334
+  size: 728, 1753
+  orig: 728, 1753
+  offset: 0, 0
+  index: -1

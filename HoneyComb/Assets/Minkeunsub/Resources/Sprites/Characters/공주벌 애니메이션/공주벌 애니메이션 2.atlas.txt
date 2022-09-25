@@ -1,0 +1,188 @@
+
+공주벌 애니메이션 2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+감은 눈
+  rotate: false
+  xy: 678, 2
+  size: 306, 33
+  orig: 306, 33
+  offset: 0, 0
+  index: -1
+기본 눈
+  rotate: true
+  xy: 1581, 3068
+  size: 339, 97
+  orig: 339, 97
+  offset: 0, 0
+  index: -1
+기본 표정
+  rotate: false
+  xy: 1904, 2750
+  size: 263, 269
+  orig: 263, 270
+  offset: 0, 1
+  index: -1
+기쁜 눈
+  rotate: false
+  xy: 986, 11
+  size: 312, 44
+  orig: 312, 44
+  offset: 0, 0
+  index: -1
+기쁜 표정
+  rotate: false
+  xy: 2171, 3313
+  size: 270, 281
+  orig: 270, 282
+  offset: 0, 1
+  index: -1
+다리
+  rotate: false
+  xy: 2, 1979
+  size: 806, 2107
+  orig: 806, 2107
+  offset: 0, 0
+  index: -1
+뒤 장식
+  rotate: false
+  xy: 795, 57
+  size: 704, 183
+  orig: 704, 209
+  offset: 0, 22
+  index: -1
+뒷 머리
+  rotate: false
+  xy: 810, 2101
+  size: 593, 907
+  orig: 593, 907
+  offset: 0, 0
+  index: -1
+리본
+  rotate: false
+  xy: 2, 2
+  size: 319, 238
+  orig: 319, 238
+  offset: 0, 0
+  index: -1
+모자
+  rotate: true
+  xy: 1581, 3409
+  size: 677, 389
+  orig: 677, 389
+  offset: 0, 0
+  index: -1
+몸
+  rotate: false
+  xy: 2, 242
+  size: 944, 1735
+  orig: 944, 1735
+  offset: 0, 0
+  index: -1
+슬픈 눈
+  rotate: false
+  xy: 1222, 1994
+  size: 339, 105
+  orig: 339, 105
+  offset: 0, 0
+  index: -1
+슬픈 표정
+  rotate: false
+  xy: 1904, 2494
+  size: 250, 254
+  orig: 250, 254
+  offset: 0, 0
+  index: -1
+앞머리
+  rotate: true
+  xy: 323, 2
+  size: 238, 297
+  orig: 238, 297
+  offset: 0, 0
+  index: -1
+얼굴
+  rotate: true
+  xy: 1972, 3596
+  size: 490, 488
+  orig: 490, 488
+  offset: 0, 0
+  index: -1
+오 옆머리
+  rotate: false
+  xy: 1652, 83
+  size: 132, 818
+  orig: 132, 818
+  offset: 0, 0
+  index: -1
+오른 날개
+  rotate: false
+  xy: 810, 3010
+  size: 769, 1076
+  orig: 769, 1076
+  offset: 0, 0
+  index: -1
+오른 더듬이
+  rotate: false
+  xy: 622, 7
+  size: 54, 233
+  orig: 54, 233
+  offset: 0, 0
+  index: -1
+오른 장식
+  rotate: false
+  xy: 1680, 3124
+  size: 489, 283
+  orig: 489, 283
+  offset: 0, 0
+  index: -1
+오른 팔
+  rotate: false
+  xy: 1405, 2321
+  size: 497, 687
+  orig: 497, 692
+  offset: 0, 0
+  index: -1
+왼 날개
+  rotate: false
+  xy: 948, 903
+  size: 769, 1076
+  orig: 769, 1076
+  offset: 0, 0
+  index: -1
+왼 더듬이
+  rotate: false
+  xy: 678, 37
+  size: 115, 203
+  orig: 115, 203
+  offset: 0, 0
+  index: -1
+왼 옆머리 1
+  rotate: true
+  xy: 810, 1981
+  size: 118, 410
+  orig: 118, 410
+  offset: 0, 0
+  index: -1
+왼 옆머리 2
+  rotate: true
+  xy: 1680, 3021
+  size: 101, 566
+  orig: 101, 566
+  offset: 0, 0
+  index: -1
+왼 장식
+  rotate: false
+  xy: 1563, 2020
+  size: 437, 299
+  orig: 437, 299
+  offset: 0, 0
+  index: -1
+왼 팔
+  rotate: false
+  xy: 948, 243
+  size: 702, 658
+  orig: 702, 658
+  offset: 0, 0
+  index: -1

@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
-using UnityEditor.AssetImporters;
 
 public class RoyalSceneManager : Singleton<RoyalSceneManager>
 {
@@ -25,6 +23,9 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
     [Header("Gacha")]
     public Canvas gachaCanvas;
     public GameObject gachaPanel;
+    public GameObject gachaMessageBoard;
+    public RectTransform gachaMessageBoardBackground;
+    public Text remainWax;
 
     [Header("Value")]
     [SerializeField] int RoomCost = 250;
@@ -55,6 +56,21 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
         BeeTxt.text = Format(StatusManager.Instance.CurBee) + "/" + Format(StatusManager.Instance.MaxBee);
     }
 
+    public void GachaMessageOn()
+    {
+        gachaMessageBoard.SetActive(true);
+        remainWax.text = string.Format("현재 밀랍 {0}개", StatusManager.Instance.BeeWax);
+        gachaMessageBoardBackground.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void GachaMessageOff()
+    {
+        gachaMessageBoardBackground.DOAnchorPosY(-2500f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            gachaMessageBoard.SetActive(false);
+        });
+    }
+
     public void OpenGacha()
     {
         if (StatusManager.Instance.BeeWax >= 10)
@@ -63,6 +79,8 @@ public class RoyalSceneManager : Singleton<RoyalSceneManager>
             StatusManager.Instance.BeeWax -= 10;
             gachaCanvas.enabled = true;
             gachaPanel.SetActive(true);
+
+            GachaMessageOff();
         }
     }
 
