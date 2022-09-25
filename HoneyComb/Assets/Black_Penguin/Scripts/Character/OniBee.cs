@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OniBee : Player
 {
-    [SerializeField] private int transformCount = 10;
+    [SerializeField] private int transformCount = 40;
     [SerializeField] private int curTransformCount = 0;
     [SerializeField] private bool isTransform;
 

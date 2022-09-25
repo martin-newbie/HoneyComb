@@ -15,7 +15,7 @@ public class PlusHoneyItem : ItemBase
         {
             SoundManager.Instance.PlaySound("EarnItems");
 
-            InGameManager.Instance.roundHoney += 25;
+            InGameManager.Instance.roundHoney += 50;
             SoundManager.Instance.PlaySound("Button_Click2");
             Destroy(gameObject);
         }
